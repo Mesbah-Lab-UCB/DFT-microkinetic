@@ -1,0 +1,1723 @@
+#=====================================================================================================================================
+ELEMENTS
+e N H Surf
+END
+
+
+#=====================================================================================================================================
+BOLSIG
+N2 N2(v1) N2(v2) N2(v3) N2(v4) N2(v5) N2(v6) N2(v7) N2(v8) 
+DENSITY N2 += N2(v1)
+DENSITY N2 += N2(v2)
+DENSITY N2 += N2(v3)
+DENSITY N2 += N2(v4)
+DENSITY N2 += N2(v5)
+DENSITY N2 += N2(v6)
+DENSITY N2 += N2(v7)
+DENSITY N2 += N2(v8)
+
+H2 H2(v1) H2(v2) H2(v3)
+H2(B3SIG) H2(B1SIG) H2(C3PI) H2(A3SIG) 
+
+END
+
+#=====================================================================================================================================
+SPECIES
+
+N2
+N2(v1) N2(v2) N2(v3) N2(v4) N2(v5) N2(v6) N2(v7) N2(v8)
+N2(A3) N2(B3) N2(a`1) N2(C3)
+N N(2D) N(2P)
+N^+ N2^+ N3^+ N4^+
+
+H2 H2(B3SIG)  H2(B1SIG)  H2(C3PI) H2(A3SIG) H2(RYDBERG_SUM)
+H2(v1) H2(v2) H2(v3)
+H H2^+ H3^+ H^+ H^-
+
+
+NH NH2 NH3 
+NH^+ N2H^+ NH2^+ NH3^+  NH4^+
+E
+
+Surf HSurf NSurf NHSurf NH2Surf 
+END
+
+
+#=====================================================================================================================================
+REACTIONS
+
+$ double precision :: dTion, TeffN2N, TeffN2N2, TeffN4N2  ! K
+$ double precision, parameter :: delta_E_H2 = 107.7, E_10_H2 = 0.516/(1.38064852d-23*6.242d18), Chi_e_H2 = 0.02758, omega_E_H2 = 4401. ! Parameters for H2
+$ double precision, parameter :: LLL = 0.2, H_2_mass = 1.00784*2, E_v1_H2 = 0.516, E_v2_H2 = 1., E_v3_H2 = 1.5
+$ double precision, parameter :: delta_E_N2 = 20.2, E_10_N2 = 0.288/(1.38064852d-23*6.242d18), Chi_e_N2 = 0.00613, omega_E_N2 = 2359. ! Parameters for N2
+$ double precision, parameter :: N_2_mass = 14.0067*2, E_v1_N2 = 0.288, E_v2_N2 = 0.573, E_v3_N2 = 0.855,  E_v4_N2 = 1.133
+$ double precision, parameter :: E_v5_N2 = 1.408, E_v6_N2 = 1.679, E_v7_N2 = 1.947,  E_v8_N2 = 2.211
+
+$ double precision, parameter :: E_20_N2 = 0.573/(1.38064852d-23*6.242d18)
+
+$ dTion  = 3.14d0 / ( 6.0d0 * 1.3807d-16 ) * 1.6605d-24 * ( 1.0d-17 * EN )**2
+
+$ TeffN2N = Tgas + dTion * (28.0d0*14.0d0)/(28.0d0+14.0d0) * (1.60*2.45d19*(300/Tgas))**2
+$ TeffN2N2 = Tgas + dTion * (28.0d0*28.0d0)/(28.0d0+28.0d0) * (1.60*2.45d19*(300/Tgas))**2
+$ TeffN4N2 = Tgas + dTion * (56.0d0*28.0d0)/(28.0d0+56.0d0) * (2.32*2.45d19*(300/Tgas))**2
+
+
+#--------------------------------------------------------------------------------
+#
+# direct electronic excitation/ionization of N2, H2 molecules [Bolsig+]
+# 
+#--------------------------------------------------------------------------------
+e + N2 => e + N2(A3)                 	    !   BOLSIG N2 -> N2(A3,v0-4)
+e + N2 => e + N2(A3)                        !   BOLSIG N2 -> N2(A3,v5-9)
+e + N2 => e + N2(A3)                        !   BOLSIG N2 -> N2(A3,v10-)
+e + N2 => e + N2(B3)                        !   BOLSIG N2 -> N2(B3)
+e + N2 => e + N2(a`1)                       !   BOLSIG N2 -> N2(a`1) 
+e + N2 => e + N2(C3)                        !   BOLSIG N2 -> N2(C3)
+
+e + H2 => e + H2(B3SIG)                     !   BOLSIG H2 -> H2(B3SIG)
+e + H2 => e + H2(B1SIG)                     !   BOLSIG H2 -> H2(B1SIG)
+e + H2 => e + H2(C3PI)                      !   BOLSIG H2 -> H2(C3PI)
+e + H2 => e + H2(A3SIG)                     !   BOLSIG H2 -> H2(A3SIG)
+e + H2 => e + H2(RYDBERG_SUM)               !   BOLSIG H2 -> H2(RYDBERG_SUM)
+
+#---------------------------------------------------------------------------------------------------------
+#Ionization of N2 and H2 molecules, N and H atoms and NHx by electrons[BOLSIG+] and [Carrasco et al(2011)]
+#---------------------------------------------------------------------------------------------------------
+e + N2 => e + e + N2^+                      !   BOLSIG N2 -> N2^+
+e + H2 => e + e + H2^+                      !   BOLSIG H2 -> H2^+
+
+e + N => e + e + N^+                        !   1.26d-10*(Te/11600)-1.72d-10*(Te/11600)**2+6.51d-11*(Te/11600)**3-5.75d-12*(Te/11600)**4+1.71d-13*(Te/11600)**5  
+e + H      => H^+ + e + e                   !   6.50d-9*((Te/11600)**0.49)*exp(-12.89/(Te/11600))
+
+#the ionization of NH3 only included 
+#e + NH => e + e + NH^+                     !   1.38d-10*(Te/11600)-1.85d-10*(Te/11600)**2 + 6.65d-11*(Te/11600)**3-4.36d-12*(Te/11600)**4+3.02d-14*(Te/11600)**5
+#e + NH2 => e + e + NH2^+                   !   1.76d-10*(Te/11600)-2.70d-10*(Te/11600)**2 + 1.17d-11*(Te/11600)**3-1.24d-11*(Te/11600)**4+4.23d-13*(Te/11600)**5
+e + NH3 => e + e + NH3^+                    !   1.53d-10*(Te/11600)-2.24d-10*(Te/11600)**2 + 9.37d-11*(Te/11600)**3-9.97d-12*(Te/11600)**4+3.33d-13*(Te/11600)**5
+
+
+#--------------------------------------------------------------------------------
+# vibrational excitation [BOLSIG+] and de-excitation by e- 
+#--------------------------------------------------------------------------------
+
+e + N2 => e + N2(v1)                            !   BOLSIG N2 -> N2(v1)
+e + N2 => e + N2(v2)                            !   BOLSIG N2 -> N2(v2)
+e + N2 => e + N2(v3)                            !   BOLSIG N2 -> N2(v3)
+e + N2 => e + N2(v4)                            !   BOLSIG N2 -> N2(v4)
+e + N2 => e + N2(v5)                            !   BOLSIG N2 -> N2(v5)
+e + N2 => e + N2(v6)                            !   BOLSIG N2 -> N2(v6)
+e + N2 => e + N2(v7)                            !   BOLSIG N2 -> N2(v7)
+e + N2 => e + N2(v8)                            !   BOLSIG N2 -> N2(v8)
+e + N2(v1) => e + N2                            !   BOLSIG N2(v1) -> N2
+e + N2(v2) => e + N2                            !   BOLSIG N2(v2) -> N2
+e + N2(v3) => e + N2                            !   BOLSIG N2(v3) -> N2
+e + N2(v4) => e + N2                            !   BOLSIG N2(v4) -> N2
+e + N2(v5) => e + N2                            !   BOLSIG N2(v5) -> N2
+e + N2(v6) => e + N2                            !   BOLSIG N2(v6) -> N2
+e + N2(v7) => e + N2                            !   BOLSIG N2(v7) -> N2
+e + N2(v8) => e + N2                            !   BOLSIG N2(v8) -> N2
+
+e + H2 => e + H2(v1)                            !   BOLSIG H2 -> H2(v1)
+e + H2 => e + H2(v2)                            !   BOLSIG H2 -> H2(v2)
+e + H2 => e + H2(v3)                            !   BOLSIG H2 -> H2(v3)
+e + H2(v1) => e + H2                            !   BOLSIG H2(v1) -> H2
+e + H2(v2) => e + H2                            !   BOLSIG H2(v2) -> H2
+e + H2(v3) => e + H2                            !   BOLSIG H2(v3) -> H2
+
+#--------------------------------------------------------------------------------
+# De-excitation of electronically exc. H2* by e- 
+# : introduced to fix the issue on increasing H2(B3) etc.
+#--------------------------------------------------------------------------------
+
+e + H2(B3SIG) => e + H2                     !   BOLSIG H2(B3SIG) -> H2
+e + H2(B1SIG) => e + H2                     !   BOLSIG H2(B1SIG) -> H2
+e + H2(C3PI)  => e + H2                     !   BOLSIG H2(C3PI)  -> H2
+e + H2(A3SIG) => e + H2                     !   BOLSIG H2(A3SIG) -> H2
+
+#--------------------------------------------------------------------------------
+# vibrational-translational relaxation : not counted exc. or de-exc. of H2 by atomic N
+# 
+#--------------------------------------------------------------------------------
+
+# Embedded calculation of rate coeffs for N2_N2 (V-T)
+#################################################################################
+$ double precision, parameter :: n_N2a = 1., m_N2a = 1., A_N2a = 7.8d-12, B_N2a = 2.18d2, C_N2a = 6.9d2, D_N2a = 1 ! parameters for N2-N2 (V-T)
+$ double precision :: reduced_mass_N2_N2, k_10_VT_N2_N2, delta_VT_N2_N2_hi, delta_VT_N2_N2_lo
+$ double precision :: gamma_v1_N2_N2, gamma_v2_N2_N2, gamma_v3_N2_N2, gamma_v4_N2_N2, gamma_v5_N2_N2, gamma_v6_N2_N2, gamma_v7_N2_N2, gamma_v8_N2_N2
+$ double precision :: G_10_N2_N2, G_21_N2_N2, G_32_N2_N2, G_43_N2_N2, G_54_N2_N2, G_65_N2_N2, G_76_N2_N2, G_87_N2_N2 ! Since we have eight reactions for N2_N2 (V-T)
+
+$ k_10_VT_N2_N2 = A_N2a*(Tgas**n_N2a)*exp(-B_N2a/(Tgas**(1./3.))+C_N2a/(Tgas**m_N2a))/(1-D_N2a*exp(-E_10_N2/Tgas))
+
+$ reduced_mass_N2_N2 = (N_2_mass*N_2_mass)/(N_2_mass+N_2_mass)
+$ delta_VT_N2_N2_lo = 0.427*delta_E_N2*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ delta_VT_N2_N2_hi = 1.87*delta_E_N2*(LLL**(2./3.))*((reduced_mass_N2_N2/(E_10_N2*Tgas))**(1./3.))
+
+
+$ gamma_v1_N2_N2 = 0.32*(E_v1_N2-0.)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v1_N2_N2 .lt. 20) then; G_10_N2_N2= (0.+1.)*(1.-chi_e_N2)/(1.-(0.+1.)*chi_e_N2)*exp(0.*delta_VT_N2_N2_lo); else; G_10_N2_N2 = (0.+1.)*(1.-chi_e_N2)/(1.-(0.+1.)*chi_e_N2)*exp(0.*delta_VT_N2_N2_hi);end if
+N2(v1) + N2 => N2     + N2                         !   k_10_VT_N2_N2 * G_10_N2_N2
+N2     + N2 => N2(v1) + N2                         !   k_10_VT_N2_N2 * G_10_N2_N2 * exp(-(E_v1_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v2_N2_N2 = 0.32*(E_v2_N2-E_v1_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v2_N2_N2 .lt. 20) then; G_21_N2_N2= (1.+1.)*(1.-chi_e_N2)/(1.-(1.+1.)*chi_e_N2)*exp(1.*delta_VT_N2_N2_lo); else; G_21_N2_N2 = (1.+1.)*(1.-chi_e_N2)/(1.-(1.+1.)*chi_e_N2)*exp(1.*delta_VT_N2_N2_hi);end if
+N2(v2) + N2 => N2(v1) + N2                         !   k_10_VT_N2_N2 * G_21_N2_N2
+N2(v1) + N2 => N2(v2) + N2                         !   k_10_VT_N2_N2 * G_21_N2_N2 * exp(-(E_v2_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v3_N2_N2 = 0.32*(E_v3_N2-E_v2_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v3_N2_N2 .lt. 20) then; G_32_N2_N2= (2.+1.)*(1.-chi_e_N2)/(1.-(2.+1.)*chi_e_N2)*exp(2.*delta_VT_N2_N2_lo); else; G_32_N2_N2 = (2.+1.)*(1.-chi_e_N2)/(1.-(2.+1.)*chi_e_N2)*exp(2.*delta_VT_N2_N2_hi);end if
+N2(v3) + N2 => N2(v2) + N2                         !   k_10_VT_N2_N2 * G_32_N2_N2
+N2(v2) + N2 => N2(v3) + N2                         !   k_10_VT_N2_N2 * G_32_N2_N2 * exp(-(E_v3_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v4_N2_N2 = 0.32*(E_v4_N2-E_v3_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v4_N2_N2 .lt. 20) then; G_43_N2_N2= (3.+1.)*(1.-chi_e_N2)/(1.-(3.+1.)*chi_e_N2)*exp(3.*delta_VT_N2_N2_lo); else; G_43_N2_N2 = (3.+1.)*(1.-chi_e_N2)/(1.-(3.+1.)*chi_e_N2)*exp(3.*delta_VT_N2_N2_hi);end if
+N2(v4) + N2 => N2(v3) + N2                         !   k_10_VT_N2_N2 * G_43_N2_N2
+N2(v3) + N2 => N2(v4) + N2                         !   k_10_VT_N2_N2 * G_43_N2_N2 * exp(-(E_v4_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v5_N2_N2 = 0.32*(E_v5_N2-E_v4_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v5_N2_N2 .lt. 20) then; G_54_N2_N2= (4.+1.)*(1.-chi_e_N2)/(1.-(4.+1.)*chi_e_N2)*exp(4.*delta_VT_N2_N2_lo); else; G_54_N2_N2 = (4.+1.)*(1.-chi_e_N2)/(1.-(4.+1.)*chi_e_N2)*exp(4.*delta_VT_N2_N2_hi);end if
+N2(v5) + N2 => N2(v4) + N2                         !   k_10_VT_N2_N2 * G_54_N2_N2
+N2(v4) + N2 => N2(v5) + N2                         !   k_10_VT_N2_N2 * G_54_N2_N2 * exp(-(E_v5_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v6_N2_N2 = 0.32*(E_v6_N2-E_v5_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v6_N2_N2 .lt. 20) then; G_65_N2_N2= (5.+1.)*(1.-chi_e_N2)/(1.-(5.+1.)*chi_e_N2)*exp(5.*delta_VT_N2_N2_lo); else; G_65_N2_N2 = (5.+1.)*(1.-chi_e_N2)/(1.-(5.+1.)*chi_e_N2)*exp(5.*delta_VT_N2_N2_hi);end if
+N2(v6) + N2 => N2(v5) + N2                         !   k_10_VT_N2_N2 * G_65_N2_N2
+N2(v5) + N2 => N2(v6) + N2                         !   k_10_VT_N2_N2 * G_65_N2_N2 * exp(-(E_v6_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v7_N2_N2 = 0.32*(E_v7_N2-E_v6_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v7_N2_N2 .lt. 20) then; G_76_N2_N2= (6.+1.)*(1.-chi_e_N2)/(1.-(6.+1.)*chi_e_N2)*exp(6.*delta_VT_N2_N2_lo); else; G_76_N2_N2 = (6.+1.)*(1.-chi_e_N2)/(1.-(6.+1.)*chi_e_N2)*exp(6.*delta_VT_N2_N2_hi);end if
+N2(v7) + N2 => N2(v6) + N2                         !   k_10_VT_N2_N2 * G_76_N2_N2
+N2(v6) + N2 => N2(v7) + N2                         !   k_10_VT_N2_N2 * G_76_N2_N2 * exp(-(E_v7_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v8_N2_N2 = 0.32*(E_v8_N2-E_v6_N2)*LLL*sqrt(reduced_mass_N2_N2/Tgas)
+$ if (gamma_v8_N2_N2 .lt. 20) then; G_87_N2_N2= (7.+1.)*(1.-chi_e_N2)/(1.-(7.+1.)*chi_e_N2)*exp(7.*delta_VT_N2_N2_lo); else; G_87_N2_N2 = (7.+1.)*(1.-chi_e_N2)/(1.-(7.+1.)*chi_e_N2)*exp(7.*delta_VT_N2_N2_hi);end if
+N2(v8) + N2 => N2(v7) + N2                         !   k_10_VT_N2_N2 * G_87_N2_N2
+N2(v7) + N2 => N2(v8) + N2                         !   k_10_VT_N2_N2 * G_87_N2_N2 * exp(-(E_v8_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+# Embedded calculation of rate coeffs for N2_H2 (V-T)
+#################################################################################
+$ double precision, parameter :: n_H2a = 1., m_H2a = 2./3., A_H2a = 4.9d-12, B_H2a = 1.671d2, C_H2a = 3.94d2, D_H2a = 1 ! parameters for N2-H2 (V-T)
+
+$ double precision :: reduced_mass_N2_H2, k_10_VT_N2_H2, delta_VT_N2_H2_hi, delta_VT_N2_H2_lo
+$ double precision :: gamma_v1_N2_H2, gamma_v2_N2_H2, gamma_v3_N2_H2, gamma_v4_N2_H2, gamma_v5_N2_H2, gamma_v6_N2_H2, gamma_v7_N2_H2, gamma_v8_N2_H2
+$ double precision :: G_10_N2_H2, G_21_N2_H2, G_32_N2_H2, G_43_N2_H2, G_54_N2_H2, G_65_N2_H2, G_76_N2_H2, G_87_N2_H2 ! Since we have eight reactions for N2_H2 (V-T)
+
+$ k_10_VT_N2_H2 = A_H2a*(Tgas**n_H2a)*exp(-B_H2a/(Tgas**(1./3.))+C_H2a/(Tgas**m_H2a))/(1-D_H2a*exp(-E_10_N2/Tgas))
+
+$ reduced_mass_N2_H2 = (N_2_mass*H_2_mass)/(N_2_mass+H_2_mass)
+$ delta_VT_N2_H2_lo = 0.427*delta_E_N2*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ delta_VT_N2_H2_hi = 1.87*delta_E_N2*(LLL**(2./3.))*((reduced_mass_N2_H2/(E_10_N2*Tgas))**(1./3.))
+
+$ gamma_v1_N2_H2 = 0.32*(E_v1_N2-0.)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v1_N2_H2 .lt. 20) then; G_10_N2_H2= (0.+1.)*(1.-chi_e_N2)/(1.-(0.+1.)*chi_e_N2)*exp(0.*delta_VT_N2_H2_lo); else; G_10_N2_H2 = (0.+1.)*(1.-chi_e_N2)/(1.-(0.+1.)*chi_e_N2)*exp(0.*delta_VT_N2_H2_hi);end if
+N2(v1) + H2 => N2     + H2                         !   k_10_VT_N2_H2 * G_10_N2_H2
+N2     + H2 => N2(v1) + H2                         !   k_10_VT_N2_H2 * G_10_N2_H2 * exp(-(E_v1_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v2_N2_H2 = 0.32*(E_v2_N2-E_v1_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v2_N2_H2 .lt. 20) then; G_21_N2_H2= (1.+1.)*(1.-chi_e_N2)/(1.-(1.+1.)*chi_e_N2)*exp(1.*delta_VT_N2_H2_lo); else; G_21_N2_H2 = (1.+1.)*(1.-chi_e_N2)/(1.-(1.+1.)*chi_e_N2)*exp(1.*delta_VT_N2_H2_hi);end if
+N2(v2) + H2 => N2(v1) + H2                         !   k_10_VT_N2_H2 * G_21_N2_H2
+N2(v1) + H2 => N2(v2) + H2                         !   k_10_VT_N2_H2 * G_21_N2_H2 * exp(-(E_v2_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v3_N2_H2 = 0.32*(E_v3_N2-E_v2_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v3_N2_H2 .lt. 20) then; G_32_N2_H2= (2.+1.)*(1.-chi_e_N2)/(1.-(2.+1.)*chi_e_N2)*exp(2.*delta_VT_N2_H2_lo); else; G_32_N2_H2 = (2.+1.)*(1.-chi_e_N2)/(1.-(2.+1.)*chi_e_N2)*exp(2.*delta_VT_N2_H2_hi);end if
+N2(v3) + H2 => N2(v2) + H2                         !   k_10_VT_N2_H2 * G_32_N2_H2
+N2(v2) + H2 => N2(v3) + H2                         !   k_10_VT_N2_H2 * G_32_N2_H2 * exp(-(E_v3_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v4_N2_H2 = 0.32*(E_v4_N2-E_v3_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v4_N2_H2 .lt. 20) then; G_43_N2_H2= (3.+1.)*(1.-chi_e_N2)/(1.-(3.+1.)*chi_e_N2)*exp(3.*delta_VT_N2_H2_lo); else; G_43_N2_H2 = (3.+1.)*(1.-chi_e_N2)/(1.-(3.+1.)*chi_e_N2)*exp(3.*delta_VT_N2_H2_hi);end if
+N2(v4) + H2 => N2(v3) + H2                         !   k_10_VT_N2_H2 * G_43_N2_H2
+N2(v3) + H2 => N2(v4) + H2                         !   k_10_VT_N2_H2 * G_43_N2_H2 * exp(-(E_v4_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v5_N2_H2 = 0.32*(E_v5_N2-E_v4_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v5_N2_H2 .lt. 20) then; G_54_N2_H2= (4.+1.)*(1.-chi_e_N2)/(1.-(4.+1.)*chi_e_N2)*exp(4.*delta_VT_N2_H2_lo); else; G_54_N2_H2 = (4.+1.)*(1.-chi_e_N2)/(1.-(4.+1.)*chi_e_N2)*exp(4.*delta_VT_N2_H2_hi);end if
+N2(v5) + H2 => N2(v4) + H2                         !   k_10_VT_N2_H2 * G_54_N2_H2
+N2(v4) + H2 => N2(v5) + H2                         !   k_10_VT_N2_H2 * G_54_N2_H2 * exp(-(E_v5_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v6_N2_H2 = 0.32*(E_v6_N2-E_v5_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v6_N2_H2 .lt. 20) then; G_65_N2_H2= (5.+1.)*(1.-chi_e_N2)/(1.-(5.+1.)*chi_e_N2)*exp(5.*delta_VT_N2_H2_lo); else; G_54_N2_H2 = (5.+1.)*(1.-chi_e_N2)/(1.-(5.+1.)*chi_e_N2)*exp(5.*delta_VT_N2_H2_hi);end if
+N2(v6) + H2 => N2(v5) + H2                         !   k_10_VT_N2_H2 * G_65_N2_H2
+N2(v5) + H2 => N2(v6) + H2                         !   k_10_VT_N2_H2 * G_65_N2_H2 * exp(-(E_v6_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v7_N2_H2 = 0.32*(E_v7_N2-E_v6_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v7_N2_H2 .lt. 20) then; G_76_N2_H2= (6.+1.)*(1.-chi_e_N2)/(1.-(6.+1.)*chi_e_N2)*exp(6.*delta_VT_N2_H2_lo); else; G_76_N2_H2 = (6.+1.)*(1.-chi_e_N2)/(1.-(6.+1.)*chi_e_N2)*exp(6.*delta_VT_N2_H2_hi);end if
+N2(v7) + H2 => N2(v6) + H2                         !   k_10_VT_N2_H2 * G_76_N2_H2
+N2(v6) + H2 => N2(v7) + H2                         !   k_10_VT_N2_H2 * G_76_N2_H2 * exp(-(E_v7_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v8_N2_H2 = 0.32*(E_v8_N2-E_v7_N2)*LLL*sqrt(reduced_mass_N2_H2/Tgas)
+$ if (gamma_v8_N2_H2 .lt. 20) then; G_87_N2_H2= (7.+1.)*(1.-chi_e_N2)/(1.-(7.+1.)*chi_e_N2)*exp(7.*delta_VT_N2_H2_lo); else; G_87_N2_H2 = (7.+1.)*(1.-chi_e_N2)/(1.-(7.+1.)*chi_e_N2)*exp(7.*delta_VT_N2_H2_hi);end if
+N2(v8) + H2 => N2(v7) + H2                         !   k_10_VT_N2_H2 * G_87_N2_H2
+N2(v7) + H2 => N2(v8) + H2                         !   k_10_VT_N2_H2 * G_87_N2_H2 * exp(-(E_v8_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+# Embedded calculation of rate coeffs for N2_N (V-T)
+# The used activation energies is v-1.
+#################################################################################
+$ double precision, parameter :: K_N2_Atom_VT = 4d-10, E_A_N2_N = 7280 ! parameters for N2-N (V-T)
+$ double precision :: K_10_N2_N, K_21_N2_N, K_32_N2_N, K_43_N2_N, K_54_N2_N, K_65_N2_N, K_76_N2_N, K_87_N2_N ! Since we have eight reactions for N2_H2 (V-T)
+
+$ if (0.065*E_v1_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_10_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v1_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_10_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v1) + N => N2     + N                           !   K_10_N2_N
+N2     + N => N2(v1) + N                           !   K_10_N2_N * exp(-(E_v1_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v2_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_21_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v2_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_21_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v2) + N => N2(v1) + N                           !   K_21_N2_N
+N2(v1) + N => N2(v2) + N                           !   K_21_N2_N * exp(-(E_v2_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v3_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_32_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v3_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_32_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v3) + N => N2(v2) + N                           !   K_32_N2_N
+N2(v2) + N => N2(v3) + N                           !   K_32_N2_N * exp(-(E_v3_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v4_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_43_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v4_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_43_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v4) + N => N2(v3) + N                           !   K_43_N2_N
+N2(v3) + N => N2(v4) + N                           !   K_43_N2_N * exp(-(E_v4_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v5_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_54_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v5_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_54_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v5) + N => N2(v4) + N                           !   K_54_N2_N
+N2(v4) + N => N2(v5) + N                           !   K_54_N2_N * exp(-(E_v5_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v6_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_65_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v6_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_65_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v6) + N => N2(v5) + N                           !   K_65_N2_N
+N2(v5) + N => N2(v6) + N                           !   K_65_N2_N * exp(-(E_v6_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v7_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_76_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v7_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_76_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v7) + N => N2(v6) + N                           !   K_76_N2_N
+N2(v6) + N => N2(v7) + N                           !   K_76_N2_N * exp(-(E_v7_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.065*E_v8_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_N) then; K_87_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_N/Tgas+(0.065*E_v8_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_87_N2_N = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v8) + N => N2(v7) + N                           !   K_87_N2_N
+N2(v7) + N => N2(v8) + N                           !   K_87_N2_N * exp(-(E_v8_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+# Embedded calculation of rate coeffs for N2_H (V-T)
+# The used activation energies is v-1.
+#################################################################################
+$ double precision, parameter :: E_A_N2_H = 7500 ! parameters for N2-H (V-T)
+$ double precision :: K_10_N2_H, K_21_N2_H, K_32_N2_H, K_43_N2_H, K_54_N2_H, K_65_N2_H, K_76_N2_H, K_87_N2_H ! Since we have eight reactions for N2_H (V-T)
+
+$ if (0.105*E_v1_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_10_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v1_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_10_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v1) + H  => N2     + H                          !   K_10_N2_H
+N2     + H  => N2(v1) + H                          !   1.9d-21 * exp(-(E_v1_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v2_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_21_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v2_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_21_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v2) + H  => N2(v1) + H                          !   K_21_N2_H
+N2(v1) + H  => N2(v2) + H                          !   4.9d-21 * exp(-(E_v2_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v3_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_32_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v3_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_32_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v3) + H  => N2(v2) + H                          !   K_32_N2_H
+N2(v2) + H  => N2(v3) + H                          !   1.3d-20 * exp(-(E_v3_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v4_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_43_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v4_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_43_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v4) + H  => N2(v3) + H                          !   K_43_N2_H
+N2(v3) + H  => N2(v4) + H                          !   3.3d-20 * exp(-(E_v4_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v5_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_54_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v5_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_54_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v5) + H  => N2(v4) + H                          !   K_54_N2_H
+N2(v4) + H  => N2(v5) + H                          !   8.3d-20 * exp(-(E_v5_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v6_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_65_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v6_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_65_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v6) + H  => N2(v5) + H                          !   K_65_N2_H
+N2(v5) + H  => N2(v6) + H                          !   2.1d-19 * exp(-(E_v6_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v7_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_76_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v7_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_76_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v7) + H  => N2(v6) + H                          !   K_76_N2_H
+N2(v6) + H  => N2(v7) + H                          !   5.3d-19 * exp(-(E_v7_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ if (0.105*E_v8_N2/(1.38064852d-23*6.242d18) .le. E_A_N2_H) then; K_87_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.)*exp(-E_A_N2_H/Tgas+(0.105*E_v8_N2/(1.38064852d-23*6.242d18))/Tgas); else; K_87_N2_H = K_N2_Atom_VT*sqrt(Tgas/300.) ;end if
+N2(v8) + H  => N2(v7) + H                          !   K_87_N2_H
+N2(v7) + H  => N2(v8) + H                          !   1.3d-18 * exp(-(E_v8_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+# Embedded calculation of rate coeffs for H2-H2 (V-T)
+#################################################################################
+$ double precision, parameter :: n_H2b = 5.e-1, m_H2b = 0., A_H2b = 7.47d-12, B_H2b = 9.387d1, C_H2b = 0, D_H2b = 1 ! parameters for H2-H2 (V-T)
+$ double precision :: reduced_mass_H2_H2, k_10_VT_H2_H2, gamma_v1_H2_H2, gamma_v2_H2_H2, gamma_v3_H2_H2, delta_VT_H2_H2_hi, delta_VT_H2_H2_lo
+$ double precision :: G_10_H2_H2, G_21_H2_H2, G_32_H2_H2 ! Since we have three reactions for H2-H2 (V-T)
+
+$ k_10_VT_H2_H2 = A_H2b*(Tgas**n_H2b)*exp(-B_H2b/(Tgas**(1./3.))+C_H2b/(Tgas**m_H2b))/(1-D_H2b*exp(-E_10_H2/Tgas))
+
+$ reduced_mass_H2_H2 = (H_2_mass*H_2_mass)/(H_2_mass+H_2_mass)
+$ delta_VT_H2_H2_lo = 0.427*delta_E_H2*LLL*sqrt(reduced_mass_H2_H2/Tgas)
+$ delta_VT_H2_H2_hi = 1.87*delta_E_H2*(LLL**(2./3.))*((reduced_mass_H2_H2/(E_10_H2*Tgas))**(1./3.))
+
+
+$ gamma_v1_H2_H2 = 0.32*(E_v1_H2-0.)*LLL*sqrt(reduced_mass_H2_H2/Tgas)
+$ if (gamma_v1_H2_H2 .lt. 20) then; G_10_H2_H2 = (0.+1.)*(1.-chi_e_H2)/(1.-(0.+1.)*chi_e_H2)*exp(0.*delta_VT_H2_H2_lo); else; G_10_H2_H2 = (0.+1.)*(1.-chi_e_H2)/(1.-(0.+1.)*chi_e_H2)*exp(0.*delta_VT_H2_H2_hi);end if
+H2(v1) + H2 => H2     + H2                         !   k_10_VT_H2_H2 * G_10_H2_H2
+H2     + H2 => H2(v1) + H2                         !   k_10_VT_H2_H2 * G_10_H2_H2 * exp(-(E_v1_H2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_v2_H2_H2 = 0.32*(E_v2_H2-E_v1_H2)*LLL*sqrt(reduced_mass_H2_H2/Tgas)
+$ if (gamma_v2_H2_H2 .lt. 20) then; G_21_H2_H2 = (1.+1.)*(1.-chi_e_H2)/(1.-(1.+1.)*chi_e_H2)*exp(1.*delta_VT_H2_H2_lo); else; G_21_H2_H2 = (1.+1.)*(1.-chi_e_H2)/(1.-(1.+1.)*chi_e_H2)*exp(1.*delta_VT_H2_H2_hi);end if
+H2(v2) + H2 => H2(v1) + H2                         !   k_10_VT_H2_H2 * G_21_H2_H2
+H2(v1) + H2 => H2(v2) + H2                         !   k_10_VT_H2_H2 * G_21_H2_H2 * exp(-(E_v2_H2-E_v1_H2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ gamma_V3_H2_H2 = 0.32*(E_v3_H2-E_v2_H2)*LLL*sqrt(reduced_mass_H2_H2/Tgas)
+$ if (gamma_v3_H2_H2 .lt. 20) then; G_32_H2_H2 = (2.+1.)*(1.-chi_e_H2)/(1.-(2.+1.)*chi_e_H2)*exp(2.*delta_VT_H2_H2_lo); else; G_32_H2_H2 = (2.+1.)*(1.-chi_e_H2)/(1.-(2.+1.)*chi_e_H2)*exp(1.*delta_VT_H2_H2_hi);end if
+H2(v3) + H2 => H2(v2) + H2                         !   k_10_VT_H2_H2 * G_32_H2_H2
+H2(v2) + H2 => H2(v3) + H2                         !   k_10_VT_H2_H2 * G_32_H2_H2 * exp(-(E_v3_H2-E_v2_H2)/(1.38064852d-23*Tgas*6.242d18))
+
+# Embedded calculation of rate coeffs for H2-H (V-T)
+#################################################################################
+$ double precision :: K_10_H2_H, K_21_H2_H, K_32_H2_H ! Since we have three reactions for H2-H (V-T)
+$ double precision :: delta_10_H2_H, delta_21_H2_H, delta_32_H2_H ! Since we have three reactions for H2-H (V-T)
+
+$ delta_10_H2_H = (0.+1.)*(1.+0.*delta_E_H2/E_10_H2)
+$ K_10_H2_H = delta_10_H2_H*((1.-0.*5.67d-2)**2.66)*2.4d-8*exp(-(162.6/((Tgas)**(1./3.)))*(1-0.*5.67d-2)**0.681)
+H2(v1) + H  => H2     + H                          !   K_10_H2_H
+H2     + H  => H2(v1) + H                          !   K_10_H2_H * exp(-(E_v1_H2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ delta_21_H2_H = (1.+1.)*(1.+1.*delta_E_H2/E_10_H2)
+$ K_21_H2_H = delta_21_H2_H*((1.-1.*5.67d-2)**2.66)*2.4d-8*exp(-(162.6/((Tgas)**(1./3.)))*(1-1.*5.67d-2)**0.681)
+H2(v2) + H  => H2(v1) + H                          !   K_21_H2_H
+H2(v1) + H  => H2(v2) + H                          !   K_21_H2_H * exp(-(E_v2_H2-E_v1_H2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ delta_32_H2_H = (2.+1.)*(1.+2.*delta_E_H2/E_10_H2)
+$ K_32_H2_H = delta_32_H2_H*((1.-2.*5.67d-2)**2.66)*2.4d-8*exp(-(162.6/((Tgas)**(1./3.)))*(1-2.*5.67d-2)**0.681)
+H2(v3) + H  => H2(v2) + H                          !   K_32_H2_H
+H2(v2) + H  => H2(v3) + H                          !   K_32_H2_H * exp(-(E_v3_H2-E_v2_H2)/(1.38064852d-23*Tgas*6.242d18))
+
+#--------------------------------------------------------------------------------
+# vibrational-vibrational interaction Tg 400K
+#
+$ double precision :: delta_VV_0, Q_01_VV
+$ delta_VV_0 = 6.8/sqrt(Tgas)
+$ Q_01_VV = 2.5d-14*(Tgas**(3./2.))
+#--------------------------------------------------------------------------------
+# V-V interaction between different N2(v) molecules 
+#--------------------------------------------------------------------------------
+$ double precision :: delta_0_N2_VV, delta_1_N2_VV, delta_2_N2_VV, delta_3_N2_VV
+$ double precision :: delta_4_N2_VV, delta_5_N2_VV, delta_6_N2_VV, delta_7_N2_VV ! Since we have eight levels for N2(v)
+$ delta_0_N2_VV = (0.+1.)*(1.+0.*delta_E_N2/E_10_N2)
+$ delta_1_N2_VV = (1.+1.)*(1.+1.*delta_E_N2/E_10_N2)
+$ delta_2_N2_VV = (2.+1.)*(1.+2.*delta_E_N2/E_10_N2)
+$ delta_3_N2_VV = (3.+1.)*(1.+3.*delta_E_N2/E_10_N2)
+$ delta_4_N2_VV = (4.+1.)*(1.+4.*delta_E_N2/E_10_N2)
+$ delta_5_N2_VV = (5.+1.)*(1.+5.*delta_E_N2/E_10_N2)
+$ delta_6_N2_VV = (6.+1.)*(1.+6.*delta_E_N2/E_10_N2)
+$ delta_7_N2_VV = (7.+1.)*(1.+7.*delta_E_N2/E_10_N2)
+
+
+$ double precision :: VV_1102_N2_N2, VV_1203_N2_N2, VV_1304_N2_N2, VV_1405_N2_N2
+$ double precision :: VV_1506_N2_N2, VV_1607_N2_N2, VV_1708_N2_N2 ! Since we have seven reactions for N2(v1)-N2 (V-V)
+$ double precision :: F_1102_N2_N2, F_1203_N2_N2, F_1304_N2_N2, F_1405_N2_N2
+$ double precision :: F_1506_N2_N2, F_1607_N2_N2, F_1708_N2_N2
+
+$ F_1102_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v2_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1102_N2_N2 = Q_01_VV*delta_1_N2_VV*delta_0_N2_VV*F_1102_N2_N2*(1.5-0.5*F_1102_N2_N2)
+N2(v1) + N2(v1) => N2 + N2(v2)                     	! VV_1102_N2_N2
+N2 + N2(v2) => N2(v1) + N2(v1)						! VV_1102_N2_N2 * exp(-(E_v1_N2-0.+E_v1_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1203_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v3_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1203_N2_N2 = Q_01_VV*delta_2_N2_VV*delta_0_N2_VV*F_1203_N2_N2*(1.5-0.5*F_1203_N2_N2)
+N2(v1) + N2(v2) => N2 + N2(v3)						! VV_1203_N2_N2
+N2 + N2(v3) => N2(v1) + N2(v2) 						! VV_1203_N2_N2 * exp(-(E_v1_N2-0.+E_v2_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1304_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v4_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1304_N2_N2 = Q_01_VV*delta_3_N2_VV*delta_0_N2_VV*F_1304_N2_N2*(1.5-0.5*F_1304_N2_N2)
+N2(v1) + N2(v3) => N2 + N2(v4)						! VV_1304_N2_N2
+N2 + N2(v4) => N2(v1) + N2(v3)                     	! VV_1304_N2_N2 * exp(-(E_v1_N2-0.+E_v3_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1405_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1405_N2_N2 = Q_01_VV*delta_4_N2_VV*delta_0_N2_VV*F_1405_N2_N2*(1.5-0.5*F_1405_N2_N2)
+N2(v1) + N2(v4) => N2 + N2(v5) 						! VV_1405_N2_N2
+N2 + N2(v5) => N2(v1) + N2(v4) 						! VV_1405_N2_N2 * exp(-(E_v1_N2-0.+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1506_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1506_N2_N2 = Q_01_VV*delta_5_N2_VV*delta_0_N2_VV*F_1506_N2_N2*(1.5-0.5*F_1506_N2_N2)
+N2(v1) + N2(v5) => N2 + N2(v6) 						! VV_1506_N2_N2
+N2 + N2(v6) => N2(v1) + N2(v5)						! VV_1506_N2_N2 * exp(-(E_v1_N2-0.+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1607_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1607_N2_N2 = Q_01_VV*delta_6_N2_VV*delta_0_N2_VV*F_1607_N2_N2*(1.5-0.5*F_1607_N2_N2)
+N2(v1) + N2(v6) => N2 + N2(v7) 						! VV_1607_N2_N2
+N2 + N2(v7) => N2(v1) + N2(v6)  					! VV_1607_N2_N2 * exp(-(E_v1_N2-0.+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1708_N2_N2 = exp((-delta_VV_0*((E_v1_N2-0.)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_1708_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_0_N2_VV*F_1708_N2_N2*(1.5-0.5*F_1708_N2_N2)
+N2(v1) + N2(v7) => N2 + N2(v8) 						! VV_1708_N2_N2
+N2 + N2(v8) => N2(v1) + N2(v7)						! VV_1708_N2_N2 * exp(-(E_v1_N2-0.+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+
+$ double precision :: VV_2213_N2_N2, VV_2314_N2_N2, VV_2415_N2_N2
+$ double precision :: VV_2516_N2_N2, VV_2617_N2_N2, VV_2718_N2_N2 ! Since we have six reactions for N2(v2)-N2 (V-V)
+$ double precision :: F_2213_N2_N2, F_2314_N2_N2, F_2415_N2_N2
+$ double precision :: F_2516_N2_N2, F_2617_N2_N2, F_2718_N2_N2
+
+$ F_2213_N2_N2 = exp((-delta_VV_0*((E_v2_N2-E_v1_N2)-(E_v3_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_2213_N2_N2 = Q_01_VV*delta_2_N2_VV*delta_1_N2_VV*F_2213_N2_N2*(1.5-0.5*F_2213_N2_N2)
+N2(v2) + N2(v2) => N2(v1) + N2(v3) 					! VV_2213_N2_N2
+N2(v1) + N2(v3) => N2(v2) + N2(v2) 					! VV_2213_N2_N2 * exp(-(E_v2_N2-E_v1_N2+E_v2_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2314_N2_N2 = exp((-delta_VV_0*((E_v2_N2-E_v1_N2)-(E_v4_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_2314_N2_N2 = Q_01_VV*delta_3_N2_VV*delta_1_N2_VV*F_2314_N2_N2*(1.5-0.5*F_2314_N2_N2)
+N2(v2) + N2(v3) => N2(v1) + N2(v4) 					! VV_2314_N2_N2
+N2(v1) + N2(v4) => N2(v2) + N2(v3) 					! VV_2314_N2_N2 * exp(-(E_v2_N2-E_v1_N2+E_v3_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2415_N2_N2 = exp((-delta_VV_0*((E_v2_N2-E_v1_N2)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_2415_N2_N2 = Q_01_VV*delta_4_N2_VV*delta_1_N2_VV*F_2415_N2_N2*(1.5-0.5*F_2415_N2_N2)
+N2(v2) + N2(v4) => N2(v1) + N2(v5) 					! VV_2415_N2_N2
+N2(v1) + N2(v5) => N2(v2) + N2(v4) 					! VV_2415_N2_N2 * exp(-(E_v2_N2-E_v1_N2+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2516_N2_N2 = exp((-delta_VV_0*((E_v2_N2-E_v1_N2)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_2516_N2_N2 = Q_01_VV*delta_5_N2_VV*delta_1_N2_VV*F_2516_N2_N2*(1.5-0.5*F_2516_N2_N2)
+N2(v2) + N2(v5) => N2(v1) + N2(v6) 					! VV_2516_N2_N2
+N2(v1) + N2(v6) => N2(v2) + N2(v5)  				! VV_2516_N2_N2 * exp(-(E_v2_N2-E_v1_N2+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2617_N2_N2 = exp((-delta_VV_0*((E_v2_N2-E_v1_N2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_2617_N2_N2 = Q_01_VV*delta_6_N2_VV*delta_1_N2_VV*F_2617_N2_N2*(1.5-0.5*F_2617_N2_N2)
+N2(v2) + N2(v6) => N2(v1) + N2(v7) 					! VV_2617_N2_N2
+N2(v1) + N2(v7) => N2(v2) + N2(v6) 					! VV_2617_N2_N2 * exp(-(E_v2_N2-E_v1_N2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2718_N2_N2 = exp((-delta_VV_0*((E_v2_N2-E_v1_N2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_2718_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_1_N2_VV*F_2718_N2_N2*(1.5-0.5*F_2718_N2_N2)
+N2(v2) + N2(v7) => N2(v1) + N2(v8) 					! VV_2718_N2_N2
+N2(v1) + N2(v8) => N2(v2) + N2(v7)  				! VV_2718_N2_N2 * exp(-(E_v2_N2-E_v1_N2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+
+$ double precision :: VV_3324_N2_N2, VV_3425_N2_N2, VV_3526_N2_N2
+$ double precision :: VV_3627_N2_N2, VV_3728_N2_N2 ! Since we have five reactions for N2(v3)-N2 (V-V)
+$ double precision :: F_3324_N2_N2, F_3425_N2_N2, F_3526_N2_N2
+$ double precision :: F_3627_N2_N2, F_3728_N2_N2
+
+$ F_3324_N2_N2 = exp((-delta_VV_0*((E_v3_N2-E_v2_N2)-(E_v4_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_3324_N2_N2 = Q_01_VV*delta_3_N2_VV*delta_2_N2_VV*F_3324_N2_N2*(1.5-0.5*F_3324_N2_N2)
+N2(v3) + N2(v3) => N2(v2) + N2(v4) 					! VV_3324_N2_N2
+N2(v2) + N2(v4) => N2(v3) + N2(v3)  				! VV_3324_N2_N2 * exp(-(E_v3_N2-E_v2_N2+E_v3_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3425_N2_N2 = exp((-delta_VV_0*((E_v3_N2-E_v2_N2)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_3425_N2_N2 = Q_01_VV*delta_4_N2_VV*delta_2_N2_VV*F_3425_N2_N2*(1.5-0.5*F_3425_N2_N2)
+N2(v3) + N2(v4) => N2(v2) + N2(v5) 					! VV_3425_N2_N2
+N2(v2) + N2(v5) => N2(v3) + N2(v4) 					! VV_3425_N2_N2 * exp(-(E_v3_N2-E_v2_N2+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3526_N2_N2 = exp((-delta_VV_0*((E_v3_N2-E_v2_N2)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_3526_N2_N2 = Q_01_VV*delta_5_N2_VV*delta_2_N2_VV*F_3526_N2_N2*(1.5-0.5*F_3526_N2_N2)
+N2(v3) + N2(v5) => N2(v2) + N2(v6) 					! VV_3526_N2_N2
+N2(v2) + N2(v6) => N2(v3) + N2(v5) 					! VV_3526_N2_N2 * exp(-(E_v3_N2-E_v2_N2+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3627_N2_N2 = exp((-delta_VV_0*((E_v3_N2-E_v2_N2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_3627_N2_N2 = Q_01_VV*delta_6_N2_VV*delta_2_N2_VV*F_3627_N2_N2*(1.5-0.5*F_3627_N2_N2)
+N2(v3) + N2(v6) => N2(v2) + N2(v7) 					! VV_3627_N2_N2
+N2(v2) + N2(v7) => N2(v3) + N2(v6)					! VV_3627_N2_N2 * exp(-(E_v3_N2-E_v2_N2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3728_N2_N2 = exp((-delta_VV_0*((E_v3_N2-E_v2_N2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_3728_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_2_N2_VV*F_3728_N2_N2*(1.5-0.5*F_3728_N2_N2)
+N2(v3) + N2(v7) => N2(v2) + N2(v8) 					! VV_3728_N2_N2
+N2(v2) + N2(v8) => N2(v3) + N2(v7) 					! VV_3728_N2_N2 * exp(-(E_v3_N2-E_v2_N2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+$ double precision :: VV_4435_N2_N2, VV_4536_N2_N2
+$ double precision :: VV_4637_N2_N2, VV_4738_N2_N2 ! Since we have four reactions for N2(v4)-N2 (V-V)
+$ double precision :: F_4435_N2_N2, F_4536_N2_N2
+$ double precision :: F_4637_N2_N2, F_4738_N2_N2
+
+$ F_4435_N2_N2 = exp((-delta_VV_0*((E_v4_N2-E_v3_N2)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_4435_N2_N2 = Q_01_VV*delta_4_N2_VV*delta_3_N2_VV*F_4435_N2_N2*(1.5-0.5*F_4435_N2_N2)
+N2(v4) + N2(v4) => N2(v3) + N2(v5) 					! VV_4435_N2_N2
+N2(v3) + N2(v5) => N2(v4) + N2(v4) 					! VV_4435_N2_N2 * exp(-(E_v4_N2-E_v3_N2+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_4536_N2_N2 = exp((-delta_VV_0*((E_v4_N2-E_v3_N2)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_4536_N2_N2 = Q_01_VV*delta_5_N2_VV*delta_3_N2_VV*F_4536_N2_N2*(1.5-0.5*F_4536_N2_N2)
+N2(v4) + N2(v5) => N2(v3) + N2(v6) 					! VV_4536_N2_N2
+N2(v3) + N2(v6) => N2(v4) + N2(v5) 					! VV_4536_N2_N2 * exp(-(E_v4_N2-E_v3_N2+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_4637_N2_N2 = exp((-delta_VV_0*((E_v4_N2-E_v3_N2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_4637_N2_N2 = Q_01_VV*delta_6_N2_VV*delta_3_N2_VV*F_4637_N2_N2*(1.5-0.5*F_4637_N2_N2)
+N2(v4) + N2(v6) => N2(v3) + N2(v7) 					! VV_4637_N2_N2
+N2(v3) + N2(v7) => N2(v4) + N2(v6) 					! VV_4637_N2_N2 * exp(-(E_v4_N2-E_v3_N2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_4738_N2_N2 = exp((-delta_VV_0*((E_v4_N2-E_v3_N2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_4738_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_3_N2_VV*F_4738_N2_N2*(1.5-0.5*F_4738_N2_N2)
+N2(v4) + N2(v7) => N2(v3) + N2(v8) 					! VV_4738_N2_N2
+N2(v3) + N2(v8) => N2(v4) + N2(v7)					! VV_4738_N2_N2 * exp(-(E_v4_N2-E_v3_N2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+$ double precision :: VV_5546_N2_N2, VV_5647_N2_N2
+$ double precision :: VV_5748_N2_N2 ! Since we have three reactions for N2(v5)-N2 (V-V)
+$ double precision :: F_5546_N2_N2, F_5647_N2_N2
+$ double precision :: F_5748_N2_N2
+
+$ F_5546_N2_N2 = exp((-delta_VV_0*((E_v5_N2-E_v4_N2)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_5546_N2_N2 = Q_01_VV*delta_5_N2_VV*delta_4_N2_VV*F_5546_N2_N2*(1.5-0.5*F_5546_N2_N2)
+N2(v5) + N2(v5) => N2(v4) + N2(v6) 					! VV_5546_N2_N2
+N2(v4) + N2(v6) => N2(v5) + N2(v5) 					! VV_5546_N2_N2 * exp(-(E_v5_N2-E_v4_N2+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_5647_N2_N2 = exp((-delta_VV_0*((E_v5_N2-E_v4_N2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_5647_N2_N2 = Q_01_VV*delta_6_N2_VV*delta_4_N2_VV*F_5647_N2_N2*(1.5-0.5*F_5647_N2_N2)
+N2(v5) + N2(v6) => N2(v4) + N2(v7) 					! VV_5647_N2_N2
+N2(v4) + N2(v7) => N2(v5) + N2(v6) 					! VV_5647_N2_N2 * exp(-(E_v5_N2-E_v4_N2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_5748_N2_N2 = exp((-delta_VV_0*((E_v5_N2-E_v4_N2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_5748_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_4_N2_VV*F_5748_N2_N2*(1.5-0.5*F_5748_N2_N2)
+N2(v5) + N2(v7) => N2(v4) + N2(v8) 					! VV_5748_N2_N2
+N2(v4) + N2(v8) => N2(v5) + N2(v7) 					! VV_5748_N2_N2 * exp(-(E_v5_N2-E_v4_N2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+$ double precision :: VV_6657_N2_N2, VV_6758_N2_N2 ! Since we have two reactions for N2(v6)-N2 (V-V)
+$ double precision :: F_6657_N2_N2, F_6758_N2_N2
+
+$ F_6657_N2_N2 = exp((-delta_VV_0*((E_v6_N2-E_v5_N2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_6657_N2_N2 = Q_01_VV*delta_6_N2_VV*delta_5_N2_VV*F_6657_N2_N2*(1.5-0.5*F_6657_N2_N2)
+N2(v6) + N2(v6) => N2(v5) + N2(v7) 					! VV_6657_N2_N2
+N2(v5) + N2(v7) => N2(v6) + N2(v6) 					! VV_6657_N2_N2 * exp(-(E_v6_N2-E_v5_N2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_6758_N2_N2 = exp((-delta_VV_0*((E_v6_N2-E_v5_N2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_6758_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_5_N2_VV*F_6758_N2_N2*(1.5-0.5*F_6758_N2_N2)
+N2(v6) + N2(v7) => N2(v5) + N2(v8) 					! VV_6758_N2_N2
+N2(v5) + N2(v8) => N2(v6) + N2(v7) 					! VV_6758_N2_N2 * exp(-(E_v6_N2-E_v5_N2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+$ double precision :: VV_7768_N2_N2 ! Since we have one reaction for N2(v7)-N2 (V-V)
+$ double precision :: F_7768_N2_N2
+
+$ F_7768_N2_N2 = exp((-delta_VV_0*((E_v7_N2-E_v6_N2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(2*delta_E_N2))
+$ VV_7768_N2_N2 = Q_01_VV*delta_7_N2_VV*delta_6_N2_VV*F_7768_N2_N2*(1.5-0.5*F_7768_N2_N2)
+N2(v7) + N2(v7) => N2(v6) + N2(v8) 					! VV_7768_N2_N2
+N2(v6) + N2(v8) => N2(v7) + N2(v7) 					! VV_7768_N2_N2 * exp(-(E_v7_N2-E_v6_N2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+#----------------------------------------------------------
+#V-V' between N2(v) & H2(v) molecules   - presumed Tg 400K
+# 1) excitation of N2(v) by H2(v) - single quantum process
+# 2) excitation of H2(v) by N2(v) - reverse of reaction 1)
+#
+$ double precision :: delta_VV_H2_N2_s, Q_VV_H2_N2_s
+$ delta_VV_H2_N2_s = 144./sqrt(Tgas)
+$ Q_VV_H2_N2_s = 1.9d-13*(Tgas**(3./2.))
+#----------------------------------------------------------
+
+$ double precision :: delta_0_H2_VV, delta_1_H2_VV, delta_2_H2_VV ! Since we have three levels for H2(v)
+$ delta_0_H2_VV = (0.+1.)*(1.+0.*delta_E_H2/E_10_H2)
+$ delta_1_H2_VV = (1.+1.)*(1.+1.*delta_E_H2/E_10_H2)
+$ delta_2_H2_VV = (2.+1.)*(1.+2.*delta_E_H2/E_10_H2)
+
+
+$ double precision :: VV_1001_H2_N2, VV_1102_H2_N2, VV_1203_H2_N2, VV_1304_H2_N2
+$ double precision :: VV_1405_H2_N2, VV_1506_H2_N2, VV_1607_H2_N2, VV_1708_H2_N2  ! Since we have eight reactions for H2(v1)-N2 (V-V)
+$ double precision :: F_1001_H2_N2, F_1102_H2_N2, F_1203_H2_N2, F_1304_H2_N2
+$ double precision :: F_1405_H2_N2, F_1506_H2_N2, F_1607_H2_N2, F_1708_H2_N2
+
+$ F_1001_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v1_N2-0.))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1001_H2_N2 = Q_VV_H2_N2_s*delta_0_N2_VV*delta_0_H2_VV*F_1001_H2_N2*(1.5-0.5*F_1001_H2_N2)
+H2(v1) + N2     => H2 + N2(v1)             	        ! VV_1001_H2_N2
+H2 + N2(v1)     => H2(v1) + N2                 	    ! VV_1001_H2_N2 * exp(-(E_v1_H2-0.+0.-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1102_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v2_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1102_H2_N2 = Q_VV_H2_N2_s*delta_1_N2_VV*delta_0_H2_VV*F_1102_H2_N2*(1.5-0.5*F_1102_H2_N2)
+H2(v1) + N2(v1) => H2 + N2(v2)              		! VV_1102_H2_N2
+H2 + N2(v2)     => H2(v1) + N2(v1)             		! VV_1102_H2_N2 * exp(-(E_v1_H2-0.+E_v1_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1203_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v3_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1203_H2_N2 = Q_VV_H2_N2_s*delta_2_N2_VV*delta_0_H2_VV*F_1203_H2_N2*(1.5-0.5*F_1203_H2_N2)
+H2(v1) + N2(v2) => H2 + N2(v3)              		! VV_1203_H2_N2
+H2 + N2(v3)     => H2(v1) + N2(v2)             		! VV_1203_H2_N2 * exp(-(E_v1_H2-0.+E_v2_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1304_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v4_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1304_H2_N2 = Q_VV_H2_N2_s*delta_3_N2_VV*delta_0_H2_VV*F_1304_H2_N2*(1.5-0.5*F_1304_H2_N2)
+H2(v1) + N2(v3) => H2 + N2(v4)              		! VV_1304_H2_N2
+H2 + N2(v4)     => H2(v1) + N2(v3)             		! VV_1304_H2_N2 * exp(-(E_v1_H2-0.+E_v3_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1405_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1405_H2_N2 = Q_VV_H2_N2_s*delta_4_N2_VV*delta_0_H2_VV*F_1405_H2_N2*(1.5-0.5*F_1405_H2_N2)
+H2(v1) + N2(v4) => H2 + N2(v5)              		! VV_1405_H2_N2
+H2 + N2(v5)     => H2(v1) + N2(v4)             		! VV_1405_H2_N2 * exp(-(E_v1_H2-0.+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1506_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1506_H2_N2 = Q_VV_H2_N2_s*delta_5_N2_VV*delta_0_H2_VV*F_1506_H2_N2*(1.5-0.5*F_1506_H2_N2)
+H2(v1) + N2(v5) => H2 + N2(v6)              		! VV_1506_H2_N2
+H2 + N2(v6)     => H2(v1) + N2(v5)             		! VV_1506_H2_N2 * exp(-(E_v1_H2-0.+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1607_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1607_H2_N2 = Q_VV_H2_N2_s*delta_6_N2_VV*delta_0_H2_VV*F_1607_H2_N2*(1.5-0.5*F_1607_H2_N2)
+H2(v1) + N2(v6) => H2 + N2(v7)              		! VV_1607_H2_N2
+H2 + N2(v7)     => H2(v1) + N2(v6)             		! VV_1607_H2_N2 * exp(-(E_v1_H2-0.+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1708_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v1_H2-0.)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_1708_H2_N2 = Q_VV_H2_N2_s*delta_7_N2_VV*delta_0_H2_VV*F_1708_H2_N2*(1.5-0.5*F_1708_H2_N2)
+H2(v1) + N2(v7) => H2 + N2(v8)              		! VV_1708_H2_N2
+H2 + N2(v8)     => H2(v1) + N2(v7)               	! VV_1708_H2_N2 * exp(-(E_v1_H2-0.+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+$ double precision :: VV_2011_H2_N2, VV_2112_H2_N2, VV_2213_H2_N2, VV_2314_H2_N2
+$ double precision :: VV_2415_H2_N2, VV_2516_H2_N2, VV_2617_H2_N2, VV_2718_H2_N2  ! Since we have eight reactions for H2(v2)-N2 (V-V)
+$ double precision :: F_2011_H2_N2, F_2112_H2_N2, F_2213_H2_N2, F_2314_H2_N2
+$ double precision :: F_2415_H2_N2, F_2516_H2_N2, F_2617_H2_N2, F_2718_H2_N2
+
+
+$ F_2011_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v1_N2-0.))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2011_H2_N2 = Q_VV_H2_N2_s*delta_0_N2_VV*delta_1_H2_VV*F_2011_H2_N2*(1.5-0.5*F_2011_H2_N2)
+H2(v2) + N2     => H2(v1) + N2(v1)             		! VV_2011_H2_N2
+H2(v1) + N2(v1) => H2(v2) + N2                 		! VV_2011_H2_N2 * exp(-(E_v2_H2-E_v1_H2+0.-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2112_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v2_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2112_H2_N2 = Q_VV_H2_N2_s*delta_1_N2_VV*delta_1_H2_VV*F_2112_H2_N2*(1.5-0.5*F_2112_H2_N2)
+H2(v2) + N2(v1) => H2(v1) + N2(v2)             		! VV_2112_H2_N2
+H2(v1) + N2(v2) => H2(v2) + N2(v1)            		! VV_2112_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v1_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2213_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v3_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2213_H2_N2 = Q_VV_H2_N2_s*delta_2_N2_VV*delta_1_H2_VV*F_2213_H2_N2*(1.5-0.5*F_2213_H2_N2)
+H2(v2) + N2(v2) => H2(v1) + N2(v3)             		! VV_2213_H2_N2
+H2(v1) + N2(v3) => H2(v2) + N2(v2)             		! VV_2213_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v2_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2314_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v4_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2314_H2_N2 = Q_VV_H2_N2_s*delta_3_N2_VV*delta_1_H2_VV*F_2314_H2_N2*(1.5-0.5*F_2314_H2_N2)
+H2(v2) + N2(v3) => H2(v1) + N2(v4)             		! VV_2314_H2_N2
+H2(v1) + N2(v4) => H2(v2) + N2(v3)             		! VV_2314_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v3_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2415_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2415_H2_N2 = Q_VV_H2_N2_s*delta_4_N2_VV*delta_1_H2_VV*F_2415_H2_N2*(1.5-0.5*F_2415_H2_N2)
+H2(v2) + N2(v4) => H2(v1) + N2(v5)             		! VV_2415_H2_N2
+H2(v1) + N2(v5) => H2(v2) + N2(v4)             		! VV_2415_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2516_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2516_H2_N2 = Q_VV_H2_N2_s*delta_5_N2_VV*delta_1_H2_VV*F_2516_H2_N2*(1.5-0.5*F_2516_H2_N2)
+H2(v2) + N2(v5) => H2(v1) + N2(v6)             		! VV_2516_H2_N2
+H2(v1) + N2(v6) => H2(v2) + N2(v5)             		! VV_2516_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2617_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2617_H2_N2 = Q_VV_H2_N2_s*delta_6_N2_VV*delta_1_H2_VV*F_2617_H2_N2*(1.5-0.5*F_2617_H2_N2)
+H2(v2) + N2(v6) => H2(v1) + N2(v7)             		! VV_2617_H2_N2
+H2(v1) + N2(v7) => H2(v2) + N2(v6)             		! VV_2617_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2718_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v2_H2-E_v1_H2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_2718_H2_N2 = Q_VV_H2_N2_s*delta_7_N2_VV*delta_1_H2_VV*F_2718_H2_N2*(1.5-0.5*F_2718_H2_N2)
+H2(v2) + N2(v7) => H2(v1) + N2(v8)             		! VV_2718_H2_N2
+H2(v1) + N2(v8) => H2(v2) + N2(v7)             		! VV_2718_H2_N2 * exp(-(E_v2_H2-E_v1_H2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+$ double precision :: VV_3021_H2_N2, VV_3122_H2_N2, VV_3223_H2_N2, VV_3324_H2_N2
+$ double precision :: VV_3425_H2_N2, VV_3526_H2_N2, VV_3627_H2_N2, VV_3728_H2_N2  ! Since we have eight reactions for H2(v3)-N2 (V-V)
+$ double precision :: F_3021_H2_N2, F_3122_H2_N2, F_3223_H2_N2, F_3324_H2_N2
+$ double precision :: F_3425_H2_N2, F_3526_H2_N2, F_3627_H2_N2, F_3728_H2_N2
+
+$ F_3021_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v1_N2-0.))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3021_H2_N2 = Q_VV_H2_N2_s*delta_0_N2_VV*delta_2_H2_VV*F_3021_H2_N2*(1.5-0.5*F_3021_H2_N2)
+H2(v3) + N2     => H2(v2) + N2(v1)             		! VV_3021_H2_N2
+H2(v2) + N2(v1) => H2(v3) + N2               		! VV_3021_H2_N2 * exp(-(E_v3_H2-E_v2_H2+0.-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3122_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v2_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3122_H2_N2 = Q_VV_H2_N2_s*delta_1_N2_VV*delta_2_H2_VV*F_3122_H2_N2*(1.5-0.5*F_3122_H2_N2)
+H2(v3) + N2(v1) => H2(v2) + N2(v2)             		! VV_3122_H2_N2
+H2(v2) + N2(v2) => H2(v3) + N2(v1)             		! VV_3122_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v1_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3223_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v3_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3223_H2_N2 = Q_VV_H2_N2_s*delta_2_N2_VV*delta_2_H2_VV*F_3223_H2_N2*(1.5-0.5*F_3223_H2_N2)
+H2(v3) + N2(v2) => H2(v2) + N2(v3)             		! VV_3223_H2_N2
+H2(v2) + N2(v3) => H2(v3) + N2(v2)             		! VV_3223_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v2_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3324_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v4_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3324_H2_N2 = Q_VV_H2_N2_s*delta_3_N2_VV*delta_2_H2_VV*F_3324_H2_N2*(1.5-0.5*F_3324_H2_N2)
+H2(v3) + N2(v3) => H2(v2) + N2(v4)             		! VV_3324_H2_N2
+H2(v2) + N2(v4) => H2(v3) + N2(v3)             		! VV_3324_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v3_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3425_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v5_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3425_H2_N2 = Q_VV_H2_N2_s*delta_4_N2_VV*delta_2_H2_VV*F_3425_H2_N2*(1.5-0.5*F_3425_H2_N2)
+H2(v3) + N2(v4) => H2(v2) + N2(v5)             		! VV_3425_H2_N2
+H2(v2) + N2(v5) => H2(v3) + N2(v4)             		! VV_3425_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v4_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3526_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v6_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3526_H2_N2 = Q_VV_H2_N2_s*delta_5_N2_VV*delta_2_H2_VV*F_3526_H2_N2*(1.5-0.5*F_3526_H2_N2)
+H2(v3) + N2(v5) => H2(v2) + N2(v6)             		! VV_3526_H2_N2
+H2(v2) + N2(v6) => H2(v3) + N2(v5)             		! VV_3526_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v5_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3627_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3627_H2_N2 = Q_VV_H2_N2_s*delta_6_N2_VV*delta_2_H2_VV*F_3627_H2_N2*(1.5-0.5*F_3627_H2_N2)
+H2(v3) + N2(v6) => H2(v2) + N2(v7)             		! VV_3627_H2_N2
+H2(v2) + N2(v7) => H2(v3) + N2(v6)             		! VV_3627_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v6_N2-E_v7_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3728_H2_N2 = exp((-delta_VV_H2_N2_s*abs((E_v3_H2-E_v2_H2)-(E_v8_N2-E_v7_N2))/(1.38064852d-23*6.242d18))/(E_10_H2-E_10_N2))
+$ VV_3728_H2_N2 = Q_VV_H2_N2_s*delta_7_N2_VV*delta_2_H2_VV*F_3728_H2_N2*(1.5-0.5*F_3728_H2_N2)
+H2(v3) + N2(v7) => H2(v2) + N2(v8)             		! VV_3728_H2_N2
+H2(v2) + N2(v8) => H2(v3) + N2(v7)             		! VV_3728_H2_N2 * exp(-(E_v3_H2-E_v2_H2+E_v7_N2-E_v8_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+
+#----------------------------------------------------------
+#V-V' between N2(v) & H2(v) molecules
+# 3) excitation of H2(v) by N2(v) - poly-quantum process
+# 4) excitation of N2(v) by H2(v) - Inverse of 3)
+#
+$ double precision :: delta_VV_H2_N2_p, Q_VV_H2_N2_p
+$ delta_VV_H2_N2_p = 37./sqrt(Tgas)
+$ Q_VV_H2_N2_p = 2.4d-15*(Tgas**(3./2.))
+#----------------------------------------------------------
+
+$ double precision :: delta_0_N2_VV_p, delta_1_N2_VV_p, delta_2_N2_VV_p, delta_3_N2_VV_p
+$ double precision :: delta_4_N2_VV_p, delta_5_N2_VV_p, delta_6_N2_VV_p, delta_7_N2_VV_p ! Since we have eight levels for N2(v)-H2 poly-quantum
+$ delta_0_N2_VV_p = 0.5*delta_0_N2_VV*(delta_0_N2_VV+1)
+$ delta_1_N2_VV_p = 0.5*delta_1_N2_VV*(delta_1_N2_VV+1)
+$ delta_2_N2_VV_p = 0.5*delta_2_N2_VV*(delta_2_N2_VV+1)
+$ delta_3_N2_VV_p = 0.5*delta_3_N2_VV*(delta_3_N2_VV+1)
+$ delta_4_N2_VV_p = 0.5*delta_4_N2_VV*(delta_4_N2_VV+1)
+$ delta_5_N2_VV_p = 0.5*delta_5_N2_VV*(delta_5_N2_VV+1)
+$ delta_6_N2_VV_p = 0.5*delta_6_N2_VV*(delta_6_N2_VV+1)
+$ delta_7_N2_VV_p = 0.5*delta_7_N2_VV*(delta_7_N2_VV+1)
+
+
+$ double precision :: VV_2001_H2_N2, VV_3011_H2_N2, VV_4021_H2_N2, VV_5031_H2_N2
+$ double precision :: VV_6041_H2_N2, VV_7051_H2_N2, VV_8061_H2_N2  ! Since we have seven reactions for N2-H2(v0) (V-V) poly-quantum
+$ double precision :: F_2001_H2_N2, F_3011_H2_N2, F_4021_H2_N2, F_5031_H2_N2
+$ double precision :: F_6041_H2_N2, F_7051_H2_N2, F_8061_H2_N2
+
+$ F_2001_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v2_N2-0.))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_2001_H2_N2 = Q_VV_H2_N2_p*delta_0_N2_VV_p*delta_0_H2_VV*F_2001_H2_N2*(1.5-0.5*F_2001_H2_N2)
+N2(v2) + H2     => N2     + H2(v1)             		! VV_2001_H2_N2
+N2     + H2(v1) => N2(v2) + H2                 		! VV_2001_H2_N2 * exp(-(0.-E_v1_H2+E_v2_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3011_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v3_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_3011_H2_N2 = Q_VV_H2_N2_p*delta_1_N2_VV_p*delta_0_H2_VV*F_3011_H2_N2*(1.5-0.5*F_3011_H2_N2)
+N2(v3) + H2     => N2(v1) + H2(v1)             		! VV_3011_H2_N2
+N2(v1) + H2(v1) => N2(v3) + H2                 		! VV_3011_H2_N2 * exp(-(0.-E_v1_H2+E_v3_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_4021_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v4_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_4021_H2_N2 = Q_VV_H2_N2_p*delta_2_N2_VV_p*delta_0_H2_VV*F_4021_H2_N2*(1.5-0.5*F_4021_H2_N2)
+N2(v4) + H2     => N2(v2) + H2(v1)             		! VV_4021_H2_N2
+N2(v2) + H2(v1) => N2(v4) + H2                 		! VV_4021_H2_N2 * exp(-(0.-E_v1_H2+E_v4_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_5031_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v5_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_5031_H2_N2 = Q_VV_H2_N2_p*delta_3_N2_VV_p*delta_0_H2_VV*F_5031_H2_N2*(1.5-0.5*F_5031_H2_N2)
+N2(v5) + H2     => N2(v3) + H2(v1)             		! VV_5031_H2_N2
+N2(v3) + H2(v1) => N2(v5) + H2                 		! VV_5031_H2_N2 * exp(-(0.-E_v1_H2+E_v5_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_6041_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v6_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_6041_H2_N2 = Q_VV_H2_N2_p*delta_4_N2_VV_p*delta_0_H2_VV*F_6041_H2_N2*(1.5-0.5*F_6041_H2_N2)
+N2(v6) + H2     => N2(v4) + H2(v1)               	! VV_6041_H2_N2
+N2(v4) + H2(v1) => N2(v6) + H2                   	! VV_6041_H2_N2 * exp(-(0.-E_v1_H2+E_v6_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_7051_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v7_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_7051_H2_N2 = Q_VV_H2_N2_p*delta_5_N2_VV_p*delta_0_H2_VV*F_7051_H2_N2*(1.5-0.5*F_7051_H2_N2)
+N2(v7) + H2     => N2(v5) + H2(v1)               	! VV_7051_H2_N2
+N2(v5) + H2(v1) => N2(v7) + H2                   	! VV_7051_H2_N2 * exp(-(0.-E_v1_H2+E_v7_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_8061_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v1_H2-0.)-(E_v8_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_8061_H2_N2 = Q_VV_H2_N2_p*delta_6_N2_VV_p*delta_0_H2_VV*F_8061_H2_N2*(1.5-0.5*F_8061_H2_N2)
+N2(v8) + H2     => N2(v6) + H2(v1)             		! VV_8061_H2_N2
+N2(v6) + H2(v1) => N2(v8) + H2                 		! VV_8061_H2_N2 * exp(-(0.-E_v1_H2+E_v8_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+
+$ double precision :: VV_2102_H2_N2, VV_3112_H2_N2, VV_4122_H2_N2, VV_5132_H2_N2
+$ double precision :: VV_6142_H2_N2, VV_7152_H2_N2, VV_8162_H2_N2  ! Since we have seven reactions for N2-H2(v1) (V-V) poly-quantum
+$ double precision :: F_2102_H2_N2, F_3112_H2_N2, F_4122_H2_N2, F_5132_H2_N2
+$ double precision :: F_6142_H2_N2, F_7152_H2_N2, F_8162_H2_N2
+
+
+$ F_2102_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v2_N2-0.))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_2102_H2_N2 = Q_VV_H2_N2_p*delta_0_N2_VV_p*delta_1_H2_VV*F_2102_H2_N2*(1.5-0.5*F_2102_H2_N2)
+N2(v2) + H2(v1) => N2     + H2(v2)             		! VV_2102_H2_N2
+N2     + H2(v2) => N2(v2) + H2(v1)             		! VV_2102_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v2_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3112_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v3_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_3112_H2_N2 = Q_VV_H2_N2_p*delta_1_N2_VV_p*delta_1_H2_VV*F_3112_H2_N2*(1.5-0.5*F_3112_H2_N2)
+N2(v3) + H2(v1) => N2(v1) + H2(v2)             		! VV_3112_H2_N2
+N2(v1) + H2(v2) => N2(v3) + H2(v1)            		! VV_3112_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v3_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_4122_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v4_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_4122_H2_N2 = Q_VV_H2_N2_p*delta_2_N2_VV_p*delta_1_H2_VV*F_4122_H2_N2*(1.5-0.5*F_4122_H2_N2)
+N2(v4) + H2(v1) => N2(v2) + H2(v2)             		! VV_4122_H2_N2
+N2(v2) + H2(v2) => N2(v4) + H2(v1)             		! VV_4122_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v4_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_5132_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v5_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_5132_H2_N2 = Q_VV_H2_N2_p*delta_3_N2_VV_p*delta_1_H2_VV*F_5132_H2_N2*(1.5-0.5*F_5132_H2_N2)
+N2(v5) + H2(v1) => N2(v3) + H2(v2)             		! VV_5132_H2_N2
+N2(v3) + H2(v2) => N2(v5) + H2(v1)             		! VV_5132_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v5_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_6142_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v6_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_6142_H2_N2 = Q_VV_H2_N2_p*delta_4_N2_VV_p*delta_1_H2_VV*F_6142_H2_N2*(1.5-0.5*F_6142_H2_N2)
+N2(v6) + H2(v1) => N2(v4) + H2(v2)               	! VV_6142_H2_N2
+N2(v4) + H2(v2) => N2(v6) + H2(v1)                 	! VV_6142_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v6_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_7152_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v7_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_7152_H2_N2 = Q_VV_H2_N2_p*delta_5_N2_VV_p*delta_1_H2_VV*F_7152_H2_N2*(1.5-0.5*F_7152_H2_N2)
+N2(v7) + H2(v1) => N2(v5) + H2(v2)               	! VV_7152_H2_N2
+N2(v5) + H2(v2) => N2(v7) + H2(v1)               	! VV_7152_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v7_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_8162_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v2_H2-E_v1_H2)-(E_v7_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_8162_H2_N2 = Q_VV_H2_N2_p*delta_6_N2_VV_p*delta_1_H2_VV*F_8162_H2_N2*(1.5-0.5*F_8162_H2_N2)
+N2(v8) + H2(v1) => N2(v6) + H2(v2)             		! VV_8162_H2_N2
+N2(v6) + H2(v2) => N2(v8) + H2(v1)             		! VV_8162_H2_N2 * exp(-(E_v1_H2-E_v2_H2+E_v8_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+
+
+
+$ double precision :: VV_2203_H2_N2, VV_3213_H2_N2, VV_4223_H2_N2, VV_5233_H2_N2
+$ double precision :: VV_6243_H2_N2, VV_7253_H2_N2, VV_8263_H2_N2  ! Since we have seven reactions for N2-H2(v2) (V-V) poly-quantum
+$ double precision :: F_2203_H2_N2, F_3213_H2_N2, F_4223_H2_N2, F_5233_H2_N2
+$ double precision :: F_6243_H2_N2, F_7253_H2_N2, F_8263_H2_N2
+
+$ F_2203_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v2_N2-0.))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_2203_H2_N2 = Q_VV_H2_N2_p*delta_0_N2_VV_p*delta_2_H2_VV*F_2203_H2_N2*(1.5-0.5*F_2203_H2_N2)
+N2(v2) + H2(v2) => N2     + H2(v3)             		! VV_2203_H2_N2
+N2     + H2(v3) => N2(v2) + H2(v2)             		! VV_2203_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v2_N2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_3213_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v3_N2-E_v1_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_3213_H2_N2 = Q_VV_H2_N2_p*delta_1_N2_VV_p*delta_2_H2_VV*F_3213_H2_N2*(1.5-0.5*F_3213_H2_N2)
+N2(v3) + H2(v2) => N2(v1) + H2(v3)             		! VV_3213_H2_N2
+N2(v1) + H2(v3) => N2(v3) + H2(v2)             		! VV_3213_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v3_N2-E_v1_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_4223_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v4_N2-E_v2_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_4223_H2_N2 = Q_VV_H2_N2_p*delta_2_N2_VV_p*delta_2_H2_VV*F_4223_H2_N2*(1.5-0.5*F_4223_H2_N2)
+N2(v4) + H2(v2) => N2(v2) + H2(v3)             		! VV_4223_H2_N2
+N2(v2) + H2(v3) => N2(v4) + H2(v2)             		! VV_4223_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v4_N2-E_v2_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_5233_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v5_N2-E_v3_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_5233_H2_N2 = Q_VV_H2_N2_p*delta_3_N2_VV_p*delta_2_H2_VV*F_5233_H2_N2*(1.5-0.5*F_5233_H2_N2)
+N2(v5) + H2(v2) => N2(v3) + H2(v3)             		! VV_5233_H2_N2
+N2(v3) + H2(v3) => N2(v5) + H2(v2)             		! VV_5233_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v5_N2-E_v3_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_6243_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v6_N2-E_v4_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_6243_H2_N2 = Q_VV_H2_N2_p*delta_4_N2_VV_p*delta_2_H2_VV*F_6243_H2_N2*(1.5-0.5*F_6243_H2_N2)
+N2(v6) + H2(v2) => N2(v4) + H2(v3)               	! VV_6243_H2_N2
+N2(v4) + H2(v3) => N2(v6) + H2(v2)               	! VV_6243_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v6_N2-E_v4_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_7253_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v7_N2-E_v5_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_7253_H2_N2 = Q_VV_H2_N2_p*delta_5_N2_VV_p*delta_2_H2_VV*F_7253_H2_N2*(1.5-0.5*F_7253_H2_N2)
+N2(v7) + H2(v2) => N2(v5) + H2(v3)               	! VV_7253_H2_N2
+N2(v5) + H2(v3) => N2(v7) + H2(v2)              	! VV_7253_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v7_N2-E_v5_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_8263_H2_N2 = exp((-delta_VV_H2_N2_p*abs((E_v3_H2-E_v2_H2)-(E_v8_N2-E_v6_N2))/(1.38064852d-23*6.242d18))/abs(E_20_N2-E_10_H2))
+$ VV_8263_H2_N2 = Q_VV_H2_N2_p*delta_6_N2_VV_p*delta_2_H2_VV*F_8263_H2_N2*(1.5-0.5*F_8263_H2_N2)
+N2(v8) + H2(v2) => N2(v6) + H2(v3)             		! VV_8263_H2_N2
+N2(v6) + H2(v3) => N2(v8) + H2(v2)            		! VV_8263_H2_N2 * exp(-(E_v2_H2-E_v3_H2+E_v8_N2-E_v6_N2)/(1.38064852d-23*Tgas*6.242d18))
+
+#--------------------------------------------------------------------------------
+#V-V between different H2(v) molecules 
+#--------------------------------------------------------------------------------
+$ double precision :: VV_2231_H2_H2, VV_2130_H2_H2, VV_1120_H2_H2 ! Since we have three reactions for H2-H2 (V-V)
+$ double precision :: F_2231_H2_H2, F_2130_H2_H2, F_1120_H2_H2 !
+
+
+$ F_2231_H2_H2 = exp((-delta_VV_0*((E_v2_H2-E_v1_H2)-(E_v3_H2-E_v2_H2))/(1.38064852d-23*6.242d18))/(2*delta_E_H2))
+$ VV_2231_H2_H2 = Q_01_VV*delta_2_H2_VV*delta_1_H2_VV*F_2231_H2_H2*(1.5-0.5*F_2231_H2_H2)
+H2(v2) + H2(v2) => H2(v3) + H2(v1)             		! VV_2231_H2_H2
+H2(v3) + H2(v1) => H2(v2) + H2(v2)          		! VV_2231_H2_H2 * exp(-(E_v2_H2-E_v3_H2+E_v2_H2-E_v1_H2)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_2130_H2_H2 = exp((-delta_VV_0*((E_v1_H2-0.)-(E_v3_H2-E_v2_H2))/(1.38064852d-23*6.242d18))/(2*delta_E_H2))
+$ VV_2130_H2_H2 = Q_01_VV*delta_2_H2_VV*delta_0_H2_VV*F_2130_H2_H2*(1.5-0.5*F_2130_H2_H2)
+H2(v2) + H2(v1) => H2(v3) + H2             		    ! F_2130_H2_H2
+H2(v3) + H2     => H2(v2) + H2(v1)       	        ! F_2130_H2_H2 * exp(-(E_v2_H2-E_v3_H2+E_v1_H2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+$ F_1120_H2_H2 = exp((-delta_VV_0*((E_v1_H2-0.)-(E_v2_H2-E_v1_H2))/(1.38064852d-23*6.242d18))/(2*delta_E_H2))
+$ VV_1120_H2_H2 = Q_01_VV*delta_1_H2_VV*delta_0_H2_VV*F_1120_H2_H2*(1.5-0.5*F_1120_H2_H2)
+H2(v1) + H2(v1) => H2(v2) + H2              		! VV_1120_H2_H2
+H2(v2) + H2     => H2(v1) + H2(v1)           		! VV_1120_H2_H2 * exp(-(E_v1_H2-E_v2_H2+E_v1_H2-0.)/(1.38064852d-23*Tgas*6.242d18))
+
+# === === === === === === === === === === === === === === ===
+#  Electronic transition of between N2(A3) and N2(B3) by N2(X, v)
+# === === === === === === === === === === === === === === ===
+
+N2(A3) + N2(v6) => N2(B3) + N2                     !   3.0d-11
+N2(A3) + N2(v7) => N2(B3) + N2(v1)                 !   3.0d-11
+N2(A3) + N2(v8) => N2(B3) + N2(v2)                 !   3.0d-11
+N2(B3) + N2     => N2(A3) + N2(v6)                 !   3.0d-11
+N2(B3) + N2(v1) => N2(A3) + N2(v7)                 !   3.0d-11
+N2(B3) + N2(v2) => N2(A3) + N2(v8)                 !   3.0d-11
+N2(B3) + N2(v3) => N2(A3) + N2(v8)                 !   3.0d-11
+N2(B3) + N2(v4) => N2(A3) + N2(v8)                 !   3.0d-11
+N2(B3) + N2(v5) => N2(A3) + N2(v8)                 !   3.0d-11
+N2(B3) + N2(v6) => N2(A3) + N2(v8)                 !   3.0d-11
+N2(B3) + N2(v7) => N2(A3) + N2(v8)                 !   3.0d-11
+N2(B3) + N2(v8) => N2(A3) + N2(v8)                 !   3.0d-11
+
+#--------------------------------------------------------------------------------
+#Radiative transition
+#
+#--------------------------------------------------------------------------------
+
+N2(B3)  => N2(A3)                                !   1.34d5
+N2(a`1) => N2                                    !   1.0d2
+N2(C3)  => N2(B3)                                !   2.45d7
+
+#--------------------------------------------------------------------------------
+#
+# electron-impact dissociation Carrasco et al. (2011) 
+#
+#------------------------------------------------------------------------------
+e + H2   =>  2H + e                   ! 1.75d-7*((Te/11600)**(-1.24))*(exp(-12.59/(Te/11600)))
+
+e + N2 => e + N + N                   ! BOLSIG N2 -> N2(SUM)
+e + NH   =>  e + N + H                ! 5.0d-8*((Te/11600)**0.5)*(exp(-8.6/(Te/11600)))
+e + NH2  =>  e + N + H2               ! 5.0d-8*((Te/11600)**0.5)*(exp(-7.6/(Te/11600)))
+e + NH2  =>  e + NH + H               ! 5.0d-8*((Te/11600)**0.5)*(exp(-7.6/(Te/11600)))
+e + NH3  =>  e + NH2 + H              ! 5.0d-8*((Te/11600)**0.5)*(exp(-4.4/(Te/11600)))
+e + NH3  =>  e + NH + H2              ! 5.0d-8*((Te/11600)**0.5)*(exp(-5.5/(Te/11600)))
+
+#--------------------------------------------------------------------------------
+#Dissociative recombination(cm3 s−1)
+#--------------------------------------------------------------------------------
+e + N2^+ => N  + N                !   9.0d-8 * ((300.0d0/Te)**0.39) 
+
+e + N2^+ => N  + N(2D)            !   8.1d-8 * ((300.0d0/Te)**0.39 )
+e + N2^+ => N  + N(2P)            !   9.0d-9 * ((300.0d0/Te)**0.39)
+e + N3^+ => N2 + N                !   2.0d-7 * ((300.0d0/Te)**0.5)
+
+e + N4^+ => N2 + N2               !   2.3d-6 * ((300.0d0/Te)**0.53)
+
+e + H2     => e + H + H^+ + e                 !   3.00d-8*((Te/11600)**0.44)*exp(-37.72/(Te/11600))
+
+e + H2^+  => 2H  							  ! 7.51d-9 - 1.12d-9*(Te/11600) + 1.03d-10*((Te/11600)**2) - 4.15d-12*((Te/11600)**3)+5.86d-14*((Te/11600)**4) 
+e + H3^+  => 3H                               ! 0.5*8.39d-9 + 3.02d-9*(Te/11600) - 3.80d-10*((Te/11600)**2) + 1.31d-11*((Te/11600)**3) + 2.42d-13*((Te/11600)**4)-2.30d-14*((Te/11600)**5) + 3.55d-16*((Te/11600)**6) 
+e + H3^+  => H2 + H                           ! 0.5*8.39d-9 + 3.02d-9*(Te/11600) - 3.80d-10*((Te/11600)**2) + 1.31d-11*((Te/11600)**3) + 2.42d-13*((Te/11600)**4) - 2.30d-14*((Te/11600)**5) + 3.55d-16*((Te/11600)**6) 
+
+e + NH^+  => N + H                            ! 4.30d-8*((0.026/(Te/11600))**0.5)
+e + NH2^+ => NH + H                           ! 1.02d-7*((0.026/(Te/11600))**0.4)
+e + NH2^+ => N + 2H                           ! 1.98d-7*((0.026/(Te/11600))**0.4)
+e + NH3^+ => NH + 2H                          ! 1.55d-7*((0.026/(Te/11600))**0.5)
+e + NH3^+ => NH2 + H                          ! 1.55d-7*((0.026/(Te/11600))**0.5)
+e + NH4^+ => NH3 + H                          ! 8.01d-7*((0.026/(Te/11600))**0.605)
+e + NH4^+ => NH2 + 2H                         ! 1.23d-7*((0.026/(Te/11600))**0.605)
+e + N2H^+ => N2 + H                           ! 7.1d-7*((0.026/(Te/11600))**0.72)
+
+
+
+#--------------------------------------------------------------------------------
+#Ion-molecule reaction - Carrasco et al.  
+#--------------------------------------------------------------------------------
+N2^+ + H2 => N2H^+ + H                           ! 2.00d-9
+N2^+ + N2(A3) => N3^+ + N                        ! 3.0d-10
+N2^+ + N => N^+ + N2                             ! 7.2d-13*(TeffN2N/300)**2.2
+N2^+ + N  + N2 => N3^+ + N2             		 ! 9.0d-30*exp(400.0d0/TeffN2N)
+N2^+ + N2 + N2 => N4^+ + N2              		 ! 5.2d-29*(300.0d0/TeffN2N2)**2.2
+N2^+ + NH3 => NH3^+ + N2                         ! 1.95d-9
+N3^+ + N  => N2^+ + N2              		     ! 6.6d-11
+
+N4^+ + N2 => N2^+ + N2 + N2             		 ! min( 2.1d-16 * exp(TeffN4N2/121.0d0), 5.0d-10 )
+N4^+ + N  => N^+ + N2 + N2              		 ! 1.0d-11
+
+N^+ + H2  => NH^+ + H                            ! 5.00d-10
+N^+ + NH3 => NH2^+ + NH                          ! 0.20*2.35d-9 
+N^+ + NH3 => NH3^+ + N                           ! 0.71*2.35d-9
+N^+ + NH3 => N2H^+ + H2                          ! 0.09*2.35d-9
+
+H2^+ + H  => H2 + H^+                            ! 6.4d-10
+H2^+ + H2 => H3^+ + H                            ! 2.00d-9
+H2^+ + NH3 => NH3^+ + H2                         ! 5.70d-9
+H2^+ + N2 => N2H^+ + H                           ! 2.00d-9
+H^+ + NH3 => NH3^+ + H                           ! 5.20d-9
+
+NH^+ + H2 => H3^+ + N                            ! 0.15*1.23d-9 
+NH^+ + H2 => NH2^+ + H                           ! 0.85*1.23d-9
+NH^+ + NH3 => NH3^+ + NH                         ! 0.75*2.40d-9 
+NH^+ + NH3 => NH4^+ + N                          ! 0.25*2.40d-9 
+NH^+ + N2 => N2H^+ + N                           ! 6.50d-10
+NH2^+ + H2 => NH3^+ + H                          ! 1.95d-10
+NH2^+ + NH3 => NH3^+ + NH2                       ! 0.5*2.30d-9
+NH3 + NH2^+ => NH + NH4^+                        ! 0.5*2.30d-9 
+NH3^+ + NH3 => NH4^+ + NH2                       ! 2.10d-9
+
+
+#--------------------------------------------------------------------------------
+#Binary processes with nitrogen particles - Gordiets et al.(1998)
+#--------------------------------------------------------------------------------
+N2(A3) + N  => N2 + N                              !   2.0d-12
+N2(A3) + N  => N2 + N(2P)                          !   4.0d-11 * (300.0d0/Tgas)**0.667
+N2(A3) + N2 => N2 + N2                             !   3.0d-16
+
+N2(A3) + N2(A3) => N2 + N2(B3)                     !   3.0d-10
+N2(A3) + N2(A3) => N2 + N2(C3)                     !   1.5d-10
+N2(A3) + N2(A3) => N2 + 2N                         !   3.0d-11
+
+N2(B3) + N2 => N2(A3) + N2                         !   3.0d-11
+N2(B3) + N2 => N2 + N2                             !   2.0d-12
+
+N2(C3) + N2 => N2(a`1) + N2                        !   1.0d-11
+
+N2(a`1) + N2 => N2(B3) + N2                        !   1.9d-13
+N2(a`1) + N2(a`1) => N2^+ + N2 + e                 !   1.0d-11
+N2(a`1) + N2(a`1) => N4^+ + e                      !   1.0d-11
+N2(a`1) + N2(A3) => N4^+ + e                       !   4.0d-12
+
+N(2D) + N2    => N + N2                          !   2.3d-14 * exp(-510.0d0/Tgas)
+N(2P) + N     => N + N                           !   1.8d-12
+N(2P) + N     => N(2D) + N                       !   6.0d-13
+N(2P) + N2    => N + N2                          !   6.0d-14
+N(2P) + N(2D) => N2^+ + e                        !   1.0d-13
+
+
+#--------------------------------------------------------------------------------
+#Binary processes with hydrogen particles (cm3 s−1) - Gordiets et al.(1998)
+#
+#--------------------------------------------------------------------------------
+
+N2(A3) + H => N2 + H                            ! 5d-11
+N2(A3) + H2 => N2 + 2H                          ! 2d-10*exp(-3500/Tgas)
+N2(A3) + NH3 => N2 + NH3                        ! 1.6d-10
+N2(B3) + H2 => N2(A3) + H2                      ! 2.5d-11
+N2(a`1) + H => N2 + H                           ! 1.5d-11
+N2(a`1) + H2 => N2 + 2H                         ! 2.6d-11
+
+
+N + H2(v1) => H + NH                             ! 4.0d-10*(Tgas/300)**0.5 * exp(-16600/Tgas + 0.3*5800/Tgas)
+N + H2(v2) => H + NH                             ! 4.0d-10*(Tgas/300)**0.5 * exp(-16600/Tgas + 0.3*11600/Tgas)
+N + H2(v3) => H + NH                             ! 4.0d-10*(Tgas/300)**0.5 * exp(-16600/Tgas + 0.3*17400/Tgas)
+N + H2(RYDBERG_SUM) => H + NH                    ! 4.0d-10*(Tgas/300)**0.5     
+N + H2(B3SIG) => H + NH                          ! 4.0d-10*(Tgas/300)**0.5
+N + H2(B1SIG) => H + NH                          ! 4.0d-10*(Tgas/300)**0.5
+N + H2(C3PI) => H + NH                           ! 4.0d-10*(Tgas/300)**0.5 
+N + H2(A3SIG) => H + NH                          ! 4.0d-10*(Tgas/300)**0.5 
+
+
+N(2D) + H2 => H + NH                            ! 2.3d-12
+N(2D) + NH3 => NH + NH2                         ! 1.1d-10
+N(2P) + H2 => H + NH                            ! 2.5d-14	
+
+N + NH => H + N2                                ! 5d-11
+H + NH => N + H2                                ! 5.4d-11*exp(-165/Tgas)
+NH + NH => H2 + N2                              ! 5d-14*(Tgas/300)
+NH + NH => N + NH2                              ! 1.7d-12*(Tgas/300)**1.5
+NH + NH => N2 + 2H                              ! 8.5d-11
+H + NH2 => H2 + NH                              ! 6.6d-11*exp(-1840/Tgas)
+N + NH2 => N2 + 2H                              ! 1.2d-10
+N + NH2 => N2 + H2                              ! 1.2d-10
+NH + NH2 => NH3 + N                             ! 1.66d-12
+H2 + NH2 => NH3 + H                             ! 5.4d-11*exp(-6492/Tgas)
+H + NH3 => NH2 + H2                             ! 8.4d-14*(Tgas/300)**4.1*exp(-4760/Tgas)
+
+#--------------------------------------------------------------------------------
+#3-body processes K (cm6 s−1)- Gordiets et al.(1998)
+#--------------------------------------------------------------------------------
+
+N + N + @M => N2(A3) + @M                         ! 4.4d-36
+   @M =  N2  H2  N2(v1) N2(v2) N2(v3) N2(v4) N2(v5) N2(v6) N2(v7) N2(v8) H2(v1) H2(v2) H2(v3)
+N + N + @M => N2(A3) + @M                         ! 2.6d-35
+   @M =  N   H
+N + N + @M => N2(B3) + @M                         ! 6.2d-36
+   @M =  N2  H2 N2(v1) N2(v2) N2(v3) N2(v4) N2(v5) N2(v6) N2(v7) N2(v8) H2(v1) H2(v2) H2(v3)
+N + N + @M => N2(B3) + @M                         ! 3.6d-35
+   @M =  N   H
+ 
+N + N + @M => N2 + @M                           ! 2.4d-36*exp(500/Tgas)
+@M =  N2  H2
+H + H + H2 => H2 + H2                           ! 2.3d-35*(300/Tgas)**0.6   
+
+H + H + N2 => H2 + N2                           ! 2.2d-35*(300/Tgas)
+   
+H + N + @M => NH + @M           ! 2.6d-36
+@M =  N2  H2
+N + H2 + @M => NH2 + @M         ! 2.6d-37
+@M =  N2  H2
+H + NH + @M => NH2 + @M         ! 2.6d-35
+@M =  N2  H2
+H + NH2 + @M => NH3 + @M        ! 1.43d-32
+@M =  N2  H2
+NH + H2 + @M => NH3 + @M        ! 6.5d-38*(Tgas/300)*exp(1700/Tgas)
+@M =  N2  H2
+
+#--------------------------------------------------------------------------------
+# Wall relaxation
+#
+# first define some necessary parameters
+$ double precision, parameter :: Diff_L = 0.01, Diff_coeff_400 = 7.9d-1, MYPI = 16*ATAN(1./5.) - 4*ATAN(1./239.)
+$ double precision, parameter :: H2_MASS_KG = 2.*1.6735575d-27, N2_MASS_KG = 2.*2.3258671d-26
+$ double precision, parameter :: THE_V = 48.6, THE_AREA = 3370, ROUGHNESS = 2.1
+$ double precision, parameter :: N2_WALL_V_GAMMA = 4.5d-4, N2_WALL_E_GAMMA = 1d-3
+$ double precision, parameter :: H2_WALL_V_GAMMA = 1.0d-4, H2_WALL_E_GAMMA = 1d-3
+
+$ double precision :: GAMMA_D, N2_THERMAL_VEL, N2_WALL_SECOND_PART_V, N2_WALL_SECOND_PART_E
+#--------------------------------------------------------------------------------
+
+$ GAMMA_D = Diff_L**2/(Diff_coeff_400*((Tgas/300)**(3./2.)))
+
+
+$ N2_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(N2_MASS_KG*MYPI))*100
+$ N2_WALL_SECOND_PART_V = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_WALL_V_GAMMA)/N2_WALL_V_GAMMA
+$ N2_WALL_SECOND_PART_E = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_WALL_E_GAMMA)/N2_WALL_E_GAMMA
+
+N2(A3) => N2 			  		! 1./(GAMMA_D+N2_WALL_SECOND_PART_E)
+N2(a`1)=> N2(B3)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_E)
+N2(v1) => N2					! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v2) => N2(v1)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v3) => N2(v2)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v4) => N2(v3)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v5) => N2(v4)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v6) => N2(v5)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v7) => N2(v6)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+N2(v8) => N2(v7)				! 1./(GAMMA_D+N2_WALL_SECOND_PART_V)
+
+$ double precision :: H2_THERMAL_VEL, H2_WALL_SECOND_PART_V, H2_WALL_SECOND_PART_E
+
+$ H2_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(H2_MASS_KG*MYPI))*100
+$ H2_WALL_SECOND_PART_V = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_WALL_V_GAMMA)/H2_WALL_V_GAMMA
+$ H2_WALL_SECOND_PART_E = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_WALL_E_GAMMA)/H2_WALL_E_GAMMA
+
+H2(B3SIG) => H2					! 1./(GAMMA_D+H2_WALL_SECOND_PART_E)
+H2(B1SIG) => H2					! 1./(GAMMA_D+H2_WALL_SECOND_PART_E)
+H2(C3PI) => H2					! 1./(GAMMA_D+H2_WALL_SECOND_PART_E)
+H2(A3SIG) => H2					! 1./(GAMMA_D+H2_WALL_SECOND_PART_E)
+H2(v1) => H2					! 1./(GAMMA_D+H2_WALL_SECOND_PART_V)
+H2(v2) => H2(v1)				! 1./(GAMMA_D+H2_WALL_SECOND_PART_V)
+H2(v3) => H2(v2)				! 1./(GAMMA_D+H2_WALL_SECOND_PART_V)
+
+
+      
+#--------------------------------------------------------------------------------------
+# recombination of H^- ions 
+#--------------------------------------------------------------------------------------
+e + H2(RYDBERG_SUM)=> H + H^-        	       ! BOLSIG H2 -> H2(RYDBERG_SUM)
+H^- + H2^+ => 3H                               ! 2d-7*(300/Tgas)
+H^- + H3^+ => H2 + 2H                          ! 2d-7*(300/Tgas)
+H^- + N2^+ => N2 + H                           ! 2d-7*(300/Tgas)
+H^- + N4^+ => 2N2 + H                          ! 2d-7*(300/Tgas)
+H^- + N2H^+ => H2 + N2                         ! 2d-7*(300/Tgas)
+
+H^- + H2^+ + @M => H2 + H + @M                 ! 2d-25*(300/Tgas)**2.5
+@M = N2    H2      N      H 
+H^- + H3^+ + @M => 2H2 + @M                    ! 2d-25*(300/Tgas)**2.5
+@M = N2   H2   N   H
+H^- + N2^+ + @M => N2 + H + @M                 ! 2d-25*(300/Tgas)**2.5
+@M = N2    H2    N    H
+H^- + N4^+ + @M => 2N2 + H + @M                ! 2d-25*(300/Tgas)**2.5
+@M = N2    H2    N    H
+H^- + N2H^+ + @M => H2 + N2 + @M               ! 2d-25*(300/Tgas)**2.5
+@M =  N2    H2     N     H
+
+
+
+#--------------------------------------------------------------------------------
+#Heterogeneous Reactions - From Carrasco et al.(2011) (400 K)
+#Direct adsorption of atoms, E-R and L-H mechanism
+#packed-bed case : Included 'Surf', Iron surface assumed
+#surface reaction coeff. needs to be converted to /cm^3s  unit.
+#Initial Surf value divided by V/A*0.5, and K was multiplied by V/A*0.5
+
+# read the activation energies
+$ character(*), parameter     :: reaction_E_in = 'REACTION_E_IN.DAT'
+$ character(*), parameter     :: reaction_E_basis = 'REACTION_E_BASIS.DAT'
+$ character(*), parameter     :: reaction_Entropy_Para_in = 'ENTROPY_PARA_IN.DAT'
+$ character(*), parameter     :: reaction_Entropy_Info_basis = 'ENTROPY_INFO_BASIS.DAT'
+
+$ double precision :: H2_vib_1
+$ double precision :: N2_vib_1
+$ double precision :: NH_vib_1
+$ double precision :: NH2_vib_1, NH2_vib_2, NH2_vib_3
+$ double precision :: NH3_vib_1, NH3_vib_2, NH3_vib_3, NH3_vib_4, NH3_vib_5, NH3_vib_6
+
+$ double precision :: H2_inertia_1
+$ double precision :: N2_inertia_1
+$ double precision :: NH_inertia_1
+$ double precision :: NH2_inertia_1, NH2_inertia_2, NH2_inertia_3
+$ double precision :: NH3_inertia_1, NH3_inertia_2, NH3_inertia_3
+
+$ double precision :: H2_vib_basis_1
+$ double precision :: N2_vib_basis_1
+$ double precision :: NH_vib_basis_1
+$ double precision :: NH2_vib_basis_1, NH2_vib_basis_2, NH2_vib_basis_3
+$ double precision :: NH3_vib_basis_1, NH3_vib_basis_2, NH3_vib_basis_3, NH3_vib_basis_4, NH3_vib_basis_5, NH3_vib_basis_6
+
+$ double precision :: H2_inertia_basis_1
+$ double precision :: N2_inertia_basis_1
+$ double precision :: NH_inertia_basis_1
+$ double precision :: NH2_inertia_basis_1, NH2_inertia_basis_2, NH2_inertia_basis_3
+$ double precision :: NH3_inertia_basis_1, NH3_inertia_basis_2, NH3_inertia_basis_3
+
+$ double precision :: H2_trans_entropy, N2_trans_entropy, NH_trans_entropy, NH2_trans_entropy, NH3_trans_entropy
+$ double precision :: H2_vib_entropy, N2_vib_entropy, NH_vib_entropy, NH2_vib_entropy, NH3_vib_entropy
+$ double precision :: H2_rot_entropy, N2_rot_entropy, NH_rot_entropy, NH2_rot_entropy, NH3_rot_entropy
+
+$ double precision :: H2_trans_entropy_basis, N2_trans_entropy_basis, NH_trans_entropy_basis, NH2_trans_entropy_basis, NH3_trans_entropy_basis
+$ double precision :: H2_vib_entropy_basis, N2_vib_entropy_basis, NH_vib_entropy_basis, NH2_vib_entropy_basis, NH3_vib_entropy_basis
+$ double precision :: H2_rot_entropy_basis, N2_rot_entropy_basis, NH_rot_entropy_basis, NH2_rot_entropy_basis, NH3_rot_entropy_basis
+
+$ double precision :: H_total_entropy, N_total_entropy, H2_total_entropy, N2_total_entropy, NH_total_entropy, NH2_total_entropy, NH3_total_entropy
+$ double precision :: HSURF_total_entropy, NSURF_total_entropy, H2SURF_total_entropy, N2SURF_total_entropy, NHSURF_total_entropy, NH2SURF_total_entropy, NH3SURF_total_entropy
+
+$ double precision :: H_total_entropy_basis, N_total_entropy_basis, H2_total_entropy_basis, N2_total_entropy_basis, NH_total_entropy_basis, NH2_total_entropy_basis, NH3_total_entropy_basis
+$ double precision :: HSURF_total_entropy_basis, NSURF_total_entropy_basis, H2SURF_total_entropy_basis, N2SURF_total_entropy_basis, NHSURF_total_entropy_basis, NH2SURF_total_entropy_basis, NH3SURF_total_entropy_basis
+
+
+$ double precision, parameter :: H2_symmetry = 2
+$ double precision, parameter :: N2_symmetry = 2
+$ double precision, parameter :: NH_symmetry = 1
+$ double precision, parameter :: NH2_symmetry = 2
+$ double precision, parameter :: NH3_symmetry = 3
+
+$ double precision :: N_Fs_entropy, H_Fs_entropy, NH_Fs_entropy, NH2_Fs_entropy
+$ double precision :: N_Ns_entropy, H_Hs_entropy, N_Hs_entropy, NH_Hs_entropy
+$ double precision :: NH2_Hs_entropy, H_Ns_entropy, H_NHs_entropy, H_NH2s_entropy
+$ double precision :: H2_NHs_ace
+$ double precision :: Ns_Hs_ACT_E, NHs_Hs_ACT_E, NH2s_Hs_ACT_E
+
+$ double precision :: N_Fs_entropy_basis, H_Fs_entropy_basis, NH_Fs_entropy_basis, NH2_Fs_entropy_basis
+$ double precision :: N_Ns_entropy_basis, H_Hs_entropy_basis, N_Hs_entropy_basis, NH_Hs_entropy_basis
+$ double precision :: NH2_Hs_entropy_basis, H_Ns_entropy_basis, H_NHs_entropy_basis, H_NH2s_entropy_basis
+$ double precision :: H2_NHs_ace_basis
+$ double precision :: Ns_Hs_ACT_E_basis, NHs_Hs_ACT_E_basis, NH2s_Hs_ACT_E_basis
+
+$ open(42,file=reaction_Entropy_Para_in)
+$ read(42,*) ! exclude the header
+$ read(42,*) H2_vib_1, N2_vib_1, NH_vib_1, NH2_vib_1, NH2_vib_2, NH2_vib_3, NH3_vib_1, NH3_vib_2, NH3_vib_3, NH3_vib_4, NH3_vib_5, NH3_vib_6, H2_inertia_1, N2_inertia_1, NH_inertia_1, NH2_inertia_1, NH2_inertia_2, NH2_inertia_3, NH3_inertia_1, NH3_inertia_2, NH3_inertia_3
+$ close(42)
+
+$ open(42,file=reaction_Entropy_Info_basis)
+$ read(42,*) ! exclude the header
+$ read(42,*) H2_vib_basis_1, N2_vib_basis_1,  NH_vib_basis_1, NH2_vib_basis_1, NH2_vib_basis_2, NH2_vib_basis_3, NH3_vib_basis_1, NH3_vib_basis_2, NH3_vib_basis_3, NH3_vib_basis_4, NH3_vib_basis_5, NH3_vib_basis_6, H2_inertia_basis_1, N2_inertia_basis_1,  NH_inertia_basis_1, NH2_inertia_basis_1, NH2_inertia_basis_2, NH2_inertia_basis_3, NH3_inertia_basis_1, NH3_inertia_basis_2, NH3_inertia_basis_3
+$ close(42)
+
+$ open(42,file=reaction_E_in)
+$ read(42,*) ! exclude the header
+$ read(42,*) H2_NHs_ace, Ns_Hs_ACT_E, NHs_Hs_ACT_E, NH2s_Hs_ACT_E
+$ close(42)
+
+$ open(47,file=reaction_E_basis)
+$ read(47,*) ! exclude the header
+$ read(47,*) H2_NHs_ace_basis, Ns_Hs_ACT_E_basis, NHs_Hs_ACT_E_basis, NH2s_Hs_ACT_E_basis
+$ close(47)
+
+
+#define some necessary parameters
+$ double precision, parameter :: H_MASS_KG = 1.6735575d-27, N_MASS_KG = 2.3258671d-26, NH_MASS_KG = 1.6735575d-27+2.3258671d-26
+$ double precision, parameter :: NH2_MASS_KG = 2.*1.6735575d-27+2.3258671d-26, NH3_MASS_KG = 3.*1.6735575d-27+2.3258671d-26
+
+#All ER reactions are now based on entropy barriers!!!!!!!!
+
+#for ER reactions, calculate the trans, rot and vib entropies !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+$ H_total_entropy = density(30)*Tgas*1.38d-17*6.022d23
+$ if (H_total_entropy .le. 10.d-10) then; H_total_entropy=-1. ; else; H_total_entropy=8.314*(1.5*log(2*MYPI*H_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/H_total_entropy)+2.5); end if
+$ if (H_total_entropy .le. -1.) then; HSURF_total_entropy=-1.; else; HSURF_total_entropy=0.7*H_total_entropy-3.3*8.314; end if
+
+
+$ N_total_entropy = sum(density(14:16))*Tgas*1.38d-17*6.022d23
+$ if (N_total_entropy .le. 10.d-10) then; N_total_entropy=-1. ; else; N_total_entropy=8.314*(1.5*log(2*MYPI*N_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/N_total_entropy)+2.5); end if
+$ if (N_total_entropy .le. -1.) then; NSURF_total_entropy=-1.; else; NSURF_total_entropy=0.7*N_total_entropy-3.3*8.314; end if
+
+
+$ H2_trans_entropy = sum(density(21:29))*Tgas*1.38d-17*6.022d23
+$ if (H2_trans_entropy .le. 10.d-10) then; H2_trans_entropy=0. ; else; H2_trans_entropy=8.314*(1.5*log(2*MYPI*H2_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/H2_trans_entropy)+2.5); end if
+$ H2_inertia_1 = H2_inertia_1*1.d-10*1.d-10/6.022d26
+$ H2_rot_entropy = 8.314*log((8*MYPI*MYPI*H2_inertia_1*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34*H2_symmetry))+8.314
+$ H2_vib_1 = H2_vib_1*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ H2_vib_entropy = 8.314*(H2_vib_1*exp(-H2_vib_1)/(1-exp(-H2_vib_1))-log(1-exp(-H2_vib_1)))
+$ if (H2_trans_entropy .le. 0.) then; H2_total_entropy=-1. ; else; H2_total_entropy=H2_trans_entropy+H2_rot_entropy+H2_vib_entropy; end if
+$ if (H2_total_entropy .le. -1.) then; H2SURF_total_entropy=-1.; else; H2SURF_total_entropy=0.7*H2_total_entropy-3.3*8.314; end if
+
+
+$ N2_trans_entropy = sum(density(1:13))*Tgas*1.38d-17*6.022d23
+$ if (N2_trans_entropy .le. 10.d-10) then; N2_trans_entropy=0. ; else; N2_trans_entropy=8.314*(1.5*log(2*MYPI*N2_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/N2_trans_entropy)+2.5); end if
+$ N2_inertia_1 = N2_inertia_1*1.d-10*1.d-10/6.022d26
+$ N2_rot_entropy = 8.314*log((8*MYPI*MYPI*N2_inertia_1*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34*N2_symmetry))+8.314
+$ N2_vib_1 = N2_vib_1*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ N2_vib_entropy = 8.314*(N2_vib_1*exp(-N2_vib_1)/(1-exp(-N2_vib_1))-log(1-exp(-N2_vib_1)))
+$ if (N2_trans_entropy .le. 0.) then; N2_total_entropy=-1. ; else; N2_total_entropy=N2_trans_entropy+N2_rot_entropy+N2_vib_entropy; end if
+$ if (N2_total_entropy .le. -1.) then; N2SURF_total_entropy=-1.; else; N2SURF_total_entropy=0.7*N2_total_entropy-3.3*8.314; end if
+
+
+$ NH_trans_entropy = density(35)*Tgas*1.38d-17*6.022d23
+$ if (NH_trans_entropy .le. 10.d-10) then; NH_trans_entropy=0. ; else; NH_trans_entropy=8.314*(1.5*log(2*MYPI*NH_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/NH_trans_entropy)+2.5); end if
+$ NH_inertia_1 = NH_inertia_1*1.d-10*1.d-10/6.022d26
+$ NH_rot_entropy = 8.314*log((8*MYPI*MYPI*NH_inertia_1*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34*NH_symmetry))+8.314
+$ NH_vib_1 = NH_vib_1*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH_vib_entropy = 8.314*(NH_vib_1*exp(-NH_vib_1)/(1-exp(-NH_vib_1))-log(1-exp(-NH_vib_1)))
+$ if (NH_trans_entropy .le. 0.) then; NH_total_entropy=-1. ; else; NH_total_entropy=NH_trans_entropy+NH_rot_entropy+NH_vib_entropy; end if
+$ if (NH_total_entropy .le. -1.) then; NHSURF_total_entropy=-1.; else; NHSURF_total_entropy=0.7*NH_total_entropy-3.3*8.314; end if
+
+
+$ NH2_trans_entropy = density(36)*Tgas*1.38d-17*6.022d23
+$ if (NH2_trans_entropy .le. 10.d-10) then; NH2_trans_entropy=0. ; else; NH2_trans_entropy=8.314*(1.5*log(2*MYPI*NH2_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/NH2_trans_entropy)+2.5); end if
+$ NH2_inertia_1 = NH2_inertia_1*1.d-10*1.d-10/6.022d26
+$ NH2_inertia_2 = NH2_inertia_2*1.d-10*1.d-10/6.022d26
+$ NH2_inertia_3 = NH2_inertia_3*1.d-10*1.d-10/6.022d26
+$ NH2_rot_entropy = (8*MYPI*MYPI*NH2_inertia_1*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34)
+$ NH2_rot_entropy = NH2_rot_entropy*(8*MYPI*MYPI*NH2_inertia_2*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34)
+$ NH2_rot_entropy = NH2_rot_entropy*(8*MYPI*MYPI*NH2_inertia_3*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34)
+$ NH2_rot_entropy = 8.314*log(NH2_rot_entropy*MYPI/sqrt(NH2_symmetry))/2+8.314*1.5
+$ NH2_vib_1 = NH2_vib_1*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH2_vib_2 = NH2_vib_2*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH2_vib_3 = NH2_vib_3*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH2_vib_entropy = 8.314*(NH2_vib_1*exp(-NH2_vib_1)/(1-exp(-NH2_vib_1))-log(1-exp(-NH2_vib_1)))
+$ NH2_vib_entropy = NH2_vib_entropy + 8.314*(NH2_vib_2*exp(-NH2_vib_2)/(1-exp(-NH2_vib_2))-log(1-exp(-NH2_vib_2)))
+$ NH2_vib_entropy = NH2_vib_entropy + 8.314*(NH2_vib_3*exp(-NH2_vib_3)/(1-exp(-NH2_vib_3))-log(1-exp(-NH2_vib_3)))
+$ if (NH2_trans_entropy .le. 0.) then; NH2_total_entropy=-1. ; else; NH2_total_entropy=NH2_trans_entropy+NH2_rot_entropy+NH2_vib_entropy; end if
+$ if (NH2_total_entropy .le. -1.) then; NH2SURF_total_entropy=-1.; else; NH2SURF_total_entropy=0.7*NH2_total_entropy-3.3*8.314; end if
+
+
+$ NH3_trans_entropy = density(37)*Tgas*1.38d-17*6.022d23
+$ if (NH3_trans_entropy .le. 10.d-10) then; NH3_trans_entropy=0. ; else; NH3_trans_entropy=8.314*(1.5*log(2*MYPI*NH3_MASS_KG*1.38064852d-23*Tgas/(6.62607015d-34*6.62607015d-34))+log(8.314*Tgas/NH3_trans_entropy)+2.5); end if
+$ NH3_inertia_1 = NH3_inertia_1*1.d-10*1.d-10/6.022d26
+$ NH3_inertia_2 = NH3_inertia_2*1.d-10*1.d-10/6.022d26
+$ NH3_inertia_3 = NH3_inertia_3*1.d-10*1.d-10/6.022d26
+$ NH3_rot_entropy = (8*MYPI*MYPI*NH3_inertia_1*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34)
+$ NH3_rot_entropy = NH3_rot_entropy*(8*MYPI*MYPI*NH3_inertia_2*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34)
+$ NH3_rot_entropy = NH3_rot_entropy*(8*MYPI*MYPI*NH3_inertia_3*1.38064852d-23*Tgas)/(6.62607015d-34*6.62607015d-34)
+$ NH3_rot_entropy = 8.314*log(NH3_rot_entropy*MYPI/sqrt(NH3_symmetry))/2+8.314*1.5
+$ NH3_vib_1 = NH3_vib_1*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH3_vib_2 = NH3_vib_2*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH3_vib_3 = NH3_vib_3*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH3_vib_4 = NH3_vib_4*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH3_vib_5 = NH3_vib_5*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH3_vib_6 = NH3_vib_6*6.62607015d-34*1.d12/(1.38064852d-23*Tgas)
+$ NH3_vib_entropy = 8.314*(NH3_vib_1*exp(-NH3_vib_1)/(1-exp(-NH3_vib_1))-log(1-exp(-NH3_vib_1)))
+$ NH3_vib_entropy = NH3_vib_entropy + 8.314*(NH3_vib_2*exp(-NH3_vib_2)/(1-exp(-NH3_vib_2))-log(1-exp(-NH3_vib_2)))
+$ NH3_vib_entropy = NH3_vib_entropy + 8.314*(NH3_vib_3*exp(-NH3_vib_3)/(1-exp(-NH3_vib_3))-log(1-exp(-NH3_vib_3)))
+$ NH3_vib_entropy = NH3_vib_entropy + 8.314*(NH3_vib_4*exp(-NH3_vib_4)/(1-exp(-NH3_vib_4))-log(1-exp(-NH3_vib_4)))
+$ NH3_vib_entropy = NH3_vib_entropy + 8.314*(NH3_vib_5*exp(-NH3_vib_5)/(1-exp(-NH3_vib_5))-log(1-exp(-NH3_vib_5)))
+$ NH3_vib_entropy = NH3_vib_entropy + 8.314*(NH3_vib_6*exp(-NH3_vib_6)/(1-exp(-NH3_vib_6))-log(1-exp(-NH3_vib_6)))
+$ if (NH3_trans_entropy .le. 0.) then; NH3_total_entropy=-1. ; else; NH3_total_entropy=NH3_trans_entropy+NH3_rot_entropy+NH3_vib_entropy; end if
+$ if (NH3_total_entropy .le. -1.) then; NH3SURF_total_entropy=-1.; else; NH3SURF_total_entropy=0.7*NH3_total_entropy-3.3*8.314; end if
+
+
+# for the ER reactions, basis cases
+$ H_total_entropy_basis = 3695000000000.0*400.*1.38d-17*6.022d23
+$ if (H_total_entropy_basis .le. 0.) then; H_total_entropy_basis=-1. ; else; H_total_entropy_basis=8.314*(1.5*log(2*MYPI*H_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./H_total_entropy_basis)+2.5); end if
+$ if (H_total_entropy_basis .le. -1.) then; HSURF_total_entropy_basis=-1.; else; HSURF_total_entropy_basis=0.7*H_total_entropy_basis-3.3*8.314; end if
+
+$ N_total_entropy_basis = 29274000253.86*400.*1.38d-17*6.022d23
+$ if (N_total_entropy_basis .le. 0.) then; N_total_entropy_basis=-1. ; else; N_total_entropy_basis=8.314*(1.5*log(2*MYPI*N_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./N_total_entropy_basis)+2.5); end if
+$ if (N_total_entropy_basis .le. -1.) then; NSURF_total_entropy_basis=-1.; else; NSURF_total_entropy_basis=0.7*N_total_entropy_basis-3.3*8.314; end if
+
+$ H2_trans_entropy_basis = 1.1871158998151799d+19*400.*1.38d-17*6.022d23
+$ if (H2_trans_entropy_basis .le. 0.) then; H2_trans_entropy_basis=0. ; else; H2_trans_entropy_basis=8.314*(1.5*log(2*MYPI*H2_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./H2_trans_entropy_basis)+2.5); end if
+$ H2_inertia_basis_1 = H2_inertia_basis_1*1.d-10*1.d-10/6.022d26
+$ H2_rot_entropy_basis = 8.314*log((8*MYPI*MYPI*H2_inertia_basis_1*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34*H2_symmetry))+8.314
+$ H2_vib_basis_1 = H2_vib_basis_1*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ H2_vib_entropy_basis = 8.314*(H2_vib_basis_1*exp(-H2_vib_basis_1)/(1-exp(-H2_vib_basis_1))-log(1-exp(-H2_vib_basis_1)))
+$ if (H2_trans_entropy_basis .le. 0.) then; H2_total_entropy_basis=-1. ; else; H2_total_entropy_basis=H2_trans_entropy_basis+H2_rot_entropy_basis+H2_vib_entropy_basis; end if
+$ if (H2_total_entropy_basis .le. -1.) then; H2SURF_total_entropy_basis=-1.; else; H2SURF_total_entropy_basis=0.7*H2_total_entropy_basis-3.3*8.314; end if
+
+$ N2_trans_entropy_basis = 6.044227953040066d+18*400.*1.38d-17*6.022d23
+$ if (N2_trans_entropy_basis .le. 0.) then; N2_trans_entropy_basis=0. ; else; N2_trans_entropy_basis=8.314*(1.5*log(2*MYPI*N2_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./N2_trans_entropy_basis)+2.5); end if
+$ N2_inertia_basis_1 = N2_inertia_basis_1*1.d-10*1.d-10/6.022d26
+$ N2_rot_entropy_basis = 8.314*log((8*MYPI*MYPI*N2_inertia_basis_1*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34*N2_symmetry))+8.314
+$ N2_vib_basis_1 = N2_vib_basis_1*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ N2_vib_entropy_basis = 8.314*(N2_vib_basis_1*exp(-N2_vib_basis_1)/(1-exp(-N2_vib_basis_1))-log(1-exp(-N2_vib_basis_1)))
+$ if (N2_trans_entropy_basis .le. 0.) then; N2_total_entropy_basis=-1. ; else; N2_total_entropy_basis=N2_trans_entropy_basis+N2_rot_entropy_basis+N2_vib_entropy_basis; end if
+$ if (N2_total_entropy_basis .le. -1.) then; N2SURF_total_entropy_basis=-1.; else; N2SURF_total_entropy_basis=0.7*N2_total_entropy_basis-3.3*8.314; end if
+
+$ NH_trans_entropy_basis = 242490000000.0*400.*1.38d-17*6.022d23
+$ if (NH_trans_entropy_basis .le. 0.) then; NH_trans_entropy_basis=0. ; else; NH_trans_entropy_basis=8.314*(1.5*log(2*MYPI*NH_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./NH_trans_entropy_basis)+2.5); end if
+$ NH_inertia_basis_1 = NH_inertia_basis_1*1.d-10*1.d-10/6.022d26
+$ NH_rot_entropy_basis = 8.314*log((8*MYPI*MYPI*NH_inertia_basis_1*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34*NH_symmetry))+8.314
+$ NH_vib_basis_1 = NH_vib_basis_1*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH_vib_entropy_basis = 8.314*(NH_vib_basis_1*exp(-NH_vib_basis_1)/(1-exp(-NH_vib_basis_1))-log(1-exp(-NH_vib_basis_1)))
+$ if (NH_trans_entropy_basis .le. 0.) then; NH_total_entropy_basis=-1. ; else; NH_total_entropy_basis=NH_trans_entropy_basis+NH_rot_entropy_basis+NH_vib_entropy_basis; end if
+$ if (NH_total_entropy_basis .le. -1.) then; NHSURF_total_entropy_basis=-1.; else; NHSURF_total_entropy_basis=0.7*NH_total_entropy_basis-3.3*8.314; end if
+
+$ NH2_trans_entropy_basis = 1565600000000.0*400.*1.38d-17*6.022d23
+$ if (NH2_trans_entropy_basis .le. 0.) then; NH2_trans_entropy_basis=0. ; else; NH2_trans_entropy_basis=8.314*(1.5*log(2*MYPI*NH2_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./NH2_trans_entropy_basis)+2.5); end if
+$ NH2_inertia_basis_1 = NH2_inertia_basis_1*1.d-10*1.d-10/6.022d26
+$ NH2_inertia_basis_2 = NH2_inertia_basis_2*1.d-10*1.d-10/6.022d26
+$ NH2_inertia_basis_3 = NH2_inertia_basis_3*1.d-10*1.d-10/6.022d26
+$ NH2_rot_entropy_basis = (8*MYPI*MYPI*NH2_inertia_basis_1*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34)
+$ NH2_rot_entropy_basis = NH2_rot_entropy_basis*(8*MYPI*MYPI*NH2_inertia_basis_2*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34)
+$ NH2_rot_entropy_basis = NH2_rot_entropy_basis*(8*MYPI*MYPI*NH2_inertia_basis_3*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34)
+$ NH2_rot_entropy_basis = 8.314*log(NH2_rot_entropy_basis*MYPI/sqrt(NH2_symmetry))/2+8.314*1.5
+$ NH2_vib_basis_1 = NH2_vib_basis_1*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH2_vib_basis_2 = NH2_vib_basis_2*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH2_vib_basis_3 = NH2_vib_basis_3*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH2_vib_entropy_basis = 8.314*(NH2_vib_basis_1*exp(-NH2_vib_basis_1)/(1-exp(-NH2_vib_basis_1))-log(1-exp(-NH2_vib_basis_1)))
+$ NH2_vib_entropy_basis = NH2_vib_entropy_basis + 8.314*(NH2_vib_basis_2*exp(-NH2_vib_basis_2)/(1-exp(-NH2_vib_basis_2))-log(1-exp(-NH2_vib_basis_2)))
+$ NH2_vib_entropy_basis = NH2_vib_entropy_basis + 8.314*(NH2_vib_basis_3*exp(-NH2_vib_basis_3)/(1-exp(-NH2_vib_basis_3))-log(1-exp(-NH2_vib_basis_3)))
+$ if (NH2_trans_entropy_basis .le. 0.) then; NH2_total_entropy_basis=-1. ; else; NH2_total_entropy_basis=NH2_trans_entropy_basis+NH2_rot_entropy_basis+NH2_vib_entropy_basis; end if
+$ if (NH2_total_entropy_basis .le. -1.) then; NH2SURF_total_entropy_basis=-1.; else; NH2SURF_total_entropy_basis=0.7*NH2_total_entropy_basis-3.3*8.314; end if
+
+$ NH3_trans_entropy_basis = 1.4885d+17*400.*1.38d-17*6.022d23
+$ if (NH3_trans_entropy_basis .le. 0.) then; NH3_trans_entropy_basis=0. ; else; NH3_trans_entropy_basis=8.314*(1.5*log(2*MYPI*NH3_MASS_KG*1.38064852d-23*400./(6.62607015d-34*6.62607015d-34))+log(8.314*400./NH3_trans_entropy_basis)+2.5); end if
+$ NH3_inertia_basis_1 = NH3_inertia_basis_1*1.d-10*1.d-10/6.022d26
+$ NH3_inertia_basis_2 = NH3_inertia_basis_2*1.d-10*1.d-10/6.022d26
+$ NH3_inertia_basis_3 = NH3_inertia_basis_3*1.d-10*1.d-10/6.022d26
+$ NH3_rot_entropy_basis = (8*MYPI*MYPI*NH3_inertia_basis_1*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34)
+$ NH3_rot_entropy_basis = NH3_rot_entropy_basis*(8*MYPI*MYPI*NH3_inertia_basis_2*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34)
+$ NH3_rot_entropy_basis = NH3_rot_entropy_basis*(8*MYPI*MYPI*NH3_inertia_basis_3*1.38064852d-23*400.)/(6.62607015d-34*6.62607015d-34)
+$ NH3_rot_entropy_basis = 8.314*log(NH3_rot_entropy_basis*MYPI/sqrt(NH3_symmetry))/2+8.314*1.5
+$ NH3_vib_basis_1 = NH3_vib_basis_1*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH3_vib_basis_2 = NH3_vib_basis_2*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH3_vib_basis_3 = NH3_vib_basis_3*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH3_vib_basis_4 = NH3_vib_basis_4*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH3_vib_basis_5 = NH3_vib_basis_5*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH3_vib_basis_6 = NH3_vib_basis_6*6.62607015d-34*1.d12/(1.38064852d-23*400.)
+$ NH3_vib_entropy_basis = 8.314*(NH3_vib_basis_1*exp(-NH3_vib_basis_1)/(1-exp(-NH3_vib_basis_1))-log(1-exp(-NH3_vib_basis_1)))
+$ NH3_vib_entropy_basis = NH3_vib_entropy_basis + 8.314*(NH3_vib_basis_2*exp(-NH3_vib_basis_2)/(1-exp(-NH3_vib_basis_2))-log(1-exp(-NH3_vib_basis_2)))
+$ NH3_vib_entropy_basis = NH3_vib_entropy_basis + 8.314*(NH3_vib_basis_3*exp(-NH3_vib_basis_3)/(1-exp(-NH3_vib_basis_3))-log(1-exp(-NH3_vib_basis_3)))
+$ NH3_vib_entropy_basis = NH3_vib_entropy_basis + 8.314*(NH3_vib_basis_4*exp(-NH3_vib_basis_4)/(1-exp(-NH3_vib_basis_4))-log(1-exp(-NH3_vib_basis_4)))
+$ NH3_vib_entropy_basis = NH3_vib_entropy_basis + 8.314*(NH3_vib_basis_5*exp(-NH3_vib_basis_5)/(1-exp(-NH3_vib_basis_5))-log(1-exp(-NH3_vib_basis_5)))
+$ NH3_vib_entropy_basis = NH3_vib_entropy_basis + 8.314*(NH3_vib_basis_6*exp(-NH3_vib_basis_6)/(1-exp(-NH3_vib_basis_6))-log(1-exp(-NH3_vib_basis_6)))
+$ if (NH3_trans_entropy_basis .le. 0.) then; NH3_total_entropy_basis=-1. ; else; NH3_total_entropy_basis=NH3_trans_entropy_basis+NH3_rot_entropy_basis+NH3_vib_entropy_basis; end if
+$ if (NH3_total_entropy_basis .le. -1.) then; NH3SURF_total_entropy_basis=-1.; else; NH3SURF_total_entropy_basis=0.7*NH3_total_entropy_basis-3.3*8.314; end if
+
+
+
+#for LH reactions, the activations energies are approximated by BEP correlations
+$ Ns_Hs_ACT_E = 0.20930858 * Ns_Hs_ACT_E + 1.13046871
+$ NHs_Hs_ACT_E = 0.32197273 * NHs_Hs_ACT_E + 1.23068654
+$ NH2s_Hs_ACT_E = 0.53972495 * NH2s_Hs_ACT_E + 1.21013028
+
+#for LH reactions, the activations energies are approximated by BEP correlations
+$ Ns_Hs_ACT_E_basis = 0.20930858 * Ns_Hs_ACT_E_basis + 1.13046871
+$ NHs_Hs_ACT_E_basis = 0.32197273 * NHs_Hs_ACT_E_basis + 1.23068654
+$ NH2s_Hs_ACT_E_basis = 0.53972495 * NH2s_Hs_ACT_E_basis + 1.21013028
+
+#for ER reactions, calculate the entropy changes according to approximations
+$ if (NSURF_total_entropy .le. -1.) then; N_Fs_entropy = -1.; else; N_Fs_entropy = NSURF_total_entropy-N_total_entropy ; end if
+$ if (HSURF_total_entropy .le. -1.) then; H_Fs_entropy = -1.; else; H_Fs_entropy = HSURF_total_entropy-H_total_entropy ; end if
+$ if (NHSURF_total_entropy .le. -1.) then; NH_Fs_entropy = -1.; else; NH_Fs_entropy = NHSURF_total_entropy-NH_total_entropy ; end if
+$ if (NH2SURF_total_entropy .le. -1.) then; NH2_Fs_entropy = -1.; else; NH2_Fs_entropy = NH2SURF_total_entropy-NH2_total_entropy ; end if
+$ if (NSURF_total_entropy .le. -1.) then; N_Ns_entropy = -1.; else; N_Ns_entropy = N2SURF_total_entropy-N_total_entropy-NSURF_total_entropy; end if
+$ if (HSURF_total_entropy .le. -1.) then; H_Hs_entropy = -1.; else; H_Hs_entropy = H2SURF_total_entropy-H_total_entropy-HSURF_total_entropy; end if
+$ if (NSURF_total_entropy .le. -1.) then; N_Hs_entropy = -1.; else; N_Hs_entropy = NHSURF_total_entropy-N_total_entropy-HSURF_total_entropy; end if
+$ if (NHSURF_total_entropy .le. -1.) then; NH_Hs_entropy = -1.; else; NH_Hs_entropy = NH2SURF_total_entropy-NH_total_entropy-HSURF_total_entropy; end if
+$ if (NH2SURF_total_entropy .le. -1.) then; NH2_Hs_entropy = -1.; else; NH2_Hs_entropy = NH3SURF_total_entropy-NH2_total_entropy-HSURF_total_entropy; end if
+$ if (HSURF_total_entropy .le. -1.) then; H_Ns_entropy = -1.; else; H_Ns_entropy = NHSURF_total_entropy-H_total_entropy-NSURF_total_entropy; end if
+$ if (HSURF_total_entropy .le. -1.) then; H_NHs_entropy = -1.; else; H_NHs_entropy = NH2SURF_total_entropy-H_total_entropy-NHSURF_total_entropy; end if
+$ if (HSURF_total_entropy .le. -1.) then; H_NH2s_entropy = -1.; else; H_NH2s_entropy = NH3SURF_total_entropy-H_total_entropy-NH2SURF_total_entropy; end if
+
+$ if (NSURF_total_entropy_basis .le. -1.) then; N_Fs_entropy_basis = -1.; else; N_Fs_entropy_basis = NSURF_total_entropy_basis-N_total_entropy_basis ; end if
+$ if (HSURF_total_entropy_basis .le. -1.) then; H_Fs_entropy_basis = -1.; else; H_Fs_entropy_basis = HSURF_total_entropy_basis-H_total_entropy_basis ; end if
+$ if (NHSURF_total_entropy_basis .le. -1.) then; NH_Fs_entropy_basis = -1.; else; NH_Fs_entropy_basis = NHSURF_total_entropy_basis-NH_total_entropy_basis ; end if
+$ if (NH2SURF_total_entropy_basis .le. -1.) then; NH2_Fs_entropy_basis = -1.; else; NH2_Fs_entropy_basis = NH2SURF_total_entropy_basis-NH2_total_entropy_basis ; end if
+$ if (NSURF_total_entropy_basis .le. -1.) then; N_Ns_entropy_basis = -1.; else; N_Ns_entropy_basis = N2SURF_total_entropy_basis-N_total_entropy_basis-NSURF_total_entropy_basis; end if
+$ if (HSURF_total_entropy_basis .le. -1.) then; H_Hs_entropy_basis = -1.; else; H_Hs_entropy_basis = H2SURF_total_entropy_basis-H_total_entropy_basis-HSURF_total_entropy_basis; end if
+$ if (NSURF_total_entropy_basis .le. -1.) then; N_Hs_entropy_basis = -1.; else; N_Hs_entropy_basis = NHSURF_total_entropy_basis-N_total_entropy_basis-HSURF_total_entropy_basis; end if
+$ if (NHSURF_total_entropy_basis .le. -1.) then; NH_Hs_entropy_basis = -1.; else; NH_Hs_entropy_basis = NH2SURF_total_entropy_basis-NH_total_entropy_basis-HSURF_total_entropy_basis; end if
+$ if (NH2SURF_total_entropy_basis .le. -1.) then; NH2_Hs_entropy_basis = -1.; else; NH2_Hs_entropy_basis = NH3SURF_total_entropy_basis-NH2_total_entropy_basis-HSURF_total_entropy_basis; end if
+$ if (HSURF_total_entropy_basis .le. -1.) then; H_Ns_entropy_basis = -1.; else; H_Ns_entropy_basis = NHSURF_total_entropy_basis-H_total_entropy_basis-NSURF_total_entropy_basis; end if
+$ if (HSURF_total_entropy_basis .le. -1.) then; H_NHs_entropy_basis = -1.; else; H_NHs_entropy_basis = NH2SURF_total_entropy_basis-H_total_entropy_basis-NHSURF_total_entropy_basis; end if
+$ if (HSURF_total_entropy_basis .le. -1.) then; H_NH2s_entropy_basis = -1.; else; H_NH2s_entropy_basis = NH3SURF_total_entropy_basis-H_total_entropy_basis-NH2SURF_total_entropy_basis; end if
+
+$ double precision :: N_Fs_GAMMA, H_Fs_GAMMA, NH_Fs_GAMMA, NH2_Fs_GAMMA
+$ double precision :: N_Ns_GAMMA, H_Hs_GAMMA, N_Hs_GAMMA, NH_Hs_GAMMA
+$ double precision :: NH2_Hs_GAMMA, H_Ns_GAMMA, H_NHs_GAMMA, H_NH2s_GAMMA
+$ double precision :: H2_NHs_GAMMA
+
+# apply the assumption made by us
+$ if (N_Fs_entropy .le. -1.) then; N_Fs_GAMMA=-1.; else; N_Fs_GAMMA = 1.d0*((Tgas/400)**(3./2.))*exp(N_Fs_entropy/8.314)/exp(N_Fs_entropy_basis/8.314); end if
+$ if (N_Fs_GAMMA .gt. 1.) then; N_Fs_GAMMA=1.; else; N_Fs_GAMMA=N_Fs_GAMMA; end if
+
+$ if (H_Fs_entropy .le. -1.) then; H_Fs_GAMMA=-1.; else; H_Fs_GAMMA = 1.d0*((Tgas/400)**(3./2.))*exp(H_Fs_entropy/8.314)/exp(H_Fs_entropy_basis/8.314); end if
+$ if (H_Fs_GAMMA .gt. 1.) then; H_Fs_GAMMA=1.; else; H_Fs_GAMMA=H_Fs_GAMMA; end if
+
+$ if (NH_Fs_entropy .le. -1.) then; NH_Fs_GAMMA=-1.; else; NH_Fs_GAMMA = 1.d0*((Tgas/400)**(3./2.))*exp(NH_Fs_entropy/8.314)/exp(NH_Fs_entropy_basis/8.314); end if
+$ if (NH_Fs_GAMMA .gt. 1.) then; NH_Fs_GAMMA=1.; else; NH_Fs_GAMMA=NH_Fs_GAMMA; end if
+
+$ if (NH2_Fs_entropy .le. -1.) then; NH2_Fs_GAMMA=-1.; else; NH2_Fs_GAMMA = 1.d0*((Tgas/400)**(3./2.))*exp(NH2_Fs_entropy/8.314)/exp(NH2_Fs_entropy_basis/8.314); end if
+$ if (NH2_Fs_GAMMA .gt. 1.) then; NH2_Fs_GAMMA=1.; else; NH2_Fs_GAMMA=NH2_Fs_GAMMA; end if
+
+# 900 k Ea from literature
+$ if (N_Ns_entropy .le. -1.) then; N_Ns_GAMMA=-1.; else; N_Ns_GAMMA = 6.d-3*((Tgas/400)**(3./2.))*exp(N_Ns_entropy/8.314)/exp(N_Ns_entropy_basis/8.314); end if
+$ if (N_Ns_GAMMA .gt. 1.) then; N_Ns_GAMMA=1.; else; N_Ns_GAMMA=N_Ns_GAMMA; end if
+
+# 840 k Ea from literature
+$ if (H_Hs_entropy .le. -1.) then; H_Hs_GAMMA=-1.; else; H_Hs_GAMMA = 1.5d-3*((Tgas/400)**(3./2.))*exp(H_Hs_entropy/8.314)/exp(H_Hs_entropy_basis/8.314); end if
+$ if (H_Hs_GAMMA .gt. 1.) then; H_Hs_GAMMA=1.; else; H_Hs_GAMMA=H_Hs_GAMMA; end if
+
+$ if (N_Hs_entropy .le. -1.) then; N_Hs_GAMMA=-1.; else; N_Hs_GAMMA = 1.d-2*((Tgas/400)**(3./2.))*exp(N_Hs_entropy/8.314)/exp(N_Hs_entropy_basis/8.314); end if
+$ if (N_Hs_GAMMA .gt. 1.) then; N_Hs_GAMMA=1.; else; N_Hs_GAMMA=N_Hs_GAMMA; end if
+
+# 3000 k Ea from literature
+$ if (NH_Hs_entropy .le. -1.) then; NH_Hs_GAMMA=-1.; else; NH_Hs_GAMMA = 1.d-2*((Tgas/400)**(3./2.))*exp(NH_Hs_entropy/8.314)/exp(NH_Hs_entropy_basis/8.314); end if
+$ if (NH_Hs_GAMMA .gt. 1.) then; NH_Hs_GAMMA=1.; else; NH_Hs_GAMMA=NH_Hs_GAMMA; end if
+
+$ if (NH2_Hs_entropy .le. -1.) then; NH2_Hs_GAMMA=-1.; else; NH2_Hs_GAMMA = 1.d-2*((Tgas/400)**(3./2.))*exp(NH2_Hs_entropy/8.314)/exp(NH2_Hs_entropy_basis/8.314); end if
+$ if (NH2_Hs_GAMMA .gt. 1.) then; NH2_Hs_GAMMA=1.; else; NH2_Hs_GAMMA=NH2_Hs_GAMMA; end if
+
+$ if (H_Ns_entropy .le. -1.) then; H_Ns_GAMMA=-1.; else; H_Ns_GAMMA = 8.d-3*((Tgas/400)**(3./2.))*exp(H_Ns_entropy/8.314)/exp(H_Ns_entropy_basis/8.314); end if
+$ if (H_Ns_GAMMA .gt. 1.) then; H_Ns_GAMMA=1.; else; H_Ns_GAMMA=H_Ns_GAMMA; end if
+
+$ if (H_NHs_entropy .le. -1.) then; H_NHs_GAMMA=-1.; else; H_NHs_GAMMA = 8.d-3*((Tgas/400)**(3./2.))*exp(H_NHs_entropy/8.314)/exp(H_NHs_entropy_basis/8.314); end if
+$ if (H_NHs_GAMMA .gt. 1.) then; H_NHs_GAMMA=1.; else; H_NHs_GAMMA=H_NHs_GAMMA; end if
+
+$ if (H_NH2s_entropy .le. -1.) then; H_NH2s_GAMMA=-1.; else; H_NH2s_GAMMA = 8.d-3*((Tgas/400)**(3./2.))*exp(H_NH2s_entropy/8.314)/exp(H_NH2s_entropy_basis/8.314); end if
+$ if (H_NH2s_GAMMA .gt. 1.) then; H_NH2s_GAMMA=1.; else; H_NH2s_GAMMA=H_NH2s_GAMMA; end if
+
+
+$ H2_NHs_GAMMA = 8.d-4*((Tgas/400)**(3./2.))*exp(-H2_NHs_ace/(1.38064852d-23*Tgas*6.242d18))/exp(-H2_NHs_ace_basis/(1.38064852d-23*400*6.242d18))
+
+
+$ double precision, parameter :: Tot_sur = 1.d15
+
+$ double precision :: H_THERMAL_VEL, N_THERMAL_VEL, NH_THERMAL_VEL, NH2_THERMAL_VEL, NH3_THERMAL_VEL
+
+$ double precision :: N_Fs_SECOND_PART, H_Fs_SECOND_PART, NH_Fs_SECOND_PART, NH2_Fs_SECOND_PART
+$ double precision :: N_Ns_SECOND_PART, H_Hs_SECOND_PART, N_Hs_SECOND_PART, NH_Hs_SECOND_PART
+$ double precision :: NH2_Hs_SECOND_PART, H_Ns_SECOND_PART, H_NHs_SECOND_PART, H_NH2s_SECOND_PART
+$ double precision :: H2_NHs_SECOND_PART
+
+$ double precision :: N_Fs_FINAL_SUM, H_Fs_FINAL_SUM, NH_Fs_FINAL_SUM, NH2_Fs_FINAL_SUM
+$ double precision :: N_Ns_FINAL_SUM, H_Hs_FINAL_SUM, N_Hs_FINAL_SUM, NH_Hs_FINAL_SUM
+$ double precision :: NH2_Hs_FINAL_SUM, H_Ns_FINAL_SUM, H_NHs_FINAL_SUM, H_NH2s_FINAL_SUM
+$ double precision :: H2_NHs_FINAL_SUM
+
+#--------------------------------------------------------------------------------
+
+$ H_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(H_MASS_KG*MYPI))*100
+$ N_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(N_MASS_KG*MYPI))*100
+$ NH_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(NH_MASS_KG*MYPI))*100
+$ NH2_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(NH2_MASS_KG*MYPI))*100
+$ NH3_THERMAL_VEL = sqrt(8*1.38064852d-23*Tgas/(NH3_MASS_KG*MYPI))*100
+
+
+$ N_Fs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N_THERMAL_VEL)*(2.-N_Fs_GAMMA)/N_Fs_GAMMA
+$ H_Fs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H_THERMAL_VEL)*(2.-H_Fs_GAMMA)/H_Fs_GAMMA
+$ NH_Fs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./NH_THERMAL_VEL)*(2.-NH_Fs_GAMMA)/NH_Fs_GAMMA
+$ NH2_Fs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./NH2_THERMAL_VEL)*(2.-NH2_Fs_GAMMA)/NH2_Fs_GAMMA
+$ N_Ns_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N_THERMAL_VEL)*(2.-N_Ns_GAMMA)/N_Ns_GAMMA
+$ H_Hs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H_THERMAL_VEL)*(2.-H_Hs_GAMMA)/H_Hs_GAMMA
+$ N_Hs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N_THERMAL_VEL)*(2.-N_Hs_GAMMA)/N_Hs_GAMMA
+$ NH_Hs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./NH_THERMAL_VEL)*(2.-NH_Hs_GAMMA)/NH_Hs_GAMMA
+$ NH2_Hs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./NH2_THERMAL_VEL)*(2.-NH2_Hs_GAMMA)/NH2_Hs_GAMMA
+$ H_Ns_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H_THERMAL_VEL)*(2.-H_Ns_GAMMA)/H_Ns_GAMMA
+$ H_NHs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H_THERMAL_VEL)*(2.-H_NHs_GAMMA)/H_NHs_GAMMA
+$ H_NH2s_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H_THERMAL_VEL)*(2.-H_NH2s_GAMMA)/H_NH2s_GAMMA
+$ H2_NHs_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_NHs_GAMMA)/H2_NHs_GAMMA
+
+$ if (N_Fs_GAMMA .le. -1.) then; N_Fs_FINAL_SUM = 0.; else; N_Fs_FINAL_SUM = 1./((GAMMA_D+N_Fs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (H_Fs_GAMMA .le. -1.) then; H_Fs_FINAL_SUM = 0.; else; H_Fs_FINAL_SUM = 1./((GAMMA_D+H_Fs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (NH_Fs_GAMMA .le. -1.) then; NH_Fs_FINAL_SUM = 0.; else; NH_Fs_FINAL_SUM = 1./((GAMMA_D+NH_Fs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (NH2_Fs_GAMMA .le. -1.) then; NH2_Fs_FINAL_SUM = 0.; else; NH2_Fs_FINAL_SUM = 1./((GAMMA_D+NH2_Fs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (N_Ns_GAMMA .le. -1.) then; N_Ns_FINAL_SUM = 0.; else; N_Ns_FINAL_SUM = 1./((GAMMA_D+N_Ns_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (H_Hs_GAMMA .le. -1.) then; H_Hs_FINAL_SUM = 0.; else; H_Hs_FINAL_SUM = 1./((GAMMA_D+H_Hs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (N_Hs_GAMMA .le. -1.) then; N_Hs_FINAL_SUM = 0.; else; N_Hs_FINAL_SUM = 1./((GAMMA_D+N_Hs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (NH_Hs_GAMMA .le. -1.) then; NH_Hs_FINAL_SUM = 0.; else; NH_Hs_FINAL_SUM = 1./((GAMMA_D+NH_Hs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (NH2_Hs_GAMMA .le. -1.) then; NH2_Hs_FINAL_SUM = 0.; else; NH2_Hs_FINAL_SUM = 1./((GAMMA_D+NH2_Hs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (H_Ns_GAMMA .le. -1.) then; H_Ns_FINAL_SUM = 0.; else; H_Ns_FINAL_SUM = 1./((GAMMA_D+H_Ns_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (H_NHs_GAMMA .le. -1.) then; H_NHs_FINAL_SUM = 0.; else; H_NHs_FINAL_SUM = 1./((GAMMA_D+H_NHs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+$ if (H_NH2s_GAMMA .le. -1.) then; H_NH2s_FINAL_SUM = 0.; else; H_NH2s_FINAL_SUM = 1./((GAMMA_D+H_NH2s_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))); end if
+
+
+#ER reactions
+
+N + Surf => NSurf                              ! N_Fs_FINAL_SUM
+N(2D) + Surf => NSurf 		                   ! N_Fs_FINAL_SUM
+N(2P) + Surf => NSurf                          ! N_Fs_FINAL_SUM
+
+H + Surf => HSurf 			                   ! H_Fs_FINAL_SUM
+
+NH + Surf => NHSurf 		                   ! NH_Fs_FINAL_SUM
+
+NH2 + Surf => NH2Surf                          ! NH2_Fs_FINAL_SUM
+
+N + NSurf => N2 + Surf  			           ! N_Ns_FINAL_SUM
+N(2D) + NSurf => N2 + Surf		               ! N_Ns_FINAL_SUM
+N(2P)+ NSurf  => N2 + Surf          		   ! N_Ns_FINAL_SUM
+
+H + HSurf  => H2 + Surf                        ! H_Hs_FINAL_SUM
+
+N + HSurf  => NHSurf             			   ! N_Hs_FINAL_SUM
+N(2D) + HSurf  => NHSurf               		   ! N_Hs_FINAL_SUM
+N(2P) + HSurf  => NHSurf            	       ! N_Hs_FINAL_SUM
+
+NH + HSurf => NH2Surf                          ! NH_Hs_FINAL_SUM
+
+NH2 + HSurf  => NH3  + Surf                    ! NH2_Hs_FINAL_SUM
+
+H + NSurf => NHSurf                            ! H_Ns_FINAL_SUM
+H + NHSurf => NH2Surf                          ! H_NHs_FINAL_SUM
+#corrected thermal velocity in cm/s (17102018)
+H + NH2Surf   => NH3 + Surf                    ! H_NH2s_FINAL_SUM
+
+# do not assume entropic barrier
+H2 + NHSurf  => NH3  + Surf                    ! 1./((GAMMA_D+H2_NHs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))
+H2(v1) + NHSurf  => NH3  + Surf                ! 1./((GAMMA_D+H2_NHs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))
+H2(v2) + NHSurf  => NH3  + Surf                ! 1./((GAMMA_D+H2_NHs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))
+H2(v3) + NHSurf  => NH3  + Surf                ! 1./((GAMMA_D+H2_NHs_SECOND_PART)*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))
+
+
+#LH reactions
+# based on metal
+
+$ double precision, parameter :: Ns_Hs_diff_ACT_E = 0.2, NHs_Hs_diff_ACT_E = 0.2, NH2s_Hs_diff_ACT_E = 0.2
+$ double precision, parameter :: Jumping_fre = 1.e13
+
+
+
+NSurf + HSurf => NHSurf + Surf                 ! Jumping_fre/(4*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))*exp(-(Ns_Hs_diff_ACT_E+Ns_Hs_ACT_E)/(1.38064852d-23*Tgas*6.242d18))
+NHSurf + HSurf => NH2Surf + Surf               ! Jumping_fre/(4*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))*exp(-(NHs_Hs_diff_ACT_E+NHs_Hs_ACT_E)/(1.38064852d-23*Tgas*6.242d18))
+NH2Surf + HSurf  => NH3  + 2Surf               ! Jumping_fre/(4*(Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS))))*exp(-(NH2s_Hs_diff_ACT_E+NH2s_Hs_ACT_E)/(1.38064852d-23*Tgas*6.242d18))
+
+
+#--------------------------------------------------------------------------------
+#Heterogeneous Reactions
+#Dissociative adsorption  
+#Iron surface assumed (400 K)
+
+# define necessary parameters
+$ double precision, parameter :: L0_a = -6.616, L0_b = 6.258, L0_c = 1.821, L0_d = -0.606
+$ double precision, parameter :: L1_a = -5.768, L1_b = 4.581, L1_c = 1.237, L1_d = 4.462
+$ double precision, parameter :: L2_a = -4.894, L2_b = 9.073, L2_c = 0.411, L2_d = 6.115
+$ double precision, parameter :: L3_a = -3.939, L3_b = 2.923, L3_c = 2.12, L3_d = 0.627
+$ double precision, parameter :: L4_a = -3.387, L4_b = 1.511, L4_c = 6.768, L4_d = 1.444
+$ double precision, parameter :: L5_a = -2.736, L5_b = 1.751, L5_c = 9.403, L5_d = -0.248
+$ double precision, parameter :: L6_a = -2.503, L6_b = 1.755, L6_c = 7.913, L6_d = -0.526
+$ double precision, parameter :: L7_a = -2.265, L7_b = 1.505, L7_c = 8.096, L7_d = -0.43
+$ double precision, parameter :: L8_a = -2.04, L8_b = 1.376, L8_c = 7.239, L8_d = -0.489
+$ double precision, parameter :: L9_a = -1.779, L9_b = 1.188, L9_c = 6.834, L9_d = -0.512
+$ double precision, parameter :: L10_a = -1.692, L10_b = 1.195, L10_c = 7.166, L10_d = -0.603
+
+#--------------------------------------------------------------------------------
+$ double precision :: N2_2s_L0_gamma, N2_2s_L1_gamma, N2_2s_L2_gamma, N2_2s_L3_gamma, N2_2s_L4_gamma, N2_2s_L5_gamma
+$ double precision :: N2_2s_L6_gamma, N2_2s_L7_gamma, N2_2s_L8_gamma, N2_2s_L9_gamma, N2_2s_L10_gamma, N2_2s_E_high_gamma
+
+$ N2_2s_L0_gamma = (10**(L0_a+L0_b*(1-exp(-L0_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L0_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L1_gamma = (10**(L1_a+L1_b*(1-exp(-L1_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L1_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L2_gamma = (10**(L2_a+L2_b*(1-exp(-L2_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L2_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L3_gamma = (10**(L3_a+L3_b*(1-exp(-L3_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L3_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L4_gamma = (10**(L4_a+L4_b*(1-exp(-L4_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L4_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L5_gamma = (10**(L5_a+L5_b*(1-exp(-L5_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L5_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L6_gamma = (10**(L6_a+L6_b*(1-exp(-L6_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L6_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L7_gamma = (10**(L7_a+L7_b*(1-exp(-L7_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L7_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L8_gamma = (10**(L8_a+L8_b*(1-exp(-L8_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L8_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L9_gamma = (10**(L9_a+L9_b*(1-exp(-L9_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L9_d*1.38064852d-23*Tgas*6.242d18))))/1
+$ N2_2s_L10_gamma = (10**(L10_a+L10_b*(1-exp(-L10_c*1.38064852d-23*Tgas*6.242d18))+(1-exp(-L10_d*1.38064852d-23*Tgas*6.242d18))))/1
+
+$ N2_2s_E_high_gamma = 0.1
+
+
+$ double precision :: N2_2s_L0_SECOND_PART, N2_2s_L1_SECOND_PART, N2_2s_L2_SECOND_PART, N2_2s_L3_SECOND_PART
+$ double precision :: N2_2s_L4_SECOND_PART, N2_2s_L5_SECOND_PART, N2_2s_L6_SECOND_PART, N2_2s_L7_SECOND_PART
+$ double precision :: N2_2s_L8_SECOND_PART, N2_2s_E_high_SECOND_PART
+
+$ N2_2s_L0_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L0_gamma)/N2_2s_L0_gamma
+$ N2_2s_L1_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L1_gamma)/N2_2s_L1_gamma
+$ N2_2s_L2_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L2_gamma)/N2_2s_L2_gamma
+$ N2_2s_L3_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L3_gamma)/N2_2s_L3_gamma
+$ N2_2s_L4_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L4_gamma)/N2_2s_L4_gamma
+$ N2_2s_L5_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L5_gamma)/N2_2s_L5_gamma
+$ N2_2s_L6_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L6_gamma)/N2_2s_L6_gamma
+$ N2_2s_L7_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L7_gamma)/N2_2s_L7_gamma
+$ N2_2s_L8_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_L8_gamma)/N2_2s_L8_gamma
+$ N2_2s_E_high_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./N2_THERMAL_VEL)*(2.-N2_2s_E_high_gamma)/N2_2s_E_high_gamma
+
+
+N2 + 2Surf => NSurf + NSurf                                            ! 1./((GAMMA_D+N2_2s_L0_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v1) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L1_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v2) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L2_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v3) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L3_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v4) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L4_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v5) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L5_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v6) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L6_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v7) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L7_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(v8) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_L8_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(A3) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(B3) + 2Surf => NSurf + NSurf                                        ! 1./((GAMMA_D+N2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(a`1) + 2Surf => NSurf + NSurf                                       ! 1./((GAMMA_D+N2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+N2(C3) + 2Surf  => NSurf + NSurf                                       ! 1./((GAMMA_D+N2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+
+
+$ double precision :: H2_2s_L0_gamma, H2_2s_L1_gamma, H2_2s_L2_gamma, H2_2s_L3_gamma, H2_2s_E_high_gamma
+
+# based on metal
+$ H2_2s_L0_gamma = 0.001
+$ H2_2s_L1_gamma = 0.01
+$ H2_2s_L2_gamma = 0.05
+$ H2_2s_L3_gamma = 0.1
+$ H2_2s_E_high_gamma = 1
+
+$ double precision :: H2_2s_L0_SECOND_PART, H2_2s_L1_SECOND_PART, H2_2s_L2_SECOND_PART, H2_2s_L3_SECOND_PART
+$ double precision :: H2_2s_E_high_SECOND_PART
+
+$ H2_2s_L0_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_2s_L0_gamma)/H2_2s_L0_gamma
+$ H2_2s_L1_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_2s_L1_gamma)/H2_2s_L1_gamma
+$ H2_2s_L2_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_2s_L2_gamma)/H2_2s_L2_gamma
+$ H2_2s_L3_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_2s_L3_gamma)/H2_2s_L3_gamma
+$ H2_2s_E_high_SECOND_PART = (THE_V/(THE_AREA*ROUGHNESS))*(2./H2_THERMAL_VEL)*(2.-H2_2s_E_high_gamma)/H2_2s_E_high_gamma
+
+H2 + 2Surf => HSurf + HSurf                                            ! 1./((GAMMA_D+H2_2s_L0_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(v1) + 2Surf => HSurf + HSurf                                        ! 1./((GAMMA_D+H2_2s_L1_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(v2) + 2Surf => HSurf + HSurf                                        ! 1./((GAMMA_D+H2_2s_L2_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(v3) + 2Surf => HSurf + HSurf                                        ! 1./((GAMMA_D+H2_2s_L3_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(B3SIG)+ 2Surf  => HSurf + HSurf                                     ! 1./((GAMMA_D+H2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(B1SIG) + 2Surf => HSurf + HSurf                                     ! 1./((GAMMA_D+H2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(C3PI) + 2Surf => HSurf + HSurf                                      ! 1./((GAMMA_D+H2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+H2(A3SIG) + 2Surf => HSurf + HSurf                                     ! 1./((GAMMA_D+H2_2s_E_high_SECOND_PART)*((Tot_sur/(0.5*THE_V/(THE_AREA*ROUGHNESS)))**2))
+
+
+
+END
