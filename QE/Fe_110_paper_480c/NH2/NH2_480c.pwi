@@ -1,0 +1,56 @@
+&CONTROL
+   calculation      = 'scf'
+   prefix           = 'NH2'
+   max_seconds      = 172800
+   etot_conv_thr    = 7.34986176e-07
+   forc_conv_thr    = 0.0003889379346800142
+   disk_io          = 'high'
+   pseudo_dir       = '../../SSSP/'
+/
+&SYSTEM
+   ibrav            = 0
+   starting_magnetization(1) = 0.1
+   starting_magnetization(2) = 0.1
+   ecutwfc          = 60
+   ecutrho          = 480
+   nosym            = .true.
+   occupations      = 'smearing'
+   degauss          = 0.01
+   smearing         = 'mp'
+   nspin            = 2
+   input_dft        = 'pbe'
+   vdw_corr         = 'grimme-d2'
+   ntyp             = 2
+   nat              = 3
+/
+&ELECTRONS
+   electron_maxstep = 1000
+   conv_thr         = 1e-08
+   mixing_mode      = 'local-TF'
+   mixing_beta      = 0.2
+   mixing_ndim      = 10
+   diagonalization  = 'david'
+   diago_thr_init   = 0.0001
+   diago_david_ndim = 4
+/
+&IONS
+/
+&CELL
+/
+
+ATOMIC_SPECIES
+N  14.007 N.pbe-n-radius_5.UPF
+H  1.008 H.pbe-rrkjus_psl.1.0.0.UPF
+
+K_POINTS automatic
+4 4 1  0 0 0
+
+CELL_PARAMETERS angstrom
+20.00000000000000 0.00000000000000 0.00000000000000
+0.00000000000000 20.00000000000000 0.00000000000000
+0.00000000000000 0.00000000000000 20.00000000000000
+
+ATOMIC_POSITIONS angstrom
+N       10.000000000  10.000000000  10.141690000    0   0   0
+H        9.999999972  10.808898787   9.493409146
+H        9.999999960   9.191101264   9.493409077

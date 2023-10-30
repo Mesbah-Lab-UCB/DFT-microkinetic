@@ -1,0 +1,9 @@
+phonons (vibrational modes) for Fe
+ &inputph
+  outdir='./'
+  prefix='Fe_paper_480c'
+  amass(1)=55.845
+  fildyn='Fe.dync'
+  trans=.true.
+ /
+0.0 0.0 0.0

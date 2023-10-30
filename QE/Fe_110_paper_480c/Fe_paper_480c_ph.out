@@ -1,0 +1,584 @@
+
+     Program PHONON v.6.4.1 starts on 18Sep2022 at 13:40:38 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on   160 processors
+
+     MPI processes distributed on     8 nodes
+     K-points division:     npool     =       8
+     R & G space division:  proc/nbgrp/npool/nimage =      20
+
+     Reading data from directory:
+     ./Fe_paper_480c.save/
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation      = PBE ( 1  4  3  4 0 0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+               file Fe.pbe-spn-kjpaw_psl.0.2.1.UPF: wavefunction(s)  3D renormalized
+
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         634     317     83               145278    51361    6989
+     Max         635     318     84               145287    51370    7000
+     Sum       12685    6351   1677              2905599  1027285  139897
+
+     Generating pointlists ...
+     new r_m :   0.1014 (alat units)  1.9031 (a.u.) for type    1
+
+     Check: negative core charge=   -0.000039
+
+     negative rho (up, down):  2.539E-02 1.697E-02
+
+     Calculation of q =    0.0000000   0.0000000   0.0000000
+
+     phonons (vibrational modes) for Fe                                         
+
+     bravais-lattice index     =            0
+     lattice parameter (alat)  =      18.7640  a.u.
+     unit-cell volume          =   16360.3163 (a.u.)^3
+     number of atoms/cell      =           64
+     number of atomic types    =            1
+     kinetic-energy cut-off    =      60.0000  Ry
+     charge density cut-off    =     480.0000  Ry
+     convergence threshold     =      1.0E-12
+     beta                      =       0.7000
+     number of iterations used =            4
+     Exchange-correlation      = PBE ( 1  4  3  4 0 0)
+
+
+     celldm(1)=   18.76404  celldm(2)=    0.00000  celldm(3)=    0.00000
+     celldm(4)=    0.00000  celldm(5)=    0.00000  celldm(6)=    0.00000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (  1.0000  0.0000  0.0000 )  
+               a(2) = (  0.3333  0.9428  0.0000 )  
+               a(3) = (  0.0000  0.0000  2.6266 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.0000 -0.3536  0.0000 )  
+               b(2) = (  0.0000  1.0607  0.0000 )  
+               b(3) = (  0.0000  0.0000  0.3807 )  
+
+
+     Atoms inside the unit cell: 
+
+     Cartesian axes
+
+     site n.  atom      mass           positions (alat units)
+        1     Fe  55.8450   tau(    1) = (    0.16667    0.11785    0.00000  )
+        2     Fe  55.8450   tau(    2) = (    0.00000    0.00000    0.20414  )
+        3     Fe  55.8450   tau(    3) = (    0.50000    0.35355    0.00000  )
+        4     Fe  55.8450   tau(    4) = (    0.33333    0.23570    0.20414  )
+        5     Fe  55.8450   tau(    5) = (    0.16669    0.11786    0.40555  )
+        6     Fe  55.8450   tau(    6) = (    0.33337    0.94282    0.60474  )
+        7     Fe  55.8450   tau(    7) = (    0.50002    0.35356    0.40555  )
+        8     Fe  55.8450   tau(    8) = (    0.33335    0.23580    0.60472  )
+        9     Fe  55.8450   tau(    9) = (    0.25000    0.35355    0.00000  )
+       10     Fe  55.8450   tau(   10) = (    0.41667    0.11785    0.00000  )
+       11     Fe  55.8450   tau(   11) = (    0.08333    0.23570    0.20414  )
+       12     Fe  55.8450   tau(   12) = (    0.25000    0.00000    0.20414  )
+       13     Fe  55.8450   tau(   13) = (    0.25001    0.35357    0.40550  )
+       14     Fe  55.8450   tau(   14) = (    0.41668    0.11789    0.40554  )
+       15     Fe  55.8450   tau(   15) = (    0.08337    0.23573    0.60472  )
+       16     Fe  55.8450   tau(   16) = (    0.25007    0.00009    0.60476  )
+       17     Fe  55.8450   tau(   17) = (    0.66667    0.11785    0.00000  )
+       18     Fe  55.8450   tau(   18) = (    0.50000    0.00000    0.20414  )
+       19     Fe  55.8450   tau(   19) = (    1.00000    0.35355    0.00000  )
+       20     Fe  55.8450   tau(   20) = (    0.83333    0.23570    0.20414  )
+       21     Fe  55.8450   tau(   21) = (    0.66669    0.11788    0.40556  )
+       22     Fe  55.8450   tau(   22) = (    0.50005    0.00002    0.60468  )
+       23     Fe  55.8450   tau(   23) = (    1.00001    0.35357    0.40556  )
+       24     Fe  55.8450   tau(   24) = (    0.83338    0.23571    0.60469  )
+       25     Fe  55.8450   tau(   25) = (    0.75000    0.35355    0.00000  )
+       26     Fe  55.8450   tau(   26) = (    0.91667    0.11785    0.00000  )
+       27     Fe  55.8450   tau(   27) = (    0.58333    0.23570    0.20414  )
+       28     Fe  55.8450   tau(   28) = (    0.75000    0.00000    0.20414  )
+       29     Fe  55.8450   tau(   29) = (    0.75003    0.35355    0.40552  )
+       30     Fe  55.8450   tau(   30) = (    0.91670    0.11785    0.40557  )
+       31     Fe  55.8450   tau(   31) = (    0.58335    0.23574    0.60482  )
+       32     Fe  55.8450   tau(   32) = (    1.08336    0.94283    0.60472  )
+       33     Fe  55.8450   tau(   33) = (    0.33333    0.58925    0.00000  )
+       34     Fe  55.8450   tau(   34) = (    0.16667    0.47140    0.20414  )
+       35     Fe  55.8450   tau(   35) = (    0.66666    0.82496    0.00000  )
+       36     Fe  55.8450   tau(   36) = (    0.50000    0.70711    0.20414  )
+       37     Fe  55.8450   tau(   37) = (    0.33330    0.58932    0.40553  )
+       38     Fe  55.8450   tau(   38) = (    1.16669    0.47141    0.60468  )
+       39     Fe  55.8450   tau(   39) = (    0.66665    0.82504    0.40553  )
+       40     Fe  55.8450   tau(   40) = (    0.49998    0.70720    0.60479  )
+       41     Fe  55.8450   tau(   41) = (    0.41666    0.82496    0.00000  )
+       42     Fe  55.8450   tau(   42) = (    0.58333    0.58925    0.00000  )
+       43     Fe  55.8450   tau(   43) = (    0.25000    0.70711    0.20414  )
+       44     Fe  55.8450   tau(   44) = (    0.41667    0.47140    0.20414  )
+       45     Fe  55.8450   tau(   45) = (    0.41666    0.82500    0.40554  )
+       46     Fe  55.8450   tau(   46) = (    0.58332    0.58932    0.40555  )
+       47     Fe  55.8450   tau(   47) = (    1.24995    0.70711    0.60476  )
+       48     Fe  55.8450   tau(   48) = (    0.41668    0.47148    0.60467  )
+       49     Fe  55.8450   tau(   49) = (    0.83333    0.58925    0.00000  )
+       50     Fe  55.8450   tau(   50) = (    0.66667    0.47140    0.20414  )
+       51     Fe  55.8450   tau(   51) = (    1.16666    0.82496    0.00000  )
+       52     Fe  55.8450   tau(   52) = (    1.00000    0.70711    0.20414  )
+       53     Fe  55.8450   tau(   53) = (    0.83336    0.58927    0.40554  )
+       54     Fe  55.8450   tau(   54) = (    0.66667    0.47147    0.60460  )
+       55     Fe  55.8450   tau(   55) = (    1.16669    0.82497    0.40555  )
+       56     Fe  55.8450   tau(   56) = (    0.99997    0.70717    0.60472  )
+       57     Fe  55.8450   tau(   57) = (    0.91666    0.82496    0.00000  )
+       58     Fe  55.8450   tau(   58) = (    1.08333    0.58925    0.00000  )
+       59     Fe  55.8450   tau(   59) = (    0.75000    0.70711    0.20414  )
+       60     Fe  55.8450   tau(   60) = (    0.91667    0.47140    0.20414  )
+       61     Fe  55.8450   tau(   61) = (    0.91669    0.82499    0.40550  )
+       62     Fe  55.8450   tau(   62) = (    1.08334    0.58928    0.40554  )
+       63     Fe  55.8450   tau(   63) = (    0.74999    0.70717    0.60467  )
+       64     Fe  55.8450   tau(   64) = (    0.91668    0.47144    0.60481  )
+
+     Computing dynamical matrix for 
+                    q = (   0.0000000   0.0000000   0.0000000 )
+
+      2 Sym.Ops. (with q -> -q+G )
+
+
+     G cutoff = 4280.8893  ( 145280 G-vectors)     FFT grid: (135,135,360)
+     G cutoff = 2140.4447  (  51366 G-vectors)  smooth grid: ( 96, 96,243)
+
+     number of k points=    20  mp smearing, width (Ry)=  0.0100
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(    2) = (   0.0000000   0.2651656   0.0000000), wk =   0.1250000
+        k(    3) = (   0.0000000  -0.5303313   0.0000000), wk =   0.0625000
+        k(    4) = (   0.2500000  -0.0883878   0.0000000), wk =   0.1250000
+        k(    5) = (   0.2500000   0.1767779   0.0000000), wk =   0.1250000
+        k(    6) = (   0.2500000  -0.6187190   0.0000000), wk =   0.1250000
+        k(    7) = (   0.2500000  -0.3535534   0.0000000), wk =   0.1250000
+        k(    8) = (  -0.5000000   0.1767755   0.0000000), wk =   0.0625000
+        k(    9) = (  -0.5000000   0.4419412   0.0000000), wk =   0.1250000
+        k(   10) = (  -0.5000000  -0.3535558   0.0000000), wk =   0.0625000
+        k(   11) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(   12) = (   0.0000000   0.2651656   0.0000000), wk =   0.1250000
+        k(   13) = (   0.0000000  -0.5303313   0.0000000), wk =   0.0625000
+        k(   14) = (   0.2500000  -0.0883878   0.0000000), wk =   0.1250000
+        k(   15) = (   0.2500000   0.1767779   0.0000000), wk =   0.1250000
+        k(   16) = (   0.2500000  -0.6187190   0.0000000), wk =   0.1250000
+        k(   17) = (   0.2500000  -0.3535534   0.0000000), wk =   0.1250000
+        k(   18) = (  -0.5000000   0.1767755   0.0000000), wk =   0.0625000
+        k(   19) = (  -0.5000000   0.4419412   0.0000000), wk =   0.1250000
+        k(   20) = (  -0.5000000  -0.3535558   0.0000000), wk =   0.0625000
+
+     PseudoPot. # 1 for Fe read from file:
+     ../SSSP/Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+     MD5 check sum: e86618425769142926afa95317d90200
+     Pseudo is Projector augmented-wave + core cor, Zval = 16.0
+     Generated using "atomic" code by A. Dal Corso v.5.0.99 svn rev. 10869
+     Shape of augmentation charge: PSQ
+     Using radial grid of 1191 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+     Q(r) pseudized with 0 coefficients 
+
+
+     Mode symmetry, C_1 (1)     point group:
+
+
+     Atomic displacements:
+     There are 192 irreducible representations
+
+     Representation     1      1 modes -A  To be done
+
+     Representation     2      1 modes -A  To be done
+
+     Representation     3      1 modes -A  To be done
+
+     Representation     4      1 modes -A  To be done
+
+     Representation     5      1 modes -A  To be done
+
+     Representation     6      1 modes -A  To be done
+
+     Representation     7      1 modes -A  To be done
+
+     Representation     8      1 modes -A  To be done
+
+     Representation     9      1 modes -A  To be done
+
+     Representation    10      1 modes -A  To be done
+
+     Representation    11      1 modes -A  To be done
+
+     Representation    12      1 modes -A  To be done
+
+     Representation    13      1 modes -A  To be done
+
+     Representation    14      1 modes -A  To be done
+
+     Representation    15      1 modes -A  To be done
+
+     Representation    16      1 modes -A  To be done
+
+     Representation    17      1 modes -A  To be done
+
+     Representation    18      1 modes -A  To be done
+
+     Representation    19      1 modes -A  To be done
+
+     Representation    20      1 modes -A  To be done
+
+     Representation    21      1 modes -A  To be done
+
+     Representation    22      1 modes -A  To be done
+
+     Representation    23      1 modes -A  To be done
+
+     Representation    24      1 modes -A  To be done
+
+     Representation    25      1 modes -A  To be done
+
+     Representation    26      1 modes -A  To be done
+
+     Representation    27      1 modes -A  To be done
+
+     Representation    28      1 modes -A  To be done
+
+     Representation    29      1 modes -A  To be done
+
+     Representation    30      1 modes -A  To be done
+
+     Representation    31      1 modes -A  To be done
+
+     Representation    32      1 modes -A  To be done
+
+     Representation    33      1 modes -A  To be done
+
+     Representation    34      1 modes -A  To be done
+
+     Representation    35      1 modes -A  To be done
+
+     Representation    36      1 modes -A  To be done
+
+     Representation    37      1 modes -A  To be done
+
+     Representation    38      1 modes -A  To be done
+
+     Representation    39      1 modes -A  To be done
+
+     Representation    40      1 modes -A  To be done
+
+     Representation    41      1 modes -A  To be done
+
+     Representation    42      1 modes -A  To be done
+
+     Representation    43      1 modes -A  To be done
+
+     Representation    44      1 modes -A  To be done
+
+     Representation    45      1 modes -A  To be done
+
+     Representation    46      1 modes -A  To be done
+
+     Representation    47      1 modes -A  To be done
+
+     Representation    48      1 modes -A  To be done
+
+     Representation    49      1 modes -A  To be done
+
+     Representation    50      1 modes -A  To be done
+
+     Representation    51      1 modes -A  To be done
+
+     Representation    52      1 modes -A  To be done
+
+     Representation    53      1 modes -A  To be done
+
+     Representation    54      1 modes -A  To be done
+
+     Representation    55      1 modes -A  To be done
+
+     Representation    56      1 modes -A  To be done
+
+     Representation    57      1 modes -A  To be done
+
+     Representation    58      1 modes -A  To be done
+
+     Representation    59      1 modes -A  To be done
+
+     Representation    60      1 modes -A  To be done
+
+     Representation    61      1 modes -A  To be done
+
+     Representation    62      1 modes -A  To be done
+
+     Representation    63      1 modes -A  To be done
+
+     Representation    64      1 modes -A  To be done
+
+     Representation    65      1 modes -A  To be done
+
+     Representation    66      1 modes -A  To be done
+
+     Representation    67      1 modes -A  To be done
+
+     Representation    68      1 modes -A  To be done
+
+     Representation    69      1 modes -A  To be done
+
+     Representation    70      1 modes -A  To be done
+
+     Representation    71      1 modes -A  To be done
+
+     Representation    72      1 modes -A  To be done
+
+     Representation    73      1 modes -A  To be done
+
+     Representation    74      1 modes -A  To be done
+
+     Representation    75      1 modes -A  To be done
+
+     Representation    76      1 modes -A  To be done
+
+     Representation    77      1 modes -A  To be done
+
+     Representation    78      1 modes -A  To be done
+
+     Representation    79      1 modes -A  To be done
+
+     Representation    80      1 modes -A  To be done
+
+     Representation    81      1 modes -A  To be done
+
+     Representation    82      1 modes -A  To be done
+
+     Representation    83      1 modes -A  To be done
+
+     Representation    84      1 modes -A  To be done
+
+     Representation    85      1 modes -A  To be done
+
+     Representation    86      1 modes -A  To be done
+
+     Representation    87      1 modes -A  To be done
+
+     Representation    88      1 modes -A  To be done
+
+     Representation    89      1 modes -A  To be done
+
+     Representation    90      1 modes -A  To be done
+
+     Representation    91      1 modes -A  To be done
+
+     Representation    92      1 modes -A  To be done
+
+     Representation    93      1 modes -A  To be done
+
+     Representation    94      1 modes -A  To be done
+
+     Representation    95      1 modes -A  To be done
+
+     Representation    96      1 modes -A  To be done
+
+     Representation    97      1 modes -A  To be done
+
+     Representation    98      1 modes -A  To be done
+
+     Representation    99      1 modes -A  To be done
+
+     Representation   100      1 modes -A  To be done
+
+     Representation   101      1 modes -A  To be done
+
+     Representation   102      1 modes -A  To be done
+
+     Representation   103      1 modes -A  To be done
+
+     Representation   104      1 modes -A  To be done
+
+     Representation   105      1 modes -A  To be done
+
+     Representation   106      1 modes -A  To be done
+
+     Representation   107      1 modes -A  To be done
+
+     Representation   108      1 modes -A  To be done
+
+     Representation   109      1 modes -A  To be done
+
+     Representation   110      1 modes -A  To be done
+
+     Representation   111      1 modes -A  To be done
+
+     Representation   112      1 modes -A  To be done
+
+     Representation   113      1 modes -A  To be done
+
+     Representation   114      1 modes -A  To be done
+
+     Representation   115      1 modes -A  To be done
+
+     Representation   116      1 modes -A  To be done
+
+     Representation   117      1 modes -A  To be done
+
+     Representation   118      1 modes -A  To be done
+
+     Representation   119      1 modes -A  To be done
+
+     Representation   120      1 modes -A  To be done
+
+     Representation   121      1 modes -A  To be done
+
+     Representation   122      1 modes -A  To be done
+
+     Representation   123      1 modes -A  To be done
+
+     Representation   124      1 modes -A  To be done
+
+     Representation   125      1 modes -A  To be done
+
+     Representation   126      1 modes -A  To be done
+
+     Representation   127      1 modes -A  To be done
+
+     Representation   128      1 modes -A  To be done
+
+     Representation   129      1 modes -A  To be done
+
+     Representation   130      1 modes -A  To be done
+
+     Representation   131      1 modes -A  To be done
+
+     Representation   132      1 modes -A  To be done
+
+     Representation   133      1 modes -A  To be done
+
+     Representation   134      1 modes -A  To be done
+
+     Representation   135      1 modes -A  To be done
+
+     Representation   136      1 modes -A  To be done
+
+     Representation   137      1 modes -A  To be done
+
+     Representation   138      1 modes -A  To be done
+
+     Representation   139      1 modes -A  To be done
+
+     Representation   140      1 modes -A  To be done
+
+     Representation   141      1 modes -A  To be done
+
+     Representation   142      1 modes -A  To be done
+
+     Representation   143      1 modes -A  To be done
+
+     Representation   144      1 modes -A  To be done
+
+     Representation   145      1 modes -A  To be done
+
+     Representation   146      1 modes -A  To be done
+
+     Representation   147      1 modes -A  To be done
+
+     Representation   148      1 modes -A  To be done
+
+     Representation   149      1 modes -A  To be done
+
+     Representation   150      1 modes -A  To be done
+
+     Representation   151      1 modes -A  To be done
+
+     Representation   152      1 modes -A  To be done
+
+     Representation   153      1 modes -A  To be done
+
+     Representation   154      1 modes -A  To be done
+
+     Representation   155      1 modes -A  To be done
+
+     Representation   156      1 modes -A  To be done
+
+     Representation   157      1 modes -A  To be done
+
+     Representation   158      1 modes -A  To be done
+
+     Representation   159      1 modes -A  To be done
+
+     Representation   160      1 modes -A  To be done
+
+     Representation   161      1 modes -A  To be done
+
+     Representation   162      1 modes -A  To be done
+
+     Representation   163      1 modes -A  To be done
+
+     Representation   164      1 modes -A  To be done
+
+     Representation   165      1 modes -A  To be done
+
+     Representation   166      1 modes -A  To be done
+
+     Representation   167      1 modes -A  To be done
+
+     Representation   168      1 modes -A  To be done
+
+     Representation   169      1 modes -A  To be done
+
+     Representation   170      1 modes -A  To be done
+
+     Representation   171      1 modes -A  To be done
+
+     Representation   172      1 modes -A  To be done
+
+     Representation   173      1 modes -A  To be done
+
+     Representation   174      1 modes -A  To be done
+
+     Representation   175      1 modes -A  To be done
+
+     Representation   176      1 modes -A  To be done
+
+     Representation   177      1 modes -A  To be done
+
+     Representation   178      1 modes -A  To be done
+
+     Representation   179      1 modes -A  To be done
+
+     Representation   180      1 modes -A  To be done
+
+     Representation   181      1 modes -A  To be done
+
+     Representation   182      1 modes -A  To be done
+
+     Representation   183      1 modes -A  To be done
+
+     Representation   184      1 modes -A  To be done
+
+     Representation   185      1 modes -A  To be done
+
+     Representation   186      1 modes -A  To be done
+
+     Representation   187      1 modes -A  To be done
+
+     Representation   188      1 modes -A  To be done
+
+     Representation   189      1 modes -A  To be done
+
+     Representation   190      1 modes -A  To be done
+
+     Representation   191      1 modes -A  To be done
+
+     Representation   192      1 modes -A  To be done
+
+
+--------------------------------------------------------------------------
+mpirun noticed that process rank 80 with PID 13700 on node n0057.savio1 exited on signal 9 (Killed).
+--------------------------------------------------------------------------

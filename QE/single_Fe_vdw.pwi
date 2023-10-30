@@ -1,0 +1,49 @@
+&CONTROL
+   calculation      = 'vc-relax'
+   prefix           = 'Fe_bulk_vdw'
+   etot_conv_thr    = 1e-06
+   forc_conv_thr    = 1e-05
+   disk_io          = 'low'
+   pseudo_dir       = './SSSP/'
+/
+&SYSTEM
+   ibrav            = 3
+   celldm(1)        = 5.416911045
+   starting_magnetization(1) = 0.1
+   ecutwfc          = 90
+   ecutrho          = 900
+   occupations      = 'smearing'
+   degauss          = 0.01
+   smearing         = 'mp'
+   nspin            = 2
+   input_dft        = 'pbe'
+   vdw_corr         = 'grimme-d2'
+   ntyp             = 1
+   nat              = 1
+/
+&ELECTRONS
+   electron_maxstep = 1000
+   conv_thr         = 1e-08
+   mixing_mode      = 'local-TF'
+   mixing_beta      = 0.1
+   mixing_ndim      = 10
+   diagonalization  = 'david'
+   diago_thr_init   = 0.0001
+   diago_david_ndim = 4
+/
+&IONS
+/
+&CELL
+   cell_dofree = 'ibrav'
+/
+
+ATOMIC_SPECIES
+Fe  55.845 Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+
+K_POINTS automatic
+12 12 12  0 0 0
+
+
+ATOMIC_POSITIONS angstrom
+Fe  0.0000000000 0.0000000000 0.0000000000  
+

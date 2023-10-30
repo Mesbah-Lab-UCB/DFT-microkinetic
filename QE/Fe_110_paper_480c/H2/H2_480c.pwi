@@ -1,0 +1,53 @@
+&CONTROL
+   calculation      = 'relax'
+   prefix           = 'H2'
+   max_seconds      = 172800
+   etot_conv_thr    = 7.34986176e-07
+   forc_conv_thr    = 0.0003889379346800142
+   disk_io          = 'high'
+   pseudo_dir       = '../../SSSP/'
+/
+&SYSTEM
+   ibrav            = 0
+   starting_magnetization(1) = 0.1
+   ecutwfc          = 60
+   ecutrho          = 480
+   nosym            = .true.
+   occupations      = 'smearing'
+   degauss          = 0.01
+   smearing         = 'mp'
+   nspin            = 2
+   input_dft        = 'pbe'
+   vdw_corr         = 'grimme-d2'
+   ntyp             = 1
+   nat              = 2
+/
+&ELECTRONS
+   electron_maxstep = 1000
+   conv_thr         = 1e-08
+   mixing_mode      = 'plain'
+   mixing_beta      = 0.7
+   mixing_ndim      = 10
+   diagonalization  = 'cg'
+   diago_thr_init   = 0.0001
+   diago_david_ndim = 4
+/
+&IONS
+/
+&CELL
+/
+
+ATOMIC_SPECIES
+H  1.008 H.pbe-rrkjus_psl.1.0.0.UPF
+
+K_POINTS automatic
+4 4 1  0 0 0
+
+CELL_PARAMETERS angstrom
+20.00000000000000 0.00000000000000 0.00000000000000
+0.00000000000000 20.00000000000000 0.00000000000000
+0.00000000000000 0.00000000000000 20.00000000000000
+
+ATOMIC_POSITIONS angstrom
+H       10.000000000  10.000000000  10.000000000    0   0   0
+H       10.000000000  10.000000000  10.738000000    
