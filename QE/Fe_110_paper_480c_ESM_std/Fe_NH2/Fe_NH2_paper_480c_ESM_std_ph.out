@@ -1,0 +1,643 @@
+
+     Program PHONON v.7.1 starts on 20Sep2022 at 10:40:16 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+         "P. Giannozzi et al., J. Chem. Phys. 152 154105 (2020);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on   256 processors
+
+     MPI processes distributed on     2 nodes
+     K-points division:     npool     =       8
+     R & G space division:  proc/nbgrp/npool/nimage =      32
+     239746 MiB available memory on the printing compute node when the environment starts
+ 
+     Waiting for input...
+     Reading input from standard input
+
+     Reading xml data from directory:
+
+     ./Fe_NH2_paper_480c_ESM_std.save/
+     Message from routine qes_read:control_variablesType:
+     fcp: wrong number of occurrences
+     Message from routine qes_read:control_variablesType:
+     rism: wrong number of occurrences
+     Message from routine qexsd_readschema :
+     input info not found or not readable in xml file
+     file Fe.pbe-spn-kjpaw_psl.0.2.1.UPF: wavefunction(s)  3D renormalized
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+ 
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         396     198     52                90796    32100    4368
+     Max         397     199     53                90807    32109    4377
+     Sum       12685    6351   1677              2905599  1027285  139897
+ 
+     Using Slab Decomposition
+ 
+
+     Check: negative core charge=   -0.000039
+
+     negative rho (up, down):  1.179E-02 1.630E-02
+     Reading collected, re-writing distributed wavefunctions
+
+     Calculation of q =    0.0000000   0.0000000   0.0000000
+
+     phonons (vibrational modes) for Fe-NH2                                     
+
+     bravais-lattice index     =            0
+     lattice parameter (alat)  =      18.7640  a.u.
+     unit-cell volume          =   16360.3161 (a.u.)^3
+     number of atoms/cell      =           67
+     number of atomic types    =            3
+     kinetic-energy cut-off    =      60.0000  Ry
+     charge density cut-off    =     480.0000  Ry
+     convergence threshold     =      1.0E-12
+     beta                      =       0.2000
+     number of iterations used =            4
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+
+
+     celldm(1)=   18.76404  celldm(2)=    0.00000  celldm(3)=    0.00000
+     celldm(4)=    0.00000  celldm(5)=    0.00000  celldm(6)=    0.00000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (  1.0000  0.0000  0.0000 )  
+               a(2) = (  0.3333  0.9428  0.0000 )  
+               a(3) = (  0.0000  0.0000  2.6266 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.0000 -0.3536  0.0000 )  
+               b(2) = (  0.0000  1.0607  0.0000 )  
+               b(3) = (  0.0000  0.0000  0.3807 )  
+
+
+     Atoms inside the unit cell: 
+
+     Cartesian axes
+
+     site n.  atom      mass           positions (alat units)
+        1     Fe  55.8450   tau(    1) = (    0.16667    0.11785    0.00000  )
+        2     Fe  55.8450   tau(    2) = (    0.00000    0.00000    0.20414  )
+        3     Fe  55.8450   tau(    3) = (    0.50000    0.35355    0.00000  )
+        4     Fe  55.8450   tau(    4) = (    0.33333    0.23570    0.20414  )
+        5     Fe  55.8450   tau(    5) = (    0.16594    0.11760    0.40526  )
+        6     Fe  55.8450   tau(    6) = (    0.33266    0.94377    0.60426  )
+        7     Fe  55.8450   tau(    7) = (    0.49950    0.35399    0.40395  )
+        8     Fe  55.8450   tau(    8) = (    0.33273    0.23487    0.60434  )
+        9     Fe  55.8450   tau(    9) = (    0.25000    0.35355    0.00000  )
+       10     Fe  55.8450   tau(   10) = (    0.41667    0.11785    0.00000  )
+       11     Fe  55.8450   tau(   11) = (    0.08333    0.23570    0.20414  )
+       12     Fe  55.8450   tau(   12) = (    0.25000    0.00000    0.20414  )
+       13     Fe  55.8450   tau(   13) = (    0.25000    0.35355    0.40553  )
+       14     Fe  55.8450   tau(   14) = (    0.41585    0.11728    0.40461  )
+       15     Fe  55.8450   tau(   15) = (    0.08201    0.23616    0.60326  )
+       16     Fe  55.8450   tau(   16) = (    0.24953   -0.00032    0.60535  )
+       17     Fe  55.8450   tau(   17) = (    0.66667    0.11785    0.00000  )
+       18     Fe  55.8450   tau(   18) = (    0.50000    0.00000    0.20414  )
+       19     Fe  55.8450   tau(   19) = (    1.00000    0.35355    0.00000  )
+       20     Fe  55.8450   tau(   20) = (    0.83333    0.23570    0.20414  )
+       21     Fe  55.8450   tau(   21) = (    0.66692    0.11723    0.40396  )
+       22     Fe  55.8450   tau(   22) = (    0.49902   -0.00030    0.60432  )
+       23     Fe  55.8450   tau(   23) = (    1.00052    0.35311    0.40396  )
+       24     Fe  55.8450   tau(   24) = (    0.83379    0.23511    0.61270  )
+       25     Fe  55.8450   tau(   25) = (    0.75000    0.35355    0.00000  )
+       26     Fe  55.8450   tau(   26) = (    0.91667    0.11785    0.00000  )
+       27     Fe  55.8450   tau(   27) = (    0.58333    0.23570    0.20414  )
+       28     Fe  55.8450   tau(   28) = (    0.75000    0.00000    0.20414  )
+       29     Fe  55.8450   tau(   29) = (    0.75001    0.35354    0.40724  )
+       30     Fe  55.8450   tau(   30) = (    0.91559    0.11938    0.40758  )
+       31     Fe  55.8450   tau(   31) = (    0.57833    0.23216    0.59707  )
+       32     Fe  55.8450   tau(   32) = (    1.08335    0.94423    0.60327  )
+       33     Fe  55.8450   tau(   33) = (    0.33333    0.58925    0.00000  )
+       34     Fe  55.8450   tau(   34) = (    0.16667    0.47140    0.20414  )
+       35     Fe  55.8450   tau(   35) = (    0.66666    0.82496    0.00000  )
+       36     Fe  55.8450   tau(   36) = (    0.50000    0.70711    0.20414  )
+       37     Fe  55.8450   tau(   37) = (    0.33405    0.58952    0.40526  )
+       38     Fe  55.8450   tau(   38) = (    1.16729    0.47224    0.60432  )
+       39     Fe  55.8450   tau(   39) = (    0.66618    0.82438    0.40526  )
+       40     Fe  55.8450   tau(   40) = (    0.50065    0.70619    0.60422  )
+       41     Fe  55.8450   tau(   41) = (    0.41666    0.82496    0.00000  )
+       42     Fe  55.8450   tau(   42) = (    0.58333    0.58925    0.00000  )
+       43     Fe  55.8450   tau(   43) = (    0.25000    0.70711    0.20414  )
+       44     Fe  55.8450   tau(   44) = (    0.41667    0.47140    0.20414  )
+       45     Fe  55.8450   tau(   45) = (    0.41664    0.82499    0.40586  )
+       46     Fe  55.8450   tau(   46) = (    0.58440    0.58775    0.40757  )
+       47     Fe  55.8450   tau(   47) = (    1.25046    0.70745    0.60535  )
+       48     Fe  55.8450   tau(   48) = (    0.41802    0.47096    0.60328  )
+       49     Fe  55.8450   tau(   49) = (    0.83333    0.58925    0.00000  )
+       50     Fe  55.8450   tau(   50) = (    0.66667    0.47140    0.20414  )
+       51     Fe  55.8450   tau(   51) = (    1.16666    0.82496    0.00000  )
+       52     Fe  55.8450   tau(   52) = (    1.00000    0.70711    0.20414  )
+       53     Fe  55.8450   tau(   53) = (    0.83309    0.58988    0.40395  )
+       54     Fe  55.8450   tau(   54) = (    0.66629    0.47197    0.61267  )
+       55     Fe  55.8450   tau(   55) = (    1.16714    0.82557    0.40526  )
+       56     Fe  55.8450   tau(   56) = (    1.00099    0.70741    0.60434  )
+       57     Fe  55.8450   tau(   57) = (    0.91666    0.82496    0.00000  )
+       58     Fe  55.8450   tau(   58) = (    1.08333    0.58925    0.00000  )
+       59     Fe  55.8450   tau(   59) = (    0.75000    0.70711    0.20414  )
+       60     Fe  55.8450   tau(   60) = (    0.91667    0.47140    0.20414  )
+       61     Fe  55.8450   tau(   61) = (    0.91667    0.82497    0.40553  )
+       62     Fe  55.8450   tau(   62) = (    1.08415    0.58983    0.40461  )
+       63     Fe  55.8450   tau(   63) = (    0.74998    0.70570    0.60328  )
+       64     Fe  55.8450   tau(   64) = (    0.92169    0.47495    0.59707  )
+       65     N   14.0067   tau(   65) = (    0.75012    0.35362    0.75292  )
+       66     H    1.0078   tau(   66) = (    0.81690    0.40089    0.81653  )
+       67     H    1.0078   tau(   67) = (    0.68334    0.30639    0.81658  )
+
+     Computing dynamical matrix for 
+                    q = (   0.0000000   0.0000000   0.0000000 )
+ 
+      2 Sym.Ops. (with q -> -q+G )
+
+
+     G cutoff = 4280.8893  (  90803 G-vectors)     FFT grid: (135,135,360)
+     G cutoff = 2140.4446  (  32103 G-vectors)  smooth grid: ( 96, 96,243)
+
+     number of k points=    20  Methfessel-Paxton smearing, width (Ry)=  0.0100
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(    2) = (   0.0000000   0.2651656   0.0000000), wk =   0.1250000
+        k(    3) = (   0.0000000  -0.5303313   0.0000000), wk =   0.0625000
+        k(    4) = (   0.2500000  -0.0883878   0.0000000), wk =   0.1250000
+        k(    5) = (   0.2500000   0.1767779   0.0000000), wk =   0.1250000
+        k(    6) = (   0.2500000  -0.6187190   0.0000000), wk =   0.1250000
+        k(    7) = (   0.2500000  -0.3535534   0.0000000), wk =   0.1250000
+        k(    8) = (  -0.5000000   0.1767755   0.0000000), wk =   0.0625000
+        k(    9) = (  -0.5000000   0.4419412   0.0000000), wk =   0.1250000
+        k(   10) = (  -0.5000000  -0.3535558   0.0000000), wk =   0.0625000
+        k(   11) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(   12) = (   0.0000000   0.2651656   0.0000000), wk =   0.1250000
+        k(   13) = (   0.0000000  -0.5303313   0.0000000), wk =   0.0625000
+        k(   14) = (   0.2500000  -0.0883878   0.0000000), wk =   0.1250000
+        k(   15) = (   0.2500000   0.1767779   0.0000000), wk =   0.1250000
+        k(   16) = (   0.2500000  -0.6187190   0.0000000), wk =   0.1250000
+        k(   17) = (   0.2500000  -0.3535534   0.0000000), wk =   0.1250000
+        k(   18) = (  -0.5000000   0.1767755   0.0000000), wk =   0.0625000
+        k(   19) = (  -0.5000000   0.4419412   0.0000000), wk =   0.1250000
+        k(   20) = (  -0.5000000  -0.3535558   0.0000000), wk =   0.0625000
+
+     PseudoPot. # 1 for Fe read from file:
+     ../../SSSP/Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+     MD5 check sum: e86618425769142926afa95317d90200
+     Pseudo is Projector augmented-wave + core cor, Zval = 16.0
+     Generated using "atomic" code by A. Dal Corso  v.5.0.99 svn rev. 10869
+     Shape of augmentation charge: PSQ
+     Using radial grid of 1191 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+     Q(r) pseudized with 0 coefficients 
+
+
+     PseudoPot. # 2 for N  read from file:
+     ../../SSSP/N.pbe-n-radius_5.UPF
+     MD5 check sum: 16739722b17309cd8fe442a2ace49922
+     Pseudo is Ultrasoft + core correction, Zval =  5.0
+     Generated using "atomic" code by A. Dal Corso  v.5.1
+     Using radial grid of 1085 points,  4 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+     Q(r) pseudized with 0 coefficients 
+
+
+     PseudoPot. # 3 for H  read from file:
+     ../../SSSP/H.pbe-rrkjus_psl.1.0.0.UPF
+     MD5 check sum: f52b6d4d1c606e5624b1dc7b2218f220
+     Pseudo is Ultrasoft, Zval =  1.0
+     Generated using "atomic" code by A. Dal Corso  v.5.1
+     Using radial grid of  929 points,  2 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+     Q(r) pseudized with 0 coefficients 
+
+
+     Mode symmetry, C_1 (1)     point group:
+
+
+     Atomic displacements:
+     There are  201 irreducible representations
+
+     Representation     1      1 modes -  Not done in this run
+
+     Representation     2      1 modes -  Not done in this run
+
+     Representation     3      1 modes -  Not done in this run
+
+     Representation     4      1 modes -  Not done in this run
+
+     Representation     5      1 modes -  Not done in this run
+
+     Representation     6      1 modes -  Not done in this run
+
+     Representation     7      1 modes -  Not done in this run
+
+     Representation     8      1 modes -  Not done in this run
+
+     Representation     9      1 modes -  Not done in this run
+
+     Representation    10      1 modes -  Not done in this run
+
+     Representation    11      1 modes -  Not done in this run
+
+     Representation    12      1 modes -  Not done in this run
+
+     Representation    13      1 modes -  Not done in this run
+
+     Representation    14      1 modes -  Not done in this run
+
+     Representation    15      1 modes -  Not done in this run
+
+     Representation    16      1 modes -  Not done in this run
+
+     Representation    17      1 modes -  Not done in this run
+
+     Representation    18      1 modes -  Not done in this run
+
+     Representation    19      1 modes -  Not done in this run
+
+     Representation    20      1 modes -  Not done in this run
+
+     Representation    21      1 modes -  Not done in this run
+
+     Representation    22      1 modes -  Not done in this run
+
+     Representation    23      1 modes -  Not done in this run
+
+     Representation    24      1 modes -  Not done in this run
+
+     Representation    25      1 modes -  Not done in this run
+
+     Representation    26      1 modes -  Not done in this run
+
+     Representation    27      1 modes -  Not done in this run
+
+     Representation    28      1 modes -  Not done in this run
+
+     Representation    29      1 modes -  Not done in this run
+
+     Representation    30      1 modes -  Not done in this run
+
+     Representation    31      1 modes -  Not done in this run
+
+     Representation    32      1 modes -  Not done in this run
+
+     Representation    33      1 modes -  Not done in this run
+
+     Representation    34      1 modes -  Not done in this run
+
+     Representation    35      1 modes -  Not done in this run
+
+     Representation    36      1 modes -  Not done in this run
+
+     Representation    37      1 modes -  Not done in this run
+
+     Representation    38      1 modes -  Not done in this run
+
+     Representation    39      1 modes -  Not done in this run
+
+     Representation    40      1 modes -  Not done in this run
+
+     Representation    41      1 modes -  Not done in this run
+
+     Representation    42      1 modes -  Not done in this run
+
+     Representation    43      1 modes -  Not done in this run
+
+     Representation    44      1 modes -  Not done in this run
+
+     Representation    45      1 modes -  Not done in this run
+
+     Representation    46      1 modes -  Not done in this run
+
+     Representation    47      1 modes -  Not done in this run
+
+     Representation    48      1 modes -  Not done in this run
+
+     Representation    49      1 modes -  Not done in this run
+
+     Representation    50      1 modes -  Not done in this run
+
+     Representation    51      1 modes -  Not done in this run
+
+     Representation    52      1 modes -  Not done in this run
+
+     Representation    53      1 modes -  Not done in this run
+
+     Representation    54      1 modes -  Not done in this run
+
+     Representation    55      1 modes -  Not done in this run
+
+     Representation    56      1 modes -  Not done in this run
+
+     Representation    57      1 modes -  Not done in this run
+
+     Representation    58      1 modes -  Not done in this run
+
+     Representation    59      1 modes -  Not done in this run
+
+     Representation    60      1 modes -  Not done in this run
+
+     Representation    61      1 modes -  Not done in this run
+
+     Representation    62      1 modes -  Not done in this run
+
+     Representation    63      1 modes -  Not done in this run
+
+     Representation    64      1 modes -  Not done in this run
+
+     Representation    65      1 modes -  Not done in this run
+
+     Representation    66      1 modes -  Not done in this run
+
+     Representation    67      1 modes -  Not done in this run
+
+     Representation    68      1 modes -  Not done in this run
+
+     Representation    69      1 modes -  Not done in this run
+
+     Representation    70      1 modes -  Not done in this run
+
+     Representation    71      1 modes -  Not done in this run
+
+     Representation    72      1 modes -  Not done in this run
+
+     Representation    73      1 modes -  Not done in this run
+
+     Representation    74      1 modes -  Not done in this run
+
+     Representation    75      1 modes -  Not done in this run
+
+     Representation    76      1 modes -  Not done in this run
+
+     Representation    77      1 modes -  Not done in this run
+
+     Representation    78      1 modes -  Not done in this run
+
+     Representation    79      1 modes -  Not done in this run
+
+     Representation    80      1 modes -  Not done in this run
+
+     Representation    81      1 modes -  Not done in this run
+
+     Representation    82      1 modes -  Not done in this run
+
+     Representation    83      1 modes -  Not done in this run
+
+     Representation    84      1 modes -  Not done in this run
+
+     Representation    85      1 modes -  Not done in this run
+
+     Representation    86      1 modes -  Not done in this run
+
+     Representation    87      1 modes -  Not done in this run
+
+     Representation    88      1 modes -  Not done in this run
+
+     Representation    89      1 modes -  Not done in this run
+
+     Representation    90      1 modes -  Not done in this run
+
+     Representation    91      1 modes -  Not done in this run
+
+     Representation    92      1 modes -  Not done in this run
+
+     Representation    93      1 modes -  Not done in this run
+
+     Representation    94      1 modes -  Not done in this run
+
+     Representation    95      1 modes -  Not done in this run
+
+     Representation    96      1 modes -  Not done in this run
+
+     Representation    97      1 modes -  Not done in this run
+
+     Representation    98      1 modes -  Not done in this run
+
+     Representation    99      1 modes -  Not done in this run
+
+     Representation   100      1 modes -  Not done in this run
+
+     Representation   101      1 modes -  Not done in this run
+
+     Representation   102      1 modes -  Not done in this run
+
+     Representation   103      1 modes -  Not done in this run
+
+     Representation   104      1 modes -  Not done in this run
+
+     Representation   105      1 modes -  Not done in this run
+
+     Representation   106      1 modes -  Not done in this run
+
+     Representation   107      1 modes -  Not done in this run
+
+     Representation   108      1 modes -  Not done in this run
+
+     Representation   109      1 modes -  Not done in this run
+
+     Representation   110      1 modes -  Not done in this run
+
+     Representation   111      1 modes -  Not done in this run
+
+     Representation   112      1 modes -  Not done in this run
+
+     Representation   113      1 modes -  Not done in this run
+
+     Representation   114      1 modes -  Not done in this run
+
+     Representation   115      1 modes -  Not done in this run
+
+     Representation   116      1 modes -  Not done in this run
+
+     Representation   117      1 modes -  Not done in this run
+
+     Representation   118      1 modes -  Not done in this run
+
+     Representation   119      1 modes -  Not done in this run
+
+     Representation   120      1 modes -  Not done in this run
+
+     Representation   121      1 modes -  Not done in this run
+
+     Representation   122      1 modes -  Not done in this run
+
+     Representation   123      1 modes -  Not done in this run
+
+     Representation   124      1 modes -  Not done in this run
+
+     Representation   125      1 modes -  Not done in this run
+
+     Representation   126      1 modes -  Not done in this run
+
+     Representation   127      1 modes -  Not done in this run
+
+     Representation   128      1 modes -  Not done in this run
+
+     Representation   129      1 modes -  Not done in this run
+
+     Representation   130      1 modes -  Not done in this run
+
+     Representation   131      1 modes -  Not done in this run
+
+     Representation   132      1 modes -  Not done in this run
+
+     Representation   133      1 modes -  Not done in this run
+
+     Representation   134      1 modes -  Not done in this run
+
+     Representation   135      1 modes -  Not done in this run
+
+     Representation   136      1 modes -  Not done in this run
+
+     Representation   137      1 modes -  Not done in this run
+
+     Representation   138      1 modes -  Not done in this run
+
+     Representation   139      1 modes -  Not done in this run
+
+     Representation   140      1 modes -  Not done in this run
+
+     Representation   141      1 modes -  Not done in this run
+
+     Representation   142      1 modes -  Not done in this run
+
+     Representation   143      1 modes -  Not done in this run
+
+     Representation   144      1 modes -  Not done in this run
+
+     Representation   145      1 modes -  Not done in this run
+
+     Representation   146      1 modes -  Not done in this run
+
+     Representation   147      1 modes -  Not done in this run
+
+     Representation   148      1 modes -  Not done in this run
+
+     Representation   149      1 modes -  Not done in this run
+
+     Representation   150      1 modes -  Not done in this run
+
+     Representation   151      1 modes -  Not done in this run
+
+     Representation   152      1 modes -  Not done in this run
+
+     Representation   153      1 modes -  Not done in this run
+
+     Representation   154      1 modes -  Not done in this run
+
+     Representation   155      1 modes -  Not done in this run
+
+     Representation   156      1 modes -  Not done in this run
+
+     Representation   157      1 modes -  Not done in this run
+
+     Representation   158      1 modes -  Not done in this run
+
+     Representation   159      1 modes -  Not done in this run
+
+     Representation   160      1 modes -  Not done in this run
+
+     Representation   161      1 modes -  Not done in this run
+
+     Representation   162      1 modes -  Not done in this run
+
+     Representation   163      1 modes -  Not done in this run
+
+     Representation   164      1 modes -  Not done in this run
+
+     Representation   165      1 modes -  Not done in this run
+
+     Representation   166      1 modes -  Not done in this run
+
+     Representation   167      1 modes -  Not done in this run
+
+     Representation   168      1 modes -  Not done in this run
+
+     Representation   169      1 modes -  Not done in this run
+
+     Representation   170      1 modes -  Not done in this run
+
+     Representation   171      1 modes -  Not done in this run
+
+     Representation   172      1 modes -  Not done in this run
+
+     Representation   173      1 modes -  Not done in this run
+
+     Representation   174      1 modes -  Not done in this run
+
+     Representation   175      1 modes -  Not done in this run
+
+     Representation   176      1 modes -  Not done in this run
+
+     Representation   177      1 modes -  Not done in this run
+
+     Representation   178      1 modes -  Not done in this run
+
+     Representation   179      1 modes -  Not done in this run
+
+     Representation   180      1 modes -  Not done in this run
+
+     Representation   181      1 modes -  Not done in this run
+
+     Representation   182      1 modes -  Not done in this run
+
+     Representation   183      1 modes -  Not done in this run
+
+     Representation   184      1 modes -  Not done in this run
+
+     Representation   185      1 modes -  Not done in this run
+
+     Representation   186      1 modes -  Not done in this run
+
+     Representation   187      1 modes -  Not done in this run
+
+     Representation   188      1 modes -  Not done in this run
+
+     Representation   189      1 modes -  Not done in this run
+
+     Representation   190      1 modes -  Not done in this run
+
+     Representation   191      1 modes -  Not done in this run
+
+     Representation   192      1 modes -  Not done in this run
+
+     Representation   193      1 modes -  To be done
+
+     Representation   194      1 modes -  To be done
+
+     Representation   195      1 modes -  To be done
+
+     Representation   196      1 modes -  To be done
+
+     Representation   197      1 modes -  To be done
+
+     Representation   198      1 modes -  To be done
+
+     Representation   199      1 modes -  To be done
+
+     Representation   200      1 modes -  To be done
+
+     Representation   201      1 modes -  To be done
+
+     Compute atoms:    65,   66,   67,
+
+
