@@ -1,0 +1,20 @@
+phonons (vibrational modes) for NH3
+ &inputph
+  outdir='./'
+  prefix='NH3_ESM_p5_left'
+  amass(1)=14.0067
+  amass(2)=1.00784
+  alpha_mix(5)=0.3
+  alpha_mix(10)=0.2
+  alpha_mix(15)=0.1
+  fildyn='NH3.dync'
+  trans=.true.
+  !nogg=.true.
+  !nmix_ph=15
+  !ldisp=.true.
+  !nq1=12
+  !nq2=12
+  !nq3=12
+  diagonalization='cg'
+ /
+0.0 0.0 0.0

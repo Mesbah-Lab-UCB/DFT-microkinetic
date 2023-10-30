@@ -1,0 +1,1077 @@
+
+     Program PHONON v.6.7MaX starts on 20Sep2022 at 22:49:59 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on   120 processors
+
+     MPI processes distributed on     1 nodes
+     K-points division:     npool     =       8
+     R & G space division:  proc/nbgrp/npool/nimage =      15
+     Waiting for input...
+     Reading input from standard input
+
+     Reading xml data from directory:
+
+     ./NH3_ESM_p5_left.save/
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min        3636    1818    468               639190   225950   29545
+     Max        3637    1819    470               639197   225953   29547
+     Sum       54553   27281   7033              9587919  3389267  443191
+
+
+     negative rho (up, down):  8.977E-03 8.983E-03
+     Reading collected, re-writing distributed wavefunctions
+
+     Calculation of q =    0.0000000   0.0000000   0.0000000
+
+     phonons (vibrational modes) for NH3                                        
+
+     bravais-lattice index     =            0
+     lattice parameter (alat)  =      37.7945  a.u.
+     unit-cell volume          =   53986.6760 (a.u.)^3
+     number of atoms/cell      =            4
+     number of atomic types    =            2
+     kinetic-energy cut-off    =      60.0000  Ry
+     charge density cut-off    =     480.0000  Ry
+     convergence threshold     =      1.0E-12
+     beta                      =       0.7000
+     number of iterations used =            4
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+
+
+     celldm(1)=   37.79452  celldm(2)=    0.00000  celldm(3)=    0.00000
+     celldm(4)=    0.00000  celldm(5)=    0.00000  celldm(6)=    0.00000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (  1.0000  0.0000  0.0000 )  
+               a(2) = (  0.0000  1.0000  0.0000 )  
+               a(3) = (  0.0000  0.0000  1.0000 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.0000  0.0000  0.0000 )  
+               b(2) = (  0.0000  1.0000  0.0000 )  
+               b(3) = (  0.0000  0.0000  1.0000 )  
+
+
+     Atoms inside the unit cell: 
+
+     Cartesian axes
+
+     site n.  atom      mass           positions (alat units)
+        1     N   14.0067   tau(    1) = (    0.50000    0.50000    0.00000  )
+        2     H    1.0078   tau(    2) = (    0.50000    0.54652   -0.02138  )
+        3     H    1.0078   tau(    3) = (    0.54029    0.47674   -0.02138  )
+        4     H    1.0078   tau(    4) = (    0.45971    0.47674   -0.02138  )
+
+     Computing dynamical matrix for 
+                    q = (   0.0000000   0.0000000   0.0000000 )
+
+      2 Sym.Ops. (with q -> -q+G )
+
+
+     G cutoff =17367.5767  ( 639197 G-vectors)     FFT grid: (270,270,270)
+     G cutoff = 8683.7884  ( 225950 G-vectors)  smooth grid: (192,192,192)
+
+     number of k points=    20  Methfessel-Paxton smearing, width (Ry)=  0.0100
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(    2) = (   0.0000000   0.2500000   0.0000000), wk =   0.1250000
+        k(    3) = (   0.0000000  -0.5000000   0.0000000), wk =   0.0625000
+        k(    4) = (   0.2500000   0.0000000   0.0000000), wk =   0.1250000
+        k(    5) = (   0.2500000   0.2500000   0.0000000), wk =   0.1250000
+        k(    6) = (   0.2500000  -0.5000000   0.0000000), wk =   0.1250000
+        k(    7) = (   0.2500000  -0.2500000   0.0000000), wk =   0.1250000
+        k(    8) = (  -0.5000000   0.0000000   0.0000000), wk =   0.0625000
+        k(    9) = (  -0.5000000   0.2500000   0.0000000), wk =   0.1250000
+        k(   10) = (  -0.5000000  -0.5000000   0.0000000), wk =   0.0625000
+        k(   11) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(   12) = (   0.0000000   0.2500000   0.0000000), wk =   0.1250000
+        k(   13) = (   0.0000000  -0.5000000   0.0000000), wk =   0.0625000
+        k(   14) = (   0.2500000   0.0000000   0.0000000), wk =   0.1250000
+        k(   15) = (   0.2500000   0.2500000   0.0000000), wk =   0.1250000
+        k(   16) = (   0.2500000  -0.5000000   0.0000000), wk =   0.1250000
+        k(   17) = (   0.2500000  -0.2500000   0.0000000), wk =   0.1250000
+        k(   18) = (  -0.5000000   0.0000000   0.0000000), wk =   0.0625000
+        k(   19) = (  -0.5000000   0.2500000   0.0000000), wk =   0.1250000
+        k(   20) = (  -0.5000000  -0.5000000   0.0000000), wk =   0.0625000
+
+     PseudoPot. # 1 for N  read from file:
+     ../../SSSP/N.pbe-n-radius_5.UPF
+     MD5 check sum: 16739722b17309cd8fe442a2ace49922
+     Pseudo is Ultrasoft + core correction, Zval =  5.0
+     Generated using "atomic" code by A. Dal Corso  v.5.1
+     Using radial grid of 1085 points,  4 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+     Q(r) pseudized with 0 coefficients 
+
+
+     PseudoPot. # 2 for H  read from file:
+     ../../SSSP/H.pbe-rrkjus_psl.1.0.0.UPF
+     MD5 check sum: f52b6d4d1c606e5624b1dc7b2218f220
+     Pseudo is Ultrasoft, Zval =  1.0
+     Generated using "atomic" code by A. Dal Corso  v.5.1
+     Using radial grid of  929 points,  2 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+     Q(r) pseudized with 0 coefficients 
+
+
+     Mode symmetry, C_1 (1)     point group:
+
+
+     Atomic displacements:
+     There are   12 irreducible representations
+
+     Representation     1      1 modes -  To be done
+
+     Representation     2      1 modes -  To be done
+
+     Representation     3      1 modes -  To be done
+
+     Representation     4      1 modes -  To be done
+
+     Representation     5      1 modes -  To be done
+
+     Representation     6      1 modes -  To be done
+
+     Representation     7      1 modes -  To be done
+
+     Representation     8      1 modes -  To be done
+
+     Representation     9      1 modes -  To be done
+
+     Representation    10      1 modes -  To be done
+
+     Representation    11      1 modes -  To be done
+
+     Representation    12      1 modes -  To be done
+
+
+
+     Alpha used in Ewald sum =   2.8000
+
+     -------------------------------------------------
+     Parameters for Dispersion (Grimme-D2) Correction:
+     -------------------------------------------------
+       atom      VdW radius       C_6     
+
+        N          2.640         42.670
+        H          1.892          4.857
+
+     Calculating the D2 contribution to the dynamical matrix.
+     D2 energy =       -0.00027732 Ry
+     Done.
+
+
+     negative rho (up, down):  8.977E-03 8.983E-03
+     PHONON       :   3m32.82s CPU   3m41.17s WALL
+
+
+
+     Representation #   1 mode #   1
+
+     Self-consistent Calculation
+     kpoint   2 ibnd   0 solve_linter: root not converged  4.269E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.6790E-04     0.0000E+00
+
+      iter #   1 total cpu time :   359.9 secs   av.it.:  76.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.296E-05
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.752E-02
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.060E+00
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.550E-02
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.1668E-02     0.0000E+00
+
+      iter #   2 total cpu time :   527.4 secs   av.it.: 107.1
+      thresh= 4.792E-04 alpha_mix =  0.700 |ddv_scf|^2 =  8.316E-05
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.729E-01
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.383E+00
+     kpoint   3 ibnd   7 solve_linter: root not converged  9.955E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.5044E-02     0.0000E+00
+
+      iter #   3 total cpu time :   688.9 secs   av.it.: 100.3
+      thresh= 9.119E-04 alpha_mix =  0.700 |ddv_scf|^2 =  1.619E-06
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.470E-01
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.825E-01
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.645E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -4.7020E-01     0.0000E+00
+
+      iter #   4 total cpu time :   899.9 secs   av.it.: 139.2
+      thresh= 1.273E-04 alpha_mix =  0.700 |ddv_scf|^2 =  2.196E-04
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.304E-01
+     kpoint   2 ibnd   6 solve_linter: root not converged  9.253E+00
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.845E-02
+
+     Pert. #  1: Fermi energy shift (Ry) =    -4.6700E-01     0.0000E+00
+
+      iter #   5 total cpu time :  1040.2 secs   av.it.:  80.4
+      thresh= 1.482E-03 alpha_mix =  0.700 |ddv_scf|^2 =  1.338E-05
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.752E-01
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.325E+00
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.065E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.1072E+00     0.0000E+00
+
+      iter #   6 total cpu time :  1246.8 secs   av.it.: 134.4
+      thresh= 3.658E-04 alpha_mix =  0.700 |ddv_scf|^2 =  8.417E-05
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.604E-02
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.162E+00
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.046E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.9933E-01     0.0000E+00
+
+      iter #   7 total cpu time :  1438.1 secs   av.it.: 124.8
+      thresh= 9.174E-04 alpha_mix =  0.700 |ddv_scf|^2 =  1.980E-04
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.015E-02
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.455E+00
+     kpoint   3 ibnd   7 solve_linter: root not converged  8.002E-02
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.7906E+00     0.0000E+00
+
+      iter #   8 total cpu time :  1605.0 secs   av.it.:  99.7
+      thresh= 1.407E-03 alpha_mix =  0.700 |ddv_scf|^2 =  5.494E-01
+     kpoint   1 ibnd   6 solve_linter: root not converged  4.649E-01
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.811E+01
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.265E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -8.2021E+00     0.0000E+00
+
+      iter #   9 total cpu time :  1798.7 secs   av.it.: 127.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.860E-01
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.433E+00
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.306E+01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.4538E+01     0.0000E+00
+
+      iter #  10 total cpu time :  1979.4 secs   av.it.: 112.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.639E+00
+     kpoint   1 ibnd   6 solve_linter: root not converged  6.259E+00
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.831E+01
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.196E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.6165E+01     0.0000E+00
+
+      iter #  11 total cpu time :  2176.0 secs   av.it.: 129.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.348E+00
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.250E+00
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.027E+01
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.077E+01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -9.3179E+00     0.0000E+00
+
+      iter #  12 total cpu time :  2375.6 secs   av.it.: 129.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.227E+00
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.104E+00
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.442E+01
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.535E+00
+
+     Pert. #  1: Fermi energy shift (Ry) =    -3.0928E+01     0.0000E+00
+
+      iter #  13 total cpu time :  2582.8 secs   av.it.: 138.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.608E-01
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.230E+01
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.365E+01
+     kpoint   3 ibnd   7 solve_linter: root not converged  8.235E+00
+
+     Pert. #  1: Fermi energy shift (Ry) =    -8.4724E+01     0.0000E+00
+
+      iter #  14 total cpu time :  2796.4 secs   av.it.: 140.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.074E-01
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.278E+01
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.613E+01
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.807E+00
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.6269E+02     0.0000E+00
+
+      iter #  15 total cpu time :  3015.6 secs   av.it.: 149.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.715E+00
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.921E+02
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.682E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.094E+02
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.4994E+02     0.0000E+00
+
+      iter #  16 total cpu time :  3240.1 secs   av.it.: 152.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.922E+00
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.253E+01
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.042E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.596E-01
+
+     Pert. #  1: Fermi energy shift (Ry) =     3.3897E+02     0.0000E+00
+
+      iter #  17 total cpu time :  3464.6 secs   av.it.: 151.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.704E+01
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.630E+01
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.727E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.263E+01
+
+     Pert. #  1: Fermi energy shift (Ry) =     4.5131E+02     0.0000E+00
+
+      iter #  18 total cpu time :  3689.3 secs   av.it.: 152.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.018E+03
+     kpoint   1 ibnd   6 solve_linter: root not converged  9.691E+01
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.535E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.393E+01
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.6591E+03     0.0000E+00
+
+      iter #  19 total cpu time :  3915.9 secs   av.it.: 154.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.738E+04
+     kpoint   1 ibnd   6 solve_linter: root not converged  6.493E+01
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.844E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.136E+01
+
+     Pert. #  1: Fermi energy shift (Ry) =    -9.6238E+02     0.0000E+00
+
+      iter #  20 total cpu time :  4151.4 secs   av.it.: 161.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.673E+04
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.380E+02
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.807E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  7.060E+00
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.7720E+03     0.0000E+00
+
+      iter #  21 total cpu time :  4401.5 secs   av.it.: 172.4
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.898E+03
+     kpoint   1 ibnd   6 solve_linter: root not converged  4.505E+03
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.494E+02
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.438E+02
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.5501E+03     0.0000E+00
+
+      iter #  22 total cpu time :  4656.0 secs   av.it.: 174.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.657E+05
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.010E+03
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.321E+03
+     kpoint   3 ibnd   7 solve_linter: root not converged  5.368E+02
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.1816E+03     0.0000E+00
+
+      iter #  23 total cpu time :  4915.9 secs   av.it.: 179.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.244E+07
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.138E+03
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.022E+03
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.356E+03
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.9226E+04     0.0000E+00
+
+      iter #  24 total cpu time :  5175.4 secs   av.it.: 180.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.332E+07
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.908E+03
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.990E+03
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.456E+02
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.7985E+04     0.0000E+00
+
+      iter #  25 total cpu time :  5436.2 secs   av.it.: 180.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.590E+07
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.979E+03
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.669E+03
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.919E+03
+
+     Pert. #  1: Fermi energy shift (Ry) =     4.7375E+04     0.0000E+00
+
+      iter #  26 total cpu time :  5698.8 secs   av.it.: 184.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.403E+07
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.197E+04
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.673E+04
+     kpoint   3 ibnd   7 solve_linter: root not converged  8.982E+03
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.6928E+04     0.0000E+00
+
+      iter #  27 total cpu time :  5967.5 secs   av.it.: 187.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.554E+08
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.362E+04
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.249E+06
+     kpoint   3 ibnd   7 solve_linter: root not converged  5.225E+04
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.4591E+05     0.0000E+00
+
+      iter #  28 total cpu time :  6237.6 secs   av.it.: 188.4
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  3.095E+08
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.726E+05
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.375E+05
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.765E+04
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.0332E+05     0.0000E+00
+
+      iter #  29 total cpu time :  6505.0 secs   av.it.: 189.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.586E+10
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.207E+06
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.713E+05
+     kpoint   3 ibnd   7 solve_linter: root not converged  8.515E+04
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.3581E+06     0.0000E+00
+
+      iter #  30 total cpu time :  6775.7 secs   av.it.: 190.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.120E+10
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.395E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.455E+05
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.560E+04
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.7661E+06     0.0000E+00
+
+      iter #  31 total cpu time :  7046.7 secs   av.it.: 189.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.234E+10
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.144E+05
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.164E+07
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.320E+05
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.4574E+06     0.0000E+00
+
+      iter #  32 total cpu time :  7317.0 secs   av.it.: 189.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.231E+08
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.143E+06
+     kpoint   2 ibnd   6 solve_linter: root not converged  6.888E+05
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.209E+05
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.7472E+06     0.0000E+00
+
+      iter #  33 total cpu time :  7585.3 secs   av.it.: 190.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  9.362E+07
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.918E+05
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.097E+06
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.476E+06
+
+     Pert. #  1: Fermi energy shift (Ry) =     3.3517E+07     0.0000E+00
+
+      iter #  34 total cpu time :  7865.3 secs   av.it.: 194.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.346E+10
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.096E+06
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.291E+06
+     kpoint   3 ibnd   7 solve_linter: root not converged  5.902E+05
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.6366E+07     0.0000E+00
+
+      iter #  35 total cpu time :  8135.7 secs   av.it.: 192.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.574E+10
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.878E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.184E+06
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.531E+05
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.2567E+07     0.0000E+00
+
+      iter #  36 total cpu time :  8411.7 secs   av.it.: 191.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.380E+09
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.075E+05
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.205E+06
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.054E+05
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.7635E+07     0.0000E+00
+
+      iter #  37 total cpu time :  8681.6 secs   av.it.: 192.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.214E+10
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.065E+06
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.563E+07
+     kpoint   3 ibnd   7 solve_linter: root not converged  7.565E+05
+
+     Pert. #  1: Fermi energy shift (Ry) =     4.6813E+06     0.0000E+00
+
+      iter #  38 total cpu time :  8958.5 secs   av.it.: 193.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.280E+13
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.912E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.516E+09
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.080E+07
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.6409E+08     0.0000E+00
+
+      iter #  39 total cpu time :  9236.1 secs   av.it.: 197.5
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  3.120E+13
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.569E+08
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.249E+08
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.906E+06
+
+     Pert. #  1: Fermi energy shift (Ry) =     6.1641E+08     0.0000E+00
+
+      iter #  40 total cpu time :  9511.7 secs   av.it.: 193.9
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.144E+15
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.546E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.094E+08
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.038E+07
+
+     Pert. #  1: Fermi energy shift (Ry) =     2.3423E+08     0.0000E+00
+
+      iter #  41 total cpu time :  9791.9 secs   av.it.: 197.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.279E+16
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.062E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.052E+08
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.559E+07
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.0302E+08     0.0000E+00
+
+      iter #  42 total cpu time : 10070.4 secs   av.it.: 196.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.800E+15
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.479E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.831E+08
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.038E+07
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.4119E+09     0.0000E+00
+
+      iter #  43 total cpu time : 10350.6 secs   av.it.: 196.9
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.556E+16
+     kpoint   1 ibnd   6 solve_linter: root not converged  9.230E+07
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.301E+08
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.292E+07
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.6951E+09     0.0000E+00
+
+      iter #  44 total cpu time : 10632.9 secs   av.it.: 200.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.815E+17
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.032E+10
+     kpoint   2 ibnd   6 solve_linter: root not converged  8.753E+09
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.017E+09
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.1039E+09     0.0000E+00
+
+      iter #  45 total cpu time : 10920.2 secs   av.it.: 203.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.364E+16
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.053E+09
+     kpoint   2 ibnd   6 solve_linter: root not converged  8.438E+09
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.384E+09
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.9050E+07     0.0000E+00
+
+      iter #  46 total cpu time : 11206.9 secs   av.it.: 203.4
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.010E+16
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.817E+08
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.743E+10
+     kpoint   3 ibnd   7 solve_linter: root not converged  9.068E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.8658E+10     0.0000E+00
+
+      iter #  47 total cpu time : 11497.1 secs   av.it.: 203.5
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.598E+15
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.144E+09
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.288E+10
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.540E+09
+
+     Pert. #  1: Fermi energy shift (Ry) =    -4.0418E+10     0.0000E+00
+
+      iter #  48 total cpu time : 11785.3 secs   av.it.: 203.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.812E+18
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.336E+11
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.022E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.800E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.9874E+11     0.0000E+00
+
+      iter #  49 total cpu time : 12072.3 secs   av.it.: 205.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.313E+18
+     kpoint   1 ibnd   6 solve_linter: root not converged  4.817E+09
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.188E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.603E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.2559E+09     0.0000E+00
+
+      iter #  50 total cpu time : 12362.2 secs   av.it.: 205.9
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.524E+18
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.936E+10
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.599E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.473E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.5754E+10     0.0000E+00
+
+      iter #  51 total cpu time : 12651.2 secs   av.it.: 204.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.829E+17
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.916E+10
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.280E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.953E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.3316E+11     0.0000E+00
+
+      iter #  52 total cpu time : 12939.3 secs   av.it.: 205.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.939E+17
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.923E+11
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.165E+11
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.063E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -9.4161E+11     0.0000E+00
+
+      iter #  53 total cpu time : 13228.8 secs   av.it.: 207.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.774E+18
+     kpoint   1 ibnd   6 solve_linter: root not converged  9.973E+11
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.194E+11
+     kpoint   3 ibnd   7 solve_linter: root not converged  5.370E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.9550E+11     0.0000E+00
+
+      iter #  54 total cpu time : 13520.7 secs   av.it.: 205.9
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.771E+18
+     kpoint   1 ibnd   6 solve_linter: root not converged  6.402E+10
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.311E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.111E+11
+
+     Pert. #  1: Fermi energy shift (Ry) =    -4.1353E+11     0.0000E+00
+
+      iter #  55 total cpu time : 13811.8 secs   av.it.: 206.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.517E+19
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.219E+11
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.097E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.481E+11
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.7541E+11     0.0000E+00
+
+      iter #  56 total cpu time : 14102.8 secs   av.it.: 206.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.875E+19
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.103E+11
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.351E+11
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.208E+10
+
+     Pert. #  1: Fermi energy shift (Ry) =    -8.9974E+11     0.0000E+00
+
+      iter #  57 total cpu time : 14392.9 secs   av.it.: 205.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.945E+20
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.218E+11
+     kpoint   2 ibnd   6 solve_linter: root not converged  8.308E+11
+     kpoint   3 ibnd   7 solve_linter: root not converged  5.032E+11
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.0047E+13     0.0000E+00
+
+      iter #  58 total cpu time : 14687.9 secs   av.it.: 210.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.698E+22
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.364E+12
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.891E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.779E+11
+
+     Pert. #  1: Fermi energy shift (Ry) =    -4.0919E+12     0.0000E+00
+
+      iter #  59 total cpu time : 14980.1 secs   av.it.: 209.5
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  9.115E+22
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.464E+12
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.143E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.217E+11
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.3175E+12     0.0000E+00
+
+      iter #  60 total cpu time : 15276.1 secs   av.it.: 209.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  3.070E+24
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.999E+12
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.595E+11
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.855E+11
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.1526E+13     0.0000E+00
+
+      iter #  61 total cpu time : 15570.9 secs   av.it.: 210.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.780E+24
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.330E+12
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.523E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.124E+12
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.2042E+13     0.0000E+00
+
+      iter #  62 total cpu time : 15868.1 secs   av.it.: 210.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.693E+25
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.543E+12
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.579E+12
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.180E+12
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.5400E+14     0.0000E+00
+
+      iter #  63 total cpu time : 16164.7 secs   av.it.: 212.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.334E+27
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.054E+13
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.186E+14
+     kpoint   3 ibnd   7 solve_linter: root not converged  9.650E+12
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.3245E+14     0.0000E+00
+
+      iter #  64 total cpu time : 16459.9 secs   av.it.: 212.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  9.860E+26
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.083E+14
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.242E+14
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.564E+14
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.8134E+14     0.0000E+00
+
+      iter #  65 total cpu time : 16756.6 secs   av.it.: 214.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.185E+27
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.035E+15
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.059E+14
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.526E+13
+
+     Pert. #  1: Fermi energy shift (Ry) =    -3.9767E+14     0.0000E+00
+
+      iter #  66 total cpu time : 17056.4 secs   av.it.: 213.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.237E+25
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.292E+13
+     kpoint   2 ibnd   6 solve_linter: root not converged  9.562E+13
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.088E+13
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.1781E+14     0.0000E+00
+
+      iter #  67 total cpu time : 17355.8 secs   av.it.: 214.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.761E+26
+     kpoint   1 ibnd   6 solve_linter: root not converged  9.746E+13
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.647E+15
+     kpoint   3 ibnd   7 solve_linter: root not converged  7.644E+14
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.8120E+15     0.0000E+00
+
+      iter #  68 total cpu time : 17657.2 secs   av.it.: 215.6
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.001E+26
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.759E+14
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.734E+16
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.234E+14
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.4940E+14     0.0000E+00
+
+      iter #  69 total cpu time : 17959.2 secs   av.it.: 215.9
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.210E+27
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.963E+14
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.237E+16
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.447E+14
+
+     Pert. #  1: Fermi energy shift (Ry) =    -3.1855E+15     0.0000E+00
+
+      iter #  70 total cpu time : 18260.0 secs   av.it.: 216.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.941E+28
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.235E+14
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.820E+15
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.017E+13
+
+     Pert. #  1: Fermi energy shift (Ry) =    -9.0444E+14     0.0000E+00
+
+      iter #  71 total cpu time : 18561.2 secs   av.it.: 215.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.578E+27
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.170E+14
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.619E+16
+     kpoint   3 ibnd   7 solve_linter: root not converged  8.380E+13
+
+     Pert. #  1: Fermi energy shift (Ry) =    -3.7320E+15     0.0000E+00
+
+      iter #  72 total cpu time : 18860.8 secs   av.it.: 214.5
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  3.184E+28
+     kpoint   1 ibnd   6 solve_linter: root not converged  9.482E+14
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.768E+15
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.659E+14
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.3179E+16     0.0000E+00
+
+      iter #  73 total cpu time : 19166.2 secs   av.it.: 217.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.286E+29
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.730E+15
+     kpoint   2 ibnd   6 solve_linter: root not converged  8.896E+15
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.005E+15
+
+     Pert. #  1: Fermi energy shift (Ry) =    -9.7202E+15     0.0000E+00
+
+      iter #  74 total cpu time : 19471.2 secs   av.it.: 217.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  8.534E+30
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.552E+16
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.115E+15
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.125E+15
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.1425E+16     0.0000E+00
+
+      iter #  75 total cpu time : 19776.7 secs   av.it.: 219.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  3.552E+31
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.498E+15
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.566E+16
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.253E+16
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.1198E+17     0.0000E+00
+
+      iter #  76 total cpu time : 20080.2 secs   av.it.: 219.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.379E+32
+     kpoint   1 ibnd   6 solve_linter: root not converged  4.248E+15
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.917E+16
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.273E+15
+
+     Pert. #  1: Fermi energy shift (Ry) =    -7.9818E+16     0.0000E+00
+
+      iter #  77 total cpu time : 20382.9 secs   av.it.: 218.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.879E+32
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.020E+16
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.696E+15
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.120E+16
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.7853E+17     0.0000E+00
+
+      iter #  78 total cpu time : 20688.5 secs   av.it.: 219.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.521E+32
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.409E+18
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.333E+16
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.941E+16
+
+     Pert. #  1: Fermi energy shift (Ry) =     4.5831E+16     0.0000E+00
+
+      iter #  79 total cpu time : 20995.7 secs   av.it.: 219.4
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.687E+33
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.722E+17
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.416E+17
+     kpoint   3 ibnd   7 solve_linter: root not converged  5.702E+16
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.6704E+17     0.0000E+00
+
+      iter #  80 total cpu time : 21302.2 secs   av.it.: 222.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.612E+34
+     kpoint   1 ibnd   6 solve_linter: root not converged  6.500E+16
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.831E+17
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.374E+17
+
+     Pert. #  1: Fermi energy shift (Ry) =     3.4243E+18     0.0000E+00
+
+      iter #  81 total cpu time : 21611.2 secs   av.it.: 221.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.196E+36
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.749E+17
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.736E+18
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.619E+16
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.1577E+19     0.0000E+00
+
+      iter #  82 total cpu time : 21921.6 secs   av.it.: 222.2
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.302E+36
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.330E+17
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.070E+19
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.950E+17
+
+     Pert. #  1: Fermi energy shift (Ry) =     5.1867E+19     0.0000E+00
+
+      iter #  83 total cpu time : 22229.6 secs   av.it.: 221.5
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.196E+38
+     kpoint   1 ibnd   6 solve_linter: root not converged  4.516E+18
+     kpoint   2 ibnd   6 solve_linter: root not converged  3.239E+18
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.667E+17
+
+     Pert. #  1: Fermi energy shift (Ry) =     9.1564E+19     0.0000E+00
+
+      iter #  84 total cpu time : 22542.2 secs   av.it.: 224.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.287E+38
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.665E+18
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.158E+18
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.107E+18
+
+     Pert. #  1: Fermi energy shift (Ry) =    -5.5974E+19     0.0000E+00
+
+      iter #  85 total cpu time : 22853.6 secs   av.it.: 225.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  6.849E+37
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.703E+19
+     kpoint   2 ibnd   6 solve_linter: root not converged  9.092E+18
+     kpoint   3 ibnd   7 solve_linter: root not converged  4.672E+18
+
+     Pert. #  1: Fermi energy shift (Ry) =     8.1618E+18     0.0000E+00
+
+      iter #  86 total cpu time : 23165.0 secs   av.it.: 225.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  9.749E+36
+     kpoint   1 ibnd   6 solve_linter: root not converged  9.282E+18
+     kpoint   2 ibnd   6 solve_linter: root not converged  7.510E+19
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.218E+19
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.2263E+19     0.0000E+00
+
+      iter #  87 total cpu time : 23481.6 secs   av.it.: 227.0
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.001E+37
+     kpoint   1 ibnd   6 solve_linter: root not converged  4.196E+19
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.850E+21
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.283E+17
+
+     Pert. #  1: Fermi energy shift (Ry) =    -6.6224E+19     0.0000E+00
+
+      iter #  88 total cpu time : 23793.9 secs   av.it.: 227.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.344E+36
+     kpoint   1 ibnd   6 solve_linter: root not converged  7.519E+19
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.702E+20
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.986E+19
+
+     Pert. #  1: Fermi energy shift (Ry) =    -3.0836E+20     0.0000E+00
+
+      iter #  89 total cpu time : 24109.5 secs   av.it.: 227.3
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.219E+36
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.709E+20
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.833E+20
+     kpoint   3 ibnd   7 solve_linter: root not converged  8.505E+19
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.0972E+21     0.0000E+00
+
+      iter #  90 total cpu time : 24428.4 secs   av.it.: 229.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  4.721E+38
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.377E+20
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.829E+20
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.026E+20
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.2306E+20     0.0000E+00
+
+      iter #  91 total cpu time : 24742.4 secs   av.it.: 229.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.456E+39
+     kpoint   1 ibnd   6 solve_linter: root not converged  8.587E+21
+     kpoint   2 ibnd   6 solve_linter: root not converged  5.195E+21
+     kpoint   3 ibnd   7 solve_linter: root not converged  1.606E+20
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.4031E+21     0.0000E+00
+
+      iter #  92 total cpu time : 25061.3 secs   av.it.: 229.4
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  9.290E+41
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.542E+22
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.425E+21
+     kpoint   3 ibnd   7 solve_linter: root not converged  6.896E+20
+
+     Pert. #  1: Fermi energy shift (Ry) =     5.5908E+21     0.0000E+00
+
+      iter #  93 total cpu time : 25380.7 secs   av.it.: 229.8
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.854E+41
+     kpoint   1 ibnd   6 solve_linter: root not converged  5.713E+21
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.223E+22
+     kpoint   3 ibnd   7 solve_linter: root not converged  7.497E+19
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.0087E+21     0.0000E+00
+
+      iter #  94 total cpu time : 25697.0 secs   av.it.: 228.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.266E+42
+     kpoint   1 ibnd   6 solve_linter: root not converged  1.802E+22
+     kpoint   2 ibnd   6 solve_linter: root not converged  9.587E+20
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.352E+22
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.1113E+22     0.0000E+00
+
+      iter #  95 total cpu time : 26018.6 secs   av.it.: 231.4
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.127E+43
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.530E+23
+     kpoint   2 ibnd   6 solve_linter: root not converged  2.038E+21
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.192E+21
+
+     Pert. #  1: Fermi energy shift (Ry) =     1.2324E+23     0.0000E+00
+
+      iter #  96 total cpu time : 26338.2 secs   av.it.: 232.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  2.619E+45
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.338E+22
+     kpoint   2 ibnd   6 solve_linter: root not converged  6.119E+22
+     kpoint   3 ibnd   7 solve_linter: root not converged  9.645E+21
+
+     Pert. #  1: Fermi energy shift (Ry) =     9.0016E+22     0.0000E+00
+
+      iter #  97 total cpu time : 26661.4 secs   av.it.: 232.9
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.096E+43
+     kpoint   1 ibnd   6 solve_linter: root not converged  3.781E+23
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.127E+22
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.298E+22
+
+     Pert. #  1: Fermi energy shift (Ry) =    -1.6201E+22     0.0000E+00
+
+      iter #  98 total cpu time : 26981.8 secs   av.it.: 233.7
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  5.313E+43
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.307E+23
+     kpoint   2 ibnd   6 solve_linter: root not converged  1.529E+22
+     kpoint   3 ibnd   7 solve_linter: root not converged  2.719E+22
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.6985E+22     0.0000E+00
+
+      iter #  99 total cpu time : 27304.2 secs   av.it.: 234.1
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  7.778E+43
+     kpoint   1 ibnd   6 solve_linter: root not converged  2.937E+22
+     kpoint   2 ibnd   6 solve_linter: root not converged  4.922E+22
+     kpoint   3 ibnd   7 solve_linter: root not converged  3.110E+22
+
+     Pert. #  1: Fermi energy shift (Ry) =    -2.0579E+23     0.0000E+00
+
+      iter # 100 total cpu time : 27628.3 secs   av.it.: 234.5
+      thresh= 1.000E-02 alpha_mix =  0.700 |ddv_scf|^2 =  1.196E+44
+
+     End of self-consistent calculation
+
+     No convergence has been achieved 
+
+     PHONON       :      7h23m CPU      7h40m WALL
+
+     INITIALIZATION: 
+     phq_setup    :     12.63s CPU     14.40s WALL (       1 calls)
+     phq_init     :    182.78s CPU    187.62s WALL (       1 calls)
+
+     phq_init     :    182.78s CPU    187.62s WALL (       1 calls)
+     set_drhoc    :     24.15s CPU     24.25s WALL (       3 calls)
+     init_vloc    :      0.32s CPU      0.32s WALL (       1 calls)
+     init_us_1    :      0.02s CPU      0.02s WALL (       1 calls)
+     newd         :      1.42s CPU      1.47s WALL (       1 calls)
+     dvanqq       :     73.52s CPU     74.34s WALL (       1 calls)
+     drho         :     61.30s CPU     64.47s WALL (       1 calls)
+
+     DYNAMICAL MATRIX:
+     dynmat0      :     25.17s CPU     25.92s WALL (       1 calls)
+     phqscf       :  26385.76s CPU  27407.70s WALL (       1 calls)
+
+     phqscf       :  26385.76s CPU  27407.70s WALL (       2 calls)
+     solve_linter :  26385.73s CPU  27407.65s WALL (       1 calls)
+
+     dynmat0      :     25.17s CPU     25.92s WALL (       1 calls)
+     dynmat_us    :      1.94s CPU      1.99s WALL (       1 calls)
+     d2ionq       :      0.99s CPU      1.00s WALL (       1 calls)
+     dynmatcc     :     22.16s CPU     22.80s WALL (       1 calls)
+
+     dynmat_us    :      1.94s CPU      1.99s WALL (       1 calls)
+     addusdynmat  :      0.00s CPU      0.00s WALL (       1 calls)
+
+     phqscf       :  26385.76s CPU  27407.70s WALL (       3 calls)
+     solve_linter :  26385.73s CPU  27407.65s WALL (       1 calls)
+
+     solve_linter :  26385.73s CPU  27407.65s WALL (       1 calls)
+     dvqpsi_us    :      1.92s CPU      1.96s WALL (       3 calls)
+     ortho        :      7.73s CPU      7.84s WALL (     300 calls)
+     cgsolve      :  23241.77s CPU  23472.47s WALL (     300 calls)
+     incdrhoscf   :    102.88s CPU    104.08s WALL (     300 calls)
+     addusddens   :    144.91s CPU    158.11s WALL (     112 calls)
+     vpsifft      :    120.19s CPU    121.81s WALL (     297 calls)
+     dv_of_drho   :    672.46s CPU    703.78s WALL (     100 calls)
+     mix_pot      :     73.15s CPU    495.40s WALL (     100 calls)
+     ef_shift     :     99.45s CPU    100.63s WALL (     100 calls)
+     localdos     :      5.64s CPU      5.85s WALL (       1 calls)
+     psymdvscf    :    515.11s CPU    749.97s WALL (     100 calls)
+     newdq        :    318.63s CPU    333.43s WALL (     100 calls)
+     adddvscf     :      3.01s CPU      3.05s WALL (     297 calls)
+
+     dvqpsi_us    :      1.92s CPU      1.96s WALL (       3 calls)
+     dvqpsi_us_on :      0.04s CPU      0.04s WALL (       3 calls)
+
+     cgsolve      :  23241.77s CPU  23472.47s WALL (     300 calls)
+     ch_psi       :  22566.24s CPU  22790.80s WALL (  120053 calls)
+
+     ch_psi       :  22566.24s CPU  22790.80s WALL (  120053 calls)
+     h_psi        :  19933.43s CPU  20133.75s WALL (  120053 calls)
+     last         :   1891.90s CPU   1908.95s WALL (  120053 calls)
+
+     h_psi        :  19933.43s CPU  20133.75s WALL (  120053 calls)
+     add_vuspsi   :    537.51s CPU    542.83s WALL (  120053 calls)
+
+     incdrhoscf   :    102.88s CPU    104.08s WALL (     300 calls)
+     addusdbec    :      2.95s CPU      2.98s WALL (     336 calls)
+
+
+      General routines
+     calbec       :   1120.21s CPU   1131.92s WALL (  240775 calls)
+     fft          :   1026.46s CPU   1046.60s WALL (    3499 calls)
+     ffts         :     29.12s CPU     29.53s WALL (     459 calls)
+     fftw         :  15890.46s CPU  16044.33s WALL (  611966 calls)
+     davcio       :      0.57s CPU    439.40s WALL (    2502 calls)
+     write_rec    :      0.01s CPU     38.39s WALL (     100 calls)
+
+
+     PHONON       :      7h23m CPU      7h40m WALL
+
+
+   This run was terminated on:   6:30:28  21Sep2022            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
