@@ -1,0 +1,10 @@
+phonons (vibrational modes) for NH3
+ &inputph
+  outdir='./'
+  prefix='NH3_ESM_VA8'
+  amass(1)=14.0067
+  amass(2)=1.00784
+  fildyn='NH3.dync'
+  trans=.true.
+ /
+0.0 0.0 0.0

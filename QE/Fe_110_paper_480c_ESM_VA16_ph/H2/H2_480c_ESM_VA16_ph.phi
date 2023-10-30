@@ -1,0 +1,9 @@
+phonons (vibrational modes) for H2
+ &inputph
+  outdir='./'
+  prefix='H2_ESM_VA16'
+  amass(1)=1.00784
+  fildyn='H2.dync'
+  trans=.true.
+ /
+0.0 0.0 0.0

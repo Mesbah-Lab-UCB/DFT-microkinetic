@@ -1,0 +1,68 @@
+&CONTROL
+   calculation      = 'relax'
+   prefix           = 'NH3_ESM_VA16'
+   max_seconds      = 172800
+   etot_conv_thr    = 7.34986176e-07
+   forc_conv_thr    = 0.0003889379346800142
+   disk_io          = 'high'
+   pseudo_dir       = '../../SSSP/'
+   restart_mode     = 'restart'
+   tefield          = .true. 
+   nstep            = 200
+/
+&SYSTEM
+   ibrav            = 0
+   starting_magnetization(1) = 0.1
+   starting_magnetization(2) = 0.1
+   ecutwfc          = 60
+   ecutrho          = 480
+   nosym            = .true.
+   occupations      = 'smearing'
+   degauss          = 0.01
+   smearing         = 'mp'
+   nspin            = 2
+   input_dft        = 'pbe'
+   !assume_isolated  = 'esm'
+   !esm_bc           = 'bc2'
+   !esm_efield       = 0.015762386
+   vdw_corr         = 'grimme-d2'
+   ntyp             = 2
+   nat              = 4
+   edir             = 3 
+   emaxpos          = 1.1
+   eopreg           = 0.1
+   eamp             = -0.031524771
+/
+&ELECTRONS
+   electron_maxstep = 1000
+   conv_thr         = 1e-08
+   mixing_mode      = 'plain'
+   mixing_beta      = 0.7
+   mixing_ndim      = 10
+   diagonalization  = 'cg'
+   diago_thr_init   = 0.0001
+   diago_david_ndim = 4
+/
+&IONS
+/
+&CELL
+/
+
+ATOMIC_SPECIES
+N  14.007 N.pbe-n-radius_5.UPF
+H  1.008 H.pbe-rrkjus_psl.1.0.0.UPF
+
+K_POINTS automatic
+4 4 1  0 0 0
+
+CELL_PARAMETERS angstrom
+20.00000000000000 0.00000000000000 0.00000000000000
+0.00000000000000 20.00000000000000 0.00000000000000
+0.00000000000000 0.00000000000000 20.00000000000000
+
+ATOMIC_POSITIONS angstrom
+N            10.0000000000       10.0000000000        0.0000000000    0   0   0
+H            10.0000008201       10.9572259569        -0.3482044433
+H            10.8289811886        9.5213904301        -0.3482105464
+H             9.1710197765        9.5213902722        -0.3482121769
+
