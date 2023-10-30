@@ -1,0 +1,10 @@
+phonons (vibrational modes) for NH
+ &inputph
+  outdir='./'
+  prefix='NH_ESM_p25'
+  amass(1)=14.0067
+  amass(2)=1.00784
+  fildyn='NH.dync'
+  trans=.true.
+ /
+0.0 0.0 0.0
