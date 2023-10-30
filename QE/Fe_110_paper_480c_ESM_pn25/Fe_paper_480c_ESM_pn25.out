@@ -1,0 +1,2928 @@
+
+     Program PWSCF v.6.4.1 starts on 12Jun2022 at 21: 0:43 
+
+     This program is part of the open-source Quantum ESPRESSO suite
+     for quantum simulation of materials; please cite
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 21 395502 (2009);
+         "P. Giannozzi et al., J. Phys.:Condens. Matter 29 465901 (2017);
+          URL http://www.quantum-espresso.org", 
+     in publications or presentations arising from this work. More details at
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on   160 processors
+
+     MPI processes distributed on     8 nodes
+     K-points division:     npool     =       8
+     R & G space division:  proc/nbgrp/npool/nimage =      20
+     Waiting for input...
+     Reading input from standard input
+Warning: card &CELL ignored
+Warning: card / ignored
+
+     Current dimensions of program PWSCF are:
+     Max number of different atomic species (ntypx) = 10
+     Max number of k-points (npk) =  40000
+     Max angular momentum in pseudopotentials (lmaxx) =  3
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation      = PBE ( 1  4  3  4 0 0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+               file Fe.pbe-spn-kjpaw_psl.0.2.1.UPF: wavefunction(s)  3D renormalized
+
+     -------------------------------------------------
+     Parameters for Dispersion (Grimme-D2) Correction:
+     -------------------------------------------------
+       atom      VdW radius       C_6     
+
+        Fe         2.952        374.666
+
+     Subspace diagonalization in iterative solution of the eigenvalue problem:
+     one sub-group per band group will be used
+     scalapack distributed-memory algorithm (size of sub-group:  3*  3 procs)
+
+
+     Parallelization info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Min         634     317     83               145278    51361    6989
+     Max         635     318     84               145287    51370    7000
+     Sum       12685    6351   1677              2905599  1027285  139897
+
+
+
+     bravais-lattice index     =            0
+     lattice parameter (alat)  =      18.7640  a.u.
+     unit-cell volume          =   16360.3163 (a.u.)^3
+     number of atoms/cell      =           64
+     number of atomic types    =            1
+     number of electrons       =      1024.00
+     number of Kohn-Sham states=          614
+     kinetic-energy cutoff     =      60.0000  Ry
+     charge density cutoff     =     480.0000  Ry
+     convergence threshold     =      1.0E-08
+     mixing beta               =       0.2000
+     number of iterations used =           10  local-TF  mixing
+     Exchange-correlation      = PBE ( 1  4  3  4 0 0)
+     nstep                     =           50
+
+
+     Effective Screening Medium Method
+     =================================
+     Boundary Conditions: Metal-Slab-Metal
+     field strength                   =    -0.01 Ry/a.u.
+     grid points for fit at edges     =        4 
+
+
+     celldm(1)=  18.764036  celldm(2)=   0.000000  celldm(3)=   0.000000
+     celldm(4)=   0.000000  celldm(5)=   0.000000  celldm(6)=   0.000000
+
+     crystal axes: (cart. coord. in units of alat)
+               a(1) = (   1.000000   0.000000   0.000000 )  
+               a(2) = (   0.333330   0.942807   0.000000 )  
+               a(3) = (   0.000000   0.000000   2.626577 )  
+
+     reciprocal axes: (cart. coord. in units 2 pi/alat)
+               b(1) = (  1.000000 -0.353551  0.000000 )  
+               b(2) = (  0.000000  1.060663  0.000000 )  
+               b(3) = (  0.000000  0.000000  0.380724 )  
+
+
+     PseudoPot. # 1 for Fe read from file:
+     ../SSSP/Fe.pbe-spn-kjpaw_psl.0.2.1.UPF
+     MD5 check sum: e86618425769142926afa95317d90200
+     Pseudo is Projector augmented-wave + core cor, Zval = 16.0
+     Generated using "atomic" code by A. Dal Corso v.5.0.99 svn rev. 10869
+     Shape of augmentation charge: PSQ
+     Using radial grid of 1191 points,  6 beta functions with: 
+                l(1) =   0
+                l(2) =   0
+                l(3) =   1
+                l(4) =   1
+                l(5) =   2
+                l(6) =   2
+     Q(r) pseudized with 0 coefficients 
+
+
+     atomic species   valence    mass     pseudopotential
+        Fe            16.00    55.84500     Fe( 1.00)
+
+     Starting magnetic structure 
+     atomic species   magnetization
+        Fe           0.100
+
+     No symmetry found
+
+
+
+   Cartesian axes
+
+     site n.     atom                  positions (alat units)
+         1           Fe  tau(   1) = (   0.1666663   0.1178509   0.0000000  )
+         2           Fe  tau(   2) = (   0.0000000   0.0000000   0.2041376  )
+         3           Fe  tau(   3) = (   0.4999989   0.3535526   0.0000000  )
+         4           Fe  tau(   4) = (   0.3333326   0.2357017   0.2041376  )
+         5           Fe  tau(   5) = (   0.1666883   0.1178565   0.4055485  )
+         6           Fe  tau(   6) = (   0.3333688   0.9428184   0.6047447  )
+         7           Fe  tau(   7) = (   0.5000206   0.3535572   0.4055456  )
+         8           Fe  tau(   8) = (   0.3333470   0.2357998   0.6047191  )
+         9           Fe  tau(   9) = (   0.2499989   0.3535526   0.0000000  )
+        10           Fe  tau(  10) = (   0.4166663   0.1178509   0.0000000  )
+        11           Fe  tau(  11) = (   0.0833326   0.2357017   0.2041376  )
+        12           Fe  tau(  12) = (   0.2500000   0.0000000   0.2041376  )
+        13           Fe  tau(  13) = (   0.2500056   0.3535711   0.4054970  )
+        14           Fe  tau(  14) = (   0.4166800   0.1178886   0.4055435  )
+        15           Fe  tau(  15) = (   0.0833671   0.2357290   0.6047215  )
+        16           Fe  tau(  16) = (   0.2500711   0.0000921   0.6047608  )
+        17           Fe  tau(  17) = (   0.6666663   0.1178509   0.0000000  )
+        18           Fe  tau(  18) = (   0.5000000   0.0000000   0.2041376  )
+        19           Fe  tau(  19) = (   0.9999989   0.3535526   0.0000000  )
+        20           Fe  tau(  20) = (   0.8333326   0.2357017   0.2041376  )
+        21           Fe  tau(  21) = (   0.6666909   0.1178765   0.4055642  )
+        22           Fe  tau(  22) = (   0.5000465   0.0000236   0.6046761  )
+        23           Fe  tau(  23) = (   1.0000109   0.3535665   0.4055626  )
+        24           Fe  tau(  24) = (   0.8333753   0.2357096   0.6046948  )
+        25           Fe  tau(  25) = (   0.7499989   0.3535526   0.0000000  )
+        26           Fe  tau(  26) = (   0.9166663   0.1178509   0.0000000  )
+        27           Fe  tau(  27) = (   0.5833326   0.2357017   0.2041376  )
+        28           Fe  tau(  28) = (   0.7500000   0.0000000   0.2041376  )
+        29           Fe  tau(  29) = (   0.7500298   0.3535537   0.4055237  )
+        30           Fe  tau(  30) = (   0.9166973   0.1178520   0.4055727  )
+        31           Fe  tau(  31) = (   0.5833528   0.2357440   0.6048152  )
+        32           Fe  tau(  32) = (   1.0833550   0.9428301   0.6047230  )
+        33           Fe  tau(  33) = (   0.3333315   0.5892543   0.0000000  )
+        34           Fe  tau(  34) = (   0.1666652   0.4714034   0.2041376  )
+        35           Fe  tau(  35) = (   0.6666640   0.8249560   0.0000000  )
+        36           Fe  tau(  36) = (   0.4999978   0.7071052   0.2041376  )
+        37           Fe  tau(  37) = (   0.3333024   0.5893238   0.4055334  )
+        38           Fe  tau(  38) = (   1.1666931   0.4714090   0.6046775  )
+        39           Fe  tau(  39) = (   0.6666498   0.8250381   0.4055339  )
+        40           Fe  tau(  40) = (   0.4999795   0.7072006   0.6047873  )
+        41           Fe  tau(  41) = (   0.4166640   0.8249560   0.0000000  )
+        42           Fe  tau(  42) = (   0.5833315   0.5892543   0.0000000  )
+        43           Fe  tau(  43) = (   0.2499978   0.7071052   0.2041376  )
+        44           Fe  tau(  44) = (   0.4166652   0.4714034   0.2041376  )
+        45           Fe  tau(  45) = (   0.4166645   0.8250008   0.4055405  )
+        46           Fe  tau(  46) = (   0.5833194   0.5893164   0.4055538  )
+        47           Fe  tau(  47) = (   1.2499531   0.7071110   0.6047598  )
+        48           Fe  tau(  48) = (   0.4166762   0.4714800   0.6046684  )
+        49           Fe  tau(  49) = (   0.8333315   0.5892543   0.0000000  )
+        50           Fe  tau(  50) = (   0.6666652   0.4714034   0.2041376  )
+        51           Fe  tau(  51) = (   1.1666640   0.8249560   0.0000000  )
+        52           Fe  tau(  52) = (   0.9999978   0.7071052   0.2041376  )
+        53           Fe  tau(  53) = (   0.8333620   0.5892670   0.4055440  )
+        54           Fe  tau(  54) = (   0.6666665   0.4714716   0.6046004  )
+        55           Fe  tau(  55) = (   1.1666930   0.8249675   0.4055502  )
+        56           Fe  tau(  56) = (   0.9999653   0.7071693   0.6047169  )
+        57           Fe  tau(  57) = (   0.9166640   0.8249560   0.0000000  )
+        58           Fe  tau(  58) = (   1.0833315   0.5892543   0.0000000  )
+        59           Fe  tau(  59) = (   0.7499978   0.7071052   0.2041376  )
+        60           Fe  tau(  60) = (   0.9166652   0.4714034   0.2041376  )
+        61           Fe  tau(  61) = (   0.9166861   0.8249876   0.4054965  )
+        62           Fe  tau(  62) = (   1.0833354   0.5892828   0.4055429  )
+        63           Fe  tau(  63) = (   0.7499872   0.7071671   0.6046676  )
+        64           Fe  tau(  64) = (   0.9166845   0.4714443   0.6048084  )
+
+     number of k points=    10  Methfessel-Paxton smearing, width (Ry)=  0.0100
+                       cart. coord. in units 2pi/alat
+        k(    1) = (   0.0000000   0.0000000   0.0000000), wk =   0.0625000
+        k(    2) = (   0.0000000   0.2651656   0.0000000), wk =   0.1250000
+        k(    3) = (   0.0000000  -0.5303313   0.0000000), wk =   0.0625000
+        k(    4) = (   0.2500000  -0.0883878   0.0000000), wk =   0.1250000
+        k(    5) = (   0.2500000   0.1767779   0.0000000), wk =   0.1250000
+        k(    6) = (   0.2500000  -0.6187190   0.0000000), wk =   0.1250000
+        k(    7) = (   0.2500000  -0.3535534   0.0000000), wk =   0.1250000
+        k(    8) = (  -0.5000000   0.1767755   0.0000000), wk =   0.0625000
+        k(    9) = (  -0.5000000   0.4419412   0.0000000), wk =   0.1250000
+        k(   10) = (  -0.5000000  -0.3535558   0.0000000), wk =   0.0625000
+
+     Dense  grid:  2905599 G-vectors     FFT dimensions: ( 135, 135, 360)
+
+     Smooth grid:  1027285 G-vectors     FFT dimensions: (  96,  96, 243)
+
+     Estimated max dynamical RAM per process >    1009.58 MB
+
+     Estimated total dynamical RAM >     157.75 GB
+     Generating pointlists ...
+     new r_m :   0.1014 (alat units)  1.9031 (a.u.) for type    1
+
+     Check: negative core charge=   -0.000039
+
+     Initial potential from superposition of free atoms
+
+     starting charge 1023.97194, renormalised to 1024.00000
+
+     negative rho (up, down):  2.482E-02 2.555E-03
+     Starting wfcs are  832 randomized atomic wfcs
+     Checking if some PAW data can be deallocated... 
+
+     total cpu time spent up to now is       86.3 secs
+
+     Self-consistent Calculation
+
+     iteration #  1     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  1 eigenvalues not converged
+     c_bands:  2 eigenvalues not converged
+     ethr =  1.00E-04,  avg # of iterations = 19.0
+
+     negative rho (up, down):  1.308E-02 3.492E-03
+
+     total cpu time spent up to now is     1117.5 secs
+
+     total energy              =  -21066.98184118 Ry
+     Harris-Foulkes estimate   =  -21074.09732261 Ry
+     estimated scf accuracy    <     352.45062367 Ry
+
+     total magnetization       =   106.95 Bohr mag/cell
+     absolute magnetization    =   107.85 Bohr mag/cell
+
+     iteration #  2     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.00E-02,  avg # of iterations =  1.0
+
+     negative rho (up, down):  1.011E-02 4.108E-02
+
+     total cpu time spent up to now is     1265.0 secs
+
+     total energy              =  -21070.76060156 Ry
+     Harris-Foulkes estimate   =  -21073.59703738 Ry
+     estimated scf accuracy    <     153.43407181 Ry
+
+     total magnetization       =   106.78 Bohr mag/cell
+     absolute magnetization    =   107.83 Bohr mag/cell
+
+     iteration #  3     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.00E-02,  avg # of iterations =  1.0
+
+     negative rho (up, down):  5.349E-03 1.740E-02
+
+     total cpu time spent up to now is     1415.6 secs
+
+     total energy              =  -21072.17445117 Ry
+     Harris-Foulkes estimate   =  -21072.27827931 Ry
+     estimated scf accuracy    <       9.71013842 Ry
+
+     total magnetization       =   133.45 Bohr mag/cell
+     absolute magnetization    =   133.84 Bohr mag/cell
+
+     iteration #  4     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  9.48E-04,  avg # of iterations =  1.0
+
+     negative rho (up, down):  3.329E-03 2.440E-02
+
+     total cpu time spent up to now is     1560.9 secs
+
+     total energy              =  -21072.20763656 Ry
+     Harris-Foulkes estimate   =  -21072.26538724 Ry
+     estimated scf accuracy    <      14.73274769 Ry
+
+     total magnetization       =   140.05 Bohr mag/cell
+     absolute magnetization    =   140.52 Bohr mag/cell
+
+     iteration #  5     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  9.48E-04,  avg # of iterations =  1.0
+
+     negative rho (up, down):  1.823E-02 2.155E-01
+
+     total cpu time spent up to now is     1702.9 secs
+
+     total energy              =  -21070.01130172 Ry
+     Harris-Foulkes estimate   =  -21072.24233941 Ry
+     estimated scf accuracy    <      15.64910382 Ry
+
+     total magnetization       =   143.54 Bohr mag/cell
+     absolute magnetization    =   144.10 Bohr mag/cell
+
+     iteration #  6     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  9.48E-04,  avg # of iterations =  8.9
+
+     negative rho (up, down):  1.932E-03 9.739E-02
+
+     total cpu time spent up to now is     1946.8 secs
+
+     total energy              =  -21071.60837223 Ry
+     Harris-Foulkes estimate   =  -21071.54596110 Ry
+     estimated scf accuracy    <       2.34398771 Ry
+
+     total magnetization       =   158.24 Bohr mag/cell
+     absolute magnetization    =   162.77 Bohr mag/cell
+
+     iteration #  7     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  2 eigenvalues not converged
+     ethr =  2.29E-04,  avg # of iterations =  9.3
+
+     negative rho (up, down):  7.149E-04 5.171E-02
+
+     total cpu time spent up to now is     2402.2 secs
+
+     total energy              =  -21072.13684075 Ry
+     Harris-Foulkes estimate   =  -21072.12873104 Ry
+     estimated scf accuracy    <       0.61117540 Ry
+
+     total magnetization       =   150.02 Bohr mag/cell
+     absolute magnetization    =   153.22 Bohr mag/cell
+
+     iteration #  8     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  5.97E-05,  avg # of iterations = 12.2
+
+     negative rho (up, down):  2.916E-04 3.037E-02
+
+     total cpu time spent up to now is     3015.4 secs
+
+     total energy              =  -21072.21011804 Ry
+     Harris-Foulkes estimate   =  -21072.27595490 Ry
+     estimated scf accuracy    <       0.74125247 Ry
+
+     total magnetization       =   150.45 Bohr mag/cell
+     absolute magnetization    =   154.29 Bohr mag/cell
+
+     iteration #  9     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  5.97E-05,  avg # of iterations =  1.6
+
+     negative rho (up, down):  4.247E-04 4.535E-02
+
+     total cpu time spent up to now is     3176.1 secs
+
+     total energy              =  -21072.25235994 Ry
+     Harris-Foulkes estimate   =  -21072.27296743 Ry
+     estimated scf accuracy    <       1.33758703 Ry
+
+     total magnetization       =   155.19 Bohr mag/cell
+     absolute magnetization    =   158.78 Bohr mag/cell
+
+     iteration # 10     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  5.97E-05,  avg # of iterations =  1.0
+
+     negative rho (up, down):  3.134E-04 3.506E-02
+
+     total cpu time spent up to now is     3317.0 secs
+
+     total energy              =  -21072.25558479 Ry
+     Harris-Foulkes estimate   =  -21072.27170192 Ry
+     estimated scf accuracy    <       0.81144148 Ry
+
+     total magnetization       =   157.07 Bohr mag/cell
+     absolute magnetization    =   160.79 Bohr mag/cell
+
+     iteration # 11     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  5.97E-05,  avg # of iterations =  1.4
+
+     negative rho (up, down):  8.922E-05 2.711E-02
+
+     total cpu time spent up to now is     3478.7 secs
+
+     total energy              =  -21072.25387263 Ry
+     Harris-Foulkes estimate   =  -21072.27033726 Ry
+     estimated scf accuracy    <       0.47253689 Ry
+
+     total magnetization       =   158.97 Bohr mag/cell
+     absolute magnetization    =   162.75 Bohr mag/cell
+
+     iteration # 12     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  4.61E-05,  avg # of iterations =  2.2
+
+     negative rho (up, down):  1.553E-02 4.330E-02
+
+     total cpu time spent up to now is     3657.7 secs
+
+     total energy              =  -21072.23226190 Ry
+     Harris-Foulkes estimate   =  -21072.26566892 Ry
+     estimated scf accuracy    <       0.23881155 Ry
+
+     total magnetization       =   159.61 Bohr mag/cell
+     absolute magnetization    =   163.44 Bohr mag/cell
+
+     iteration # 13     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  4 eigenvalues not converged
+     ethr =  2.33E-05,  avg # of iterations = 15.0
+
+     negative rho (up, down):  2.568E-03 3.037E-02
+
+     total cpu time spent up to now is     4542.6 secs
+
+     total energy              =  -21072.30993177 Ry
+     Harris-Foulkes estimate   =  -21072.31817412 Ry
+     estimated scf accuracy    <       0.18785831 Ry
+
+     total magnetization       =   161.72 Bohr mag/cell
+     absolute magnetization    =   166.90 Bohr mag/cell
+
+     iteration # 14     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.83E-05,  avg # of iterations =  3.9
+
+     negative rho (up, down):  1.328E-01 2.592E-02
+
+     total cpu time spent up to now is     4720.1 secs
+
+     total energy              =  -21072.28585942 Ry
+     Harris-Foulkes estimate   =  -21072.31592440 Ry
+     estimated scf accuracy    <       0.10710454 Ry
+
+     total magnetization       =   161.41 Bohr mag/cell
+     absolute magnetization    =   166.57 Bohr mag/cell
+
+     iteration # 15     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.05E-05,  avg # of iterations =  8.2
+
+     negative rho (up, down):  7.972E-02 1.670E-02
+
+     total cpu time spent up to now is     5013.6 secs
+
+     total energy              =  -21072.30198858 Ry
+     Harris-Foulkes estimate   =  -21072.30530379 Ry
+     estimated scf accuracy    <       0.11161906 Ry
+
+     total magnetization       =   162.04 Bohr mag/cell
+     absolute magnetization    =   167.13 Bohr mag/cell
+
+     iteration # 16     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.05E-05,  avg # of iterations =  1.2
+
+     negative rho (up, down):  1.211E-01 2.182E-02
+
+     total cpu time spent up to now is     5159.8 secs
+
+     total energy              =  -21072.28978907 Ry
+     Harris-Foulkes estimate   =  -21072.30595995 Ry
+     estimated scf accuracy    <       0.05283314 Ry
+
+     total magnetization       =   161.87 Bohr mag/cell
+     absolute magnetization    =   167.03 Bohr mag/cell
+
+     iteration # 17     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  5.16E-06,  avg # of iterations =  9.8
+
+     negative rho (up, down):  1.226E-01 2.036E-02
+
+     total cpu time spent up to now is     5985.8 secs
+
+     total energy              =  -21072.25836954 Ry
+     Harris-Foulkes estimate   =  -21072.31075581 Ry
+     estimated scf accuracy    <       0.11692466 Ry
+
+     total magnetization       =   163.66 Bohr mag/cell
+     absolute magnetization    =   169.75 Bohr mag/cell
+
+     iteration # 18     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  5.16E-06,  avg # of iterations = 11.6
+
+     negative rho (up, down):  1.808E-01 1.863E-02
+
+     total cpu time spent up to now is     6512.7 secs
+
+     total energy              =  -21072.26149622 Ry
+     Harris-Foulkes estimate   =  -21072.27582536 Ry
+     estimated scf accuracy    <       0.05048514 Ry
+
+     total magnetization       =   162.84 Bohr mag/cell
+     absolute magnetization    =   169.39 Bohr mag/cell
+
+     iteration # 19     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  4.93E-06,  avg # of iterations =  5.8
+
+     negative rho (up, down):  2.062E-01 1.677E-02
+
+     total cpu time spent up to now is     6840.1 secs
+
+     total energy              =  -21072.26314555 Ry
+     Harris-Foulkes estimate   =  -21072.26710857 Ry
+     estimated scf accuracy    <       0.04207791 Ry
+
+     total magnetization       =   163.15 Bohr mag/cell
+     absolute magnetization    =   169.65 Bohr mag/cell
+
+     iteration # 20     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  4.11E-06,  avg # of iterations =  2.0
+
+     negative rho (up, down):  1.509E-01 1.633E-02
+
+     total cpu time spent up to now is     7030.7 secs
+
+     total energy              =  -21072.24649312 Ry
+     Harris-Foulkes estimate   =  -21072.26440995 Ry
+     estimated scf accuracy    <       0.04196097 Ry
+
+     total magnetization       =   163.73 Bohr mag/cell
+     absolute magnetization    =   170.21 Bohr mag/cell
+
+     iteration # 21     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  4.10E-06,  avg # of iterations =  1.9
+
+     negative rho (up, down):  9.480E-02 3.141E-02
+
+     total cpu time spent up to now is     7217.0 secs
+
+     total energy              =  -21072.21649557 Ry
+     Harris-Foulkes estimate   =  -21072.24735416 Ry
+     estimated scf accuracy    <       0.03096891 Ry
+
+     total magnetization       =   163.55 Bohr mag/cell
+     absolute magnetization    =   170.02 Bohr mag/cell
+
+     iteration # 22     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  3.02E-06,  avg # of iterations = 26.9
+
+     negative rho (up, down):  8.506E-02 2.526E-02
+
+     total cpu time spent up to now is     8285.4 secs
+
+     total energy              =  -21072.22224381 Ry
+     Harris-Foulkes estimate   =  -21072.22083596 Ry
+     estimated scf accuracy    <       0.00302668 Ry
+
+     total magnetization       =   163.16 Bohr mag/cell
+     absolute magnetization    =   169.64 Bohr mag/cell
+
+     iteration # 23     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  2.96E-07,  avg # of iterations = 29.1
+
+     negative rho (up, down):  7.784E-02 2.100E-02
+
+     total cpu time spent up to now is     9990.4 secs
+
+     total energy              =  -21072.22800911 Ry
+     Harris-Foulkes estimate   =  -21072.22477720 Ry
+     estimated scf accuracy    <       0.00253052 Ry
+
+     total magnetization       =   162.93 Bohr mag/cell
+     absolute magnetization    =   169.31 Bohr mag/cell
+
+     iteration # 24     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  2.47E-07,  avg # of iterations =  8.8
+
+     negative rho (up, down):  7.297E-02 1.906E-02
+
+     total cpu time spent up to now is    10274.3 secs
+
+     total energy              =  -21072.22782818 Ry
+     Harris-Foulkes estimate   =  -21072.22813416 Ry
+     estimated scf accuracy    <       0.00159345 Ry
+
+     total magnetization       =   162.99 Bohr mag/cell
+     absolute magnetization    =   169.37 Bohr mag/cell
+
+     iteration # 25     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.56E-07,  avg # of iterations =  7.0
+
+     negative rho (up, down):  5.883E-02 1.807E-02
+
+     total cpu time spent up to now is    10529.9 secs
+
+     total energy              =  -21072.23025620 Ry
+     Harris-Foulkes estimate   =  -21072.22791588 Ry
+     estimated scf accuracy    <       0.00118995 Ry
+
+     total magnetization       =   162.80 Bohr mag/cell
+     absolute magnetization    =   169.18 Bohr mag/cell
+
+     iteration # 26     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.16E-07,  avg # of iterations =  8.3
+
+     negative rho (up, down):  3.637E-02 1.864E-02
+
+     total cpu time spent up to now is    10854.1 secs
+
+     total energy              =  -21072.23579963 Ry
+     Harris-Foulkes estimate   =  -21072.23032976 Ry
+     estimated scf accuracy    <       0.00073009 Ry
+
+     total magnetization       =   162.78 Bohr mag/cell
+     absolute magnetization    =   169.16 Bohr mag/cell
+
+     iteration # 27     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  7.13E-08,  avg # of iterations = 10.6
+
+     negative rho (up, down):  2.668E-02 1.898E-02
+
+     total cpu time spent up to now is    11182.6 secs
+
+     total energy              =  -21072.23604993 Ry
+     Harris-Foulkes estimate   =  -21072.23593595 Ry
+     estimated scf accuracy    <       0.00034915 Ry
+
+     total magnetization       =   162.86 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 28     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  3.41E-08,  avg # of iterations =  9.4
+
+     negative rho (up, down):  2.444E-02 1.894E-02
+
+     total cpu time spent up to now is    11868.9 secs
+
+     total energy              =  -21072.23788285 Ry
+     Harris-Foulkes estimate   =  -21072.23621286 Ry
+     estimated scf accuracy    <       0.00014157 Ry
+
+     total magnetization       =   162.85 Bohr mag/cell
+     absolute magnetization    =   169.22 Bohr mag/cell
+
+     iteration # 29     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.38E-08,  avg # of iterations =  9.0
+
+     negative rho (up, down):  2.388E-02 1.875E-02
+
+     total cpu time spent up to now is    12381.5 secs
+
+     total energy              =  -21072.23798897 Ry
+     Harris-Foulkes estimate   =  -21072.23796772 Ry
+     estimated scf accuracy    <       0.00017759 Ry
+
+     total magnetization       =   162.84 Bohr mag/cell
+     absolute magnetization    =   169.21 Bohr mag/cell
+
+     iteration # 30     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.38E-08,  avg # of iterations =  2.2
+
+     negative rho (up, down):  2.226E-02 1.885E-02
+
+     total cpu time spent up to now is    12535.3 secs
+
+     total energy              =  -21072.23915200 Ry
+     Harris-Foulkes estimate   =  -21072.23800108 Ry
+     estimated scf accuracy    <       0.00007043 Ry
+
+     total magnetization       =   162.83 Bohr mag/cell
+     absolute magnetization    =   169.21 Bohr mag/cell
+
+     iteration # 31     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  2 eigenvalues not converged
+     ethr =  6.88E-09,  avg # of iterations = 11.9
+
+     negative rho (up, down):  2.304E-02 1.886E-02
+
+     total cpu time spent up to now is    13481.9 secs
+
+     total energy              =  -21072.24029859 Ry
+     Harris-Foulkes estimate   =  -21072.23919350 Ry
+     estimated scf accuracy    <       0.00015379 Ry
+
+     total magnetization       =   162.85 Bohr mag/cell
+     absolute magnetization    =   169.21 Bohr mag/cell
+
+     iteration # 32     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  2 eigenvalues not converged
+     ethr =  6.88E-09,  avg # of iterations = 11.6
+
+     negative rho (up, down):  2.400E-02 1.871E-02
+
+     total cpu time spent up to now is    14066.6 secs
+
+     total energy              =  -21072.24046386 Ry
+     Harris-Foulkes estimate   =  -21072.24035139 Ry
+     estimated scf accuracy    <       0.00007158 Ry
+
+     total magnetization       =   162.86 Bohr mag/cell
+     absolute magnetization    =   169.22 Bohr mag/cell
+
+     iteration # 33     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  1 eigenvalues not converged
+     ethr =  6.88E-09,  avg # of iterations =  4.0
+
+     negative rho (up, down):  2.372E-02 1.869E-02
+
+     total cpu time spent up to now is    14299.9 secs
+
+     total energy              =  -21072.24019227 Ry
+     Harris-Foulkes estimate   =  -21072.24046652 Ry
+     estimated scf accuracy    <       0.00005038 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.24 Bohr mag/cell
+
+     iteration # 34     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  4.92E-09,  avg # of iterations =  7.2
+
+     negative rho (up, down):  2.335E-02 1.865E-02
+
+     total cpu time spent up to now is    14544.7 secs
+
+     total energy              =  -21072.24031049 Ry
+     Harris-Foulkes estimate   =  -21072.24019771 Ry
+     estimated scf accuracy    <       0.00000855 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.24 Bohr mag/cell
+
+     iteration # 35     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  8.35E-10,  avg # of iterations = 14.3
+
+     negative rho (up, down):  2.328E-02 1.867E-02
+
+     total cpu time spent up to now is    15565.5 secs
+
+     total energy              =  -21072.24034899 Ry
+     Harris-Foulkes estimate   =  -21072.24031641 Ry
+     estimated scf accuracy    <       0.00000730 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 36     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  7.13E-10,  avg # of iterations =  7.0
+
+     negative rho (up, down):  2.335E-02 1.862E-02
+
+     total cpu time spent up to now is    15846.8 secs
+
+     total energy              =  -21072.24030588 Ry
+     Harris-Foulkes estimate   =  -21072.24034921 Ry
+     estimated scf accuracy    <       0.00000826 Ry
+
+     total magnetization       =   162.89 Bohr mag/cell
+     absolute magnetization    =   169.24 Bohr mag/cell
+
+     iteration # 37     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  7.13E-10,  avg # of iterations =  3.9
+
+     negative rho (up, down):  2.399E-02 1.865E-02
+
+     total cpu time spent up to now is    16100.2 secs
+
+     total energy              =  -21072.24023395 Ry
+     Harris-Foulkes estimate   =  -21072.24030606 Ry
+     estimated scf accuracy    <       0.00000695 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 38     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  6.79E-10,  avg # of iterations =  6.1
+
+     negative rho (up, down):  2.391E-02 1.863E-02
+
+     total cpu time spent up to now is    16331.5 secs
+
+     total energy              =  -21072.24026553 Ry
+     Harris-Foulkes estimate   =  -21072.24023490 Ry
+     estimated scf accuracy    <       0.00000841 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 39     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  6.79E-10,  avg # of iterations =  2.6
+
+     negative rho (up, down):  2.392E-02 1.866E-02
+
+     total cpu time spent up to now is    16511.5 secs
+
+     total energy              =  -21072.24025150 Ry
+     Harris-Foulkes estimate   =  -21072.24026565 Ry
+     estimated scf accuracy    <       0.00000739 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 40     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  6.79E-10,  avg # of iterations =  1.0
+
+     negative rho (up, down):  2.397E-02 1.871E-02
+
+     total cpu time spent up to now is    16654.5 secs
+
+     total energy              =  -21072.24013044 Ry
+     Harris-Foulkes estimate   =  -21072.24025162 Ry
+     estimated scf accuracy    <       0.00000735 Ry
+
+     total magnetization       =   162.88 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 41     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  6.79E-10,  avg # of iterations =  1.0
+
+     negative rho (up, down):  2.466E-02 1.873E-02
+
+     total cpu time spent up to now is    16799.5 secs
+
+     total energy              =  -21072.23988272 Ry
+     Harris-Foulkes estimate   =  -21072.24013072 Ry
+     estimated scf accuracy    <       0.00000355 Ry
+
+     total magnetization       =   162.87 Bohr mag/cell
+     absolute magnetization    =   169.23 Bohr mag/cell
+
+     iteration # 42     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  2 eigenvalues not converged
+     ethr =  3.47E-10,  avg # of iterations = 12.7
+
+     negative rho (up, down):  2.459E-02 1.871E-02
+
+     total cpu time spent up to now is    17786.7 secs
+
+     total energy              =  -21072.23995595 Ry
+     Harris-Foulkes estimate   =  -21072.23988479 Ry
+     estimated scf accuracy    <       0.00000415 Ry
+
+     total magnetization       =   162.89 Bohr mag/cell
+     absolute magnetization    =   169.25 Bohr mag/cell
+
+     iteration # 43     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  2 eigenvalues not converged
+     ethr =  3.47E-10,  avg # of iterations =  6.2
+
+     negative rho (up, down):  2.459E-02 1.871E-02
+
+     total cpu time spent up to now is    18081.8 secs
+
+     total energy              =  -21072.23996054 Ry
+     Harris-Foulkes estimate   =  -21072.23995627 Ry
+     estimated scf accuracy    <       0.00000141 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.25 Bohr mag/cell
+
+     iteration # 44     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.38E-10,  avg # of iterations =  3.9
+
+     negative rho (up, down):  2.459E-02 1.871E-02
+
+     total cpu time spent up to now is    18263.2 secs
+
+     total energy              =  -21072.24000201 Ry
+     Harris-Foulkes estimate   =  -21072.23996060 Ry
+     estimated scf accuracy    <       0.00000137 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.25 Bohr mag/cell
+
+     iteration # 45     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.33E-10,  avg # of iterations =  1.0
+
+     negative rho (up, down):  2.460E-02 1.869E-02
+
+     total cpu time spent up to now is    18406.4 secs
+
+     total energy              =  -21072.24003834 Ry
+     Harris-Foulkes estimate   =  -21072.24000204 Ry
+     estimated scf accuracy    <       0.00000113 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.26 Bohr mag/cell
+
+     iteration # 46     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  1 eigenvalues not converged
+     ethr =  1.10E-10,  avg # of iterations =  7.9
+
+     negative rho (up, down):  2.498E-02 1.871E-02
+
+     total cpu time spent up to now is    18923.7 secs
+
+     total energy              =  -21072.23987941 Ry
+     Harris-Foulkes estimate   =  -21072.24003864 Ry
+     estimated scf accuracy    <       0.00000044 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.26 Bohr mag/cell
+
+     iteration # 47     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     c_bands:  1 eigenvalues not converged
+     ethr =  4.25E-11,  avg # of iterations = 11.2
+
+     negative rho (up, down):  2.497E-02 1.871E-02
+
+     total cpu time spent up to now is    19520.6 secs
+
+     total energy              =  -21072.23981254 Ry
+     Harris-Foulkes estimate   =  -21072.23987955 Ry
+     estimated scf accuracy    <       0.00000040 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.26 Bohr mag/cell
+
+     iteration # 48     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  3.89E-11,  avg # of iterations =  3.1
+
+     negative rho (up, down):  2.493E-02 1.871E-02
+
+     total cpu time spent up to now is    19699.0 secs
+
+     total energy              =  -21072.23978042 Ry
+     Harris-Foulkes estimate   =  -21072.23981255 Ry
+     estimated scf accuracy    <       0.00000027 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.26 Bohr mag/cell
+
+     iteration # 49     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  2.68E-11,  avg # of iterations =  4.3
+
+     negative rho (up, down):  2.492E-02 1.872E-02
+
+     total cpu time spent up to now is    19892.1 secs
+
+     total energy              =  -21072.23976725 Ry
+     Harris-Foulkes estimate   =  -21072.23978044 Ry
+     estimated scf accuracy    <       0.00000014 Ry
+
+     total magnetization       =   162.90 Bohr mag/cell
+     absolute magnetization    =   169.26 Bohr mag/cell
+
+     iteration # 50     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.41E-11,  avg # of iterations =  9.1
+
+     negative rho (up, down):  2.494E-02 1.872E-02
+
+     total cpu time spent up to now is    20546.7 secs
+
+     total energy              =  -21072.23974708 Ry
+     Harris-Foulkes estimate   =  -21072.23976731 Ry
+     estimated scf accuracy    <       0.00000005 Ry
+
+     total magnetization       =   162.91 Bohr mag/cell
+     absolute magnetization    =   169.27 Bohr mag/cell
+
+     iteration # 51     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  4.68E-12,  avg # of iterations =  9.7
+
+     negative rho (up, down):  2.495E-02 1.872E-02
+
+     total cpu time spent up to now is    21046.4 secs
+
+     total energy              =  -21072.23974227 Ry
+     Harris-Foulkes estimate   =  -21072.23974710 Ry
+     estimated scf accuracy    <       0.00000002 Ry
+
+     total magnetization       =   162.91 Bohr mag/cell
+     absolute magnetization    =   169.27 Bohr mag/cell
+
+     iteration # 52     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  2.16E-12,  avg # of iterations =  7.3
+
+     negative rho (up, down):  2.496E-02 1.871E-02
+
+     total cpu time spent up to now is    21295.1 secs
+
+     total energy              =  -21072.23973432 Ry
+     Harris-Foulkes estimate   =  -21072.23974226 Ry
+     estimated scf accuracy    <       0.00000002 Ry
+
+     total magnetization       =   162.91 Bohr mag/cell
+     absolute magnetization    =   169.27 Bohr mag/cell
+
+     iteration # 53     ecut=    60.00 Ry     beta= 0.20
+     Davidson diagonalization with overlap
+     ethr =  1.62E-12,  avg # of iterations =  8.0
+
+     negative rho (up, down):  2.496E-02 1.871E-02
+
+     Magnetic moment per site:
+     atom:    1    charge:   14.2641    magn:    2.6645    constr:    0.0000
+     atom:    2    charge:   14.3386    magn:    2.4380    constr:    0.0000
+     atom:    3    charge:   14.2640    magn:    2.6645    constr:    0.0000
+     atom:    4    charge:   14.3388    magn:    2.4378    constr:    0.0000
+     atom:    5    charge:   14.3533    magn:    2.4119    constr:    0.0000
+     atom:    6    charge:   14.2800    magn:    2.6456    constr:    0.0000
+     atom:    7    charge:   14.3531    magn:    2.4125    constr:    0.0000
+     atom:    8    charge:   14.2803    magn:    2.6453    constr:    0.0000
+     atom:    9    charge:   14.2642    magn:    2.6645    constr:    0.0000
+     atom:   10    charge:   14.2642    magn:    2.6644    constr:    0.0000
+     atom:   11    charge:   14.3387    magn:    2.4383    constr:    0.0000
+     atom:   12    charge:   14.3388    magn:    2.4379    constr:    0.0000
+     atom:   13    charge:   14.3533    magn:    2.4119    constr:    0.0000
+     atom:   14    charge:   14.3533    magn:    2.4115    constr:    0.0000
+     atom:   15    charge:   14.2803    magn:    2.6451    constr:    0.0000
+     atom:   16    charge:   14.2801    magn:    2.6457    constr:    0.0000
+     atom:   17    charge:   14.2641    magn:    2.6645    constr:    0.0000
+     atom:   18    charge:   14.3390    magn:    2.4379    constr:    0.0000
+     atom:   19    charge:   14.2641    magn:    2.6645    constr:    0.0000
+     atom:   20    charge:   14.3385    magn:    2.4382    constr:    0.0000
+     atom:   21    charge:   14.3531    magn:    2.4124    constr:    0.0000
+     atom:   22    charge:   14.2806    magn:    2.6450    constr:    0.0000
+     atom:   23    charge:   14.3531    magn:    2.4124    constr:    0.0000
+     atom:   24    charge:   14.2802    magn:    2.6453    constr:    0.0000
+     atom:   25    charge:   14.2639    magn:    2.6645    constr:    0.0000
+     atom:   26    charge:   14.2639    magn:    2.6644    constr:    0.0000
+     atom:   27    charge:   14.3387    magn:    2.4382    constr:    0.0000
+     atom:   28    charge:   14.3387    magn:    2.4383    constr:    0.0000
+     atom:   29    charge:   14.3533    magn:    2.4115    constr:    0.0000
+     atom:   30    charge:   14.3532    magn:    2.4119    constr:    0.0000
+     atom:   31    charge:   14.2799    magn:    2.6463    constr:    0.0000
+     atom:   32    charge:   14.2803    magn:    2.6451    constr:    0.0000
+     atom:   33    charge:   14.2641    magn:    2.6645    constr:    0.0000
+     atom:   34    charge:   14.3390    magn:    2.4379    constr:    0.0000
+     atom:   35    charge:   14.2641    magn:    2.6645    constr:    0.0000
+     atom:   36    charge:   14.3386    magn:    2.4380    constr:    0.0000
+     atom:   37    charge:   14.3533    magn:    2.4119    constr:    0.0000
+     atom:   38    charge:   14.2806    magn:    2.6450    constr:    0.0000
+     atom:   39    charge:   14.3533    magn:    2.4119    constr:    0.0000
+     atom:   40    charge:   14.2799    magn:    2.6460    constr:    0.0000
+     atom:   41    charge:   14.2639    magn:    2.6644    constr:    0.0000
+     atom:   42    charge:   14.2639    magn:    2.6644    constr:    0.0000
+     atom:   43    charge:   14.3388    magn:    2.4380    constr:    0.0000
+     atom:   44    charge:   14.3387    magn:    2.4383    constr:    0.0000
+     atom:   45    charge:   14.3533    magn:    2.4116    constr:    0.0000
+     atom:   46    charge:   14.3531    magn:    2.4124    constr:    0.0000
+     atom:   47    charge:   14.2802    magn:    2.6457    constr:    0.0000
+     atom:   48    charge:   14.2804    magn:    2.6450    constr:    0.0000
+     atom:   49    charge:   14.2640    magn:    2.6645    constr:    0.0000
+     atom:   50    charge:   14.3387    magn:    2.4383    constr:    0.0000
+     atom:   51    charge:   14.2641    magn:    2.6645    constr:    0.0000
+     atom:   52    charge:   14.3388    magn:    2.4379    constr:    0.0000
+     atom:   53    charge:   14.3531    magn:    2.4124    constr:    0.0000
+     atom:   54    charge:   14.2806    magn:    2.6448    constr:    0.0000
+     atom:   55    charge:   14.3533    magn:    2.4120    constr:    0.0000
+     atom:   56    charge:   14.2803    magn:    2.6453    constr:    0.0000
+     atom:   57    charge:   14.2642    magn:    2.6645    constr:    0.0000
+     atom:   58    charge:   14.2642    magn:    2.6644    constr:    0.0000
+     atom:   59    charge:   14.3387    magn:    2.4383    constr:    0.0000
+     atom:   60    charge:   14.3387    magn:    2.4381    constr:    0.0000
+     atom:   61    charge:   14.3533    magn:    2.4119    constr:    0.0000
+     atom:   62    charge:   14.3533    magn:    2.4115    constr:    0.0000
+     atom:   63    charge:   14.2804    magn:    2.6450    constr:    0.0000
+     atom:   64    charge:   14.2799    magn:    2.6463    constr:    0.0000
+
+     total cpu time spent up to now is    21634.2 secs
+
+     End of self-consistent calculation
+
+ ------ SPIN UP ------------
+
+
+          k = 0.0000 0.0000 0.0000 (128403 PWs)   bands (ev):
+
+   -95.0950 -95.0793 -95.0771 -95.0771 -95.0771 -95.0771 -95.0650 -95.0650
+   -95.0612 -95.0611 -95.0607 -95.0606 -95.0592 -95.0592 -95.0591 -95.0591
+   -95.0491 -95.0490 -95.0472 -95.0472 -95.0472 -95.0471 -95.0425 -95.0425
+   -95.0424 -95.0422 -95.0352 -95.0310 -95.0308 -95.0304 -95.0303 -95.0189
+   -94.9576 -94.9371 -94.9371 -94.9370 -94.9370 -94.9265 -94.9264 -94.9166
+   -94.9139 -94.9139 -94.9136 -94.9135 -94.9057 -94.9056 -94.9056 -94.9055
+   -94.9052 -94.9052 -94.9051 -94.9051 -94.8976 -94.8972 -94.8972 -94.8968
+   -94.8953 -94.8898 -94.8895 -94.8795 -94.8795 -94.8793 -94.8793 -94.8628
+   -61.2876 -61.2666 -61.2587 -61.2587 -61.2587 -61.2587 -61.2526 -61.2525
+   -61.2499 -61.2497 -61.2492 -61.2492 -61.2481 -61.2481 -61.2423 -61.2421
+   -61.2387 -61.2387 -61.2370 -61.2368 -61.2322 -61.2322 -61.2322 -61.2322
+   -61.2291 -61.2288 -61.2208 -61.2206 -61.2202 -61.2201 -61.2184 -61.2165
+   -61.2102 -61.2044 -61.2042 -61.2042 -61.1962 -61.1962 -61.1800 -61.1800
+   -61.1800 -61.1800 -61.1707 -61.1707 -61.1706 -61.1706 -61.1397 -61.1091
+   -61.1091 -61.1083 -61.1083 -61.1083 -61.1083 -61.0998 -61.0984 -61.0983
+   -61.0978 -61.0978 -61.0977 -61.0977 -61.0916 -61.0916 -61.0877 -61.0844
+   -61.0782 -61.0781 -61.0745 -61.0745 -61.0745 -61.0745 -61.0655 -61.0654
+   -61.0654 -61.0654 -61.0539 -61.0539 -61.0477 -61.0476 -61.0470 -61.0470
+   -61.0409 -61.0409 -61.0370 -61.0370 -61.0370 -61.0370 -61.0319 -61.0319
+   -61.0290 -61.0229 -61.0229 -61.0228 -61.0228 -61.0164 -61.0163 -61.0133
+   -61.0133 -61.0031 -61.0031 -61.0031 -61.0031 -60.9980 -60.9979 -60.9965
+   -60.9802 -60.9802 -60.9780 -60.9780 -60.9779 -60.9779 -60.9727 -60.9727
+   -60.9724 -60.9650 -60.9650 -60.9649 -60.9649 -60.9645 -60.9644 -60.9638
+   -60.9568 -60.9567 -60.9484 -60.9484 -60.9483 -60.9483 -60.9483 -60.9483
+   -60.9479 -60.9468 -60.9466 -60.9438 -60.9436 -60.9299 -60.9298 -60.9246
+   -60.9246 -60.9246 -60.9246 -60.9242 -60.9145 -60.9145 -60.9145 -60.9144
+   -60.9107 -60.9107 -60.9106 -60.9106 -60.9023 -60.9023 -60.8903 -60.8833
+   -60.8825 -60.8823 -60.8802 -60.8801 -60.8800 -60.8800 -60.8673 -60.8671
+   -60.8629 -60.8613 -60.8611 -60.8580 -60.8580 -60.8578 -60.8578 -60.8511
+   -60.8508 -60.8485 -60.8429 -60.8428 -60.8427 -60.8427 -60.8392 -60.8389
+   -60.8339 -60.8183 -60.8182 -60.8182 -60.8182 -60.8132 -60.8131 -60.8112
+   -60.8072 -60.8071 -60.8051 -60.8050 -60.8050 -60.8050 -60.8008 -60.7978
+   -14.8632 -13.6360 -13.1826 -13.1826 -13.1825 -13.1824 -12.7075 -12.7074
+   -12.2458 -12.1987 -12.1987 -12.1986 -12.1985 -11.7751 -11.7624 -11.7623
+   -11.5589 -11.5588 -11.5375 -11.5374 -11.5228 -11.4728 -11.4506 -11.3745
+   -11.3744 -11.1266 -11.1266 -11.1266 -11.1265 -11.0818 -11.0373 -10.9802
+   -10.9801 -10.9780 -10.9780 -10.9778 -10.9776 -10.9652 -10.9651 -10.9648
+   -10.9648 -10.9563 -10.9560 -10.9554 -10.9553 -10.9165 -10.9165 -10.8974
+   -10.8973 -10.8771 -10.8770 -10.8770 -10.8770 -10.8434 -10.7700 -10.7699
+   -10.7699 -10.7699 -10.6942 -10.6941 -10.6940 -10.6940 -10.4137 -10.4137
+   -10.3812 -10.3811 -10.3810 -10.3810 -10.2677 -10.2675 -10.2247 -10.2240
+   -10.2057 -10.2057 -10.1995 -10.1994 -10.1863 -10.1862 -10.1860 -10.1860
+   -10.1720 -10.1537 -10.1536 -10.1495 -10.1494 -10.1492 -10.1491 -10.1293
+   -10.1293 -10.1233 -10.1233 -10.1016 -10.1015 -10.1015 -10.1013 -10.0678
+   -10.0678 -10.0676 -10.0676 -10.0512 -10.0478 -10.0475 -10.0356 -10.0356
+   -10.0086 -10.0086 -10.0085 -10.0083  -9.9332  -9.8658  -9.8656  -9.8285
+    -9.8284  -9.8283  -9.8282  -9.8076  -9.7189  -9.7185  -9.6314  -9.6313
+    -9.6236  -9.6235  -9.6233  -9.6233  -9.5915  -9.5892  -9.5891  -9.5453
+    -9.5453  -9.5451  -9.5451  -9.5408  -9.5404  -9.4877  -9.4875  -9.4873
+    -9.4872  -9.4859  -9.4857  -9.4857  -9.4856  -9.4512  -9.4508  -9.4265
+    -9.3415  -9.3365  -9.3365  -9.3363  -9.3363  -9.3217  -9.3217  -9.3215
+    -9.3214  -9.2910  -9.2707  -9.2513  -9.2507  -9.2034  -9.2033  -9.1805
+    -9.1804  -9.1774  -9.1774  -9.1715  -9.1710  -9.1243  -9.1113  -9.1110
+    -9.1108  -9.1108  -9.0835  -9.0834  -9.0832  -9.0832  -9.0589  -9.0586
+    -9.0585  -9.0470  -9.0469  -9.0440  -9.0439  -9.0044  -9.0043  -9.0041
+    -9.0040  -8.9187  -8.9185  -8.8052  -8.8052  -8.6536  -8.6535  -8.5125
+    -8.5123  -8.5118  -8.5118  -8.5117  -8.5116  -8.4974  -8.4906  -8.4749
+    -8.4748  -8.4744  -8.4744  -8.4432  -8.4275  -8.4273  -8.3957  -8.3955
+    -8.3474  -8.3474  -8.3473  -8.3472  -8.3174  -8.3172  -8.3050  -8.3049
+    -8.3046  -8.3045  -8.2927  -8.2925  -8.2897  -8.2373  -8.2299  -8.2299
+    -8.2077  -8.2077  -8.2076  -8.2074  -8.1679  -8.1677  -8.1675  -8.1675
+    -8.1639  -8.1639  -8.1605  -8.1605  -8.1472  -8.1240  -8.1113  -8.1112
+    -8.1112  -8.1111  -8.0937  -8.0936  -8.0864  -8.0835  -8.0834  -8.0833
+    -8.0830  -8.0806  -8.0805  -8.0705  -8.0609  -8.0607  -8.0606  -8.0604
+    -8.0600  -8.0594  -8.0491  -8.0442  -8.0383  -8.0381  -8.0181  -8.0177
+    -8.0177  -8.0176  -7.9749  -7.9742  -7.9742  -7.9734  -7.9733  -7.9692
+    -7.9691  -7.9637  -7.9634  -7.9633  -7.9633  -7.9479  -7.9177  -7.9175
+    -7.9175  -7.9173  -7.8608  -7.8556  -7.8556  -7.8555  -7.8554  -7.8313
+    -7.8310  -7.8201  -7.8200  -7.7049  -7.7049  -7.6961  -7.6961  -7.6960
+    -7.6959  -7.6722  -7.6721  -7.6692  -7.6691  -7.6690  -7.6688  -7.6614
+    -7.6334  -7.6334  -7.6333  -7.6331  -7.6094  -7.6092  -7.6070  -7.6069
+    -7.5873  -7.5129  -7.5128  -7.2280  -7.2049  -7.1759  -7.1758  -7.1596
+    -7.1594  -7.0863  -7.0861  -7.0861  -7.0860  -7.0144  -7.0138  -6.9477
+    -6.9476  -6.9475  -6.9474  -6.8812  -6.8809  -6.8807  -6.8807  -6.8674
+    -6.8533  -6.8290  -6.7268  -6.6581  -6.6581  -6.6221  -6.5455  -6.5454
+    -6.5431  -6.1029  -5.9344  -5.9343  -5.9010  -5.9009  -5.8832  -5.8829
+    -5.7250  -4.9799  -4.9798  -4.9657  -4.9275  -4.9274
+
+          k = 0.0000 0.2652 0.0000 (128375 PWs)   bands (ev):
+
+   -95.0937 -95.0839 -95.0779 -95.0771 -95.0748 -95.0705 -95.0702 -95.0679
+   -95.0652 -95.0610 -95.0605 -95.0591 -95.0585 -95.0582 -95.0546 -95.0538
+   -95.0537 -95.0517 -95.0494 -95.0485 -95.0471 -95.0439 -95.0430 -95.0426
+   -95.0414 -95.0369 -95.0361 -95.0352 -95.0330 -95.0305 -95.0262 -95.0198
+   -94.9561 -94.9451 -94.9378 -94.9336 -94.9320 -94.9286 -94.9210 -94.9201
+   -94.9158 -94.9156 -94.9130 -94.9096 -94.9087 -94.9086 -94.9081 -94.9058
+   -94.9036 -94.9035 -94.9019 -94.9015 -94.9013 -94.8978 -94.8961 -94.8959
+   -94.8950 -94.8919 -94.8860 -94.8847 -94.8820 -94.8790 -94.8730 -94.8640
+   -61.2852 -61.2680 -61.2655 -61.2606 -61.2581 -61.2567 -61.2556 -61.2530
+   -61.2504 -61.2493 -61.2477 -61.2452 -61.2450 -61.2449 -61.2428 -61.2415
+   -61.2393 -61.2392 -61.2391 -61.2342 -61.2335 -61.2332 -61.2323 -61.2313
+   -61.2260 -61.2256 -61.2249 -61.2234 -61.2193 -61.2193 -61.2154 -61.2099
+   -61.2067 -61.2030 -61.2026 -61.1964 -61.1935 -61.1887 -61.1861 -61.1802
+   -61.1775 -61.1759 -61.1732 -61.1665 -61.1660 -61.1576 -61.1370 -61.1339
+   -61.1266 -61.1177 -61.1169 -61.1148 -61.1103 -61.1074 -61.1027 -61.0993
+   -61.0988 -61.0985 -61.0959 -61.0922 -61.0886 -61.0884 -61.0862 -61.0858
+   -61.0850 -61.0835 -61.0812 -61.0768 -61.0741 -61.0715 -61.0714 -61.0701
+   -61.0687 -61.0668 -61.0667 -61.0648 -61.0614 -61.0559 -61.0509 -61.0450
+   -61.0449 -61.0444 -61.0393 -61.0354 -61.0342 -61.0325 -61.0316 -61.0283
+   -61.0187 -61.0183 -61.0165 -61.0146 -61.0121 -61.0118 -61.0100 -61.0083
+   -61.0080 -61.0050 -61.0042 -61.0024 -60.9998 -60.9962 -60.9942 -60.9864
+   -60.9855 -60.9839 -60.9833 -60.9782 -60.9778 -60.9767 -60.9752 -60.9742
+   -60.9739 -60.9737 -60.9729 -60.9678 -60.9676 -60.9665 -60.9621 -60.9620
+   -60.9577 -60.9557 -60.9531 -60.9501 -60.9473 -60.9460 -60.9444 -60.9429
+   -60.9415 -60.9378 -60.9373 -60.9338 -60.9336 -60.9321 -60.9298 -60.9272
+   -60.9272 -60.9243 -60.9208 -60.9168 -60.9166 -60.9157 -60.9116 -60.9089
+   -60.9086 -60.9085 -60.9064 -60.9033 -60.8982 -60.8980 -60.8961 -60.8892
+   -60.8856 -60.8806 -60.8800 -60.8773 -60.8770 -60.8750 -60.8709 -60.8707
+   -60.8683 -60.8680 -60.8608 -60.8574 -60.8550 -60.8546 -60.8473 -60.8454
+   -60.8452 -60.8420 -60.8412 -60.8409 -60.8402 -60.8398 -60.8397 -60.8383
+   -60.8347 -60.8265 -60.8220 -60.8215 -60.8190 -60.8174 -60.8159 -60.8155
+   -60.8140 -60.8133 -60.8089 -60.8082 -60.8071 -60.8061 -60.8036 -60.7999
+   -14.7468 -13.8658 -13.5253 -13.3280 -13.0693 -12.8569 -12.7279 -12.4604
+   -12.2971 -12.2455 -12.1426 -12.0432 -11.9452 -11.8525 -11.7948 -11.6910
+   -11.5999 -11.5531 -11.4995 -11.4767 -11.4713 -11.4544 -11.4500 -11.4205
+   -11.4060 -11.2697 -11.1948 -11.1682 -11.1251 -11.1235 -11.1105 -11.0890
+   -11.0838 -11.0788 -11.0656 -11.0579 -11.0530 -11.0309 -11.0224 -11.0176
+   -10.9894 -10.9780 -10.9660 -10.9437 -10.9430 -10.9254 -10.9033 -10.8978
+   -10.8768 -10.8590 -10.8357 -10.8238 -10.8060 -10.8046 -10.7968 -10.7918
+   -10.7698 -10.6742 -10.6469 -10.6319 -10.6232 -10.6019 -10.5813 -10.4956
+   -10.4654 -10.4408 -10.3877 -10.3751 -10.3267 -10.3189 -10.2794 -10.2301
+   -10.2208 -10.2162 -10.2068 -10.1966 -10.1947 -10.1830 -10.1670 -10.1649
+   -10.1581 -10.1503 -10.1497 -10.1461 -10.1247 -10.1189 -10.1167 -10.1145
+   -10.1081 -10.1011 -10.0857 -10.0762 -10.0754 -10.0691 -10.0661 -10.0645
+   -10.0630 -10.0562 -10.0521 -10.0504 -10.0151  -9.9873  -9.9724  -9.9692
+    -9.9617  -9.9558  -9.9342  -9.9250  -9.9225  -9.9041  -9.9014  -9.8957
+    -9.8157  -9.8113  -9.7923  -9.7561  -9.7298  -9.7256  -9.7215  -9.7072
+    -9.6959  -9.6235  -9.6232  -9.6087  -9.6003  -9.5973  -9.5859  -9.5853
+    -9.5828  -9.5803  -9.5639  -9.5620  -9.5484  -9.5319  -9.5140  -9.5132
+    -9.5073  -9.5025  -9.4737  -9.4661  -9.4593  -9.4168  -9.4103  -9.3837
+    -9.3791  -9.3610  -9.3572  -9.3398  -9.3284  -9.3237  -9.3215  -9.3155
+    -9.3066  -9.3056  -9.2984  -9.2844  -9.2797  -9.2706  -9.2642  -9.2574
+    -9.2542  -9.2334  -9.2124  -9.2021  -9.1659  -9.1468  -9.1439  -9.1237
+    -9.1100  -9.0999  -9.0801  -9.0707  -9.0703  -9.0597  -9.0499  -9.0387
+    -9.0278  -8.9831  -8.9759  -8.9402  -8.9371  -8.9294  -8.8998  -8.8685
+    -8.8493  -8.8474  -8.8261  -8.7667  -8.6515  -8.6405  -8.6377  -8.5943
+    -8.5903  -8.5700  -8.5560  -8.5378  -8.5113  -8.5068  -8.5030  -8.4801
+    -8.4722  -8.4712  -8.4532  -8.4503  -8.4486  -8.4429  -8.4309  -8.4285
+    -8.3982  -8.3900  -8.3638  -8.3308  -8.3229  -8.3098  -8.3048  -8.3019
+    -8.3009  -8.2948  -8.2743  -8.2721  -8.2718  -8.2683  -8.2668  -8.2550
+    -8.2433  -8.2433  -8.2053  -8.1994  -8.1915  -8.1835  -8.1735  -8.1679
+    -8.1533  -8.1528  -8.1470  -8.1388  -8.1387  -8.1315  -8.1256  -8.1238
+    -8.1211  -8.1088  -8.1028  -8.1013  -8.0973  -8.0877  -8.0873  -8.0717
+    -8.0643  -8.0559  -8.0532  -8.0457  -8.0441  -8.0391  -8.0364  -8.0350
+    -8.0318  -8.0293  -8.0257  -8.0229  -8.0049  -8.0034  -7.9981  -7.9937
+    -7.9842  -7.9748  -7.9728  -7.9680  -7.9676  -7.9594  -7.9573  -7.9545
+    -7.9530  -7.9340  -7.9316  -7.9160  -7.9051  -7.9040  -7.8976  -7.8759
+    -7.8513  -7.8447  -7.8302  -7.8131  -7.8098  -7.8085  -7.8013  -7.7883
+    -7.7836  -7.7785  -7.7694  -7.7665  -7.7658  -7.7657  -7.7432  -7.7119
+    -7.6934  -7.6903  -7.6864  -7.6857  -7.6828  -7.6634  -7.6572  -7.6480
+    -7.6428  -7.6382  -7.6310  -7.6162  -7.5993  -7.5344  -7.4992  -7.4984
+    -7.4951  -7.2864  -7.2708  -7.2604  -7.2406  -7.2280  -7.2162  -7.1967
+    -7.1902  -7.1862  -7.1772  -7.1101  -7.1080  -7.1003  -7.0815  -7.0800
+    -7.0683  -7.0591  -7.0554  -7.0211  -7.0190  -7.0101  -6.9755  -6.9706
+    -6.9539  -6.8862  -6.8574  -6.8269  -6.7679  -6.7167  -6.5253  -6.4615
+    -6.2388  -6.0746  -6.0731  -6.0000  -5.9592  -5.8140  -5.8047  -5.6490
+    -5.6447  -5.5530  -5.5096  -5.4531  -5.3101  -5.2790
+
+          k = 0.0000-0.5303 0.0000 (128388 PWs)   bands (ev):
+
+   -95.0898 -95.0898 -95.0747 -95.0747 -95.0740 -95.0739 -95.0707 -95.0707
+   -95.0644 -95.0644 -95.0589 -95.0586 -95.0556 -95.0556 -95.0543 -95.0540
+   -95.0536 -95.0536 -95.0494 -95.0494 -95.0478 -95.0478 -95.0390 -95.0390
+   -95.0387 -95.0387 -95.0374 -95.0373 -95.0328 -95.0326 -95.0224 -95.0223
+   -94.9518 -94.9517 -94.9361 -94.9360 -94.9280 -94.9280 -94.9211 -94.9211
+   -94.9140 -94.9139 -94.9133 -94.9132 -94.9114 -94.9114 -94.9046 -94.9046
+   -94.9044 -94.9043 -94.8999 -94.8998 -94.8992 -94.8991 -94.8983 -94.8982
+   -94.8919 -94.8918 -94.8865 -94.8864 -94.8810 -94.8809 -94.8677 -94.8676
+   -61.2780 -61.2780 -61.2620 -61.2620 -61.2608 -61.2608 -61.2511 -61.2510
+   -61.2505 -61.2505 -61.2479 -61.2476 -61.2449 -61.2449 -61.2392 -61.2389
+   -61.2378 -61.2378 -61.2373 -61.2373 -61.2326 -61.2326 -61.2325 -61.2325
+   -61.2270 -61.2267 -61.2214 -61.2214 -61.2213 -61.2210 -61.2104 -61.2103
+   -61.1975 -61.1975 -61.1939 -61.1939 -61.1880 -61.1880 -61.1864 -61.1864
+   -61.1728 -61.1728 -61.1575 -61.1575 -61.1556 -61.1556 -61.1454 -61.1453
+   -61.1370 -61.1370 -61.1288 -61.1286 -61.1231 -61.1231 -61.1115 -61.1115
+   -61.0955 -61.0954 -61.0941 -61.0941 -61.0869 -61.0869 -61.0853 -61.0853
+   -61.0817 -61.0817 -61.0743 -61.0743 -61.0737 -61.0737 -61.0666 -61.0666
+   -61.0649 -61.0649 -61.0644 -61.0644 -61.0586 -61.0586 -61.0518 -61.0517
+   -61.0512 -61.0512 -61.0467 -61.0467 -61.0435 -61.0435 -61.0425 -61.0425
+   -61.0300 -61.0300 -61.0192 -61.0192 -61.0056 -61.0056 -61.0033 -61.0033
+   -61.0007 -61.0007 -60.9928 -60.9927 -60.9891 -60.9891 -60.9840 -60.9840
+   -60.9779 -60.9778 -60.9757 -60.9757 -60.9748 -60.9748 -60.9742 -60.9742
+   -60.9707 -60.9707 -60.9689 -60.9689 -60.9619 -60.9619 -60.9619 -60.9619
+   -60.9583 -60.9583 -60.9551 -60.9550 -60.9544 -60.9542 -60.9508 -60.9507
+   -60.9374 -60.9374 -60.9373 -60.9373 -60.9365 -60.9365 -60.9262 -60.9262
+   -60.9199 -60.9198 -60.9116 -60.9115 -60.9107 -60.9107 -60.9059 -60.9059
+   -60.9057 -60.9057 -60.9034 -60.9033 -60.8957 -60.8957 -60.8954 -60.8954
+   -60.8949 -60.8949 -60.8769 -60.8768 -60.8756 -60.8756 -60.8724 -60.8723
+   -60.8659 -60.8658 -60.8523 -60.8522 -60.8409 -60.8408 -60.8396 -60.8395
+   -60.8384 -60.8383 -60.8379 -60.8379 -60.8370 -60.8369 -60.8345 -60.8345
+   -60.8343 -60.8343 -60.8308 -60.8308 -60.8305 -60.8304 -60.8251 -60.8250
+   -60.8226 -60.8225 -60.8140 -60.8140 -60.8068 -60.8067 -60.8019 -60.8018
+   -14.4056 -14.4055 -13.2861 -13.2860 -13.2066 -13.2065 -12.3874 -12.3873
+   -12.2371 -12.2370 -11.8757 -11.8755 -11.8520 -11.8518 -11.7433 -11.7433
+   -11.6088 -11.6088 -11.5793 -11.5792 -11.4533 -11.4532 -11.3374 -11.3372
+   -11.3250 -11.3249 -11.3090 -11.3090 -11.2778 -11.2777 -11.2692 -11.2691
+   -11.1807 -11.1807 -11.1180 -11.1180 -11.1073 -11.1072 -10.9554 -10.9554
+   -10.9481 -10.9480 -10.8787 -10.8787 -10.8683 -10.8682 -10.8504 -10.8504
+   -10.8469 -10.8467 -10.8243 -10.8242 -10.8230 -10.8229 -10.7095 -10.7094
+   -10.7070 -10.7070 -10.6834 -10.6833 -10.6788 -10.6787 -10.5781 -10.5781
+   -10.5118 -10.5117 -10.4695 -10.4695 -10.3962 -10.3961 -10.2521 -10.2520
+   -10.2122 -10.2122 -10.1885 -10.1885 -10.1747 -10.1747 -10.1648 -10.1647
+   -10.1453 -10.1451 -10.1365 -10.1362 -10.1305 -10.1301 -10.1045 -10.1044
+   -10.1032 -10.1031 -10.0997 -10.0994 -10.0580 -10.0579 -10.0075 -10.0075
+    -9.9713  -9.9712  -9.9629  -9.9628  -9.9349  -9.9348  -9.9168  -9.9167
+    -9.9057  -9.9055  -9.9033  -9.9032  -9.9028  -9.9028  -9.8921  -9.8920
+    -9.8458  -9.8458  -9.8413  -9.8412  -9.8352  -9.8350  -9.6859  -9.6856
+    -9.6376  -9.6373  -9.5857  -9.5856  -9.5855  -9.5854  -9.5731  -9.5730
+    -9.5625  -9.5624  -9.5565  -9.5563  -9.5492  -9.5492  -9.5389  -9.5388
+    -9.5256  -9.5256  -9.4955  -9.4955  -9.4899  -9.4898  -9.4830  -9.4828
+    -9.4308  -9.4307  -9.4201  -9.4199  -9.3993  -9.3992  -9.3583  -9.3583
+    -9.3560  -9.3557  -9.3436  -9.3434  -9.3004  -9.3003  -9.2687  -9.2683
+    -9.2408  -9.2407  -9.2187  -9.2186  -9.1106  -9.1104  -9.0905  -9.0903
+    -9.0799  -9.0798  -9.0551  -9.0548  -9.0498  -9.0496  -9.0196  -9.0194
+    -8.9141  -8.9140  -8.7757  -8.7755  -8.7723  -8.7721  -8.7590  -8.7589
+    -8.7126  -8.7125  -8.7004  -8.7003  -8.6235  -8.6234  -8.6083  -8.6083
+    -8.5878  -8.5877  -8.5839  -8.5839  -8.5806  -8.5805  -8.5615  -8.5615
+    -8.5477  -8.5475  -8.5243  -8.5242  -8.4441  -8.4439  -8.4123  -8.4121
+    -8.4097  -8.4095  -8.4007  -8.4006  -8.3711  -8.3710  -8.2842  -8.2839
+    -8.2777  -8.2773  -8.2732  -8.2731  -8.2611  -8.2610  -8.2592  -8.2592
+    -8.2570  -8.2568  -8.2517  -8.2517  -8.2274  -8.2272  -8.2267  -8.2266
+    -8.2203  -8.2200  -8.2184  -8.2182  -8.1376  -8.1374  -8.0979  -8.0977
+    -8.0975  -8.0973  -8.0956  -8.0955  -8.0706  -8.0706  -8.0579  -8.0579
+    -8.0578  -8.0576  -8.0510  -8.0510  -8.0445  -8.0442  -8.0402  -8.0402
+    -8.0181  -8.0178  -8.0159  -8.0157  -7.9801  -7.9799  -7.9691  -7.9690
+    -7.9595  -7.9594  -7.9145  -7.9144  -7.9041  -7.9039  -7.9004  -7.9003
+    -7.8668  -7.8667  -7.8478  -7.8476  -7.8182  -7.8182  -7.8155  -7.8154
+    -7.8135  -7.8135  -7.7993  -7.7992  -7.7972  -7.7971  -7.7935  -7.7933
+    -7.7909  -7.7909  -7.7844  -7.7843  -7.7799  -7.7798  -7.7743  -7.7742
+    -7.7134  -7.7132  -7.6831  -7.6829  -7.6131  -7.6130  -7.5657  -7.5657
+    -7.5226  -7.5222  -7.5166  -7.5166  -7.3959  -7.3958  -7.3932  -7.3931
+    -7.3674  -7.3674  -7.3141  -7.3140  -7.3063  -7.3063  -7.2927  -7.2927
+    -7.2648  -7.2647  -7.2390  -7.2389  -7.2239  -7.2239  -7.1377  -7.1375
+    -7.1086  -7.1084  -7.0694  -7.0694  -7.0343  -7.0342  -7.0225  -7.0225
+    -6.9967  -6.9966  -6.9847  -6.9846  -6.9566  -6.9565  -6.6414  -6.6413
+    -6.4952  -6.4951  -5.9894  -5.9894  -5.9715  -5.9713  -5.6747  -5.6740
+    -5.3444  -5.3442  -5.1867  -5.1865  -5.1339  -5.1336
+
+          k = 0.2500-0.0884 0.0000 (128371 PWs)   bands (ev):
+
+   -95.0937 -95.0839 -95.0779 -95.0771 -95.0748 -95.0705 -95.0702 -95.0679
+   -95.0652 -95.0610 -95.0605 -95.0591 -95.0585 -95.0582 -95.0546 -95.0538
+   -95.0537 -95.0517 -95.0494 -95.0485 -95.0471 -95.0439 -95.0430 -95.0426
+   -95.0414 -95.0369 -95.0361 -95.0352 -95.0330 -95.0305 -95.0262 -95.0198
+   -94.9561 -94.9451 -94.9378 -94.9336 -94.9320 -94.9286 -94.9210 -94.9201
+   -94.9158 -94.9156 -94.9130 -94.9096 -94.9087 -94.9086 -94.9081 -94.9058
+   -94.9036 -94.9035 -94.9019 -94.9015 -94.9013 -94.8978 -94.8961 -94.8959
+   -94.8950 -94.8919 -94.8860 -94.8847 -94.8820 -94.8790 -94.8730 -94.8640
+   -61.2852 -61.2680 -61.2655 -61.2606 -61.2581 -61.2567 -61.2556 -61.2530
+   -61.2504 -61.2493 -61.2477 -61.2452 -61.2450 -61.2449 -61.2428 -61.2415
+   -61.2393 -61.2392 -61.2391 -61.2342 -61.2335 -61.2332 -61.2323 -61.2313
+   -61.2260 -61.2256 -61.2249 -61.2234 -61.2193 -61.2193 -61.2154 -61.2099
+   -61.2067 -61.2030 -61.2026 -61.1964 -61.1935 -61.1887 -61.1861 -61.1802
+   -61.1775 -61.1759 -61.1732 -61.1665 -61.1660 -61.1576 -61.1370 -61.1339
+   -61.1266 -61.1177 -61.1169 -61.1148 -61.1103 -61.1074 -61.1027 -61.0993
+   -61.0988 -61.0985 -61.0959 -61.0922 -61.0886 -61.0884 -61.0862 -61.0858
+   -61.0850 -61.0835 -61.0812 -61.0768 -61.0741 -61.0715 -61.0714 -61.0701
+   -61.0687 -61.0668 -61.0667 -61.0648 -61.0614 -61.0559 -61.0509 -61.0450
+   -61.0449 -61.0444 -61.0393 -61.0354 -61.0342 -61.0325 -61.0316 -61.0283
+   -61.0187 -61.0183 -61.0165 -61.0146 -61.0121 -61.0118 -61.0100 -61.0083
+   -61.0080 -61.0050 -61.0042 -61.0024 -60.9998 -60.9962 -60.9942 -60.9863
+   -60.9855 -60.9839 -60.9833 -60.9782 -60.9778 -60.9767 -60.9751 -60.9742
+   -60.9739 -60.9737 -60.9729 -60.9678 -60.9676 -60.9665 -60.9621 -60.9620
+   -60.9577 -60.9557 -60.9531 -60.9501 -60.9473 -60.9460 -60.9444 -60.9429
+   -60.9415 -60.9378 -60.9373 -60.9338 -60.9336 -60.9321 -60.9298 -60.9272
+   -60.9272 -60.9243 -60.9208 -60.9168 -60.9166 -60.9156 -60.9116 -60.9089
+   -60.9086 -60.9085 -60.9064 -60.9033 -60.8982 -60.8980 -60.8961 -60.8892
+   -60.8856 -60.8806 -60.8800 -60.8773 -60.8770 -60.8750 -60.8709 -60.8707
+   -60.8683 -60.8680 -60.8608 -60.8574 -60.8550 -60.8547 -60.8473 -60.8454
+   -60.8452 -60.8420 -60.8412 -60.8409 -60.8402 -60.8398 -60.8397 -60.8383
+   -60.8347 -60.8265 -60.8220 -60.8215 -60.8190 -60.8174 -60.8159 -60.8155
+   -60.8140 -60.8133 -60.8089 -60.8082 -60.8071 -60.8061 -60.8036 -60.7999
+   -14.7468 -13.8659 -13.5253 -13.3280 -13.0693 -12.8569 -12.7279 -12.4604
+   -12.2971 -12.2455 -12.1426 -12.0432 -11.9452 -11.8525 -11.7948 -11.6910
+   -11.5999 -11.5531 -11.4995 -11.4767 -11.4713 -11.4544 -11.4500 -11.4205
+   -11.4060 -11.2698 -11.1948 -11.1682 -11.1251 -11.1235 -11.1105 -11.0890
+   -11.0838 -11.0788 -11.0656 -11.0579 -11.0530 -11.0309 -11.0224 -11.0176
+   -10.9894 -10.9780 -10.9660 -10.9437 -10.9430 -10.9254 -10.9033 -10.8978
+   -10.8768 -10.8590 -10.8357 -10.8238 -10.8060 -10.8046 -10.7968 -10.7918
+   -10.7698 -10.6742 -10.6469 -10.6319 -10.6232 -10.6019 -10.5813 -10.4956
+   -10.4654 -10.4408 -10.3877 -10.3751 -10.3267 -10.3189 -10.2794 -10.2300
+   -10.2208 -10.2162 -10.2068 -10.1966 -10.1947 -10.1830 -10.1670 -10.1649
+   -10.1581 -10.1503 -10.1497 -10.1461 -10.1247 -10.1190 -10.1167 -10.1145
+   -10.1081 -10.1011 -10.0857 -10.0762 -10.0754 -10.0691 -10.0661 -10.0645
+   -10.0630 -10.0562 -10.0521 -10.0504 -10.0151  -9.9873  -9.9724  -9.9692
+    -9.9617  -9.9558  -9.9342  -9.9250  -9.9225  -9.9041  -9.9014  -9.8957
+    -9.8157  -9.8113  -9.7923  -9.7560  -9.7298  -9.7256  -9.7215  -9.7071
+    -9.6959  -9.6235  -9.6232  -9.6087  -9.6003  -9.5972  -9.5859  -9.5853
+    -9.5828  -9.5803  -9.5639  -9.5620  -9.5484  -9.5319  -9.5140  -9.5132
+    -9.5073  -9.5025  -9.4737  -9.4661  -9.4593  -9.4168  -9.4103  -9.3837
+    -9.3791  -9.3610  -9.3572  -9.3398  -9.3284  -9.3237  -9.3215  -9.3154
+    -9.3066  -9.3056  -9.2984  -9.2844  -9.2797  -9.2706  -9.2642  -9.2574
+    -9.2542  -9.2334  -9.2124  -9.2021  -9.1659  -9.1468  -9.1439  -9.1237
+    -9.1100  -9.0999  -9.0801  -9.0707  -9.0703  -9.0597  -9.0499  -9.0387
+    -9.0278  -8.9831  -8.9759  -8.9402  -8.9371  -8.9294  -8.8998  -8.8685
+    -8.8493  -8.8474  -8.8261  -8.7667  -8.6515  -8.6405  -8.6377  -8.5943
+    -8.5903  -8.5700  -8.5560  -8.5378  -8.5113  -8.5068  -8.5030  -8.4801
+    -8.4722  -8.4712  -8.4532  -8.4503  -8.4486  -8.4429  -8.4309  -8.4285
+    -8.3982  -8.3900  -8.3638  -8.3308  -8.3229  -8.3098  -8.3048  -8.3019
+    -8.3009  -8.2948  -8.2743  -8.2721  -8.2718  -8.2683  -8.2668  -8.2550
+    -8.2433  -8.2433  -8.2053  -8.1994  -8.1915  -8.1835  -8.1735  -8.1679
+    -8.1533  -8.1528  -8.1470  -8.1388  -8.1387  -8.1315  -8.1256  -8.1238
+    -8.1211  -8.1088  -8.1028  -8.1013  -8.0973  -8.0877  -8.0873  -8.0717
+    -8.0643  -8.0559  -8.0532  -8.0457  -8.0441  -8.0391  -8.0364  -8.0349
+    -8.0318  -8.0293  -8.0256  -8.0229  -8.0049  -8.0034  -7.9981  -7.9937
+    -7.9842  -7.9748  -7.9728  -7.9680  -7.9676  -7.9594  -7.9573  -7.9545
+    -7.9530  -7.9340  -7.9316  -7.9160  -7.9051  -7.9040  -7.8976  -7.8759
+    -7.8513  -7.8447  -7.8302  -7.8131  -7.8099  -7.8085  -7.8013  -7.7883
+    -7.7836  -7.7785  -7.7694  -7.7665  -7.7658  -7.7657  -7.7432  -7.7119
+    -7.6934  -7.6903  -7.6864  -7.6857  -7.6828  -7.6634  -7.6572  -7.6480
+    -7.6429  -7.6382  -7.6310  -7.6162  -7.5993  -7.5344  -7.4992  -7.4984
+    -7.4951  -7.2864  -7.2708  -7.2604  -7.2406  -7.2280  -7.2162  -7.1967
+    -7.1902  -7.1862  -7.1772  -7.1101  -7.1080  -7.1003  -7.0815  -7.0800
+    -7.0683  -7.0591  -7.0554  -7.0211  -7.0190  -7.0101  -6.9755  -6.9706
+    -6.9539  -6.8862  -6.8574  -6.8269  -6.7679  -6.7167  -6.5253  -6.4616
+    -6.2388  -6.0746  -6.0731  -6.0001  -5.9592  -5.8140  -5.8047  -5.6490
+    -5.6447  -5.5531  -5.5096  -5.4531  -5.3101  -5.2790
+
+          k = 0.2500 0.1768 0.0000 (128340 PWs)   bands (ev):
+
+   -95.0927 -95.0817 -95.0817 -95.0770 -95.0764 -95.0702 -95.0702 -95.0658
+   -95.0653 -95.0606 -95.0592 -95.0592 -95.0592 -95.0591 -95.0541 -95.0540
+   -95.0540 -95.0536 -95.0536 -95.0425 -95.0425 -95.0425 -95.0425 -95.0425
+   -95.0422 -95.0379 -95.0375 -95.0374 -95.0373 -95.0263 -95.0257 -95.0212
+   -94.9553 -94.9420 -94.9419 -94.9383 -94.9297 -94.9296 -94.9146 -94.9145
+   -94.9139 -94.9139 -94.9137 -94.9136 -94.9125 -94.9124 -94.9097 -94.9095
+   -94.9002 -94.9001 -94.9000 -94.8997 -94.8995 -94.8977 -94.8975 -94.8973
+   -94.8972 -94.8969 -94.8855 -94.8853 -94.8795 -94.8754 -94.8752 -94.8649
+   -61.2849 -61.2658 -61.2644 -61.2629 -61.2628 -61.2538 -61.2533 -61.2529
+   -61.2529 -61.2484 -61.2466 -61.2466 -61.2435 -61.2430 -61.2399 -61.2399
+   -61.2399 -61.2397 -61.2396 -61.2395 -61.2394 -61.2307 -61.2305 -61.2283
+   -61.2278 -61.2258 -61.2257 -61.2252 -61.2215 -61.2139 -61.2134 -61.2081
+   -61.2033 -61.1970 -61.1953 -61.1952 -61.1871 -61.1870 -61.1741 -61.1741
+   -61.1731 -61.1731 -61.1659 -61.1657 -61.1629 -61.1629 -61.1340 -61.1339
+   -61.1281 -61.1264 -61.1264 -61.1243 -61.1242 -61.1169 -61.1168 -61.1150
+   -61.1095 -61.1059 -61.1058 -61.0947 -61.0907 -61.0907 -61.0865 -61.0864
+   -61.0842 -61.0842 -61.0792 -61.0784 -61.0784 -61.0772 -61.0718 -61.0717
+   -61.0716 -61.0715 -61.0645 -61.0645 -61.0580 -61.0485 -61.0477 -61.0477
+   -61.0424 -61.0379 -61.0379 -61.0324 -61.0324 -61.0323 -61.0323 -61.0283
+   -61.0282 -61.0275 -61.0201 -61.0141 -61.0141 -61.0067 -61.0066 -61.0058
+   -61.0025 -60.9972 -60.9972 -60.9954 -60.9954 -60.9914 -60.9902 -60.9891
+   -60.9871 -60.9870 -60.9849 -60.9848 -60.9818 -60.9810 -60.9781 -60.9781
+   -60.9755 -60.9754 -60.9740 -60.9689 -60.9632 -60.9632 -60.9554 -60.9536
+   -60.9536 -60.9531 -60.9522 -60.9520 -60.9450 -60.9449 -60.9447 -60.9446
+   -60.9410 -60.9409 -60.9318 -60.9317 -60.9294 -60.9293 -60.9278 -60.9278
+   -60.9195 -60.9179 -60.9177 -60.9175 -60.9175 -60.9104 -60.9096 -60.9095
+   -60.9075 -60.9074 -60.9042 -60.9027 -60.8959 -60.8934 -60.8932 -60.8931
+   -60.8885 -60.8884 -60.8853 -60.8779 -60.8779 -60.8679 -60.8645 -60.8643
+   -60.8574 -60.8572 -60.8565 -60.8564 -60.8557 -60.8555 -60.8480 -60.8468
+   -60.8466 -60.8445 -60.8443 -60.8407 -60.8389 -60.8388 -60.8372 -60.8369
+   -60.8343 -60.8231 -60.8230 -60.8229 -60.8221 -60.8220 -60.8196 -60.8195
+   -60.8154 -60.8154 -60.8148 -60.8147 -60.8124 -60.8105 -60.8105 -60.8026
+   -14.7075 -13.5574 -13.5574 -13.5488 -13.4888 -12.6037 -12.6037 -12.4509
+   -12.4508 -12.4357 -12.1157 -11.9719 -11.8400 -11.8399 -11.6726 -11.5260
+   -11.5165 -11.5164 -11.4809 -11.4808 -11.4075 -11.3937 -11.3884 -11.3883
+   -11.2952 -11.2882 -11.2882 -11.2747 -11.1934 -11.1934 -11.1548 -11.1548
+   -11.0699 -11.0658 -11.0658 -11.0447 -11.0291 -11.0103 -11.0073 -11.0072
+   -10.9992 -10.9969 -10.9968 -10.9914 -10.9912 -10.9876 -10.9874 -10.9148
+   -10.9148 -10.9022 -10.9020 -10.8299 -10.8298 -10.8181 -10.8180 -10.7713
+   -10.6461 -10.6461 -10.6227 -10.6225 -10.5589 -10.5252 -10.5251 -10.5184
+   -10.5183 -10.4952 -10.4952 -10.3498 -10.3496 -10.3102 -10.3102 -10.2403
+   -10.2403 -10.2399 -10.2230 -10.2227 -10.2130 -10.2126 -10.2032 -10.2032
+   -10.2013 -10.2012 -10.1913 -10.1911 -10.1809 -10.1808 -10.1428 -10.1428
+   -10.0801 -10.0800 -10.0773 -10.0688 -10.0685 -10.0168 -10.0097 -10.0096
+   -10.0096 -10.0094  -9.9980  -9.9979  -9.9814  -9.9813  -9.9550  -9.9548
+    -9.9112  -9.9110  -9.8692  -9.8635  -9.8634  -9.8445  -9.8262  -9.8196
+    -9.8046  -9.8045  -9.7951  -9.7947  -9.7895  -9.7894  -9.7826  -9.7825
+    -9.7679  -9.7014  -9.7014  -9.6806  -9.6806  -9.6027  -9.6026  -9.5924
+    -9.5923  -9.5884  -9.5882  -9.5718  -9.5715  -9.5337  -9.5336  -9.5173
+    -9.5173  -9.5116  -9.4869  -9.4823  -9.4822  -9.4482  -9.4482  -9.4335
+    -9.4334  -9.4308  -9.4039  -9.3683  -9.3404  -9.3213  -9.3212  -9.3148
+    -9.3057  -9.3051  -9.3051  -9.2905  -9.2904  -9.2196  -9.1958  -9.1957
+    -9.1903  -9.1884  -9.1884  -9.1743  -9.1742  -9.1680  -9.1642  -9.1640
+    -9.1589  -9.1564  -9.1562  -9.1417  -9.1415  -9.1324  -9.1024  -9.0917
+    -9.0275  -9.0274  -8.9011  -8.8634  -8.8459  -8.8455  -8.8358  -8.8266
+    -8.8263  -8.7650  -8.6983  -8.6705  -8.6703  -8.6435  -8.5954  -8.5937
+    -8.5935  -8.5935  -8.5676  -8.5675  -8.5150  -8.5111  -8.4955  -8.4954
+    -8.4817  -8.4817  -8.4677  -8.4667  -8.4069  -8.4054  -8.4052  -8.3902
+    -8.3902  -8.3726  -8.3725  -8.3699  -8.3697  -8.3523  -8.3522  -8.3365
+    -8.3236  -8.3178  -8.2764  -8.2460  -8.2460  -8.2451  -8.2451  -8.2307
+    -8.2246  -8.2245  -8.2220  -8.2219  -8.2089  -8.1952  -8.1951  -8.1803
+    -8.1487  -8.1483  -8.1456  -8.1418  -8.1415  -8.1265  -8.1263  -8.1200
+    -8.1198  -8.1136  -8.1136  -8.0706  -8.0705  -8.0637  -8.0636  -8.0597
+    -8.0594  -8.0483  -8.0481  -8.0173  -8.0158  -8.0082  -7.9962  -7.9961
+    -7.9858  -7.9853  -7.9852  -7.9789  -7.9630  -7.9629  -7.9453  -7.9452
+    -7.9266  -7.9208  -7.9207  -7.9159  -7.9157  -7.9154  -7.9152  -7.9111
+    -7.9110  -7.8842  -7.8841  -7.8755  -7.8749  -7.8634  -7.8632  -7.8289
+    -7.8288  -7.8285  -7.8283  -7.8282  -7.8276  -7.8274  -7.8112  -7.8111
+    -7.7987  -7.7866  -7.7864  -7.7810  -7.7809  -7.7543  -7.7542  -7.7241
+    -7.7166  -7.7165  -7.6801  -7.6679  -7.6678  -7.6431  -7.6431  -7.6283
+    -7.5993  -7.5992  -7.5835  -7.5834  -7.5344  -7.4957  -7.4955  -7.4752
+    -7.4750  -7.3295  -7.3295  -7.3071  -7.2408  -7.2220  -7.2218  -7.1588
+    -7.1450  -7.1372  -7.1371  -7.0813  -7.0812  -7.0701  -7.0544  -7.0543
+    -7.0462  -7.0460  -7.0388  -7.0349  -6.9596  -6.9593  -6.9542  -6.9537
+    -6.8658  -6.8554  -6.7425  -6.6520  -6.6516  -6.6396  -6.6396  -6.3854
+    -6.2150  -6.2149  -6.0703  -6.0702  -6.0427  -5.9723  -5.9722  -5.9584
+    -5.9394  -5.9394  -5.8846  -5.8845  -5.6188  -5.6104
+
+          k = 0.2500-0.6187 0.0000 (128424 PWs)   bands (ev):
+
+   -95.0893 -95.0877 -95.0811 -95.0774 -95.0735 -95.0717 -95.0680 -95.0653
+   -95.0643 -95.0642 -95.0627 -95.0610 -95.0584 -95.0577 -95.0561 -95.0545
+   -95.0519 -95.0486 -95.0478 -95.0475 -95.0460 -95.0447 -95.0422 -95.0411
+   -95.0405 -95.0394 -95.0388 -95.0377 -95.0324 -95.0280 -95.0242 -95.0224
+   -94.9516 -94.9490 -94.9430 -94.9363 -94.9284 -94.9222 -94.9200 -94.9182
+   -94.9181 -94.9151 -94.9130 -94.9118 -94.9107 -94.9091 -94.9090 -94.9080
+   -94.9045 -94.9010 -94.9007 -94.9006 -94.8995 -94.8975 -94.8968 -94.8956
+   -94.8941 -94.8927 -94.8912 -94.8870 -94.8798 -94.8753 -94.8697 -94.8680
+   -61.2799 -61.2722 -61.2703 -61.2612 -61.2601 -61.2571 -61.2533 -61.2515
+   -61.2498 -61.2481 -61.2469 -61.2461 -61.2454 -61.2431 -61.2421 -61.2420
+   -61.2376 -61.2371 -61.2370 -61.2350 -61.2347 -61.2335 -61.2327 -61.2318
+   -61.2290 -61.2274 -61.2245 -61.2207 -61.2204 -61.2145 -61.2116 -61.2098
+   -61.1912 -61.1869 -61.1860 -61.1849 -61.1825 -61.1810 -61.1802 -61.1738
+   -61.1719 -61.1660 -61.1635 -61.1617 -61.1548 -61.1498 -61.1498 -61.1461
+   -61.1427 -61.1419 -61.1405 -61.1402 -61.1316 -61.1251 -61.1181 -61.1148
+   -61.1145 -61.1124 -61.1012 -61.0961 -61.0934 -61.0921 -61.0890 -61.0885
+   -61.0871 -61.0853 -61.0819 -61.0748 -61.0687 -61.0683 -61.0667 -61.0665
+   -61.0659 -61.0644 -61.0639 -61.0629 -61.0614 -61.0595 -61.0574 -61.0534
+   -61.0492 -61.0478 -61.0477 -61.0437 -61.0406 -61.0335 -61.0333 -61.0320
+   -61.0313 -61.0311 -61.0263 -61.0242 -61.0174 -61.0106 -61.0039 -61.0019
+   -61.0013 -60.9965 -60.9935 -60.9885 -60.9849 -60.9844 -60.9836 -60.9817
+   -60.9801 -60.9796 -60.9791 -60.9756 -60.9756 -60.9747 -60.9738 -60.9736
+   -60.9728 -60.9672 -60.9634 -60.9621 -60.9619 -60.9612 -60.9603 -60.9573
+   -60.9560 -60.9557 -60.9551 -60.9542 -60.9504 -60.9490 -60.9487 -60.9475
+   -60.9440 -60.9426 -60.9386 -60.9378 -60.9303 -60.9286 -60.9229 -60.9179
+   -60.9169 -60.9164 -60.9148 -60.9132 -60.9117 -60.9109 -60.9081 -60.9080
+   -60.9075 -60.9058 -60.9043 -60.9035 -60.9016 -60.8943 -60.8880 -60.8871
+   -60.8857 -60.8856 -60.8845 -60.8804 -60.8758 -60.8729 -60.8725 -60.8608
+   -60.8555 -60.8541 -60.8498 -60.8479 -60.8431 -60.8429 -60.8416 -60.8407
+   -60.8407 -60.8403 -60.8381 -60.8375 -60.8367 -60.8354 -60.8352 -60.8346
+   -60.8343 -60.8332 -60.8327 -60.8324 -60.8294 -60.8288 -60.8280 -60.8273
+   -60.8259 -60.8221 -60.8201 -60.8197 -60.8155 -60.8139 -60.8120 -60.8057
+   -14.4412 -14.1475 -13.8576 -13.2402 -13.0689 -12.9637 -12.7102 -12.5997
+   -12.0224 -11.9459 -11.8962 -11.8266 -11.7922 -11.7688 -11.6954 -11.6787
+   -11.6124 -11.5880 -11.5096 -11.4976 -11.4902 -11.4654 -11.4407 -11.3624
+   -11.3520 -11.3390 -11.3054 -11.3006 -11.3001 -11.2923 -11.2630 -11.1815
+   -11.1775 -11.1752 -11.1606 -11.1453 -11.1077 -11.0903 -11.0642 -11.0578
+   -11.0501 -11.0398 -11.0171 -10.9340 -10.9157 -10.8983 -10.8858 -10.8615
+   -10.8211 -10.8157 -10.7895 -10.7875 -10.7324 -10.7284 -10.7036 -10.7012
+   -10.6933 -10.6618 -10.6505 -10.6290 -10.6242 -10.5941 -10.5624 -10.5418
+   -10.5328 -10.5167 -10.5141 -10.5078 -10.4273 -10.4086 -10.3938 -10.3294
+   -10.2545 -10.2433 -10.2300 -10.2236 -10.2200 -10.2150 -10.2074 -10.1948
+   -10.1937 -10.1700 -10.1247 -10.1178 -10.0828 -10.0778 -10.0730 -10.0634
+   -10.0538 -10.0500 -10.0163 -10.0127 -10.0102 -10.0051 -10.0007  -9.9978
+    -9.9932  -9.9928  -9.9853  -9.9735  -9.9623  -9.9438  -9.9212  -9.9204
+    -9.9142  -9.9061  -9.8802  -9.8755  -9.8689  -9.8596  -9.8581  -9.8495
+    -9.8320  -9.8117  -9.7909  -9.7689  -9.7686  -9.7604  -9.7505  -9.7408
+    -9.7363  -9.7344  -9.7290  -9.7197  -9.6991  -9.6929  -9.6908  -9.6831
+    -9.6811  -9.6786  -9.6574  -9.6332  -9.6202  -9.6196  -9.6038  -9.5755
+    -9.5730  -9.4735  -9.4502  -9.4395  -9.4389  -9.4367  -9.4203  -9.4045
+    -9.4033  -9.3982  -9.3939  -9.3934  -9.3713  -9.3683  -9.3599  -9.3574
+    -9.3495  -9.3464  -9.3460  -9.3409  -9.2982  -9.2905  -9.2898  -9.2764
+    -9.2720  -9.2618  -9.2036  -9.1838  -9.1484  -9.1317  -9.1150  -9.0962
+    -9.0892  -9.0440  -9.0282  -9.0132  -9.0012  -9.0011  -8.9306  -8.9103
+    -8.8877  -8.8682  -8.8518  -8.8474  -8.8149  -8.7664  -8.7594  -8.7339
+    -8.7321  -8.6932  -8.6890  -8.6863  -8.6814  -8.6630  -8.6456  -8.6407
+    -8.6359  -8.6236  -8.6186  -8.6084  -8.5544  -8.5504  -8.5298  -8.5044
+    -8.5036  -8.4762  -8.4707  -8.4610  -8.4521  -8.4409  -8.4194  -8.4118
+    -8.4018  -8.3858  -8.3853  -8.3777  -8.3757  -8.3595  -8.3511  -8.3398
+    -8.3337  -8.3007  -8.3006  -8.2812  -8.2698  -8.2605  -8.2555  -8.2511
+    -8.2484  -8.2460  -8.2444  -8.2393  -8.2263  -8.2168  -8.2163  -8.2070
+    -8.1938  -8.1749  -8.1482  -8.1386  -8.1376  -8.1286  -8.1187  -8.1127
+    -8.1048  -8.1014  -8.0940  -8.0929  -8.0784  -8.0748  -8.0719  -8.0596
+    -8.0409  -8.0326  -8.0300  -8.0233  -8.0182  -8.0157  -8.0140  -7.9838
+    -7.9778  -7.9773  -7.9703  -7.9701  -7.9637  -7.9551  -7.9352  -7.9315
+    -7.9311  -7.9308  -7.9231  -7.9119  -7.9110  -7.8957  -7.8931  -7.8834
+    -7.8737  -7.8667  -7.8645  -7.8598  -7.8572  -7.8442  -7.8385  -7.8330
+    -7.8311  -7.8288  -7.8199  -7.8175  -7.8136  -7.7991  -7.7822  -7.7601
+    -7.7552  -7.7425  -7.7335  -7.7225  -7.7060  -7.7046  -7.6902  -7.6729
+    -7.6626  -7.6459  -7.6136  -7.5792  -7.5707  -7.5616  -7.5522  -7.5477
+    -7.5080  -7.4744  -7.4641  -7.4536  -7.4188  -7.4087  -7.3991  -7.3865
+    -7.3706  -7.3228  -7.3200  -7.3185  -7.3146  -7.3045  -7.2748  -7.2403
+    -7.2336  -7.2279  -7.1899  -7.1809  -7.1736  -7.1695  -7.1264  -7.1068
+    -7.0979  -7.0975  -7.0762  -7.0666  -7.0578  -7.0529  -7.0192  -7.0098
+    -6.9962  -6.9807  -6.9756  -6.9450  -6.8096  -6.8089  -6.6669  -6.5968
+    -6.5280  -6.4428  -6.3173  -6.1765  -6.1304  -6.1226  -6.0543  -5.9558
+    -5.7103  -5.6948  -5.6557  -5.4706  -5.3491  -5.2651
+
+          k = 0.2500-0.3536 0.0000 (128397 PWs)   bands (ev):
+
+   -95.0919 -95.0838 -95.0838 -95.0761 -95.0715 -95.0681 -95.0681 -95.0679
+   -95.0678 -95.0641 -95.0641 -95.0600 -95.0600 -95.0550 -95.0519 -95.0519
+   -95.0516 -95.0515 -95.0486 -95.0482 -95.0480 -95.0447 -95.0447 -95.0434
+   -95.0433 -95.0366 -95.0353 -95.0351 -95.0318 -95.0285 -95.0283 -95.0202
+   -94.9539 -94.9455 -94.9455 -94.9290 -94.9252 -94.9252 -94.9250 -94.9249
+   -94.9163 -94.9162 -94.9152 -94.9079 -94.9079 -94.9073 -94.9073 -94.9051
+   -94.9046 -94.9045 -94.9037 -94.9023 -94.9023 -94.8960 -94.8957 -94.8954
+   -94.8905 -94.8903 -94.8886 -94.8886 -94.8857 -94.8730 -94.8730 -94.8657
+   -61.2805 -61.2710 -61.2710 -61.2640 -61.2564 -61.2563 -61.2511 -61.2509
+   -61.2509 -61.2492 -61.2491 -61.2490 -61.2490 -61.2394 -61.2385 -61.2384
+   -61.2383 -61.2382 -61.2377 -61.2373 -61.2358 -61.2358 -61.2302 -61.2282
+   -61.2282 -61.2270 -61.2269 -61.2187 -61.2185 -61.2175 -61.2174 -61.2070
+   -61.2030 -61.1970 -61.1931 -61.1931 -61.1844 -61.1844 -61.1805 -61.1805
+   -61.1741 -61.1741 -61.1704 -61.1704 -61.1639 -61.1638 -61.1420 -61.1420
+   -61.1268 -61.1226 -61.1216 -61.1216 -61.1102 -61.1063 -61.1063 -61.1046
+   -61.1041 -61.1040 -61.0993 -61.0993 -61.0979 -61.0918 -61.0905 -61.0904
+   -61.0880 -61.0880 -61.0860 -61.0860 -61.0790 -61.0790 -61.0767 -61.0690
+   -61.0690 -61.0647 -61.0647 -61.0592 -61.0577 -61.0577 -61.0489 -61.0489
+   -61.0427 -61.0365 -61.0365 -61.0364 -61.0348 -61.0348 -61.0344 -61.0344
+   -61.0226 -61.0226 -61.0154 -61.0154 -61.0125 -61.0125 -61.0100 -61.0100
+   -61.0091 -61.0009 -61.0009 -61.0008 -60.9984 -60.9880 -60.9856 -60.9793
+   -60.9793 -60.9792 -60.9792 -60.9790 -60.9765 -60.9760 -60.9753 -60.9753
+   -60.9746 -60.9695 -60.9695 -60.9686 -60.9686 -60.9616 -60.9615 -60.9600
+   -60.9599 -60.9598 -60.9508 -60.9508 -60.9498 -60.9464 -60.9464 -60.9452
+   -60.9452 -60.9425 -60.9424 -60.9371 -60.9371 -60.9234 -60.9233 -60.9226
+   -60.9226 -60.9155 -60.9116 -60.9115 -60.9097 -60.9097 -60.9097 -60.9096
+   -60.9094 -60.9018 -60.8994 -60.8994 -60.8986 -60.8986 -60.8948 -60.8924
+   -60.8896 -60.8811 -60.8811 -60.8801 -60.8800 -60.8777 -60.8777 -60.8771
+   -60.8604 -60.8567 -60.8567 -60.8545 -60.8504 -60.8503 -60.8447 -60.8447
+   -60.8435 -60.8435 -60.8388 -60.8385 -60.8376 -60.8376 -60.8367 -60.8359
+   -60.8327 -60.8327 -60.8323 -60.8227 -60.8207 -60.8207 -60.8189 -60.8188
+   -60.8159 -60.8159 -60.8132 -60.8131 -60.8122 -60.8102 -60.8073 -60.8073
+   -14.5557 -13.9675 -13.9673 -13.3432 -12.8153 -12.8153 -12.4683 -12.4682
+   -12.4625 -12.1763 -12.1762 -11.9655 -11.6256 -11.6256 -11.6223 -11.6222
+   -11.5703 -11.5703 -11.5465 -11.5442 -11.5367 -11.5366 -11.5047 -11.5046
+   -11.3836 -11.3835 -11.3391 -11.3324 -11.3203 -11.1966 -11.1965 -11.1471
+   -11.1470 -11.1155 -11.1154 -11.0859 -11.0857 -11.0744 -11.0743 -11.0419
+   -11.0418 -10.9918 -10.9918 -10.9645 -10.9644 -10.9209 -10.9092 -10.8563
+   -10.8562 -10.8440 -10.7685 -10.7052 -10.7050 -10.7017 -10.7017 -10.6596
+   -10.6595 -10.6572 -10.6572 -10.6528 -10.6528 -10.6415 -10.5833 -10.5833
+   -10.5195 -10.4719 -10.4718 -10.4265 -10.3716 -10.3411 -10.3198 -10.2803
+   -10.2404 -10.2404 -10.2199 -10.2038 -10.1789 -10.1788 -10.1746 -10.1746
+   -10.1559 -10.1559 -10.1419 -10.1417 -10.1361 -10.1253 -10.1073 -10.1073
+   -10.1036 -10.1036 -10.0782 -10.0694 -10.0693 -10.0333 -10.0333 -10.0015
+   -10.0015  -9.9942  -9.9941  -9.9723  -9.9645  -9.9584  -9.9583  -9.9428
+    -9.9428  -9.9158  -9.9156  -9.8439  -9.8439  -9.8389  -9.8307  -9.8307
+    -9.8246  -9.8244  -9.8143  -9.8021  -9.7987  -9.7987  -9.7772  -9.7772
+    -9.7549  -9.7285  -9.7285  -9.6602  -9.6601  -9.6525  -9.6302  -9.5617
+    -9.5614  -9.5613  -9.5171  -9.5155  -9.5153  -9.4868  -9.4866  -9.4817
+    -9.4815  -9.4759  -9.4759  -9.4722  -9.4722  -9.4640  -9.4573  -9.4573
+    -9.4555  -9.4504  -9.4504  -9.4317  -9.4246  -9.4243  -9.4144  -9.4143
+    -9.3704  -9.3704  -9.3466  -9.3191  -9.2913  -9.2714  -9.2713  -9.2227
+    -9.2227  -9.2174  -9.1553  -9.1553  -9.1159  -9.1158  -9.0904  -9.0904
+    -9.0748  -9.0747  -9.0684  -9.0300  -8.9927  -8.8970  -8.8936  -8.8935
+    -8.8892  -8.8666  -8.8666  -8.8257  -8.8256  -8.7861  -8.7605  -8.7604
+    -8.7310  -8.7310  -8.7196  -8.7193  -8.7021  -8.7021  -8.6966  -8.6965
+    -8.6800  -8.6799  -8.6205  -8.6204  -8.5509  -8.5460  -8.5460  -8.5261
+    -8.5261  -8.4685  -8.4684  -8.4609  -8.4607  -8.4605  -8.4462  -8.4461
+    -8.4186  -8.4186  -8.3981  -8.3672  -8.3263  -8.3205  -8.3204  -8.3184
+    -8.3182  -8.3105  -8.3104  -8.2856  -8.2856  -8.2349  -8.2347  -8.2303
+    -8.2303  -8.2225  -8.1985  -8.1985  -8.1953  -8.1951  -8.1578  -8.1577
+    -8.1576  -8.1497  -8.1424  -8.1195  -8.1195  -8.1077  -8.1076  -8.1047
+    -8.0953  -8.0923  -8.0922  -8.0853  -8.0805  -8.0759  -8.0758  -8.0625
+    -8.0457  -8.0455  -8.0454  -8.0397  -8.0397  -8.0295  -8.0295  -8.0263
+    -8.0263  -8.0112  -8.0043  -8.0042  -7.9875  -7.9874  -7.9872  -7.9870
+    -7.9762  -7.9761  -7.9659  -7.9629  -7.9526  -7.9526  -7.9336  -7.9336
+    -7.9318  -7.9171  -7.8862  -7.8862  -7.8835  -7.8832  -7.8804  -7.8803
+    -7.8758  -7.8757  -7.8550  -7.8400  -7.8399  -7.8320  -7.8127  -7.7876
+    -7.7875  -7.7695  -7.7595  -7.7595  -7.7500  -7.7500  -7.7168  -7.7168
+    -7.6397  -7.6396  -7.6133  -7.6133  -7.6061  -7.6059  -7.5857  -7.5856
+    -7.5682  -7.5571  -7.5570  -7.5410  -7.5361  -7.5063  -7.4627  -7.4625
+    -7.4148  -7.4148  -7.4081  -7.3731  -7.3731  -7.3062  -7.2571  -7.2188
+    -7.2187  -7.1909  -7.1722  -7.1721  -7.1658  -7.1652  -7.1575  -7.1248
+    -7.1247  -7.1124  -7.1124  -7.0945  -7.0945  -7.0937  -7.0936  -7.0583
+    -7.0463  -7.0363  -7.0363  -6.6503  -6.5090  -6.5089  -6.3869  -6.3868
+    -6.2123  -6.2123  -6.1520  -6.1519  -6.0284  -6.0284  -6.0223  -6.0222
+    -5.9716  -5.8173  -5.5447  -5.5446  -5.4356  -5.4354
+
+          k =-0.5000 0.1768 0.0000 (128388 PWs)   bands (ev):
+
+   -95.0898 -95.0898 -95.0747 -95.0747 -95.0740 -95.0739 -95.0707 -95.0707
+   -95.0644 -95.0644 -95.0589 -95.0586 -95.0556 -95.0556 -95.0543 -95.0540
+   -95.0536 -95.0536 -95.0494 -95.0494 -95.0478 -95.0478 -95.0390 -95.0390
+   -95.0387 -95.0387 -95.0374 -95.0373 -95.0328 -95.0326 -95.0224 -95.0223
+   -94.9518 -94.9517 -94.9361 -94.9360 -94.9280 -94.9280 -94.9211 -94.9211
+   -94.9140 -94.9139 -94.9133 -94.9132 -94.9114 -94.9114 -94.9046 -94.9046
+   -94.9044 -94.9043 -94.8999 -94.8998 -94.8992 -94.8991 -94.8983 -94.8982
+   -94.8919 -94.8918 -94.8865 -94.8864 -94.8810 -94.8809 -94.8677 -94.8676
+   -61.2780 -61.2780 -61.2620 -61.2620 -61.2608 -61.2608 -61.2511 -61.2510
+   -61.2505 -61.2505 -61.2479 -61.2476 -61.2449 -61.2449 -61.2392 -61.2389
+   -61.2378 -61.2378 -61.2373 -61.2373 -61.2326 -61.2326 -61.2325 -61.2325
+   -61.2270 -61.2267 -61.2214 -61.2214 -61.2213 -61.2210 -61.2104 -61.2103
+   -61.1975 -61.1975 -61.1939 -61.1939 -61.1880 -61.1880 -61.1864 -61.1864
+   -61.1728 -61.1728 -61.1575 -61.1575 -61.1556 -61.1556 -61.1454 -61.1453
+   -61.1370 -61.1370 -61.1287 -61.1286 -61.1231 -61.1231 -61.1115 -61.1115
+   -61.0955 -61.0954 -61.0941 -61.0941 -61.0869 -61.0869 -61.0853 -61.0853
+   -61.0817 -61.0817 -61.0743 -61.0743 -61.0738 -61.0737 -61.0666 -61.0666
+   -61.0649 -61.0649 -61.0644 -61.0644 -61.0586 -61.0586 -61.0518 -61.0517
+   -61.0512 -61.0512 -61.0467 -61.0467 -61.0435 -61.0435 -61.0425 -61.0425
+   -61.0300 -61.0300 -61.0192 -61.0192 -61.0056 -61.0056 -61.0033 -61.0033
+   -61.0007 -61.0007 -60.9928 -60.9927 -60.9891 -60.9891 -60.9840 -60.9840
+   -60.9779 -60.9778 -60.9757 -60.9757 -60.9748 -60.9748 -60.9742 -60.9742
+   -60.9707 -60.9707 -60.9689 -60.9689 -60.9619 -60.9619 -60.9619 -60.9619
+   -60.9583 -60.9583 -60.9551 -60.9550 -60.9544 -60.9542 -60.9508 -60.9507
+   -60.9374 -60.9374 -60.9373 -60.9373 -60.9365 -60.9365 -60.9262 -60.9262
+   -60.9199 -60.9198 -60.9116 -60.9115 -60.9107 -60.9107 -60.9059 -60.9059
+   -60.9057 -60.9057 -60.9034 -60.9033 -60.8957 -60.8957 -60.8954 -60.8954
+   -60.8949 -60.8949 -60.8769 -60.8768 -60.8756 -60.8756 -60.8724 -60.8723
+   -60.8659 -60.8658 -60.8523 -60.8522 -60.8409 -60.8408 -60.8396 -60.8395
+   -60.8384 -60.8383 -60.8379 -60.8379 -60.8370 -60.8369 -60.8345 -60.8345
+   -60.8343 -60.8343 -60.8308 -60.8308 -60.8305 -60.8304 -60.8251 -60.8250
+   -60.8226 -60.8225 -60.8140 -60.8140 -60.8068 -60.8067 -60.8019 -60.8018
+   -14.4056 -14.4055 -13.2861 -13.2860 -13.2066 -13.2065 -12.3874 -12.3873
+   -12.2371 -12.2370 -11.8757 -11.8756 -11.8520 -11.8518 -11.7433 -11.7433
+   -11.6088 -11.6088 -11.5793 -11.5792 -11.4533 -11.4532 -11.3374 -11.3372
+   -11.3249 -11.3249 -11.3090 -11.3090 -11.2778 -11.2777 -11.2692 -11.2691
+   -11.1807 -11.1807 -11.1180 -11.1179 -11.1073 -11.1072 -10.9554 -10.9554
+   -10.9481 -10.9480 -10.8787 -10.8787 -10.8683 -10.8682 -10.8504 -10.8504
+   -10.8469 -10.8467 -10.8243 -10.8242 -10.8230 -10.8229 -10.7095 -10.7094
+   -10.7070 -10.7070 -10.6834 -10.6833 -10.6788 -10.6787 -10.5781 -10.5781
+   -10.5118 -10.5117 -10.4695 -10.4695 -10.3962 -10.3961 -10.2521 -10.2520
+   -10.2122 -10.2122 -10.1885 -10.1885 -10.1747 -10.1747 -10.1648 -10.1646
+   -10.1453 -10.1451 -10.1365 -10.1362 -10.1305 -10.1301 -10.1045 -10.1044
+   -10.1031 -10.1031 -10.0997 -10.0994 -10.0580 -10.0579 -10.0075 -10.0074
+    -9.9713  -9.9712  -9.9629  -9.9628  -9.9349  -9.9348  -9.9168  -9.9167
+    -9.9058  -9.9055  -9.9033  -9.9032  -9.9028  -9.9028  -9.8921  -9.8920
+    -9.8458  -9.8458  -9.8413  -9.8412  -9.8352  -9.8350  -9.6859  -9.6856
+    -9.6376  -9.6373  -9.5857  -9.5856  -9.5855  -9.5854  -9.5731  -9.5730
+    -9.5625  -9.5624  -9.5565  -9.5563  -9.5492  -9.5492  -9.5389  -9.5388
+    -9.5256  -9.5256  -9.4955  -9.4955  -9.4899  -9.4898  -9.4830  -9.4828
+    -9.4308  -9.4307  -9.4201  -9.4199  -9.3993  -9.3992  -9.3583  -9.3583
+    -9.3560  -9.3557  -9.3436  -9.3434  -9.3004  -9.3003  -9.2687  -9.2683
+    -9.2408  -9.2407  -9.2187  -9.2186  -9.1106  -9.1104  -9.0905  -9.0903
+    -9.0799  -9.0798  -9.0551  -9.0548  -9.0498  -9.0497  -9.0196  -9.0194
+    -8.9141  -8.9140  -8.7757  -8.7755  -8.7723  -8.7721  -8.7590  -8.7589
+    -8.7126  -8.7125  -8.7004  -8.7003  -8.6235  -8.6234  -8.6084  -8.6083
+    -8.5878  -8.5877  -8.5839  -8.5839  -8.5806  -8.5805  -8.5615  -8.5615
+    -8.5477  -8.5475  -8.5243  -8.5242  -8.4441  -8.4439  -8.4123  -8.4121
+    -8.4097  -8.4095  -8.4007  -8.4006  -8.3711  -8.3710  -8.2842  -8.2839
+    -8.2777  -8.2773  -8.2732  -8.2731  -8.2611  -8.2610  -8.2592  -8.2592
+    -8.2570  -8.2568  -8.2517  -8.2517  -8.2274  -8.2272  -8.2267  -8.2266
+    -8.2203  -8.2200  -8.2184  -8.2182  -8.1376  -8.1374  -8.0979  -8.0977
+    -8.0975  -8.0973  -8.0955  -8.0954  -8.0706  -8.0706  -8.0579  -8.0579
+    -8.0578  -8.0576  -8.0510  -8.0510  -8.0445  -8.0442  -8.0402  -8.0402
+    -8.0181  -8.0178  -8.0159  -8.0157  -7.9801  -7.9799  -7.9691  -7.9690
+    -7.9595  -7.9594  -7.9145  -7.9144  -7.9041  -7.9039  -7.9004  -7.9003
+    -7.8668  -7.8667  -7.8478  -7.8476  -7.8182  -7.8182  -7.8155  -7.8154
+    -7.8135  -7.8135  -7.7993  -7.7992  -7.7972  -7.7971  -7.7935  -7.7934
+    -7.7909  -7.7909  -7.7844  -7.7844  -7.7799  -7.7798  -7.7743  -7.7742
+    -7.7134  -7.7132  -7.6831  -7.6829  -7.6131  -7.6130  -7.5657  -7.5657
+    -7.5226  -7.5223  -7.5166  -7.5166  -7.3959  -7.3958  -7.3932  -7.3931
+    -7.3675  -7.3674  -7.3141  -7.3140  -7.3064  -7.3063  -7.2927  -7.2927
+    -7.2648  -7.2647  -7.2390  -7.2389  -7.2239  -7.2239  -7.1377  -7.1375
+    -7.1086  -7.1084  -7.0694  -7.0694  -7.0343  -7.0342  -7.0225  -7.0224
+    -6.9967  -6.9966  -6.9847  -6.9847  -6.9566  -6.9565  -6.6414  -6.6413
+    -6.4952  -6.4951  -5.9894  -5.9894  -5.9716  -5.9714  -5.6747  -5.6743
+    -5.3444  -5.3442  -5.3088  -5.3088  -5.1865  -5.1862
+
+          k =-0.5000 0.4419 0.0000 (128422 PWs)   bands (ev):
+
+   -95.0893 -95.0877 -95.0811 -95.0774 -95.0735 -95.0717 -95.0680 -95.0653
+   -95.0643 -95.0642 -95.0627 -95.0610 -95.0584 -95.0577 -95.0561 -95.0545
+   -95.0519 -95.0486 -95.0478 -95.0475 -95.0460 -95.0447 -95.0422 -95.0411
+   -95.0405 -95.0394 -95.0388 -95.0377 -95.0324 -95.0280 -95.0242 -95.0224
+   -94.9516 -94.9490 -94.9430 -94.9363 -94.9283 -94.9222 -94.9200 -94.9182
+   -94.9181 -94.9151 -94.9130 -94.9118 -94.9107 -94.9091 -94.9090 -94.9080
+   -94.9045 -94.9010 -94.9007 -94.9006 -94.8995 -94.8975 -94.8968 -94.8956
+   -94.8941 -94.8927 -94.8912 -94.8870 -94.8798 -94.8753 -94.8697 -94.8680
+   -61.2799 -61.2722 -61.2703 -61.2612 -61.2601 -61.2571 -61.2533 -61.2515
+   -61.2498 -61.2481 -61.2469 -61.2461 -61.2454 -61.2431 -61.2420 -61.2420
+   -61.2376 -61.2371 -61.2370 -61.2350 -61.2347 -61.2335 -61.2327 -61.2318
+   -61.2290 -61.2274 -61.2245 -61.2207 -61.2204 -61.2145 -61.2116 -61.2098
+   -61.1912 -61.1869 -61.1860 -61.1849 -61.1825 -61.1810 -61.1802 -61.1738
+   -61.1719 -61.1660 -61.1635 -61.1617 -61.1548 -61.1498 -61.1498 -61.1461
+   -61.1427 -61.1419 -61.1405 -61.1402 -61.1316 -61.1251 -61.1181 -61.1148
+   -61.1145 -61.1124 -61.1012 -61.0961 -61.0934 -61.0921 -61.0890 -61.0885
+   -61.0871 -61.0853 -61.0819 -61.0748 -61.0687 -61.0683 -61.0667 -61.0665
+   -61.0659 -61.0644 -61.0639 -61.0629 -61.0614 -61.0595 -61.0574 -61.0534
+   -61.0491 -61.0478 -61.0477 -61.0437 -61.0406 -61.0335 -61.0333 -61.0320
+   -61.0313 -61.0311 -61.0263 -61.0242 -61.0174 -61.0106 -61.0039 -61.0019
+   -61.0013 -60.9965 -60.9935 -60.9885 -60.9849 -60.9844 -60.9836 -60.9817
+   -60.9801 -60.9796 -60.9791 -60.9756 -60.9756 -60.9747 -60.9738 -60.9736
+   -60.9728 -60.9672 -60.9634 -60.9621 -60.9619 -60.9612 -60.9603 -60.9573
+   -60.9560 -60.9557 -60.9551 -60.9541 -60.9504 -60.9490 -60.9487 -60.9475
+   -60.9440 -60.9426 -60.9386 -60.9378 -60.9303 -60.9286 -60.9229 -60.9179
+   -60.9169 -60.9164 -60.9148 -60.9132 -60.9117 -60.9109 -60.9081 -60.9080
+   -60.9075 -60.9058 -60.9043 -60.9035 -60.9017 -60.8943 -60.8880 -60.8871
+   -60.8857 -60.8856 -60.8845 -60.8804 -60.8758 -60.8729 -60.8725 -60.8608
+   -60.8555 -60.8541 -60.8498 -60.8479 -60.8431 -60.8429 -60.8416 -60.8407
+   -60.8407 -60.8403 -60.8381 -60.8375 -60.8367 -60.8354 -60.8352 -60.8346
+   -60.8343 -60.8332 -60.8327 -60.8324 -60.8294 -60.8288 -60.8280 -60.8273
+   -60.8259 -60.8221 -60.8201 -60.8196 -60.8155 -60.8139 -60.8120 -60.8057
+   -14.4412 -14.1475 -13.8576 -13.2402 -13.0689 -12.9637 -12.7102 -12.5997
+   -12.0224 -11.9459 -11.8962 -11.8266 -11.7922 -11.7688 -11.6954 -11.6787
+   -11.6124 -11.5880 -11.5096 -11.4976 -11.4902 -11.4654 -11.4407 -11.3623
+   -11.3520 -11.3390 -11.3054 -11.3006 -11.3001 -11.2923 -11.2630 -11.1815
+   -11.1775 -11.1752 -11.1606 -11.1453 -11.1077 -11.0903 -11.0642 -11.0578
+   -11.0501 -11.0398 -11.0171 -10.9340 -10.9157 -10.8983 -10.8858 -10.8614
+   -10.8211 -10.8157 -10.7895 -10.7875 -10.7324 -10.7284 -10.7036 -10.7012
+   -10.6933 -10.6618 -10.6505 -10.6290 -10.6243 -10.5941 -10.5624 -10.5418
+   -10.5328 -10.5167 -10.5141 -10.5078 -10.4273 -10.4086 -10.3938 -10.3294
+   -10.2545 -10.2433 -10.2300 -10.2236 -10.2200 -10.2150 -10.2074 -10.1948
+   -10.1937 -10.1700 -10.1247 -10.1178 -10.0828 -10.0778 -10.0730 -10.0634
+   -10.0538 -10.0500 -10.0163 -10.0127 -10.0102 -10.0051 -10.0007  -9.9978
+    -9.9932  -9.9929  -9.9853  -9.9735  -9.9623  -9.9438  -9.9212  -9.9204
+    -9.9142  -9.9061  -9.8802  -9.8755  -9.8689  -9.8596  -9.8581  -9.8495
+    -9.8320  -9.8116  -9.7909  -9.7689  -9.7686  -9.7604  -9.7505  -9.7408
+    -9.7363  -9.7344  -9.7290  -9.7197  -9.6991  -9.6929  -9.6908  -9.6831
+    -9.6812  -9.6787  -9.6574  -9.6332  -9.6202  -9.6196  -9.6038  -9.5755
+    -9.5730  -9.4735  -9.4502  -9.4395  -9.4389  -9.4367  -9.4203  -9.4045
+    -9.4033  -9.3982  -9.3939  -9.3933  -9.3713  -9.3683  -9.3599  -9.3574
+    -9.3495  -9.3464  -9.3460  -9.3409  -9.2982  -9.2905  -9.2897  -9.2764
+    -9.2720  -9.2618  -9.2036  -9.1838  -9.1484  -9.1317  -9.1150  -9.0962
+    -9.0892  -9.0440  -9.0282  -9.0132  -9.0012  -9.0011  -8.9306  -8.9103
+    -8.8877  -8.8681  -8.8518  -8.8474  -8.8149  -8.7664  -8.7594  -8.7339
+    -8.7321  -8.6932  -8.6890  -8.6863  -8.6814  -8.6630  -8.6456  -8.6407
+    -8.6359  -8.6236  -8.6186  -8.6084  -8.5544  -8.5504  -8.5298  -8.5044
+    -8.5036  -8.4762  -8.4707  -8.4610  -8.4520  -8.4409  -8.4194  -8.4118
+    -8.4018  -8.3858  -8.3853  -8.3777  -8.3757  -8.3595  -8.3511  -8.3398
+    -8.3337  -8.3007  -8.3006  -8.2812  -8.2698  -8.2605  -8.2555  -8.2511
+    -8.2484  -8.2460  -8.2444  -8.2393  -8.2263  -8.2168  -8.2163  -8.2070
+    -8.1938  -8.1748  -8.1482  -8.1386  -8.1376  -8.1286  -8.1187  -8.1127
+    -8.1048  -8.1014  -8.0940  -8.0929  -8.0784  -8.0748  -8.0719  -8.0596
+    -8.0409  -8.0326  -8.0300  -8.0233  -8.0182  -8.0157  -8.0140  -7.9838
+    -7.9778  -7.9773  -7.9703  -7.9701  -7.9636  -7.9551  -7.9352  -7.9315
+    -7.9311  -7.9308  -7.9231  -7.9119  -7.9110  -7.8957  -7.8931  -7.8834
+    -7.8737  -7.8667  -7.8645  -7.8598  -7.8572  -7.8442  -7.8385  -7.8330
+    -7.8311  -7.8288  -7.8199  -7.8175  -7.8136  -7.7991  -7.7822  -7.7601
+    -7.7552  -7.7425  -7.7335  -7.7225  -7.7060  -7.7046  -7.6902  -7.6729
+    -7.6626  -7.6459  -7.6136  -7.5792  -7.5707  -7.5616  -7.5522  -7.5477
+    -7.5081  -7.4744  -7.4641  -7.4536  -7.4188  -7.4087  -7.3992  -7.3865
+    -7.3706  -7.3228  -7.3200  -7.3185  -7.3146  -7.3045  -7.2748  -7.2403
+    -7.2336  -7.2279  -7.1898  -7.1809  -7.1736  -7.1695  -7.1264  -7.1068
+    -7.0979  -7.0975  -7.0762  -7.0666  -7.0578  -7.0529  -7.0192  -7.0098
+    -6.9962  -6.9807  -6.9756  -6.9450  -6.8096  -6.8089  -6.6669  -6.5968
+    -6.5280  -6.4428  -6.3173  -6.1765  -6.1305  -6.1226  -6.0543  -5.9558
+    -5.7109  -5.6948  -5.6557  -5.4706  -5.3576  -5.2651
+
+          k =-0.5000-0.3536 0.0000 (128560 PWs)   bands (ev):
+
+   -95.0862 -95.0862 -95.0834 -95.0834 -95.0705 -95.0704 -95.0675 -95.0670
+   -95.0621 -95.0621 -95.0621 -95.0621 -95.0592 -95.0592 -95.0592 -95.0592
+   -95.0464 -95.0458 -95.0456 -95.0453 -95.0440 -95.0440 -95.0425 -95.0425
+   -95.0425 -95.0422 -95.0410 -95.0409 -95.0279 -95.0277 -95.0247 -95.0241
+   -94.9485 -94.9485 -94.9437 -94.9437 -94.9212 -94.9211 -94.9211 -94.9210
+   -94.9138 -94.9138 -94.9138 -94.9137 -94.9112 -94.9110 -94.9087 -94.9087
+   -94.9045 -94.9044 -94.8986 -94.8985 -94.8974 -94.8974 -94.8971 -94.8971
+   -94.8926 -94.8926 -94.8925 -94.8922 -94.8741 -94.8739 -94.8708 -94.8708
+   -61.2772 -61.2772 -61.2644 -61.2644 -61.2581 -61.2580 -61.2552 -61.2547
+   -61.2465 -61.2465 -61.2464 -61.2464 -61.2431 -61.2431 -61.2430 -61.2430
+   -61.2365 -61.2359 -61.2357 -61.2354 -61.2349 -61.2348 -61.2347 -61.2346
+   -61.2289 -61.2289 -61.2231 -61.2230 -61.2150 -61.2149 -61.2110 -61.2105
+   -61.1699 -61.1699 -61.1699 -61.1699 -61.1678 -61.1677 -61.1653 -61.1653
+   -61.1622 -61.1621 -61.1611 -61.1611 -61.1611 -61.1610 -61.1598 -61.1596
+   -61.1548 -61.1548 -61.1547 -61.1547 -61.1405 -61.1405 -61.1403 -61.1403
+   -61.1189 -61.1189 -61.0993 -61.0990 -61.0954 -61.0954 -61.0906 -61.0905
+   -61.0800 -61.0800 -61.0721 -61.0721 -61.0645 -61.0644 -61.0640 -61.0640
+   -61.0640 -61.0640 -61.0631 -61.0631 -61.0631 -61.0631 -61.0527 -61.0527
+   -61.0527 -61.0527 -61.0469 -61.0469 -61.0452 -61.0452 -61.0443 -61.0443
+   -61.0442 -61.0442 -61.0236 -61.0236 -61.0110 -61.0108 -61.0081 -61.0080
+   -60.9846 -60.9845 -60.9837 -60.9837 -60.9827 -60.9827 -60.9827 -60.9827
+   -60.9783 -60.9783 -60.9769 -60.9769 -60.9718 -60.9717 -60.9716 -60.9716
+   -60.9681 -60.9679 -60.9665 -60.9665 -60.9665 -60.9664 -60.9571 -60.9569
+   -60.9536 -60.9536 -60.9535 -60.9534 -60.9377 -60.9377 -60.9357 -60.9355
+   -60.9354 -60.9353 -60.9350 -60.9350 -60.9310 -60.9308 -60.9294 -60.9293
+   -60.9283 -60.9278 -60.9200 -60.9199 -60.9198 -60.9198 -60.9058 -60.9058
+   -60.9056 -60.9055 -60.9055 -60.9054 -60.8969 -60.8968 -60.8825 -60.8825
+   -60.8803 -60.8802 -60.8802 -60.8802 -60.8603 -60.8602 -60.8568 -60.8567
+   -60.8500 -60.8500 -60.8450 -60.8448 -60.8440 -60.8436 -60.8386 -60.8384
+   -60.8381 -60.8381 -60.8356 -60.8355 -60.8350 -60.8350 -60.8350 -60.8349
+   -60.8341 -60.8341 -60.8341 -60.8340 -60.8326 -60.8325 -60.8325 -60.8324
+   -60.8291 -60.8289 -60.8288 -60.8287 -60.8273 -60.8272 -60.8163 -60.8163
+   -14.2537 -14.2535 -13.6864 -13.6864 -13.0658 -13.0657 -12.5410 -12.5409
+   -11.9138 -11.9137 -11.9136 -11.9135 -11.7542 -11.7541 -11.6043 -11.6042
+   -11.4645 -11.4645 -11.4644 -11.4644 -11.4377 -11.4377 -11.4377 -11.4376
+   -11.3986 -11.3985 -11.3104 -11.3104 -11.3104 -11.3103 -11.2396 -11.2396
+   -11.2328 -11.2328 -11.2077 -11.2076 -11.0886 -11.0885 -11.0348 -11.0346
+   -10.9986 -10.9984 -10.9552 -10.9551 -10.9121 -10.9120 -10.9119 -10.9116
+   -10.8822 -10.8822 -10.8821 -10.8820 -10.8286 -10.8284 -10.8192 -10.8191
+   -10.6080 -10.6080 -10.6078 -10.6078 -10.5737 -10.5735 -10.5718 -10.5718
+   -10.5599 -10.5599 -10.3733 -10.3733 -10.3381 -10.3381 -10.3379 -10.3377
+   -10.2659 -10.2654 -10.2638 -10.2634 -10.2309 -10.2308 -10.2308 -10.2307
+   -10.2015 -10.2015 -10.2015 -10.2014 -10.1121 -10.1121 -10.1118 -10.1117
+   -10.0598 -10.0597  -9.9442  -9.9441  -9.9440  -9.9439  -9.9179  -9.9178
+    -9.9038  -9.9038  -9.9036  -9.9036  -9.9023  -9.9022  -9.9021  -9.9020
+    -9.8775  -9.8773  -9.8772  -9.8771  -9.8759  -9.8758  -9.8588  -9.8587
+    -9.8278  -9.8277  -9.8276  -9.8274  -9.8260  -9.8259  -9.8254  -9.8254
+    -9.8253  -9.8253  -9.8010  -9.8008  -9.7795  -9.7792  -9.7387  -9.7384
+    -9.7170  -9.7167  -9.6595  -9.6594  -9.6592  -9.6591  -9.5894  -9.5893
+    -9.4810  -9.4809  -9.4262  -9.4262  -9.4261  -9.4260  -9.3945  -9.3945
+    -9.3944  -9.3943  -9.3744  -9.3744  -9.3742  -9.3742  -9.3358  -9.3356
+    -9.3320  -9.3318  -9.3250  -9.3248  -9.2457  -9.2457  -9.2427  -9.2424
+    -9.2422  -9.2421  -9.2396  -9.2396  -9.2254  -9.2252  -9.2184  -9.2183
+    -9.2022  -9.2018  -9.1317  -9.1316  -8.9845  -8.9844  -8.9678  -8.9677
+    -8.8518  -8.8516  -8.7612  -8.7610  -8.7606  -8.7606  -8.7604  -8.7603
+    -8.7433  -8.7433  -8.6180  -8.6178  -8.6026  -8.6024  -8.5685  -8.5683
+    -8.5169  -8.5168  -8.4876  -8.4873  -8.4814  -8.4813  -8.4810  -8.4809
+    -8.4653  -8.4653  -8.4597  -8.4597  -8.4594  -8.4594  -8.4593  -8.4593
+    -8.4478  -8.4477  -8.4470  -8.4467  -8.4466  -8.4465  -8.3942  -8.3942
+    -8.3942  -8.3941  -8.2907  -8.2905  -8.2789  -8.2786  -8.2785  -8.2785
+    -8.2783  -8.2783  -8.2496  -8.2495  -8.2423  -8.2421  -8.2332  -8.2328
+    -8.1774  -8.1773  -8.1640  -8.1635  -8.1634  -8.1633  -8.1116  -8.1115
+    -8.1115  -8.1113  -8.1031  -8.1031  -8.0394  -8.0393  -8.0392  -8.0390
+    -8.0383  -8.0383  -8.0210  -8.0207  -7.9995  -7.9993  -7.9597  -7.9596
+    -7.9596  -7.9596  -7.9167  -7.9166  -7.8823  -7.8822  -7.8710  -7.8709
+    -7.8707  -7.8706  -7.8558  -7.8558  -7.8557  -7.8557  -7.8537  -7.8534
+    -7.8518  -7.8517  -7.8484  -7.8484  -7.8462  -7.8462  -7.8461  -7.8461
+    -7.8450  -7.8449  -7.8446  -7.8446  -7.8425  -7.8425  -7.7314  -7.7314
+    -7.6777  -7.6776  -7.6011  -7.6010  -7.5904  -7.5903  -7.5632  -7.5627
+    -7.5504  -7.5504  -7.5405  -7.5403  -7.4871  -7.4867  -7.4839  -7.4838
+    -7.4838  -7.4838  -7.4655  -7.4653  -7.4165  -7.4164  -7.3721  -7.3719
+    -7.3719  -7.3719  -7.3367  -7.3367  -7.3365  -7.3364  -7.2332  -7.2328
+    -7.2308  -7.2304  -7.2304  -7.2301  -7.2009  -7.2008  -7.0937  -7.0936
+    -7.0726  -7.0725  -6.9925  -6.9924  -6.9924  -6.9921  -6.9789  -6.9786
+    -6.9473  -6.9471  -6.9469  -6.9468  -6.9013  -6.9011  -6.4740  -6.4740
+    -6.4740  -6.4740  -6.4482  -6.4481  -6.0887  -6.0886  -6.0886  -6.0885
+    -6.0141  -6.0138  -5.9847  -5.9847  -5.9843  -5.9843
+
+ ------ SPIN DOWN ----------
+
+
+          k = 0.0000 0.0000 0.0000 (128403 PWs)   bands (ev):
+
+   -92.0982 -92.0718 -92.0717 -92.0717 -92.0716 -92.0623 -92.0621 -92.0573
+   -92.0412 -92.0411 -92.0405 -92.0403 -92.0403 -92.0403 -92.0403 -92.0402
+   -92.0346 -92.0345 -92.0345 -92.0344 -92.0277 -92.0275 -92.0272 -92.0271
+   -92.0261 -92.0255 -92.0254 -92.0096 -92.0095 -92.0095 -92.0095 -92.0003
+   -91.9944 -91.9939 -91.9847 -91.9846 -91.9846 -91.9846 -91.9787 -91.9787
+   -91.9787 -91.9787 -91.9694 -91.9693 -91.9693 -91.9692 -91.9692 -91.9691
+   -91.9634 -91.9634 -91.9626 -91.9626 -91.9626 -91.9625 -91.9536 -91.9536
+   -91.9536 -91.9536 -91.9474 -91.9474 -91.9474 -91.9474 -91.9379 -91.9321
+   -58.3835 -58.3745 -58.3744 -58.3633 -58.3631 -58.3358 -58.3348 -58.3332
+   -58.3331 -58.3330 -58.3330 -58.3203 -58.3202 -58.3202 -58.3202 -58.2938
+   -58.2938 -58.2938 -58.2936 -58.2901 -58.2875 -58.2874 -58.2862 -58.2860
+   -58.2851 -58.2849 -58.2822 -58.2822 -58.2822 -58.2822 -58.2812 -58.2810
+   -58.2762 -58.2762 -58.2716 -58.2613 -58.2599 -58.2599 -58.2598 -58.2598
+   -58.2583 -58.2583 -58.2582 -58.2582 -58.2288 -58.1953 -58.1930 -58.1930
+   -58.1914 -58.1914 -58.1913 -58.1913 -58.1865 -58.1858 -58.1858 -58.1858
+   -58.1858 -58.1838 -58.1836 -58.1822 -58.1822 -58.1799 -58.1799 -58.1785
+   -58.1785 -58.1747 -58.1746 -58.1746 -58.1745 -58.1575 -58.1575 -58.1487
+   -58.1487 -58.1486 -58.1486 -58.1478 -58.1477 -58.1438 -58.1438 -58.1438
+   -58.1438 -58.1283 -58.1283 -58.1224 -58.1224 -58.1196 -58.1184 -58.1184
+   -58.1157 -58.1156 -58.1154 -58.1153 -58.1122 -58.1121 -58.1118 -58.1118
+   -58.1118 -58.1117 -58.1095 -58.1094 -58.1094 -58.1093 -58.1066 -58.1054
+   -58.1007 -58.1006 -58.1006 -58.1006 -58.0915 -58.0844 -58.0843 -58.0821
+   -58.0820 -58.0820 -58.0820 -58.0715 -58.0715 -58.0640 -58.0639 -58.0604
+   -58.0603 -58.0603 -58.0603 -58.0523 -58.0440 -58.0440 -58.0440 -58.0439
+   -58.0438 -58.0438 -58.0437 -58.0437 -58.0414 -58.0413 -58.0376 -58.0341
+   -58.0340 -58.0271 -58.0270 -58.0212 -58.0211 -58.0211 -58.0211 -58.0211
+   -58.0210 -58.0121 -58.0095 -58.0095 -58.0034 -58.0033 -58.0033 -58.0032
+   -58.0016 -58.0015 -58.0015 -58.0014 -57.9997 -57.9996 -57.9919 -57.9918
+   -57.9910 -57.9910 -57.9908 -57.9899 -57.9899 -57.9899 -57.9898 -57.9820
+   -57.9820 -57.9820 -57.9819 -57.9781 -57.9692 -57.9635 -57.9634 -57.9610
+   -57.9596 -57.9586 -57.9585 -57.9585 -57.9585 -57.9532 -57.9532 -57.9527
+   -57.9510 -57.9510 -57.9500 -57.9450 -57.9450 -57.9450 -57.9450 -57.9434
+   -14.6574 -13.3283 -12.9160 -12.9160 -12.9159 -12.9158 -12.3950 -12.3949
+   -11.7513 -11.7513 -11.7513 -11.7512 -11.5798 -11.2592 -11.2592 -10.6709
+   -10.6708 -10.5247 -10.2090 -10.2090 -10.1974 -10.1974 -10.1973 -10.1972
+   -10.1701 -10.1701 -10.0519  -9.8883  -9.8881  -9.8783  -9.8782  -9.7922
+    -9.7922  -9.7922  -9.7921  -9.5574  -9.5573  -9.5447  -9.5329  -9.5040
+    -9.5040  -9.4201  -9.4201  -9.4201  -9.4200  -9.2582  -9.2578  -9.2577
+    -9.2577  -9.2576  -9.1559  -9.1557  -9.1430  -9.1430  -9.1427  -9.1425
+    -9.0746  -8.9718  -8.9717  -8.9693  -8.9692  -8.9691  -8.9690  -8.9128
+    -8.5783  -8.5782  -8.4833  -8.4833  -8.4832  -8.4831  -8.4140  -8.4139
+    -8.3984  -8.3981  -8.3272  -8.3271  -8.3269  -8.3268  -8.2619  -8.2616
+    -8.2616  -8.2615  -8.2482  -8.2480  -8.2421  -8.2390  -8.2388  -8.2289
+    -8.2287  -8.2287  -8.2282  -8.1689  -8.1685  -8.1651  -8.1650  -8.1649
+    -8.1649  -8.1308  -8.1308  -8.1284  -8.1283  -8.0661  -8.0186  -8.0185
+    -8.0184  -8.0181  -8.0045  -8.0042  -7.9977  -7.9977  -7.8904  -7.8448
+    -7.8195  -7.8194  -7.8191  -7.8189  -7.7629  -7.7629  -7.7628  -7.7627
+    -7.7031  -7.7030  -7.6850  -7.6846  -7.5691  -7.5690  -7.5688  -7.5687
+    -7.5528  -7.5525  -7.5524  -7.5520  -7.5314  -7.5311  -7.5128  -7.5123
+    -7.5092  -7.5091  -7.5050  -7.5049  -7.5049  -7.5049  -7.4749  -7.4745
+    -7.4728  -7.4407  -7.4405  -7.4246  -7.4245  -7.4244  -7.4243  -7.3528
+    -7.3526  -7.3524  -7.3523  -7.3282  -7.1477  -7.1374  -7.1351  -7.0838
+    -7.0837  -7.0804  -7.0802  -7.0799  -7.0799  -7.0642  -7.0636  -7.0109
+    -6.9913  -6.9913  -6.9908  -6.9907  -6.9339  -6.9339  -6.9010  -6.8651
+    -6.8651  -6.8436  -6.8257  -6.8255  -6.7869  -6.7868  -6.7867  -6.7866
+    -6.7440  -6.7438  -6.7241  -6.7233  -6.3568  -6.3567  -6.3275  -6.3274
+    -6.2767  -6.1846  -6.1843  -6.1841  -6.1841  -6.1829  -6.1828  -6.1101
+    -6.0863  -6.0863  -6.0861  -6.0861  -6.0845  -6.0843  -6.0584  -6.0391
+    -6.0391  -6.0390  -6.0390  -5.9852  -5.9851  -5.9416  -5.9209  -5.9207
+    -5.9206  -5.9205  -5.8957  -5.8957  -5.8955  -5.8954  -5.8798  -5.8796
+    -5.8769  -5.8055  -5.7713  -5.7712  -5.6641  -5.6640  -5.5919  -5.5917
+    -5.5821  -5.5819  -5.5818  -5.5816  -5.5574  -5.4711  -5.4709  -5.4708
+    -5.4700  -5.4451  -5.4451  -5.4450  -5.4450  -5.4047  -5.4046  -5.4046
+    -5.4043  -5.3642  -5.3344  -5.3344  -5.3306  -5.3224  -5.3223  -5.3222
+    -5.3222  -5.3183  -5.3181  -5.3160  -5.3140  -5.3139  -5.2598  -5.2594
+    -5.2377  -5.2375  -5.2260  -5.2259  -5.2173  -5.1650  -5.1540  -5.1538
+    -5.1537  -5.1536  -5.1510  -5.1510  -5.1429  -5.1428  -5.1426  -5.1425
+    -5.1151  -5.1149  -5.1147  -5.1147  -5.0967  -5.0967  -5.0963  -5.0962
+    -5.0894  -5.0746  -5.0372  -5.0194  -4.9393  -4.8752  -4.8752  -4.8752
+    -4.8751  -4.8720  -4.8719  -4.8625  -4.8625  -4.8622  -4.8565  -4.8564
+    -4.8564  -4.8564  -4.8305  -4.8305  -4.8303  -4.8303  -4.8140  -4.8140
+    -4.8115  -4.8115  -4.8048  -4.8048  -4.7638  -4.7636  -4.7627  -4.7610
+    -4.7608  -4.7387  -4.7386  -4.7385  -4.7385  -4.7071  -4.7011  -4.7011
+    -4.6750  -4.5299  -4.5298  -4.5298  -4.5298  -4.5115  -4.5114  -4.4590
+    -4.4589  -4.4589  -4.4589  -4.4162  -4.3952  -4.3949  -4.3945  -4.3939
+    -4.3375  -4.3374  -4.3224  -4.3092  -4.3008  -4.3004  -4.2030  -4.2019
+    -4.2018  -4.1861  -4.1860  -4.1469  -3.8526  -3.8525
+
+          k = 0.0000 0.2652 0.0000 (128375 PWs)   bands (ev):
+
+   -92.0963 -92.0821 -92.0737 -92.0684 -92.0666 -92.0607 -92.0559 -92.0546
+   -92.0500 -92.0466 -92.0433 -92.0402 -92.0399 -92.0393 -92.0391 -92.0372
+   -92.0345 -92.0344 -92.0321 -92.0315 -92.0314 -92.0314 -92.0281 -92.0268
+   -92.0260 -92.0216 -92.0193 -92.0160 -92.0114 -92.0105 -92.0034 -91.9991
+   -91.9951 -91.9933 -91.9905 -91.9847 -91.9835 -91.9834 -91.9787 -91.9776
+   -91.9773 -91.9752 -91.9751 -91.9725 -91.9705 -91.9693 -91.9686 -91.9681
+   -91.9638 -91.9633 -91.9632 -91.9615 -91.9596 -91.9574 -91.9566 -91.9548
+   -91.9547 -91.9532 -91.9488 -91.9484 -91.9476 -91.9416 -91.9391 -91.9333
+   -58.3759 -58.3712 -58.3650 -58.3595 -58.3535 -58.3478 -58.3346 -58.3343
+   -58.3322 -58.3319 -58.3281 -58.3190 -58.3165 -58.3110 -58.3065 -58.3045
+   -58.3003 -58.2996 -58.2978 -58.2977 -58.2935 -58.2889 -58.2879 -58.2858
+   -58.2844 -58.2818 -58.2804 -58.2800 -58.2799 -58.2772 -58.2756 -58.2755
+   -58.2740 -58.2740 -58.2712 -58.2689 -58.2659 -58.2652 -58.2612 -58.2588
+   -58.2506 -58.2470 -58.2440 -58.2374 -58.2318 -58.2270 -58.2234 -58.2200
+   -58.2195 -58.2153 -58.2066 -58.2039 -58.2017 -58.1979 -58.1947 -58.1932
+   -58.1922 -58.1892 -58.1869 -58.1843 -58.1835 -58.1811 -58.1789 -58.1747
+   -58.1688 -58.1669 -58.1639 -58.1638 -58.1636 -58.1606 -58.1604 -58.1553
+   -58.1534 -58.1502 -58.1450 -58.1446 -58.1428 -58.1424 -58.1422 -58.1413
+   -58.1356 -58.1341 -58.1328 -58.1323 -58.1309 -58.1290 -58.1288 -58.1287
+   -58.1188 -58.1185 -58.1183 -58.1153 -58.1149 -58.1126 -58.1113 -58.1086
+   -58.1063 -58.1046 -58.1022 -58.1009 -58.1007 -58.0955 -58.0954 -58.0928
+   -58.0920 -58.0885 -58.0863 -58.0851 -58.0822 -58.0805 -58.0802 -58.0779
+   -58.0773 -58.0728 -58.0694 -58.0679 -58.0651 -58.0635 -58.0615 -58.0575
+   -58.0554 -58.0545 -58.0530 -58.0527 -58.0498 -58.0491 -58.0487 -58.0460
+   -58.0439 -58.0415 -58.0356 -58.0355 -58.0343 -58.0329 -58.0291 -58.0287
+   -58.0286 -58.0279 -58.0273 -58.0256 -58.0228 -58.0210 -58.0194 -58.0170
+   -58.0159 -58.0138 -58.0110 -58.0073 -58.0065 -58.0063 -58.0050 -58.0047
+   -58.0028 -58.0026 -58.0002 -58.0001 -57.9993 -57.9970 -57.9961 -57.9959
+   -57.9924 -57.9922 -57.9910 -57.9908 -57.9906 -57.9849 -57.9846 -57.9842
+   -57.9831 -57.9816 -57.9790 -57.9778 -57.9773 -57.9720 -57.9651 -57.9643
+   -57.9619 -57.9616 -57.9615 -57.9614 -57.9594 -57.9576 -57.9569 -57.9558
+   -57.9549 -57.9547 -57.9538 -57.9509 -57.9496 -57.9474 -57.9458 -57.9456
+   -14.5403 -13.6415 -13.2170 -13.0797 -12.8062 -12.5553 -12.3837 -12.0790
+   -11.8869 -11.8363 -11.6215 -11.4726 -11.4378 -11.3662 -11.0993 -10.7930
+   -10.7025 -10.5243 -10.4634 -10.4269 -10.4258 -10.3013 -10.2561 -10.1695
+   -10.1077 -10.1014 -10.0461 -10.0214  -9.9486  -9.8835  -9.8366  -9.8347
+    -9.7874  -9.7249  -9.6753  -9.6682  -9.6294  -9.5266  -9.4992  -9.4934
+    -9.4765  -9.3740  -9.3512  -9.3319  -9.3007  -9.2799  -9.2687  -9.2647
+    -9.2564  -9.2478  -9.2160  -9.2138  -9.2113  -9.1636  -9.1016  -9.0283
+    -9.0180  -9.0138  -8.9705  -8.9526  -8.9285  -8.9161  -8.9042  -8.8510
+    -8.6725  -8.6268  -8.5453  -8.5182  -8.4710  -8.4557  -8.4378  -8.4148
+    -8.4074  -8.3724  -8.3659  -8.3365  -8.3205  -8.3182  -8.2985  -8.2932
+    -8.2589  -8.2561  -8.2452  -8.2430  -8.2348  -8.2236  -8.2192  -8.2083
+    -8.1861  -8.1810  -8.1768  -8.1584  -8.1546  -8.1474  -8.1420  -8.1294
+    -8.1070  -8.0921  -8.0877  -8.0833  -8.0799  -8.0767  -8.0761  -8.0289
+    -8.0027  -7.9981  -7.9647  -7.9446  -7.9325  -7.9244  -7.9218  -7.9190
+    -7.9060  -7.8925  -7.8856  -7.8768  -7.8230  -7.7443  -7.7286  -7.6957
+    -7.6952  -7.6634  -7.6600  -7.6396  -7.6386  -7.6381  -7.5968  -7.5959
+    -7.5935  -7.5932  -7.5899  -7.5797  -7.5627  -7.5506  -7.5499  -7.5460
+    -7.5385  -7.5082  -7.4769  -7.4718  -7.4676  -7.4575  -7.4540  -7.4497
+    -7.4340  -7.3927  -7.3906  -7.3903  -7.3608  -7.3504  -7.3413  -7.3391
+    -7.3304  -7.3150  -7.2985  -7.2943  -7.2620  -7.2387  -7.2161  -7.1954
+    -7.1942  -7.1738  -7.1624  -7.1467  -7.1336  -7.1298  -7.0872  -7.0717
+    -7.0379  -6.9871  -6.9857  -6.9844  -6.9693  -6.9641  -6.9510  -6.9382
+    -6.9345  -6.9175  -6.7992  -6.7434  -6.6849  -6.6798  -6.6568  -6.6376
+    -6.5469  -6.5304  -6.5012  -6.4734  -6.4647  -6.4586  -6.4539  -6.4453
+    -6.4393  -6.4092  -6.3978  -6.3836  -6.3333  -6.2397  -6.2310  -6.1733
+    -6.1661  -6.1125  -6.1087  -6.1032  -6.0668  -6.0647  -6.0261  -6.0089
+    -6.0068  -6.0046  -5.9738  -5.9647  -5.9413  -5.9284  -5.9197  -5.9194
+    -5.8850  -5.8830  -5.8628  -5.8508  -5.7836  -5.7416  -5.7339  -5.7266
+    -5.7047  -5.6717  -5.6650  -5.6182  -5.6152  -5.6048  -5.5753  -5.5664
+    -5.5570  -5.5562  -5.5422  -5.5317  -5.5302  -5.5240  -5.5218  -5.4847
+    -5.4786  -5.4772  -5.4459  -5.4391  -5.4376  -5.4177  -5.4160  -5.4080
+    -5.4043  -5.4032  -5.3880  -5.3769  -5.3716  -5.3671  -5.3643  -5.3574
+    -5.3343  -5.3314  -5.3255  -5.3094  -5.2721  -5.2717  -5.2683  -5.2650
+    -5.2511  -5.2477  -5.2463  -5.2359  -5.2300  -5.2164  -5.2145  -5.1946
+    -5.1834  -5.1801  -5.1788  -5.1785  -5.1718  -5.1587  -5.1454  -5.1230
+    -5.0901  -5.0880  -5.0839  -5.0571  -5.0434  -5.0430  -5.0366  -5.0309
+    -5.0031  -4.9980  -4.9927  -4.9896  -4.9817  -4.9766  -4.9297  -4.9054
+    -4.9038  -4.9024  -4.8979  -4.8964  -4.8841  -4.8802  -4.8738  -4.8688
+    -4.8667  -4.8594  -4.8550  -4.8510  -4.8476  -4.8325  -4.8313  -4.8282
+    -4.8171  -4.8134  -4.7907  -4.7884  -4.7809  -4.7807  -4.7801  -4.7740
+    -4.7710  -4.7665  -4.7640  -4.6694  -4.6556  -4.6151  -4.6117  -4.6005
+    -4.5908  -4.5774  -4.5766  -4.5701  -4.5633  -4.5406  -4.5366  -4.5319
+    -4.5316  -4.5200  -4.5013  -4.5003  -4.4878  -4.4731  -4.4688  -4.4542
+    -4.4277  -4.3700  -4.3629  -4.3605  -4.3589  -4.1589  -4.1322  -4.1026
+    -3.9808  -3.9634  -3.9252  -3.8965  -3.8337  -3.7159
+
+          k = 0.0000-0.5303 0.0000 (128388 PWs)   bands (ev):
+
+   -92.0907 -92.0907 -92.0725 -92.0725 -92.0590 -92.0590 -92.0521 -92.0521
+   -92.0507 -92.0507 -92.0469 -92.0468 -92.0392 -92.0392 -92.0363 -92.0363
+   -92.0362 -92.0362 -92.0313 -92.0313 -92.0302 -92.0302 -92.0287 -92.0287
+   -92.0218 -92.0218 -92.0158 -92.0158 -92.0140 -92.0140 -91.9984 -91.9984
+   -91.9956 -91.9956 -91.9899 -91.9899 -91.9802 -91.9802 -91.9801 -91.9801
+   -91.9743 -91.9743 -91.9738 -91.9738 -91.9738 -91.9738 -91.9673 -91.9673
+   -91.9647 -91.9647 -91.9582 -91.9582 -91.9582 -91.9582 -91.9581 -91.9581
+   -91.9523 -91.9523 -91.9516 -91.9516 -91.9425 -91.9425 -91.9366 -91.9366
+   -58.3618 -58.3618 -58.3561 -58.3560 -58.3491 -58.3491 -58.3385 -58.3384
+   -58.3277 -58.3276 -58.3216 -58.3215 -58.3168 -58.3167 -58.3135 -58.3135
+   -58.3049 -58.3049 -58.2979 -58.2978 -58.2837 -58.2836 -58.2828 -58.2827
+   -58.2821 -58.2820 -58.2782 -58.2781 -58.2777 -58.2777 -58.2771 -58.2771
+   -58.2701 -58.2701 -58.2683 -58.2683 -58.2591 -58.2591 -58.2535 -58.2534
+   -58.2500 -58.2499 -58.2376 -58.2376 -58.2372 -58.2372 -58.2325 -58.2325
+   -58.2258 -58.2258 -58.2247 -58.2247 -58.2207 -58.2207 -58.2071 -58.2071
+   -58.1963 -58.1962 -58.1921 -58.1921 -58.1875 -58.1875 -58.1769 -58.1769
+   -58.1760 -58.1760 -58.1630 -58.1629 -58.1574 -58.1574 -58.1530 -58.1530
+   -58.1515 -58.1514 -58.1482 -58.1482 -58.1481 -58.1481 -58.1454 -58.1453
+   -58.1383 -58.1383 -58.1281 -58.1280 -58.1242 -58.1241 -58.1212 -58.1211
+   -58.1202 -58.1202 -58.1117 -58.1116 -58.1052 -58.1052 -58.1000 -58.1000
+   -58.0994 -58.0994 -58.0979 -58.0979 -58.0962 -58.0962 -58.0940 -58.0940
+   -58.0918 -58.0918 -58.0910 -58.0910 -58.0789 -58.0789 -58.0746 -58.0746
+   -58.0686 -58.0686 -58.0638 -58.0638 -58.0601 -58.0601 -58.0572 -58.0572
+   -58.0495 -58.0495 -58.0488 -58.0488 -58.0437 -58.0437 -58.0436 -58.0435
+   -58.0435 -58.0435 -58.0357 -58.0357 -58.0329 -58.0329 -58.0232 -58.0232
+   -58.0176 -58.0176 -58.0162 -58.0161 -58.0156 -58.0156 -58.0135 -58.0135
+   -58.0127 -58.0127 -58.0094 -58.0094 -58.0087 -58.0087 -58.0082 -58.0082
+   -58.0069 -58.0069 -58.0033 -58.0033 -58.0022 -58.0022 -58.0010 -58.0010
+   -57.9922 -57.9922 -57.9856 -57.9855 -57.9846 -57.9846 -57.9817 -57.9817
+   -57.9791 -57.9791 -57.9791 -57.9791 -57.9762 -57.9762 -57.9748 -57.9748
+   -57.9699 -57.9699 -57.9688 -57.9688 -57.9687 -57.9687 -57.9638 -57.9638
+   -57.9576 -57.9576 -57.9531 -57.9531 -57.9478 -57.9478 -57.9475 -57.9475
+   -14.1951 -14.1950 -13.0406 -13.0406 -12.8922 -12.8921 -12.0222 -12.0221
+   -11.8396 -11.8396 -11.2298 -11.2297 -11.1726 -11.1726 -11.1644 -11.1642
+   -10.9755 -10.9754 -10.5694 -10.5694 -10.2783 -10.2783 -10.2628 -10.2628
+   -10.1463 -10.1462 -10.0466 -10.0465  -9.9387  -9.9386  -9.9199  -9.9198
+    -9.7047  -9.7047  -9.5886  -9.5886  -9.5865  -9.5865  -9.4180  -9.4180
+    -9.3835  -9.3835  -9.3833  -9.3831  -9.3676  -9.3675  -9.3316  -9.3316
+    -9.2625  -9.2625  -9.2249  -9.2248  -9.1221  -9.1221  -9.0342  -9.0341
+    -8.9478  -8.9477  -8.9119  -8.9117  -8.8819  -8.8819  -8.8452  -8.8452
+    -8.6909  -8.6907  -8.6717  -8.6716  -8.5022  -8.5021  -8.4366  -8.4365
+    -8.3805  -8.3805  -8.3403  -8.3403  -8.3168  -8.3167  -8.3024  -8.3023
+    -8.2439  -8.2438  -8.2279  -8.2275  -8.2219  -8.2218  -8.2005  -8.2004
+    -8.1854  -8.1852  -8.1472  -8.1468  -8.1057  -8.1055  -8.0545  -8.0543
+    -8.0240  -8.0238  -8.0061  -8.0060  -8.0033  -8.0033  -7.9811  -7.9810
+    -7.9802  -7.9802  -7.9711  -7.9710  -7.9499  -7.9497  -7.9115  -7.9112
+    -7.9056  -7.9055  -7.8846  -7.8842  -7.8799  -7.8797  -7.8620  -7.8617
+    -7.7827  -7.7826  -7.6707  -7.6705  -7.6547  -7.6547  -7.6317  -7.6316
+    -7.6188  -7.6187  -7.6019  -7.6016  -7.5860  -7.5858  -7.5634  -7.5632
+    -7.5151  -7.5150  -7.4705  -7.4703  -7.4603  -7.4601  -7.3975  -7.3974
+    -7.3882  -7.3881  -7.3802  -7.3799  -7.3337  -7.3336  -7.3045  -7.3042
+    -7.2603  -7.2603  -7.2582  -7.2579  -7.2351  -7.2350  -7.2133  -7.2132
+    -7.1919  -7.1916  -7.1402  -7.1402  -7.1262  -7.1261  -7.0732  -7.0731
+    -6.9312  -6.9307  -6.9265  -6.9262  -6.9256  -6.9252  -6.9186  -6.9186
+    -6.9121  -6.9120  -6.9058  -6.9055  -6.8217  -6.8216  -6.7888  -6.7885
+    -6.7114  -6.7113  -6.5507  -6.5507  -6.5203  -6.5201  -6.4473  -6.4473
+    -6.3683  -6.3680  -6.2553  -6.2552  -6.2179  -6.2177  -6.2144  -6.2143
+    -6.1711  -6.1709  -6.1234  -6.1234  -6.0655  -6.0653  -6.0048  -6.0047
+    -5.9734  -5.9732  -5.9645  -5.9645  -5.9609  -5.9609  -5.9388  -5.9388
+    -5.7915  -5.7914  -5.7705  -5.7703  -5.7469  -5.7466  -5.7200  -5.7199
+    -5.7055  -5.7054  -5.6942  -5.6941  -5.6819  -5.6815  -5.6668  -5.6667
+    -5.5410  -5.5410  -5.5157  -5.5154  -5.4876  -5.4875  -5.4611  -5.4607
+    -5.4566  -5.4565  -5.4546  -5.4543  -5.4437  -5.4435  -5.4219  -5.4215
+    -5.3820  -5.3816  -5.3732  -5.3730  -5.3253  -5.3249  -5.3029  -5.3028
+    -5.3026  -5.3023  -5.2866  -5.2865  -5.2645  -5.2643  -5.2294  -5.2293
+    -5.2030  -5.2029  -5.1955  -5.1953  -5.1844  -5.1841  -5.1835  -5.1835
+    -5.1582  -5.1581  -5.1367  -5.1364  -5.1323  -5.1322  -5.1096  -5.1094
+    -5.0857  -5.0856  -4.9818  -4.9818  -4.9757  -4.9756  -4.9637  -4.9634
+    -4.9572  -4.9571  -4.9485  -4.9483  -4.9478  -4.9476  -4.9476  -4.9475
+    -4.9294  -4.9293  -4.9119  -4.9118  -4.8926  -4.8926  -4.8903  -4.8902
+    -4.8870  -4.8867  -4.8833  -4.8832  -4.8774  -4.8773  -4.8592  -4.8592
+    -4.7908  -4.7908  -4.7800  -4.7800  -4.7601  -4.7600  -4.7520  -4.7520
+    -4.7277  -4.7277  -4.7216  -4.7216  -4.6991  -4.6991  -4.6719  -4.6718
+    -4.6595  -4.6594  -4.6459  -4.6459  -4.6344  -4.6344  -4.5788  -4.5788
+    -4.5628  -4.5627  -4.5457  -4.5457  -4.5396  -4.5395  -4.5186  -4.5185
+    -4.5053  -4.5052  -4.4734  -4.4734  -4.3548  -4.3547  -4.2379  -4.2374
+    -4.2025  -4.2023  -4.0961  -4.0960  -3.6993  -3.6992
+
+          k = 0.2500-0.0884 0.0000 (128371 PWs)   bands (ev):
+
+   -92.0963 -92.0821 -92.0737 -92.0684 -92.0666 -92.0607 -92.0559 -92.0546
+   -92.0500 -92.0466 -92.0433 -92.0402 -92.0399 -92.0393 -92.0391 -92.0372
+   -92.0345 -92.0344 -92.0321 -92.0315 -92.0314 -92.0314 -92.0281 -92.0268
+   -92.0260 -92.0216 -92.0193 -92.0160 -92.0114 -92.0105 -92.0034 -91.9991
+   -91.9951 -91.9933 -91.9905 -91.9847 -91.9835 -91.9834 -91.9787 -91.9776
+   -91.9773 -91.9752 -91.9751 -91.9725 -91.9705 -91.9693 -91.9686 -91.9681
+   -91.9638 -91.9633 -91.9632 -91.9614 -91.9596 -91.9574 -91.9566 -91.9548
+   -91.9547 -91.9532 -91.9488 -91.9484 -91.9476 -91.9416 -91.9391 -91.9333
+   -58.3759 -58.3712 -58.3650 -58.3595 -58.3535 -58.3478 -58.3346 -58.3343
+   -58.3322 -58.3319 -58.3281 -58.3190 -58.3164 -58.3110 -58.3065 -58.3045
+   -58.3003 -58.2996 -58.2978 -58.2977 -58.2935 -58.2889 -58.2880 -58.2858
+   -58.2844 -58.2818 -58.2805 -58.2800 -58.2799 -58.2772 -58.2756 -58.2755
+   -58.2740 -58.2740 -58.2712 -58.2689 -58.2659 -58.2652 -58.2612 -58.2588
+   -58.2506 -58.2470 -58.2440 -58.2374 -58.2318 -58.2270 -58.2234 -58.2200
+   -58.2195 -58.2153 -58.2066 -58.2039 -58.2017 -58.1979 -58.1947 -58.1932
+   -58.1922 -58.1892 -58.1869 -58.1843 -58.1835 -58.1811 -58.1788 -58.1747
+   -58.1688 -58.1669 -58.1639 -58.1638 -58.1636 -58.1606 -58.1604 -58.1553
+   -58.1534 -58.1502 -58.1450 -58.1445 -58.1428 -58.1424 -58.1422 -58.1413
+   -58.1356 -58.1341 -58.1328 -58.1323 -58.1309 -58.1290 -58.1288 -58.1287
+   -58.1188 -58.1185 -58.1183 -58.1153 -58.1149 -58.1126 -58.1113 -58.1086
+   -58.1063 -58.1046 -58.1022 -58.1009 -58.1007 -58.0955 -58.0954 -58.0928
+   -58.0920 -58.0885 -58.0863 -58.0851 -58.0822 -58.0805 -58.0802 -58.0779
+   -58.0773 -58.0727 -58.0694 -58.0679 -58.0651 -58.0635 -58.0615 -58.0575
+   -58.0554 -58.0545 -58.0530 -58.0527 -58.0498 -58.0491 -58.0487 -58.0460
+   -58.0439 -58.0415 -58.0356 -58.0355 -58.0343 -58.0329 -58.0291 -58.0287
+   -58.0286 -58.0279 -58.0273 -58.0256 -58.0228 -58.0210 -58.0194 -58.0170
+   -58.0159 -58.0138 -58.0110 -58.0073 -58.0065 -58.0063 -58.0050 -58.0047
+   -58.0028 -58.0026 -58.0002 -58.0001 -57.9993 -57.9970 -57.9961 -57.9959
+   -57.9924 -57.9922 -57.9910 -57.9908 -57.9906 -57.9849 -57.9846 -57.9842
+   -57.9831 -57.9816 -57.9790 -57.9779 -57.9773 -57.9720 -57.9651 -57.9643
+   -57.9619 -57.9616 -57.9615 -57.9614 -57.9594 -57.9576 -57.9569 -57.9558
+   -57.9549 -57.9547 -57.9538 -57.9509 -57.9496 -57.9474 -57.9458 -57.9456
+   -14.5403 -13.6415 -13.2170 -13.0797 -12.8062 -12.5553 -12.3837 -12.0790
+   -11.8869 -11.8363 -11.6215 -11.4726 -11.4378 -11.3662 -11.0993 -10.7930
+   -10.7025 -10.5243 -10.4634 -10.4269 -10.4258 -10.3013 -10.2561 -10.1695
+   -10.1077 -10.1014 -10.0461 -10.0214  -9.9486  -9.8835  -9.8365  -9.8347
+    -9.7874  -9.7249  -9.6753  -9.6682  -9.6294  -9.5266  -9.4992  -9.4934
+    -9.4765  -9.3740  -9.3512  -9.3319  -9.3007  -9.2799  -9.2687  -9.2647
+    -9.2564  -9.2478  -9.2160  -9.2138  -9.2113  -9.1636  -9.1016  -9.0283
+    -9.0180  -9.0138  -8.9706  -8.9526  -8.9285  -8.9161  -8.9042  -8.8510
+    -8.6725  -8.6268  -8.5453  -8.5182  -8.4710  -8.4557  -8.4378  -8.4149
+    -8.4074  -8.3724  -8.3659  -8.3365  -8.3205  -8.3182  -8.2985  -8.2932
+    -8.2589  -8.2561  -8.2452  -8.2430  -8.2348  -8.2236  -8.2192  -8.2083
+    -8.1861  -8.1810  -8.1768  -8.1584  -8.1546  -8.1474  -8.1420  -8.1294
+    -8.1070  -8.0922  -8.0877  -8.0833  -8.0799  -8.0767  -8.0761  -8.0288
+    -8.0027  -7.9981  -7.9647  -7.9446  -7.9325  -7.9244  -7.9218  -7.9190
+    -7.9060  -7.8925  -7.8856  -7.8768  -7.8230  -7.7443  -7.7286  -7.6957
+    -7.6952  -7.6634  -7.6600  -7.6396  -7.6386  -7.6381  -7.5968  -7.5959
+    -7.5935  -7.5933  -7.5899  -7.5797  -7.5627  -7.5506  -7.5499  -7.5460
+    -7.5385  -7.5082  -7.4769  -7.4718  -7.4676  -7.4575  -7.4540  -7.4497
+    -7.4340  -7.3927  -7.3906  -7.3903  -7.3608  -7.3504  -7.3413  -7.3391
+    -7.3304  -7.3150  -7.2986  -7.2943  -7.2620  -7.2386  -7.2161  -7.1954
+    -7.1942  -7.1738  -7.1624  -7.1467  -7.1336  -7.1298  -7.0872  -7.0717
+    -7.0379  -6.9871  -6.9856  -6.9844  -6.9693  -6.9642  -6.9510  -6.9382
+    -6.9345  -6.9175  -6.7992  -6.7433  -6.6849  -6.6798  -6.6568  -6.6376
+    -6.5469  -6.5304  -6.5013  -6.4734  -6.4647  -6.4586  -6.4539  -6.4453
+    -6.4394  -6.4092  -6.3979  -6.3836  -6.3333  -6.2397  -6.2310  -6.1733
+    -6.1661  -6.1125  -6.1087  -6.1032  -6.0668  -6.0647  -6.0261  -6.0089
+    -6.0068  -6.0046  -5.9738  -5.9647  -5.9413  -5.9284  -5.9197  -5.9194
+    -5.8850  -5.8830  -5.8628  -5.8508  -5.7836  -5.7416  -5.7339  -5.7266
+    -5.7047  -5.6717  -5.6650  -5.6182  -5.6152  -5.6048  -5.5753  -5.5664
+    -5.5570  -5.5562  -5.5422  -5.5317  -5.5302  -5.5240  -5.5218  -5.4847
+    -5.4786  -5.4772  -5.4459  -5.4391  -5.4376  -5.4177  -5.4160  -5.4080
+    -5.4043  -5.4032  -5.3880  -5.3769  -5.3716  -5.3671  -5.3643  -5.3574
+    -5.3343  -5.3313  -5.3255  -5.3094  -5.2721  -5.2717  -5.2683  -5.2650
+    -5.2511  -5.2477  -5.2463  -5.2359  -5.2300  -5.2164  -5.2145  -5.1946
+    -5.1834  -5.1801  -5.1788  -5.1785  -5.1718  -5.1587  -5.1455  -5.1230
+    -5.0901  -5.0880  -5.0839  -5.0571  -5.0434  -5.0430  -5.0366  -5.0309
+    -5.0031  -4.9980  -4.9927  -4.9896  -4.9817  -4.9766  -4.9297  -4.9054
+    -4.9038  -4.9024  -4.8979  -4.8964  -4.8841  -4.8802  -4.8738  -4.8688
+    -4.8667  -4.8594  -4.8550  -4.8510  -4.8477  -4.8325  -4.8313  -4.8282
+    -4.8171  -4.8134  -4.7907  -4.7884  -4.7809  -4.7807  -4.7800  -4.7740
+    -4.7710  -4.7665  -4.7640  -4.6694  -4.6556  -4.6151  -4.6117  -4.6005
+    -4.5908  -4.5774  -4.5766  -4.5731  -4.5649  -4.5406  -4.5366  -4.5319
+    -4.5316  -4.5200  -4.5013  -4.5003  -4.4878  -4.4731  -4.4688  -4.4542
+    -4.4277  -4.3700  -4.3629  -4.3604  -4.3589  -4.1589  -4.1321  -4.1026
+    -3.9808  -3.9634  -3.9252  -3.8965  -3.8337  -3.7159
+
+          k = 0.2500 0.1768 0.0000 (128340 PWs)   bands (ev):
+
+   -92.0955 -92.0774 -92.0773 -92.0760 -92.0631 -92.0630 -92.0548 -92.0484
+   -92.0451 -92.0450 -92.0430 -92.0430 -92.0411 -92.0410 -92.0406 -92.0404
+   -92.0376 -92.0332 -92.0331 -92.0289 -92.0288 -92.0288 -92.0276 -92.0275
+   -92.0273 -92.0272 -92.0166 -92.0165 -92.0134 -92.0049 -92.0048 -91.9979
+   -91.9963 -91.9921 -91.9894 -91.9893 -91.9835 -91.9834 -91.9811 -91.9775
+   -91.9775 -91.9753 -91.9715 -91.9715 -91.9694 -91.9693 -91.9693 -91.9692
+   -91.9626 -91.9626 -91.9626 -91.9626 -91.9607 -91.9607 -91.9572 -91.9546
+   -91.9546 -91.9515 -91.9488 -91.9487 -91.9426 -91.9425 -91.9403 -91.9346
+   -58.3687 -58.3650 -58.3648 -58.3540 -58.3538 -58.3320 -58.3304 -58.3304
+   -58.3264 -58.3263 -58.3216 -58.3174 -58.3174 -58.3081 -58.3080 -58.3050
+   -58.3048 -58.3044 -58.2976 -58.2974 -58.2963 -58.2962 -58.2953 -58.2952
+   -58.2873 -58.2873 -58.2788 -58.2781 -58.2780 -58.2773 -58.2772 -58.2704
+   -58.2704 -58.2676 -58.2660 -58.2659 -58.2626 -58.2605 -58.2594 -58.2594
+   -58.2554 -58.2475 -58.2475 -58.2410 -58.2410 -58.2315 -58.2302 -58.2178
+   -58.2178 -58.2144 -58.2143 -58.2135 -58.2131 -58.2131 -58.2097 -58.2096
+   -58.2000 -58.1999 -58.1931 -58.1869 -58.1869 -58.1855 -58.1853 -58.1853
+   -58.1808 -58.1802 -58.1769 -58.1670 -58.1669 -58.1579 -58.1579 -58.1538
+   -58.1473 -58.1473 -58.1467 -58.1466 -58.1445 -58.1445 -58.1406 -58.1374
+   -58.1374 -58.1362 -58.1362 -58.1341 -58.1217 -58.1205 -58.1204 -58.1163
+   -58.1162 -58.1141 -58.1113 -58.1088 -58.1087 -58.1066 -58.1065 -58.1056
+   -58.1056 -58.1022 -58.1021 -58.1011 -58.1009 -58.1008 -58.0885 -58.0885
+   -58.0870 -58.0869 -58.0863 -58.0836 -58.0794 -58.0780 -58.0780 -58.0744
+   -58.0744 -58.0622 -58.0619 -58.0557 -58.0557 -58.0547 -58.0546 -58.0533
+   -58.0526 -58.0489 -58.0489 -58.0487 -58.0487 -58.0482 -58.0433 -58.0431
+   -58.0430 -58.0361 -58.0361 -58.0354 -58.0353 -58.0314 -58.0314 -58.0292
+   -58.0284 -58.0284 -58.0250 -58.0250 -58.0223 -58.0223 -58.0218 -58.0134
+   -58.0080 -58.0079 -58.0061 -58.0032 -58.0018 -58.0018 -58.0018 -58.0017
+   -58.0011 -58.0011 -58.0002 -58.0001 -57.9995 -57.9994 -57.9955 -57.9955
+   -57.9952 -57.9952 -57.9940 -57.9934 -57.9934 -57.9908 -57.9867 -57.9866
+   -57.9858 -57.9857 -57.9815 -57.9815 -57.9723 -57.9713 -57.9713 -57.9665
+   -57.9647 -57.9644 -57.9644 -57.9638 -57.9621 -57.9616 -57.9616 -57.9599
+   -57.9596 -57.9596 -57.9558 -57.9554 -57.9528 -57.9528 -57.9503 -57.9503
+   -14.5011 -13.3199 -13.3198 -13.3167 -13.1799 -12.2746 -12.2745 -12.0882
+   -12.0881 -12.0770 -11.4403 -11.4144 -11.2326 -11.2326 -10.6165 -10.6164
+   -10.5652 -10.5652 -10.4635 -10.4515 -10.4258 -10.4258 -10.3978 -10.2998
+   -10.2997 -10.1678 -10.1273 -10.1273  -9.9675  -9.9675  -9.9394  -9.9393
+    -9.8716  -9.8715  -9.5959  -9.5958  -9.5586  -9.5420  -9.5268  -9.5103
+    -9.4951  -9.4950  -9.3637  -9.3636  -9.3630  -9.2927  -9.2924  -9.2880
+    -9.2879  -9.2217  -9.2214  -9.1603  -9.1602  -9.0809  -9.0551  -9.0547
+    -8.9924  -8.9200  -8.9200  -8.8669  -8.8669  -8.7692  -8.7151  -8.7150
+    -8.7110  -8.7108  -8.6495  -8.6494  -8.4757  -8.4233  -8.4232  -8.4070
+    -8.4067  -8.3640  -8.3638  -8.3569  -8.3566  -8.3564  -8.3563  -8.3298
+    -8.3298  -8.3066  -8.3065  -8.2904  -8.2903  -8.2468  -8.2468  -8.2152
+    -8.2152  -8.1396  -8.1146  -8.1142  -8.0923  -8.0607  -8.0603  -8.0557
+    -8.0556  -8.0311  -8.0308  -8.0250  -8.0095  -8.0094  -7.9846  -7.9846
+    -7.9809  -7.9808  -7.9585  -7.9583  -7.9434  -7.9432  -7.8899  -7.8895
+    -7.8860  -7.8045  -7.7981  -7.7980  -7.7954  -7.7560  -7.7559  -7.7558
+    -7.7557  -7.7523  -7.7364  -7.7362  -7.7272  -7.6226  -7.6223  -7.6223
+    -7.6220  -7.6197  -7.6196  -7.6178  -7.6176  -7.5881  -7.5879  -7.5878
+    -7.5877  -7.5718  -7.5718  -7.5017  -7.5015  -7.4613  -7.4609  -7.3932
+    -7.3930  -7.3889  -7.3872  -7.3871  -7.3798  -7.3798  -7.3796  -7.3700
+    -7.3436  -7.3436  -7.3334  -7.3333  -7.3263  -7.2953  -7.2431  -7.2428
+    -7.1803  -7.1803  -7.1521  -7.1246  -7.1171  -7.1044  -7.0923  -7.0922
+    -7.0751  -7.0746  -7.0577  -7.0095  -6.9669  -6.9461  -6.9071  -6.8918
+    -6.8916  -6.8809  -6.8423  -6.7300  -6.6969  -6.6027  -6.6019  -6.5974
+    -6.5898  -6.5895  -6.5473  -6.4831  -6.4831  -6.4584  -6.4392  -6.4386
+    -6.4040  -6.4039  -6.3615  -6.3614  -6.2793  -6.2313  -6.1720  -6.1609
+    -6.1294  -6.0903  -6.0892  -6.0757  -6.0580  -6.0578  -6.0101  -6.0100
+    -5.9681  -5.9612  -5.9612  -5.9315  -5.8671  -5.8490  -5.8487  -5.8011
+    -5.7677  -5.7677  -5.7520  -5.7519  -5.7309  -5.7307  -5.7015  -5.6534
+    -5.6532  -5.6407  -5.6130  -5.6107  -5.6105  -5.6103  -5.5987  -5.5986
+    -5.5940  -5.5685  -5.5681  -5.5656  -5.5281  -5.5277  -5.5197  -5.5112
+    -5.5110  -5.5064  -5.5023  -5.5020  -5.4657  -5.4657  -5.4403  -5.4092
+    -5.4091  -5.3540  -5.3536  -5.3415  -5.3386  -5.3386  -5.3317  -5.2955
+    -5.2953  -5.2775  -5.2772  -5.2748  -5.2649  -5.2582  -5.2579  -5.2215
+    -5.2054  -5.1943  -5.1941  -5.1924  -5.1923  -5.1747  -5.1746  -5.1659
+    -5.1658  -5.1481  -5.1480  -5.1416  -5.1413  -5.1127  -5.1123  -5.1123
+    -5.0925  -5.0924  -5.0661  -5.0661  -5.0553  -5.0547  -5.0375  -5.0373
+    -5.0370  -5.0370  -5.0210  -5.0043  -5.0043  -4.9256  -4.9255  -4.9192
+    -4.9192  -4.9117  -4.9117  -4.8969  -4.8869  -4.8868  -4.8629  -4.8629
+    -4.8487  -4.8487  -4.8447  -4.8305  -4.8254  -4.8252  -4.8246  -4.8242
+    -4.8234  -4.8234  -4.8233  -4.8113  -4.8113  -4.8058  -4.8058  -4.7809
+    -4.7808  -4.7793  -4.7696  -4.7242  -4.7242  -4.6821  -4.6821  -4.6717
+    -4.6715  -4.6247  -4.5768  -4.5749  -4.5748  -4.5617  -4.5616  -4.5581
+    -4.5386  -4.5386  -4.5369  -4.5368  -4.5026  -4.5003  -4.4602  -4.4519
+    -4.4405  -4.3904  -4.3904  -4.3586  -4.3371  -4.2881  -4.1915  -4.1915
+    -3.9741  -3.9740  -3.9546  -3.9545  -3.9046  -3.9045
+
+          k = 0.2500-0.6187 0.0000 (128424 PWs)   bands (ev):
+
+   -92.0910 -92.0867 -92.0812 -92.0697 -92.0627 -92.0531 -92.0513 -92.0508
+   -92.0505 -92.0487 -92.0463 -92.0448 -92.0426 -92.0419 -92.0416 -92.0374
+   -92.0355 -92.0321 -92.0313 -92.0299 -92.0299 -92.0284 -92.0284 -92.0269
+   -92.0240 -92.0224 -92.0219 -92.0198 -92.0089 -92.0082 -91.9997 -91.9996
+   -91.9945 -91.9944 -91.9887 -91.9886 -91.9861 -91.9860 -91.9803 -91.9799
+   -91.9743 -91.9741 -91.9727 -91.9725 -91.9683 -91.9677 -91.9663 -91.9661
+   -91.9659 -91.9658 -91.9642 -91.9641 -91.9595 -91.9592 -91.9582 -91.9575
+   -91.9522 -91.9522 -91.9464 -91.9457 -91.9437 -91.9437 -91.9379 -91.9377
+   -58.3584 -58.3486 -58.3471 -58.3465 -58.3463 -58.3419 -58.3331 -58.3315
+   -58.3299 -58.3287 -58.3247 -58.3194 -58.3184 -58.3118 -58.3110 -58.3091
+   -58.3054 -58.3044 -58.3035 -58.3020 -58.2983 -58.2962 -58.2930 -58.2911
+   -58.2900 -58.2842 -58.2774 -58.2746 -58.2715 -58.2706 -58.2698 -58.2692
+   -58.2687 -58.2657 -58.2619 -58.2595 -58.2590 -58.2544 -58.2531 -58.2506
+   -58.2498 -58.2479 -58.2468 -58.2435 -58.2419 -58.2397 -58.2384 -58.2342
+   -58.2334 -58.2317 -58.2317 -58.2307 -58.2202 -58.2166 -58.2144 -58.2134
+   -58.2109 -58.2090 -58.2050 -58.2018 -58.1952 -58.1933 -58.1928 -58.1858
+   -58.1791 -58.1753 -58.1724 -58.1707 -58.1701 -58.1689 -58.1649 -58.1605
+   -58.1525 -58.1517 -58.1502 -58.1492 -58.1442 -58.1378 -58.1365 -58.1308
+   -58.1301 -58.1281 -58.1281 -58.1280 -58.1244 -58.1236 -58.1184 -58.1184
+   -58.1182 -58.1165 -58.1119 -58.1108 -58.1073 -58.1055 -58.1028 -58.1005
+   -58.1002 -58.0989 -58.0985 -58.0955 -58.0885 -58.0883 -58.0865 -58.0864
+   -58.0860 -58.0809 -58.0791 -58.0788 -58.0781 -58.0706 -58.0693 -58.0678
+   -58.0666 -58.0653 -58.0645 -58.0635 -58.0624 -58.0603 -58.0532 -58.0526
+   -58.0518 -58.0513 -58.0458 -58.0409 -58.0383 -58.0365 -58.0363 -58.0360
+   -58.0315 -58.0309 -58.0286 -58.0276 -58.0272 -58.0255 -58.0244 -58.0241
+   -58.0219 -58.0200 -58.0200 -58.0192 -58.0172 -58.0172 -58.0168 -58.0132
+   -58.0109 -58.0108 -58.0105 -58.0103 -58.0092 -58.0083 -58.0057 -58.0053
+   -58.0051 -58.0040 -58.0039 -58.0016 -58.0015 -57.9988 -57.9987 -57.9986
+   -57.9962 -57.9916 -57.9894 -57.9880 -57.9862 -57.9860 -57.9848 -57.9829
+   -57.9825 -57.9824 -57.9809 -57.9798 -57.9796 -57.9793 -57.9786 -57.9762
+   -57.9734 -57.9701 -57.9701 -57.9676 -57.9668 -57.9654 -57.9648 -57.9648
+   -57.9639 -57.9633 -57.9624 -57.9604 -57.9585 -57.9565 -57.9517 -57.9517
+   -14.2322 -13.9320 -13.6375 -12.9266 -12.8024 -12.6449 -12.3731 -12.2914
+   -11.6182 -11.4148 -11.3645 -11.2136 -11.2040 -11.2034 -10.9231 -10.9103
+   -10.9043 -10.7093 -10.6479 -10.6398 -10.4678 -10.4115 -10.3613 -10.2771
+   -10.1828 -10.1478 -10.0646  -9.9997  -9.9987  -9.9936  -9.9340  -9.8879
+    -9.8194  -9.7484  -9.6605  -9.6559  -9.6281  -9.5993  -9.5784  -9.4605
+    -9.4558  -9.4479  -9.4418  -9.4350  -9.3889  -9.3395  -9.3145  -9.3120
+    -9.2269  -9.1884  -9.1702  -9.1476  -9.1152  -9.0897  -9.0246  -8.9206
+    -8.8892  -8.8550  -8.8525  -8.8410  -8.8083  -8.7963  -8.7804  -8.7705
+    -8.7313  -8.6843  -8.6658  -8.6605  -8.6167  -8.5873  -8.5092  -8.4828
+    -8.4353  -8.3617  -8.3607  -8.3467  -8.3244  -8.3098  -8.3021  -8.3007
+    -8.2993  -8.2834  -8.2777  -8.2763  -8.2470  -8.2049  -8.1776  -8.1727
+    -8.1657  -8.1229  -8.0994  -8.0690  -8.0621  -8.0472  -8.0374  -8.0366
+    -8.0165  -8.0111  -8.0072  -8.0064  -7.9913  -7.9725  -7.9694  -7.9577
+    -7.9542  -7.9473  -7.9325  -7.9313  -7.9222  -7.9086  -7.8940  -7.8928
+    -7.8873  -7.8870  -7.8649  -7.8603  -7.8570  -7.8527  -7.7880  -7.7762
+    -7.7673  -7.7591  -7.7443  -7.7314  -7.7293  -7.7161  -7.6962  -7.6801
+    -7.6782  -7.6720  -7.6608  -7.6453  -7.6350  -7.6345  -7.6233  -7.5884
+    -7.5555  -7.5518  -7.5489  -7.5450  -7.5413  -7.5089  -7.4799  -7.4586
+    -7.4111  -7.3841  -7.3422  -7.3341  -7.3255  -7.2850  -7.2680  -7.2653
+    -7.2477  -7.2453  -7.2423  -7.2341  -7.2330  -7.2244  -7.2151  -7.2046
+    -7.1802  -7.1610  -7.1578  -7.1516  -7.1227  -7.1206  -7.1150  -7.1085
+    -7.0739  -7.0730  -7.0695  -7.0466  -7.0437  -7.0321  -7.0086  -6.9453
+    -6.8851  -6.8361  -6.7891  -6.7724  -6.7687  -6.7148  -6.6932  -6.6883
+    -6.6795  -6.6658  -6.6546  -6.6170  -6.6077  -6.5249  -6.5228  -6.3677
+    -6.3121  -6.3050  -6.2979  -6.2969  -6.2397  -6.1933  -6.1362  -6.1147
+    -6.0934  -6.0806  -6.0404  -6.0261  -6.0097  -5.9928  -5.9607  -5.9604
+    -5.9594  -5.9579  -5.9564  -5.9293  -5.8947  -5.8934  -5.8876  -5.8342
+    -5.7662  -5.7510  -5.7473  -5.7331  -5.7182  -5.7170  -5.7166  -5.7027
+    -5.7016  -5.6962  -5.6886  -5.6841  -5.6817  -5.6598  -5.6561  -5.6167
+    -5.5889  -5.5420  -5.5146  -5.5059  -5.4812  -5.4798  -5.4761  -5.4656
+    -5.4565  -5.4415  -5.4303  -5.4197  -5.4152  -5.4088  -5.3944  -5.3917
+    -5.3810  -5.3762  -5.3435  -5.3358  -5.3324  -5.3190  -5.3189  -5.2915
+    -5.2902  -5.2878  -5.2642  -5.2402  -5.2279  -5.2137  -5.2134  -5.2042
+    -5.2038  -5.2010  -5.1914  -5.1911  -5.1654  -5.1649  -5.1616  -5.1522
+    -5.1457  -5.1340  -5.1283  -5.1253  -5.1235  -5.1082  -5.0913  -5.0886
+    -5.0687  -5.0676  -5.0589  -5.0533  -5.0510  -5.0470  -5.0078  -4.9880
+    -4.9863  -4.9821  -4.9767  -4.9760  -4.9600  -4.9586  -4.9569  -4.9537
+    -4.9488  -4.9363  -4.9350  -4.9227  -4.9148  -4.9042  -4.8853  -4.8731
+    -4.8701  -4.8571  -4.8560  -4.8511  -4.8407  -4.8393  -4.8381  -4.8369
+    -4.8336  -4.8235  -4.8020  -4.8017  -4.7941  -4.7770  -4.7674  -4.7615
+    -4.7579  -4.7532  -4.7463  -4.7199  -4.7171  -4.7159  -4.6747  -4.6640
+    -4.6580  -4.6404  -4.6299  -4.6123  -4.6113  -4.6086  -4.6022  -4.6015
+    -4.5921  -4.5805  -4.5788  -4.5375  -4.5259  -4.5225  -4.5110  -4.5101
+    -4.4852  -4.4781  -4.4506  -4.3599  -4.3079  -4.2756  -4.2699  -4.2452
+    -4.2315  -4.1334  -4.0600  -3.9932  -3.8650  -3.8267
+
+          k = 0.2500-0.3536 0.0000 (128397 PWs)   bands (ev):
+
+   -92.0932 -92.0835 -92.0834 -92.0601 -92.0597 -92.0596 -92.0557 -92.0556
+   -92.0544 -92.0458 -92.0457 -92.0450 -92.0449 -92.0371 -92.0360 -92.0359
+   -92.0345 -92.0344 -92.0338 -92.0337 -92.0302 -92.0261 -92.0260 -92.0259
+   -92.0252 -92.0250 -92.0182 -92.0181 -92.0149 -92.0047 -92.0046 -91.9978
+   -91.9962 -91.9920 -91.9894 -91.9894 -91.9837 -91.9836 -91.9811 -91.9776
+   -91.9776 -91.9747 -91.9712 -91.9712 -91.9693 -91.9692 -91.9692 -91.9690
+   -91.9634 -91.9633 -91.9628 -91.9627 -91.9608 -91.9608 -91.9573 -91.9542
+   -91.9542 -91.9507 -91.9488 -91.9488 -91.9430 -91.9429 -91.9403 -91.9344
+   -58.3674 -58.3586 -58.3584 -58.3467 -58.3466 -58.3461 -58.3459 -58.3343
+   -58.3343 -58.3250 -58.3245 -58.3244 -58.3200 -58.3118 -58.3117 -58.3078
+   -58.3077 -58.3025 -58.3024 -58.2971 -58.2971 -58.2929 -58.2837 -58.2835
+   -58.2798 -58.2766 -58.2762 -58.2742 -58.2741 -58.2722 -58.2722 -58.2706
+   -58.2706 -58.2694 -58.2655 -58.2616 -58.2616 -58.2595 -58.2557 -58.2557
+   -58.2556 -58.2552 -58.2552 -58.2506 -58.2505 -58.2393 -58.2191 -58.2191
+   -58.2186 -58.2185 -58.2176 -58.2126 -58.2126 -58.2109 -58.2108 -58.2068
+   -58.2001 -58.2000 -58.1983 -58.1983 -58.1828 -58.1814 -58.1808 -58.1795
+   -58.1766 -58.1765 -58.1718 -58.1684 -58.1565 -58.1564 -58.1561 -58.1561
+   -58.1523 -58.1523 -58.1519 -58.1517 -58.1497 -58.1497 -58.1427 -58.1360
+   -58.1360 -58.1299 -58.1299 -58.1295 -58.1295 -58.1281 -58.1243 -58.1243
+   -58.1239 -58.1239 -58.1199 -58.1199 -58.1064 -58.1063 -58.1047 -58.1035
+   -58.0982 -58.0982 -58.0977 -58.0958 -58.0958 -58.0908 -58.0865 -58.0865
+   -58.0808 -58.0806 -58.0801 -58.0800 -58.0769 -58.0768 -58.0744 -58.0719
+   -58.0718 -58.0703 -58.0702 -58.0688 -58.0688 -58.0553 -58.0534 -58.0534
+   -58.0529 -58.0489 -58.0488 -58.0463 -58.0444 -58.0444 -58.0419 -58.0419
+   -58.0391 -58.0370 -58.0340 -58.0340 -58.0320 -58.0319 -58.0269 -58.0269
+   -58.0216 -58.0216 -58.0214 -58.0213 -58.0202 -58.0202 -58.0181 -58.0180
+   -58.0169 -58.0117 -58.0116 -58.0110 -58.0107 -58.0106 -58.0074 -58.0069
+   -58.0068 -58.0040 -58.0040 -58.0039 -58.0037 -57.9981 -57.9981 -57.9980
+   -57.9958 -57.9958 -57.9908 -57.9907 -57.9872 -57.9856 -57.9855 -57.9851
+   -57.9851 -57.9783 -57.9783 -57.9689 -57.9688 -57.9686 -57.9686 -57.9686
+   -57.9679 -57.9678 -57.9669 -57.9655 -57.9636 -57.9636 -57.9592 -57.9592
+   -57.9568 -57.9568 -57.9561 -57.9545 -57.9544 -57.9538 -57.9538 -57.9520
+   -14.3472 -13.7487 -13.7485 -13.0339 -12.4799 -12.4798 -12.1386 -12.1385
+   -12.1286 -11.7122 -11.7121 -11.2934 -11.0579 -11.0579 -11.0303 -10.8165
+   -10.8165 -10.7970 -10.7968 -10.6373 -10.6373 -10.3683 -10.3682 -10.2652
+   -10.2589 -10.2588  -9.8301  -9.8095  -9.8094  -9.7255  -9.7254  -9.6860
+    -9.6860  -9.6604  -9.6604  -9.6530  -9.6529  -9.6110  -9.6109  -9.6013
+    -9.5786  -9.5786  -9.5204  -9.4313  -9.3944  -9.3563  -9.3561  -9.1488
+    -9.1487  -9.1379  -9.1377  -9.1106  -9.0662  -9.0661  -9.0573  -8.9990
+    -8.9989  -8.9885  -8.9885  -8.9260  -8.9258  -8.9236  -8.8410  -8.7640
+    -8.7468  -8.6312  -8.6247  -8.6245  -8.5790  -8.5331  -8.4577  -8.4452
+    -8.4451  -8.4198  -8.4197  -8.3671  -8.3069  -8.3068  -8.3067  -8.2866
+    -8.2778  -8.2777  -8.2309  -8.2309  -8.1891  -8.1860  -8.1619  -8.1618
+    -8.1358  -8.1356  -8.1063  -8.1060  -8.1001  -8.1000  -8.0974  -8.0973
+    -8.0590  -8.0590  -8.0541  -8.0328  -8.0326  -8.0295  -8.0294  -8.0226
+    -8.0225  -7.9605  -7.9605  -7.9586  -7.9430  -7.9430  -7.9161  -7.9158
+    -7.9073  -7.8915  -7.8472  -7.8472  -7.7944  -7.7628  -7.7626  -7.7559
+    -7.7557  -7.7262  -7.7260  -7.6893  -7.6892  -7.6702  -7.6699  -7.6559
+    -7.6559  -7.6335  -7.6335  -7.6213  -7.6213  -7.6160  -7.5598  -7.5371
+    -7.5369  -7.5280  -7.5273  -7.4353  -7.4353  -7.3983  -7.3981  -7.3848
+    -7.3764  -7.3372  -7.3369  -7.2995  -7.2909  -7.2908  -7.2896  -7.2894
+    -7.2866  -7.2866  -7.2567  -7.2567  -7.2519  -7.2468  -7.2468  -7.2320
+    -7.2320  -7.2241  -7.2240  -7.2045  -7.1761  -7.1210  -7.1209  -7.1015
+    -7.0148  -7.0147  -6.9881  -6.9880  -6.9697  -6.9575  -6.9574  -6.9394
+    -6.9392  -6.8212  -6.7837  -6.7837  -6.7783  -6.7613  -6.7612  -6.6699
+    -6.6427  -6.6054  -6.6052  -6.5229  -6.4965  -6.4965  -6.4819  -6.4817
+    -6.4407  -6.4407  -6.4063  -6.2663  -6.2660  -6.2645  -6.2643  -6.2251
+    -6.1381  -6.1378  -6.1319  -6.1076  -6.1075  -6.0947  -5.9394  -5.9394
+    -5.9108  -5.9107  -5.8899  -5.8899  -5.8603  -5.8601  -5.8558  -5.8558
+    -5.8351  -5.8259  -5.7664  -5.7473  -5.7443  -5.7442  -5.7381  -5.7380
+    -5.6899  -5.6898  -5.6656  -5.6656  -5.6297  -5.6296  -5.6169  -5.6168
+    -5.5424  -5.5424  -5.5394  -5.5393  -5.5366  -5.5364  -5.4911  -5.4493
+    -5.4492  -5.4308  -5.4300  -5.4300  -5.4284  -5.4282  -5.4242  -5.4240
+    -5.4144  -5.4144  -5.3847  -5.3847  -5.3782  -5.3782  -5.3512  -5.3512
+    -5.3366  -5.3365  -5.3010  -5.2950  -5.2908  -5.2905  -5.2904  -5.2782
+    -5.2736  -5.2734  -5.2533  -5.2526  -5.2511  -5.2199  -5.1943  -5.1942
+    -5.1834  -5.1549  -5.1548  -5.1351  -5.1342  -5.1341  -5.0924  -5.0904
+    -5.0904  -5.0787  -5.0780  -5.0780  -5.0444  -5.0443  -5.0381  -5.0380
+    -4.9990  -4.9815  -4.9814  -4.9614  -4.9613  -4.9602  -4.9507  -4.9507
+    -4.9421  -4.9061  -4.9061  -4.9027  -4.9026  -4.8857  -4.8854  -4.8854
+    -4.8824  -4.8714  -4.8601  -4.8556  -4.8526  -4.8089  -4.8073  -4.8072
+    -4.7715  -4.7714  -4.7664  -4.7664  -4.7489  -4.7488  -4.7339  -4.7206
+    -4.7206  -4.7071  -4.6941  -4.6940  -4.6763  -4.6761  -4.6745  -4.6637
+    -4.6634  -4.6634  -4.6441  -4.6441  -4.6416  -4.6157  -4.6031  -4.6031
+    -4.5881  -4.5881  -4.5607  -4.5340  -4.5339  -4.5157  -4.5156  -4.3808
+    -4.3115  -4.3114  -4.2413  -4.2413  -4.2222  -4.2217  -4.1667  -4.1667
+    -4.1636  -4.1635  -4.0799  -4.0798  -4.0664  -3.9570
+
+          k =-0.5000 0.1768 0.0000 (128388 PWs)   bands (ev):
+
+   -92.0907 -92.0907 -92.0725 -92.0725 -92.0590 -92.0590 -92.0521 -92.0521
+   -92.0507 -92.0507 -92.0469 -92.0468 -92.0392 -92.0392 -92.0363 -92.0363
+   -92.0362 -92.0362 -92.0313 -92.0313 -92.0302 -92.0302 -92.0287 -92.0287
+   -92.0218 -92.0218 -92.0158 -92.0158 -92.0140 -92.0140 -91.9984 -91.9984
+   -91.9956 -91.9956 -91.9899 -91.9899 -91.9802 -91.9802 -91.9801 -91.9801
+   -91.9743 -91.9743 -91.9738 -91.9738 -91.9738 -91.9738 -91.9673 -91.9673
+   -91.9647 -91.9647 -91.9582 -91.9582 -91.9582 -91.9582 -91.9581 -91.9581
+   -91.9523 -91.9523 -91.9516 -91.9516 -91.9425 -91.9425 -91.9366 -91.9366
+   -58.3618 -58.3618 -58.3561 -58.3560 -58.3491 -58.3491 -58.3385 -58.3384
+   -58.3277 -58.3276 -58.3216 -58.3215 -58.3168 -58.3167 -58.3135 -58.3135
+   -58.3049 -58.3049 -58.2979 -58.2978 -58.2837 -58.2836 -58.2828 -58.2827
+   -58.2821 -58.2821 -58.2782 -58.2781 -58.2777 -58.2777 -58.2771 -58.2771
+   -58.2702 -58.2701 -58.2683 -58.2683 -58.2591 -58.2591 -58.2535 -58.2534
+   -58.2500 -58.2499 -58.2376 -58.2376 -58.2372 -58.2371 -58.2325 -58.2325
+   -58.2258 -58.2258 -58.2247 -58.2247 -58.2207 -58.2207 -58.2071 -58.2071
+   -58.1963 -58.1962 -58.1921 -58.1921 -58.1875 -58.1875 -58.1770 -58.1769
+   -58.1760 -58.1760 -58.1630 -58.1630 -58.1574 -58.1574 -58.1530 -58.1530
+   -58.1515 -58.1514 -58.1482 -58.1482 -58.1481 -58.1481 -58.1454 -58.1453
+   -58.1383 -58.1383 -58.1281 -58.1280 -58.1242 -58.1241 -58.1212 -58.1211
+   -58.1202 -58.1202 -58.1117 -58.1116 -58.1052 -58.1052 -58.1000 -58.1000
+   -58.0994 -58.0994 -58.0979 -58.0979 -58.0962 -58.0962 -58.0940 -58.0940
+   -58.0918 -58.0918 -58.0910 -58.0910 -58.0789 -58.0789 -58.0746 -58.0746
+   -58.0686 -58.0686 -58.0638 -58.0638 -58.0601 -58.0601 -58.0572 -58.0572
+   -58.0495 -58.0495 -58.0488 -58.0488 -58.0437 -58.0437 -58.0436 -58.0435
+   -58.0435 -58.0435 -58.0357 -58.0357 -58.0329 -58.0329 -58.0232 -58.0232
+   -58.0176 -58.0176 -58.0162 -58.0161 -58.0156 -58.0156 -58.0135 -58.0135
+   -58.0127 -58.0127 -58.0094 -58.0094 -58.0087 -58.0087 -58.0082 -58.0082
+   -58.0069 -58.0069 -58.0033 -58.0033 -58.0022 -58.0022 -58.0010 -58.0010
+   -57.9922 -57.9922 -57.9856 -57.9855 -57.9846 -57.9846 -57.9817 -57.9817
+   -57.9791 -57.9791 -57.9791 -57.9791 -57.9762 -57.9762 -57.9748 -57.9748
+   -57.9699 -57.9699 -57.9688 -57.9688 -57.9687 -57.9687 -57.9638 -57.9638
+   -57.9576 -57.9576 -57.9531 -57.9531 -57.9478 -57.9478 -57.9475 -57.9475
+   -14.1951 -14.1950 -13.0406 -13.0406 -12.8922 -12.8921 -12.0222 -12.0221
+   -11.8396 -11.8396 -11.2298 -11.2297 -11.1726 -11.1726 -11.1644 -11.1642
+   -10.9755 -10.9754 -10.5694 -10.5694 -10.2783 -10.2783 -10.2628 -10.2628
+   -10.1463 -10.1462 -10.0465 -10.0465  -9.9387  -9.9386  -9.9199  -9.9198
+    -9.7047  -9.7047  -9.5886  -9.5886  -9.5865  -9.5865  -9.4180  -9.4180
+    -9.3835  -9.3835  -9.3833  -9.3831  -9.3676  -9.3675  -9.3316  -9.3315
+    -9.2625  -9.2625  -9.2249  -9.2248  -9.1221  -9.1221  -9.0342  -9.0341
+    -8.9478  -8.9477  -8.9119  -8.9117  -8.8819  -8.8819  -8.8452  -8.8452
+    -8.6909  -8.6907  -8.6717  -8.6716  -8.5022  -8.5021  -8.4366  -8.4365
+    -8.3805  -8.3805  -8.3403  -8.3403  -8.3168  -8.3167  -8.3024  -8.3023
+    -8.2439  -8.2438  -8.2279  -8.2275  -8.2219  -8.2218  -8.2005  -8.2003
+    -8.1855  -8.1852  -8.1472  -8.1469  -8.1057  -8.1055  -8.0545  -8.0542
+    -8.0240  -8.0238  -8.0061  -8.0060  -8.0034  -8.0033  -7.9811  -7.9810
+    -7.9802  -7.9802  -7.9711  -7.9710  -7.9498  -7.9497  -7.9115  -7.9112
+    -7.9056  -7.9055  -7.8846  -7.8842  -7.8799  -7.8797  -7.8620  -7.8617
+    -7.7826  -7.7826  -7.6707  -7.6705  -7.6548  -7.6547  -7.6317  -7.6316
+    -7.6187  -7.6187  -7.6019  -7.6016  -7.5860  -7.5858  -7.5634  -7.5632
+    -7.5151  -7.5149  -7.4705  -7.4703  -7.4603  -7.4601  -7.3975  -7.3974
+    -7.3882  -7.3881  -7.3802  -7.3799  -7.3337  -7.3336  -7.3045  -7.3042
+    -7.2603  -7.2602  -7.2582  -7.2579  -7.2351  -7.2350  -7.2133  -7.2132
+    -7.1919  -7.1916  -7.1402  -7.1402  -7.1262  -7.1261  -7.0732  -7.0731
+    -6.9312  -6.9307  -6.9266  -6.9262  -6.9256  -6.9252  -6.9187  -6.9186
+    -6.9121  -6.9120  -6.9058  -6.9055  -6.8217  -6.8215  -6.7888  -6.7885
+    -6.7114  -6.7113  -6.5507  -6.5507  -6.5203  -6.5201  -6.4473  -6.4473
+    -6.3683  -6.3680  -6.2553  -6.2552  -6.2179  -6.2177  -6.2144  -6.2143
+    -6.1711  -6.1709  -6.1234  -6.1234  -6.0655  -6.0653  -6.0048  -6.0047
+    -5.9734  -5.9732  -5.9645  -5.9645  -5.9609  -5.9609  -5.9388  -5.9388
+    -5.7915  -5.7914  -5.7705  -5.7703  -5.7470  -5.7466  -5.7201  -5.7199
+    -5.7055  -5.7054  -5.6942  -5.6941  -5.6819  -5.6815  -5.6668  -5.6667
+    -5.5410  -5.5410  -5.5157  -5.5154  -5.4876  -5.4875  -5.4611  -5.4607
+    -5.4566  -5.4565  -5.4546  -5.4543  -5.4436  -5.4435  -5.4219  -5.4215
+    -5.3820  -5.3816  -5.3732  -5.3731  -5.3253  -5.3249  -5.3029  -5.3028
+    -5.3026  -5.3023  -5.2866  -5.2865  -5.2645  -5.2643  -5.2294  -5.2293
+    -5.2030  -5.2028  -5.1955  -5.1953  -5.1844  -5.1841  -5.1835  -5.1834
+    -5.1582  -5.1581  -5.1367  -5.1364  -5.1323  -5.1322  -5.1096  -5.1094
+    -5.0857  -5.0856  -4.9818  -4.9818  -4.9757  -4.9756  -4.9637  -4.9634
+    -4.9572  -4.9571  -4.9485  -4.9483  -4.9478  -4.9476  -4.9476  -4.9475
+    -4.9294  -4.9293  -4.9119  -4.9118  -4.8926  -4.8926  -4.8903  -4.8902
+    -4.8870  -4.8866  -4.8833  -4.8832  -4.8774  -4.8773  -4.8592  -4.8592
+    -4.7908  -4.7908  -4.7800  -4.7800  -4.7601  -4.7600  -4.7520  -4.7520
+    -4.7277  -4.7276  -4.7216  -4.7216  -4.6991  -4.6991  -4.6719  -4.6718
+    -4.6595  -4.6594  -4.6459  -4.6459  -4.6344  -4.6344  -4.5788  -4.5787
+    -4.5628  -4.5628  -4.5457  -4.5457  -4.5397  -4.5393  -4.5186  -4.5185
+    -4.5053  -4.5052  -4.4734  -4.4734  -4.3548  -4.3547  -4.2379  -4.2374
+    -4.2025  -4.2023  -4.0961  -4.0960  -3.6990  -3.6985
+
+          k =-0.5000 0.4419 0.0000 (128422 PWs)   bands (ev):
+
+   -92.0910 -92.0867 -92.0812 -92.0697 -92.0627 -92.0531 -92.0513 -92.0508
+   -92.0505 -92.0487 -92.0463 -92.0448 -92.0426 -92.0419 -92.0416 -92.0374
+   -92.0355 -92.0321 -92.0313 -92.0299 -92.0299 -92.0284 -92.0284 -92.0269
+   -92.0240 -92.0224 -92.0219 -92.0198 -92.0089 -92.0082 -91.9997 -91.9996
+   -91.9945 -91.9944 -91.9887 -91.9886 -91.9861 -91.9860 -91.9803 -91.9799
+   -91.9743 -91.9741 -91.9727 -91.9725 -91.9683 -91.9677 -91.9663 -91.9661
+   -91.9659 -91.9658 -91.9642 -91.9641 -91.9595 -91.9592 -91.9582 -91.9575
+   -91.9522 -91.9522 -91.9464 -91.9457 -91.9437 -91.9437 -91.9379 -91.9377
+   -58.3584 -58.3486 -58.3471 -58.3465 -58.3463 -58.3419 -58.3331 -58.3315
+   -58.3298 -58.3287 -58.3247 -58.3194 -58.3184 -58.3118 -58.3110 -58.3091
+   -58.3054 -58.3044 -58.3035 -58.3020 -58.2983 -58.2962 -58.2930 -58.2911
+   -58.2900 -58.2842 -58.2774 -58.2746 -58.2715 -58.2707 -58.2698 -58.2692
+   -58.2687 -58.2657 -58.2619 -58.2595 -58.2590 -58.2544 -58.2531 -58.2506
+   -58.2498 -58.2479 -58.2468 -58.2435 -58.2419 -58.2397 -58.2384 -58.2342
+   -58.2334 -58.2317 -58.2317 -58.2307 -58.2202 -58.2166 -58.2144 -58.2134
+   -58.2109 -58.2090 -58.2050 -58.2018 -58.1952 -58.1933 -58.1928 -58.1858
+   -58.1791 -58.1753 -58.1724 -58.1707 -58.1701 -58.1689 -58.1649 -58.1605
+   -58.1525 -58.1517 -58.1502 -58.1492 -58.1442 -58.1378 -58.1365 -58.1308
+   -58.1301 -58.1281 -58.1281 -58.1280 -58.1244 -58.1236 -58.1184 -58.1184
+   -58.1182 -58.1165 -58.1119 -58.1108 -58.1073 -58.1054 -58.1028 -58.1005
+   -58.1002 -58.0989 -58.0985 -58.0955 -58.0885 -58.0883 -58.0865 -58.0864
+   -58.0860 -58.0809 -58.0791 -58.0788 -58.0781 -58.0706 -58.0693 -58.0678
+   -58.0666 -58.0653 -58.0645 -58.0635 -58.0624 -58.0603 -58.0532 -58.0526
+   -58.0518 -58.0513 -58.0458 -58.0409 -58.0383 -58.0365 -58.0363 -58.0360
+   -58.0315 -58.0309 -58.0286 -58.0276 -58.0272 -58.0255 -58.0244 -58.0241
+   -58.0219 -58.0200 -58.0200 -58.0192 -58.0172 -58.0172 -58.0168 -58.0132
+   -58.0109 -58.0108 -58.0105 -58.0103 -58.0092 -58.0083 -58.0057 -58.0053
+   -58.0051 -58.0040 -58.0039 -58.0016 -58.0015 -57.9988 -57.9987 -57.9987
+   -57.9962 -57.9916 -57.9894 -57.9880 -57.9862 -57.9860 -57.9848 -57.9829
+   -57.9825 -57.9824 -57.9809 -57.9798 -57.9796 -57.9793 -57.9786 -57.9762
+   -57.9734 -57.9701 -57.9701 -57.9676 -57.9668 -57.9654 -57.9648 -57.9648
+   -57.9639 -57.9633 -57.9624 -57.9604 -57.9585 -57.9565 -57.9517 -57.9517
+   -14.2322 -13.9320 -13.6375 -12.9266 -12.8024 -12.6449 -12.3731 -12.2914
+   -11.6182 -11.4148 -11.3645 -11.2136 -11.2040 -11.2034 -10.9231 -10.9103
+   -10.9043 -10.7093 -10.6480 -10.6398 -10.4679 -10.4115 -10.3613 -10.2771
+   -10.1828 -10.1478 -10.0646  -9.9997  -9.9987  -9.9936  -9.9340  -9.8879
+    -9.8194  -9.7484  -9.6606  -9.6559  -9.6281  -9.5993  -9.5784  -9.4605
+    -9.4558  -9.4479  -9.4418  -9.4350  -9.3888  -9.3395  -9.3145  -9.3120
+    -9.2269  -9.1884  -9.1702  -9.1476  -9.1152  -9.0897  -9.0246  -8.9206
+    -8.8892  -8.8550  -8.8525  -8.8410  -8.8083  -8.7963  -8.7804  -8.7705
+    -8.7313  -8.6843  -8.6658  -8.6605  -8.6167  -8.5873  -8.5092  -8.4828
+    -8.4354  -8.3617  -8.3607  -8.3467  -8.3243  -8.3098  -8.3022  -8.3007
+    -8.2993  -8.2834  -8.2777  -8.2763  -8.2470  -8.2049  -8.1776  -8.1727
+    -8.1657  -8.1229  -8.0994  -8.0690  -8.0621  -8.0472  -8.0374  -8.0366
+    -8.0166  -8.0111  -8.0072  -8.0064  -7.9913  -7.9725  -7.9694  -7.9577
+    -7.9542  -7.9473  -7.9325  -7.9313  -7.9222  -7.9086  -7.8940  -7.8927
+    -7.8873  -7.8870  -7.8649  -7.8603  -7.8570  -7.8526  -7.7880  -7.7762
+    -7.7673  -7.7591  -7.7443  -7.7313  -7.7293  -7.7161  -7.6962  -7.6801
+    -7.6782  -7.6720  -7.6608  -7.6453  -7.6350  -7.6345  -7.6232  -7.5885
+    -7.5554  -7.5518  -7.5489  -7.5450  -7.5413  -7.5089  -7.4799  -7.4586
+    -7.4111  -7.3841  -7.3422  -7.3341  -7.3255  -7.2850  -7.2680  -7.2652
+    -7.2477  -7.2453  -7.2423  -7.2341  -7.2330  -7.2245  -7.2151  -7.2046
+    -7.1802  -7.1610  -7.1578  -7.1516  -7.1227  -7.1206  -7.1150  -7.1085
+    -7.0739  -7.0730  -7.0695  -7.0466  -7.0437  -7.0321  -7.0086  -6.9453
+    -6.8851  -6.8361  -6.7891  -6.7725  -6.7686  -6.7148  -6.6932  -6.6883
+    -6.6795  -6.6658  -6.6546  -6.6170  -6.6078  -6.5249  -6.5228  -6.3677
+    -6.3121  -6.3050  -6.2979  -6.2969  -6.2397  -6.1933  -6.1362  -6.1147
+    -6.0934  -6.0806  -6.0404  -6.0260  -6.0097  -5.9928  -5.9607  -5.9604
+    -5.9594  -5.9579  -5.9564  -5.9293  -5.8947  -5.8934  -5.8876  -5.8342
+    -5.7662  -5.7510  -5.7473  -5.7331  -5.7182  -5.7170  -5.7166  -5.7027
+    -5.7016  -5.6962  -5.6886  -5.6841  -5.6817  -5.6598  -5.6561  -5.6167
+    -5.5889  -5.5420  -5.5145  -5.5059  -5.4812  -5.4798  -5.4761  -5.4656
+    -5.4565  -5.4415  -5.4305  -5.4197  -5.4152  -5.4088  -5.3944  -5.3917
+    -5.3810  -5.3762  -5.3435  -5.3358  -5.3324  -5.3190  -5.3189  -5.2915
+    -5.2902  -5.2878  -5.2642  -5.2402  -5.2279  -5.2137  -5.2134  -5.2042
+    -5.2038  -5.2010  -5.1914  -5.1910  -5.1654  -5.1649  -5.1616  -5.1522
+    -5.1459  -5.1340  -5.1283  -5.1253  -5.1235  -5.1082  -5.0913  -5.0886
+    -5.0687  -5.0676  -5.0589  -5.0532  -5.0510  -5.0470  -5.0078  -4.9880
+    -4.9863  -4.9821  -4.9767  -4.9760  -4.9600  -4.9586  -4.9569  -4.9537
+    -4.9489  -4.9363  -4.9350  -4.9227  -4.9148  -4.9042  -4.8853  -4.8731
+    -4.8701  -4.8571  -4.8560  -4.8511  -4.8407  -4.8394  -4.8381  -4.8369
+    -4.8336  -4.8235  -4.8020  -4.8017  -4.7941  -4.7770  -4.7674  -4.7615
+    -4.7579  -4.7532  -4.7463  -4.7199  -4.7171  -4.7159  -4.6747  -4.6640
+    -4.6579  -4.6404  -4.6299  -4.6123  -4.6113  -4.6086  -4.6023  -4.6015
+    -4.5921  -4.5805  -4.5788  -4.5375  -4.5259  -4.5225  -4.5110  -4.5101
+    -4.4852  -4.4781  -4.4506  -4.3599  -4.3079  -4.2744  -4.2696  -4.2452
+    -4.2315  -4.1330  -4.0600  -3.9932  -3.8662  -3.8267
+
+          k =-0.5000-0.3536 0.0000 (128560 PWs)   bands (ev):
+
+   -92.0877 -92.0877 -92.0795 -92.0794 -92.0532 -92.0531 -92.0530 -92.0530
+   -92.0479 -92.0479 -92.0468 -92.0467 -92.0409 -92.0408 -92.0407 -92.0407
+   -92.0368 -92.0367 -92.0275 -92.0274 -92.0273 -92.0273 -92.0268 -92.0268
+   -92.0249 -92.0249 -92.0248 -92.0247 -92.0033 -92.0032 -92.0032 -92.0031
+   -91.9912 -91.9912 -91.9911 -91.9910 -91.9854 -91.9853 -91.9852 -91.9851
+   -91.9694 -91.9694 -91.9692 -91.9692 -91.9692 -91.9692 -91.9691 -91.9690
+   -91.9631 -91.9631 -91.9631 -91.9631 -91.9626 -91.9626 -91.9626 -91.9626
+   -91.9472 -91.9471 -91.9471 -91.9471 -91.9414 -91.9414 -91.9409 -91.9409
+   -58.3389 -58.3388 -58.3387 -58.3387 -58.3289 -58.3287 -58.3287 -58.3286
+   -58.3266 -58.3265 -58.3223 -58.3222 -58.3210 -58.3209 -58.3139 -58.3138
+   -58.3137 -58.3136 -58.3055 -58.3055 -58.3054 -58.3053 -58.2977 -58.2977
+   -58.2850 -58.2850 -58.2848 -58.2848 -58.2786 -58.2786 -58.2619 -58.2618
+   -58.2568 -58.2568 -58.2489 -58.2488 -58.2488 -58.2487 -58.2469 -58.2468
+   -58.2468 -58.2467 -58.2388 -58.2387 -58.2387 -58.2386 -58.2377 -58.2376
+   -58.2376 -58.2376 -58.2348 -58.2348 -58.2309 -58.2309 -58.2262 -58.2261
+   -58.2243 -58.2243 -58.2225 -58.2225 -58.2225 -58.2224 -58.1871 -58.1870
+   -58.1759 -58.1759 -58.1758 -58.1758 -58.1750 -58.1749 -58.1647 -58.1647
+   -58.1641 -58.1640 -58.1467 -58.1467 -58.1290 -58.1290 -58.1289 -58.1289
+   -58.1284 -58.1283 -58.1276 -58.1276 -58.1183 -58.1183 -58.1183 -58.1183
+   -58.1159 -58.1159 -58.1158 -58.1157 -58.1008 -58.1008 -58.0984 -58.0984
+   -58.0934 -58.0934 -58.0933 -58.0933 -58.0854 -58.0853 -58.0844 -58.0844
+   -58.0844 -58.0844 -58.0745 -58.0745 -58.0745 -58.0744 -58.0711 -58.0710
+   -58.0628 -58.0628 -58.0595 -58.0594 -58.0496 -58.0496 -58.0492 -58.0492
+   -58.0492 -58.0491 -58.0423 -58.0423 -58.0340 -58.0339 -58.0333 -58.0333
+   -58.0266 -58.0266 -58.0241 -58.0241 -58.0193 -58.0192 -58.0192 -58.0192
+   -58.0169 -58.0169 -58.0166 -58.0166 -58.0166 -58.0165 -58.0124 -58.0124
+   -58.0124 -58.0124 -58.0101 -58.0100 -58.0052 -58.0051 -58.0018 -58.0018
+   -58.0017 -58.0017 -57.9954 -57.9954 -57.9944 -57.9944 -57.9941 -57.9941
+   -57.9941 -57.9940 -57.9924 -57.9924 -57.9924 -57.9923 -57.9874 -57.9873
+   -57.9873 -57.9873 -57.9824 -57.9824 -57.9811 -57.9811 -57.9810 -57.9810
+   -57.9809 -57.9808 -57.9808 -57.9808 -57.9709 -57.9709 -57.9662 -57.9662
+   -57.9661 -57.9661 -57.9652 -57.9652 -57.9617 -57.9617 -57.9609 -57.9608
+   -14.0426 -14.0425 -13.4574 -13.4574 -12.7479 -12.7478 -12.2045 -12.2044
+   -11.4546 -11.4546 -11.4545 -11.4544 -11.0429 -11.0427 -10.6053 -10.6052
+   -10.6043 -10.6042 -10.6042 -10.6042 -10.5070 -10.5070 -10.4718 -10.4718
+   -10.4717 -10.4716 -10.0438 -10.0436 -10.0428 -10.0427 -10.0426 -10.0426
+    -9.8328  -9.8328  -9.5738  -9.5737  -9.5396  -9.5395  -9.5394  -9.5392
+    -9.4825  -9.4824  -9.4387  -9.4387  -9.4387  -9.4386  -9.2815  -9.2813
+    -9.2708  -9.2706  -9.2512  -9.2510  -9.0067  -9.0063  -8.9878  -8.9878
+    -8.9877  -8.9877  -8.7681  -8.7680  -8.7179  -8.7177  -8.6678  -8.6677
+    -8.5608  -8.5606  -8.4805  -8.4805  -8.4801  -8.4800  -8.4705  -8.4704
+    -8.4550  -8.4546  -8.4469  -8.4464  -8.3468  -8.3468  -8.3467  -8.3466
+    -8.3409  -8.3407  -8.3405  -8.3405  -8.3339  -8.3338  -8.3337  -8.3336
+    -8.1209  -8.1208  -8.1139  -8.1139  -7.9822  -7.9820  -7.9818  -7.9817
+    -7.9662  -7.9660  -7.9188  -7.9186  -7.9185  -7.9184  -7.9081  -7.9080
+    -7.9069  -7.9067  -7.8806  -7.8806  -7.8803  -7.8803  -7.8485  -7.8485
+    -7.8483  -7.8481  -7.8434  -7.8434  -7.8434  -7.8434  -7.8392  -7.8389
+    -7.7930  -7.7928  -7.7926  -7.7924  -7.7347  -7.7347  -7.7345  -7.7345
+    -7.7344  -7.7344  -7.7342  -7.7341  -7.7313  -7.7309  -7.7154  -7.7149
+    -7.6561  -7.6559  -7.5234  -7.5232  -7.4614  -7.4613  -7.4612  -7.4611
+    -7.4396  -7.4394  -7.4014  -7.4013  -7.4012  -7.4011  -7.2951  -7.2951
+    -7.2775  -7.2775  -7.2774  -7.2773  -7.2731  -7.2728  -7.2228  -7.2225
+    -7.2148  -7.2147  -7.1718  -7.1716  -7.0327  -7.0327  -7.0196  -7.0196
+    -6.9506  -6.9505  -6.9439  -6.9437  -6.9209  -6.9208  -6.9207  -6.9207
+    -6.9139  -6.9138  -6.8888  -6.8886  -6.8247  -6.8247  -6.8247  -6.8246
+    -6.8003  -6.8001  -6.5516  -6.5515  -6.4764  -6.4757  -6.4338  -6.4332
+    -6.3654  -6.3653  -6.1838  -6.1836  -6.1647  -6.1645  -6.1150  -6.1148
+    -6.0412  -6.0411  -6.0055  -6.0054  -6.0051  -6.0049  -5.9292  -5.9289
+    -5.9262  -5.9262  -5.8811  -5.8811  -5.8713  -5.8711  -5.7693  -5.7693
+    -5.7654  -5.7653  -5.7651  -5.7650  -5.6656  -5.6656  -5.6654  -5.6653
+    -5.6637  -5.6636  -5.6636  -5.6635  -5.6382  -5.6377  -5.6366  -5.6365
+    -5.5632  -5.5631  -5.5630  -5.5630  -5.5399  -5.5391  -5.4939  -5.4938
+    -5.4936  -5.4934  -5.4596  -5.4594  -5.4164  -5.4163  -5.3645  -5.3642
+    -5.3072  -5.3072  -5.2273  -5.2273  -5.2236  -5.2235  -5.2234  -5.2233
+    -5.2216  -5.2214  -5.2049  -5.2049  -5.1771  -5.1770  -5.1658  -5.1657
+    -5.1655  -5.1654  -5.1613  -5.1612  -5.1612  -5.1612  -5.1359  -5.1357
+    -5.0860  -5.0860  -5.0857  -5.0855  -5.0844  -5.0840  -5.0632  -5.0629
+    -5.0595  -5.0589  -5.0550  -5.0548  -5.0240  -5.0239  -5.0116  -5.0115
+    -4.9904  -4.9903  -4.9903  -4.9902  -4.9803  -4.9802  -4.9752  -4.9751
+    -4.9750  -4.9750  -4.9646  -4.9644  -4.9358  -4.9358  -4.8693  -4.8692
+    -4.8539  -4.8538  -4.8326  -4.8323  -4.8236  -4.8234  -4.7889  -4.7888
+    -4.7888  -4.7887  -4.7881  -4.7881  -4.7881  -4.7881  -4.7737  -4.7736
+    -4.7701  -4.7701  -4.7700  -4.7700  -4.7623  -4.7622  -4.7182  -4.7182
+    -4.7082  -4.7081  -4.7081  -4.7079  -4.6942  -4.6942  -4.6858  -4.6856
+    -4.6855  -4.6854  -4.5954  -4.5953  -4.5917  -4.5917  -4.5917  -4.5915
+    -4.4165  -4.4161  -4.3788  -4.3788  -4.1664  -4.1663  -4.1663  -4.1663
+    -4.0948  -4.0947  -4.0945  -4.0944  -4.0772  -4.0771
+
+     the Fermi energy is    -6.9345 ev
+
+!    total energy              =  -21072.23974924 Ry
+     Harris-Foulkes estimate   =  -21072.23973433 Ry
+     estimated scf accuracy    <          5.1E-09 Ry
+
+     total all-electron energy =   -162915.218021 Ry
+
+     The total energy is the sum of the following terms:
+
+     one-electron contribution = -737720.89252232 Ry
+     hartree contribution      =  368593.88749932 Ry
+     xc contribution           =   -2228.22541225 Ry
+     ewald contribution        =  355157.78721247 Ry
+     Dispersion Correction     =      -1.37062179 Ry
+     one-center paw contrib.   =   -4873.42568083 Ry
+     smearing contrib. (-TS)   =      -0.00022384 Ry
+
+     total magnetization       =   162.91 Bohr mag/cell
+     absolute magnetization    =   169.27 Bohr mag/cell
+
+     convergence has been achieved in  53 iterations
+
+     negative rho (up, down):  2.496E-02 1.871E-02
+
+     Forces acting on atoms (cartesian axes, Ry/au):
+
+     atom    1 type  1   force =     0.00000417    0.00000595    0.00911094
+     atom    2 type  1   force =    -0.00000770    0.00003039   -0.00925401
+     atom    3 type  1   force =    -0.00000432   -0.00000876    0.00918553
+     atom    4 type  1   force =    -0.00001169   -0.00002428   -0.00929525
+     atom    5 type  1   force =    -0.00006422    0.00002495    0.00010911
+     atom    6 type  1   force =    -0.00000264   -0.00001063   -0.00009211
+     atom    7 type  1   force =    -0.00003057    0.00002383    0.00007986
+     atom    8 type  1   force =     0.00003338   -0.00003482   -0.00003637
+     atom    9 type  1   force =    -0.00001582    0.00001998    0.00917171
+     atom   10 type  1   force =     0.00001370   -0.00001837    0.00917356
+     atom   11 type  1   force =    -0.00001248   -0.00007027   -0.00923311
+     atom   12 type  1   force =    -0.00008350    0.00004836   -0.00928876
+     atom   13 type  1   force =    -0.00000626   -0.00001842    0.00019181
+     atom   14 type  1   force =    -0.00001917   -0.00001637    0.00010275
+     atom   15 type  1   force =    -0.00001278   -0.00002004   -0.00002034
+     atom   16 type  1   force =    -0.00008603   -0.00006948   -0.00007272
+     atom   17 type  1   force =     0.00001738   -0.00002636    0.00912579
+     atom   18 type  1   force =    -0.00001171    0.00004185   -0.00927553
+     atom   19 type  1   force =     0.00001962   -0.00002415    0.00912525
+     atom   20 type  1   force =     0.00010600   -0.00013000   -0.00921677
+     atom   21 type  1   force =     0.00002196   -0.00003313    0.00009401
+     atom   22 type  1   force =    -0.00000544    0.00002177   -0.00006509
+     atom   23 type  1   force =     0.00001096   -0.00003536    0.00009392
+     atom   24 type  1   force =    -0.00002474    0.00002100    0.00002590
+     atom   25 type  1   force =     0.00002143   -0.00002912    0.00919491
+     atom   26 type  1   force =     0.00001610   -0.00002048    0.00909759
+     atom   27 type  1   force =     0.00005085   -0.00004937   -0.00919788
+     atom   28 type  1   force =     0.00008827    0.00000199   -0.00923037
+     atom   29 type  1   force =     0.00000384   -0.00001021    0.00011406
+     atom   30 type  1   force =     0.00002639   -0.00004496   -0.00003147
+     atom   31 type  1   force =     0.00003295   -0.00000116   -0.00016564
+     atom   32 type  1   force =     0.00000822   -0.00000339   -0.00001844
+     atom   33 type  1   force =    -0.00001840    0.00003608    0.00912163
+     atom   34 type  1   force =    -0.00001361    0.00003825   -0.00927680
+     atom   35 type  1   force =    -0.00002530    0.00003129    0.00911995
+     atom   36 type  1   force =    -0.00007656    0.00012839   -0.00922007
+     atom   37 type  1   force =     0.00007070   -0.00004610    0.00012484
+     atom   38 type  1   force =    -0.00003309    0.00000454   -0.00006618
+     atom   39 type  1   force =     0.00001299   -0.00008921    0.00012313
+     atom   40 type  1   force =    -0.00000552   -0.00000477   -0.00011575
+     atom   41 type  1   force =    -0.00001860    0.00002883    0.00911029
+     atom   42 type  1   force =    -0.00002026    0.00003156    0.00919046
+     atom   43 type  1   force =    -0.00000010    0.00010859   -0.00928682
+     atom   44 type  1   force =    -0.00003694    0.00007472   -0.00919956
+     atom   45 type  1   force =    -0.00000153   -0.00000829    0.00014748
+     atom   46 type  1   force =    -0.00003665    0.00004348   -0.00001790
+     atom   47 type  1   force =     0.00007994    0.00004919   -0.00007091
+     atom   48 type  1   force =     0.00000006    0.00000546   -0.00000432
+     atom   49 type  1   force =     0.00001371    0.00000398    0.00918677
+     atom   50 type  1   force =    -0.00001351    0.00003899   -0.00918388
+     atom   51 type  1   force =    -0.00000377   -0.00000032    0.00911331
+     atom   52 type  1   force =     0.00004637    0.00001760   -0.00929400
+     atom   53 type  1   force =    -0.00002055    0.00002661    0.00007971
+     atom   54 type  1   force =     0.00002778   -0.00005303    0.00002615
+     atom   55 type  1   force =    -0.00000766    0.00006303    0.00010725
+     atom   56 type  1   force =     0.00000905   -0.00005267   -0.00003513
+     atom   57 type  1   force =    -0.00001129    0.00002374    0.00916956
+     atom   58 type  1   force =     0.00001474   -0.00001683    0.00917322
+     atom   59 type  1   force =    -0.00003909    0.00007599   -0.00920119
+     atom   60 type  1   force =     0.00005025   -0.00005052   -0.00919951
+     atom   61 type  1   force =     0.00000958   -0.00000514    0.00019185
+     atom   62 type  1   force =     0.00001238    0.00000577    0.00010595
+     atom   63 type  1   force =    -0.00001738   -0.00000846   -0.00000617
+     atom   64 type  1   force =    -0.00002390   -0.00004170   -0.00016019
+
+     Total force =     0.000624     Total SCF correction =     0.000051
+
+     BFGS Geometry Optimization
+
+     bfgs converged in   1 scf cycles and   0 bfgs steps
+     (criteria: energy <  7.3E-07 Ry, force <  3.9E-04 Ry/Bohr)
+
+     End of BFGS Geometry Optimization
+
+     Final energy   =  -21072.2397492409 Ry
+Begin final coordinates
+
+ATOMIC_POSITIONS (angstrom)
+Fe       1.654912953   1.170200133   0.000000000    0   0   0
+Fe       0.000000000   0.000000000   2.026984232    0   0   0
+Fe       4.964738858   3.510600399   0.000000000    0   0   0
+Fe       3.309825906   2.340400266   2.026984232    0   0   0
+Fe       1.655131513   1.170255800   4.026893789
+Fe       3.310185890   9.361715274   6.004812258
+Fe       4.964954072   3.510645742   4.026864800
+Fe       3.309968878   2.341373774   6.004558667
+Fe       2.482363858   3.510600399   0.000000000    0   0   0
+Fe       4.137287953   1.170200133   0.000000000    0   0   0
+Fe       0.827450906   2.340400266   2.026984232    0   0   0
+Fe       2.482375000   0.000000000   2.026984232    0   0   0
+Fe       2.482431022   3.510784594   4.026382395
+Fe       4.137423723   1.170575205   4.026844020
+Fe       0.827793995   2.340671494   6.004582483
+Fe       2.483081194   0.000914643   6.004972519
+Fe       6.619662953   1.170200133   0.000000000    0   0   0
+Fe       4.964750000   0.000000000   2.026984232    0   0   0
+Fe       9.929488858   3.510600399   0.000000000    0   0   0
+Fe       8.274575906   2.340400266   2.026984232    0   0   0
+Fe       6.619907777   1.170455049   4.027049583
+Fe       4.965211570   0.000234207   6.004131526
+Fe       9.929608704   3.510738088   4.027034307
+Fe       8.275000021   2.340478798   6.004316858
+Fe       7.447113858   3.510600399   0.000000000    0   0   0
+Fe       9.102037953   1.170200133   0.000000000    0   0   0
+Fe       5.792200906   2.340400266   2.026984232    0   0   0
+Fe       7.447125000   0.000000000   2.026984232    0   0   0
+Fe       7.447420479   3.510611505   4.026647087
+Fe       9.102346018   1.170211882   4.027134491
+Fe       5.792401460   2.340819564   6.005512548
+Fe      10.757173775   9.361831542   6.004597452
+Fe       3.309814764   5.851000664   0.000000000    0   0   0
+Fe       1.654901811   4.680800531   2.026984232    0   0   0
+Fe       6.619640670   8.191400930   0.000000000    0   0   0
+Fe       4.964727717   7.021200797   2.026984232    0   0   0
+Fe       3.309526336   5.851690833   4.026744262
+Fe      11.584679108   4.680855349   6.004144765
+Fe       6.619499617   8.192215343   4.026748908
+Fe       4.964546232   7.022148233   6.005235814
+Fe       4.137265670   8.191400930   0.000000000    0   0   0
+Fe       5.792189764   5.851000664   0.000000000    0   0   0
+Fe       2.482352717   7.021200797   2.026984232    0   0   0
+Fe       4.137276811   4.680800531   2.026984232    0   0   0
+Fe       4.137270576   8.191845130   4.026814179
+Fe       5.792069812   5.851617064   4.026946478
+Fe      12.411409722   7.021258406   6.004962008
+Fe       4.137385969   4.681560913   6.004055304
+Fe       8.274564764   5.851000664   0.000000000    0   0   0
+Fe       6.619651811   4.680800531   2.026984232    0   0   0
+Fe      11.584390670   8.191400930   0.000000000    0   0   0
+Fe       9.929477717   7.021200797   2.026984232    0   0   0
+Fe       8.274868094   5.851126765   4.026848823
+Fe       6.619665354   4.681477222   6.003380070
+Fe      11.584678547   8.191514616   4.026910800
+Fe       9.929155900   7.021837365   6.004536714
+Fe       9.102015670   8.191400930   0.000000000    0   0   0
+Fe      10.756939764   5.851000664   0.000000000    0   0   0
+Fe       7.447102717   7.021200797   2.026984232    0   0   0
+Fe       9.102026811   4.680800531   2.026984232    0   0   0
+Fe       9.102234964   8.191714800   4.026377367
+Fe      10.756978908   5.851283372   4.026838019
+Fe       7.446997598   7.021815629   6.004046457
+Fe       9.102218468   4.681205756   6.005444946
+End final coordinates
+
+
+
+     Writing output data file Fe_paper_480c_ESM_pn25.save/
+
+     init_run     :     83.21s CPU     84.86s WALL (       1 calls)
+     electrons    :  21404.65s CPU  21548.41s WALL (       1 calls)
+     forces       :     43.38s CPU     43.62s WALL (       1 calls)
+
+     Called by init_run:
+     wfcinit      :     57.53s CPU     58.82s WALL (       1 calls)
+     potinit      :      6.01s CPU      6.06s WALL (       1 calls)
+     hinit0       :      9.31s CPU      9.34s WALL (       1 calls)
+
+     Called by electrons:
+     c_bands      :  19798.42s CPU  19923.95s WALL (      53 calls)
+     sum_band     :    887.42s CPU    899.02s WALL (      53 calls)
+     v_of_rho     :     87.66s CPU     88.04s WALL (      54 calls)
+     newd         :     16.34s CPU     16.49s WALL (      54 calls)
+     PAW_pot      :     29.90s CPU     29.96s WALL (      54 calls)
+     mix_rho      :    552.95s CPU    558.45s WALL (      53 calls)
+
+     Called by c_bands:
+     init_us_2    :     23.78s CPU     24.26s WALL (     324 calls)
+     cegterg      :  12604.77s CPU  12689.99s WALL (     159 calls)
+
+     Called by sum_band:
+     sum_band:bec :      1.92s CPU      1.93s WALL (     159 calls)
+     addusdens    :     18.38s CPU     18.68s WALL (      53 calls)
+
+     Called by *egterg:
+     h_psi        :   3597.72s CPU   3629.63s WALL (    1163 calls)
+     s_psi        :    745.28s CPU    746.17s WALL (    1163 calls)
+     g_psi        :      9.75s CPU      9.79s WALL (    1001 calls)
+     cdiaghg      :   5511.56s CPU   5535.32s WALL (    1160 calls)
+
+     Called by h_psi:
+     h_psi:pot    :   3580.48s CPU   3600.55s WALL (    1163 calls)
+     h_psi:calbec :    762.40s CPU    764.65s WALL (    1163 calls)
+     vloc_psi     :   2071.25s CPU   2087.48s WALL (    1163 calls)
+     add_vuspsi   :    746.82s CPU    748.41s WALL (    1163 calls)
+
+     General routines
+     calbec       :   1064.10s CPU   1066.58s WALL (    1334 calls)
+     fft          :     54.52s CPU     54.83s WALL (    1363 calls)
+     ffts         :    286.23s CPU    288.13s WALL (   34146 calls)
+     fftw         :   1992.33s CPU   2007.98s WALL (  599480 calls)
+     interpolate  :      5.35s CPU      5.38s WALL (     108 calls)
+     davcio       :      0.31s CPU     32.96s WALL (    1622 calls)
+
+     Parallel routines
+     fft_scatt_xy :    426.35s CPU    428.39s WALL (  634989 calls)
+     fft_scatt_yz :    565.05s CPU    572.49s WALL (  634989 calls)
+
+     PWSCF        :      5h58m CPU      6h 1m WALL
+
+
+   This run was terminated on:   3: 2:11  13Jun2022            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=

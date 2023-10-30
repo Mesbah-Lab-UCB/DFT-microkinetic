@@ -1,0 +1,9 @@
+phonons (vibrational modes) for N2
+ &inputph
+  outdir='./'
+  prefix='N2_ESM_pn25'
+  amass(1)=14.0067
+  fildyn='N2.dync'
+  trans=.true.
+ /
+0.0 0.0 0.0
